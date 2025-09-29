@@ -1,5 +1,5 @@
 import { getAudioContext } from './superdough.mjs';
-import { clamp, nanFallback } from './util.mjs';
+import { clamp, nanFallback, midiToFreq, noteToMidi } from './util.mjs';
 import { getNoiseBuffer } from './noise.mjs';
 
 export const noises = ['pink', 'white', 'brown', 'crackle'];
@@ -8,6 +8,13 @@ export function gainNode(value) {
   const node = getAudioContext().createGain();
   node.gain.value = value;
   return node;
+}
+
+export function effectSend(input, effect, wet) {
+  const send = gainNode(wet);
+  input.connect(send);
+  send.connect(effect);
+  return send;
 }
 
 const getSlope = (y1, y2, x1, x2) => {
@@ -21,7 +28,9 @@ const getSlope = (y1, y2, x1, x2) => {
 export function getWorklet(ac, processor, params, config) {
   const node = new AudioWorkletNode(ac, processor, config);
   Object.entries(params).forEach(([key, value]) => {
-    node.parameters.get(key).value = value;
+    if (value !== undefined) {
+      node.parameters.get(key).value = value;
+    }
   });
   return node;
 }
@@ -88,6 +97,35 @@ export const getParamADSR = (
   param[ramp](min, end + release);
 };
 
+function getModulationShapeInput(val) {
+  if (typeof val === 'number') {
+    return val % 5;
+  }
+  return { tri: 0, triangle: 0, sine: 1, ramp: 2, saw: 3, square: 4 }[val] ?? 0;
+}
+
+export function getLfo(audioContext, begin, end, properties = {}) {
+  const { shape = 0, ...props } = properties;
+  const { dcoffset = -0.5, depth = 1 } = properties;
+  const lfoprops = {
+    frequency: 1,
+    depth,
+    skew: 0.5,
+    phaseoffset: 0,
+    time: begin,
+    begin,
+    end,
+    shape: getModulationShapeInput(shape),
+    dcoffset,
+    min: dcoffset * depth,
+    max: dcoffset * depth + depth,
+    curve: 1,
+    ...props,
+  };
+
+  return getWorklet(audioContext, 'lfo-processor', lfoprops);
+}
+
 export function getCompressor(ac, threshold, ratio, knee, attack, release) {
   const options = {
     threshold: threshold ?? -3,
@@ -114,6 +152,41 @@ export const getADSRValues = (params, curve = 'linear', defaultValues) => {
   const sustain = s != null ? s : (a != null && d == null) || (a == null && d == null) ? envmax : envmin;
   return [Math.max(a ?? 0, envmin), Math.max(d ?? 0, envmin), Math.min(sustain, envmax), Math.max(r ?? 0, releaseMin)];
 };
+
+// helper utility for applying standard modulators to a parameter
+export function applyParameterModulators(audioContext, param, start, end, envelopeValues, lfoValues) {
+  let { amount, offset, defaultAmount = 1, curve = 'linear', values, holdEnd, defaultValues } = envelopeValues;
+
+  if (amount == null) {
+    const hasADSRParams = values.some((p) => p != null);
+    amount = hasADSRParams ? defaultAmount : 0;
+  }
+
+  const min = offset ?? 0;
+  const max = amount + min;
+  const diff = Math.abs(max - min);
+  if (diff) {
+    const [attack, decay, sustain, release] = getADSRValues(values, curve, defaultValues);
+    getParamADSR(param, attack, decay, sustain, release, min, max, start, holdEnd, curve);
+  }
+  let lfo;
+  let { defaultDepth = 1, depth, dcoffset, ...getLfoInputs } = lfoValues;
+
+  if (depth == null) {
+    const hasLFOParams = Object.values(getLfoInputs).some((v) => v != null);
+    depth = hasLFOParams ? defaultDepth : 0;
+  }
+  if (depth) {
+    lfo = getLfo(audioContext, start, end, {
+      depth,
+      dcoffset,
+      ...getLfoInputs,
+    });
+    lfo.connect(param);
+  }
+
+  return { lfo, disconnect: () => lfo?.disconnect() };
+}
 
 export function createFilter(context, type, frequency, Q, att, dec, sus, rel, fenv, start, end, fanchor, model, drive) {
   const curve = 'exponential';
@@ -307,3 +380,25 @@ export function applyFM(param, value, begin) {
   }
   return { stop };
 }
+
+export const getFrequencyFromValue = (value, defaultNote = 36) => {
+  let { note, freq } = value;
+  note = note || defaultNote;
+  if (typeof note === 'string') {
+    note = noteToMidi(note); // e.g. c3 => 48
+  }
+  // get frequency
+  if (!freq && typeof note === 'number') {
+    freq = midiToFreq(note); // + 48);
+  }
+
+  return Number(freq);
+};
+
+export const destroyAudioWorkletNode = (node) => {
+  if (node == null) {
+    return;
+  }
+  node.disconnect();
+  node.parameters.get('end')?.setValueAtTime(0, 0);
+};
