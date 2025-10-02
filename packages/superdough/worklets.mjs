@@ -1234,7 +1234,8 @@ class WavetableOscillatorProcessor extends AudioWorkletProcessor {
   _sampleFrame(frame, phase) {
     const len = frame.length;
     const pos = phase * len;
-    const i = pos | 0;
+    let i = pos | 0;
+    if (i >= len) i = 0;
     const frac = pos - i;
     const a = frame[i];
     const i1 = i + 1 < len ? i + 1 : 0; // fast wrap
