@@ -66,18 +66,16 @@ You can write your own chained function using `register`. Here's the above chain
 
 <MiniRepl
   client:idle
-  tune={`const effectChain = register('effectChain',
-  (pat) => pat
+  tune={`const effectChain = register('effectChain', (pat) => pat
     .s("sawtooth")
     .cutoff(500)
     //.delay(0.5)
     .room(0.5)
   );
-note("a3 c#4 e4 a4").effectChain()
-`}
+note("a3 c#4 e4 a4").effectChain()`}
 />
 
-Try adding `.rev()` after `effectChain()` to see further effects added.
+Try adding `.rev()` after `effectChain()` to hear further effects added.
 
 # Comments
 
