@@ -3,7 +3,7 @@ import { autocompletion } from '@codemirror/autocomplete';
 import { h } from './html';
 import { Scale } from '@tonaljs/tonal';
 import { soundMap } from 'superdough';
-import { complex } from '../tonal/ireal.mjs';
+import { complex } from '@strudel/tonal';
 
 const escapeHtml = (str) => {
   const div = document.createElement('div');

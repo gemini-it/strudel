@@ -212,6 +212,9 @@ importers:
       '@strudel/draw':
         specifier: workspace:*
         version: link:../draw
+      '@strudel/tonal':
+        specifier: workspace:*
+        version: link:../tonal
       '@strudel/transpiler':
         specifier: workspace:*
         version: link:../transpiler
