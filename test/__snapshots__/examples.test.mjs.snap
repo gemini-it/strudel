@@ -8307,6 +8307,33 @@ exports[`runs examples > example "repeatCycles" example index 0 1`] = `
 ]
 `;
 
+exports[`runs examples > example "replicate" example index 0 1`] = `
+[
+  "[ 0/1 → 1/8 | s:bd ]",
+  "[ 1/8 → 1/4 | s:bd ]",
+  "[ 3/8 → 1/2 | s:cp ]",
+  "[ 1/2 → 5/8 | s:bd ]",
+  "[ 5/8 → 3/4 | s:bd ]",
+  "[ 7/8 → 1/1 | s:cp ]",
+  "[ 1/1 → 9/8 | s:bd ]",
+  "[ 5/4 → 11/8 | s:sd ]",
+  "[ 3/2 → 13/8 | s:bd ]",
+  "[ 13/8 → 7/4 | s:bd ]",
+  "[ 15/8 → 2/1 | s:cp ]",
+  "[ 2/1 → 17/8 | s:bd ]",
+  "[ 17/8 → 9/4 | s:bd ]",
+  "[ 19/8 → 5/2 | s:cp ]",
+  "[ 5/2 → 21/8 | s:bd ]",
+  "[ 11/4 → 23/8 | s:sd ]",
+  "[ 3/1 → 25/8 | s:bd ]",
+  "[ 25/8 → 13/4 | s:bd ]",
+  "[ 27/8 → 7/2 | s:cp ]",
+  "[ 7/2 → 29/8 | s:bd ]",
+  "[ 29/8 → 15/4 | s:bd ]",
+  "[ 31/8 → 4/1 | s:cp ]",
+]
+`;
+
 exports[`runs examples > example "reset" example index 0 1`] = `
 [
   "[ 0/1 → 1/8 | s:hh ]",
