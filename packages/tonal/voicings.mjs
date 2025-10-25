@@ -87,13 +87,13 @@ export const setDefaultVoicings = (dict) => (defaultDict = dict);
 export const setVoicingRange = (name, range) => addVoicings(name, voicingRegistry[name].dictionary, range);
 
 /**
- * Adds a new custom voicing dictionary.
+ * Ajoute un nouveau dictionnaire de voicing personnalisé.
  *
  * @name addVoicings
  * @memberof Pattern
- * @param {string} name identifier for the voicing dictionary
- * @param {Object} dictionary maps chord symbol to possible voicings
- * @param {Array} range min, max note
+ * @param {string} name identifiant du dictionnaire de voicing
+ * @param {Object} dictionary mappe le symbole d'accord aux voicings possibles
+ * @param {Array} range note min, max
  * @returns Pattern
  * @example
  * addVoicings('cookie', {
@@ -128,13 +128,13 @@ const getVoicing = (chord, dictionaryName, lastVoicing) => {
 };
 
 /**
- * DEPRECATED: still works, but it is recommended you use .voicing instead (without s).
- * Turns chord symbols into voicings, using the smoothest voice leading possible.
- * Uses [chord-voicings package](https://github.com/felixroos/chord-voicings#chord-voicings).
+ * DÉPRÉCIÉ : fonctionne toujours, mais il est recommandé d'utiliser .voicing à la place (sans s).
+ * Transforme les symboles d'accords en voicings, en utilisant la conduite de voix la plus fluide possible.
+ * Utilise [le package chord-voicings](https://github.com/felixroos/chord-voicings#chord-voicings).
  *
  * @name voicings
  * @memberof Pattern
- * @param {string} dictionary which voicing dictionary to use.
+ * @param {string} dictionary quel dictionnaire de voicing utiliser.
  * @returns Pattern
  * @example
  * stack("<C^7 A7 Dm7 G7>".voicings('lefthand'), "<C3 A2 D3 G2>").note()
@@ -154,11 +154,11 @@ export const voicings = register('voicings', function (dictionary, pat) {
 });
 
 /**
- * Maps the chords of the incoming pattern to root notes in the given octave.
+ * Mappe les accords du pattern entrant aux notes fondamentales dans l'octave donnée.
  *
  * @name rootNotes
  * @memberof Pattern
- * @param {octave} octave octave to use
+ * @param {octave} octave octave à utiliser
  * @returns Pattern
  * @example
  * "<C^7 A7 Dm7 G7>".rootNotes(2).note()
@@ -173,20 +173,20 @@ export const rootNotes = register('rootNotes', function (octave, pat) {
 });
 
 /**
- * Turns chord symbols into voicings. You can use the following control params:
+ * Transforme les symboles d'accords en voicings. Vous pouvez utiliser les paramètres de contrôle suivants :
  *
- * - `chord`: Note, followed by chord symbol, e.g. C Am G7 Bb^7
- * - `dict`: voicing dictionary to use, falls back to default dictionary
- * - `anchor`: the note that is used to align the chord
- * - `mode`: how the voicing is aligned to the anchor
- *   - `below`: top note <= anchor
- *   - `duck`: top note <= anchor, anchor excluded
- *   - `above`: bottom note >= anchor
- * - `offset`: whole number that shifts the voicing up or down to the next voicing
- * - `n`: if set, the voicing is played like a scale. Overshooting numbers will be octaved
+ * - `chord`: Note, suivie du symbole d'accord, par ex. C Am G7 Bb^7
+ * - `dict`: dictionnaire de voicing à utiliser, revient au dictionnaire par défaut
+ * - `anchor`: la note qui est utilisée pour aligner l'accord
+ * - `mode`: comment le voicing est aligné sur l'ancre
+ *   - `below`: note supérieure <= ancre
+ *   - `duck`: note supérieure <= ancre, ancre exclue
+ *   - `above`: note inférieure >= ancre
+ * - `offset`: nombre entier qui décale le voicing vers le haut ou le bas vers le voicing suivant
+ * - `n`: si défini, le voicing est joué comme une gamme. Les nombres dépassants seront octaviés
  *
- * All of the above controls are optional, except `chord`.
- * If you pass a pattern of strings to voicing, they will be interpreted as chords.
+ * Tous les contrôles ci-dessus sont optionnels, sauf `chord`.
+ * Si vous passez un pattern de chaînes à voicing, elles seront interprétées comme des accords.
  *
  * @name voicing
  * @returns Pattern
