@@ -1,38 +1,38 @@
 ---
-title: Build Rhythms
+title: Construire des Rythmes
 layout: ../../layouts/MainLayout.astro
 ---
 
 import { MiniRepl } from '../../docs/MiniRepl';
 
-Note:
+Note :
 
-- this has been (partly) translated from https://tidalcycles.org/docs/patternlib/howtos/buildrhythms
-- this only sounds good with `samples('github:tidalcycles/dirt-samples')` in prebake
+- ceci a été (partiellement) traduit de https://tidalcycles.org/docs/patternlib/howtos/buildrhythms
+- cela ne sonne bien qu'avec `samples('github:tidalcycles/dirt-samples')` dans prebake
 
-# Build Rhythms
+# Construire des Rythmes
 
-This page will teach you how to get started writing rhythms using different techniques. It is a good way to learn Strudel in a more intuitive way.
+Cette page vous apprendra comment commencer à écrire des rythmes en utilisant différentes techniques. C'est une bonne façon d'apprendre Strudel de manière plus intuitive.
 
-## From a simple to a complex rhythm
+## D'un rythme simple à un rythme complexe
 
-Simple bass drum - snare:
+Grosse caisse simple - caisse claire :
 
 <MiniRepl client:idle tune={`s("bd sd").slow(2)`} />
 
-Let's pick a different snare sample:
+Choisissons un échantillon de caisse claire différent :
 
 <MiniRepl client:idle tune={`s("bd sd:3").slow(2)`} />
 
-Now, we are going to change the rhythm:
+Maintenant, nous allons changer le rythme :
 
 <MiniRepl client:idle tune={`s("bd*2 [~ sd:3]").slow(2)`} />
 
-And add some toms:
+Et ajoutons quelques toms :
 
 <MiniRepl client:idle tune={`s("bd*2 [[~ lt] sd:3] lt:1 [ht mt*2]").slow(2)`} />
 
-Start to transform, shift a quarter cycle every other cycle:
+Commençons à transformer, décaler d'un quart de cycle tous les deux cycles :
 
 <MiniRepl
   client:idle
@@ -40,7 +40,7 @@ Start to transform, shift a quarter cycle every other cycle:
 .every(2, early(.25)).slow(2)`}
 />
 
-Pattern the shift amount:
+Modeler la quantité de décalage :
 
 <MiniRepl
   client:idle
@@ -48,7 +48,7 @@ Pattern the shift amount:
 .every(2, early("<.25 .125 .5>")).slow(2)`}
 />
 
-Add some patterned effects:
+Ajouter quelques effets rythmés :
 
 <MiniRepl
   client:idle
@@ -59,7 +59,7 @@ Add some patterned effects:
 .slow(2)`}
 />
 
-More transformation:
+Plus de transformation :
 
 <MiniRepl
   client:idle
@@ -71,16 +71,16 @@ More transformation:
 .slow(2)`}
 />
 
-## Another rhythmic construction
+## Une autre construction rythmique
 
-Let's start with a sequence:
+Commençons par une séquence :
 
 <MiniRepl client:idle tune={`n("0 0 [2 0] [2 3]").s("feel").speed(1.5).slow(2)`} />
 
-We add a bit of flavour:
+Nous ajoutons un peu de saveur :
 
 <MiniRepl client:idle tune={`n("0 <0 4> [2 0] [2 3]").s("feel").speed(1.5).slow(2)`} />
 
-Swap the samples round every other cycle:
+Échanger les samples tous les deux cycles :
 
-TODO: implement `rot`
+TODO: implémenter `rot`

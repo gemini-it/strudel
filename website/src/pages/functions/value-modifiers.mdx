@@ -1,19 +1,19 @@
 ---
-title: Control Parameters
+title: Paramètres de Contrôle
 layout: ../../layouts/MainLayout.astro
 ---
 
 import { MiniRepl } from '../../docs/MiniRepl';
 import { JsDoc } from '../../docs/JsDoc';
 
-# Control Parameters
+# Paramètres de Contrôle
 
-Besides functions that control time, we saw earlier that functions like `note` and `cutoff` control different parameters (short params) of an event.
-Let's now look more closely at how these `param(eter) functions` work.
+Outre les fonctions qui contrôlent le temps, nous avons vu précédemment que des fonctions comme `note` et `cutoff` contrôlent différents paramètres (params courts) d'un événement.
+Regardons maintenant de plus près comment fonctionnent ces `fonctions de paramètres`.
 
-# Parameter Functions
+# Fonctions de Paramètres
 
-A very powerful feature of tidal patterns is that each parameter can be controlled independently:
+Une caractéristique très puissante des patterns tidal est que chaque paramètre peut être contrôlé indépendamment :
 
 <MiniRepl
   client:only="react"
@@ -24,69 +24,69 @@ A very powerful feature of tidal patterns is that each parameter can be controll
 .log()`}
 />
 
-In this example, the parameters `note`, `cutoff`, `gain` and `s` are controlled independently by either patterns or plain values (numbers / text).
-After pressing play, we can observe the time and parameter values of each event (hap) in the output created by `.log()`.
+Dans cet exemple, les paramètres `note`, `cutoff`, `gain` et `s` sont contrôlés indépendamment par des patterns ou des valeurs simples (nombres / texte).
+Après avoir appuyé sur play, nous pouvons observer le temps et les valeurs des paramètres de chaque événement (hap) dans la sortie créée par `.log()`.
 
-## Plain vs Parameterized Values
+## Valeurs Simples vs Valeurs Paramétrées
 
-Patterns that are not wrapped inside a param function will contain unlabeled `plain values`:
+Les patterns qui ne sont pas enveloppés dans une fonction de paramètre contiendront des `valeurs simples` non étiquetées :
 
 <MiniRepl client:only="react" tune={`"<c e g>".log()`} />
 
-This will not generate any sound output, because Strudel could only guess which param is meant by these letters.
+Cela ne générera aucune sortie sonore, car Strudel ne pourrait que deviner quel paramètre est signifié par ces lettres.
 
-Now compare that to the version wrapped in `note`:
+Maintenant, comparez cela à la version enveloppée dans `note` :
 
 <MiniRepl client:only="react" tune={`note("<c e g>").log()`} />
 
-Now it is clear that these letters are meant to be played as notes.
-Under the hood, the `note` function (as well as all other param functions)
-will wrap each plain value in an object. If the note function did not exist, we would need to write:
+Maintenant, il est clair que ces lettres sont destinées à être jouées comme des notes.
+Sous le capot, la fonction `note` (ainsi que toutes les autres fonctions de paramètres)
+enveloppera chaque valeur simple dans un objet. Si la fonction note n'existait pas, nous devrions écrire :
 
 <MiniRepl client:only="react" tune={`cat({note:'c'},{note:'e'},{note:'g'}).log()`} />
 
-This will have the same output, though it is rather unwieldy to read and write.
+Cela aura la même sortie, bien que ce soit plutôt difficile à lire et à écrire.
 
-## Wrapping Parameter Functions
+## Enchaînement des Fonctions de Paramètres
 
-To avoid too much nesting, param functions can also be chained like this:
+Pour éviter trop d'imbrication, les fonctions de paramètres peuvent également être enchaînées comme ceci :
 
 <MiniRepl client:only="react" tune={`cat('c', 'e', 'g').note().log()`} />
 
-This is equivalent to `note(cat('c','e','g')).log()`.
+Ceci est équivalent à `note(cat('c','e','g')).log()`.
 
-You can use this with any function that declares a type (like `n`, `s`, `note`, `freq` etc), just make sure to leave the parens empty!
+Vous pouvez utiliser cela avec n'importe quelle fonction qui déclare un type (comme `n`, `s`, `note`, `freq` etc), assurez-vous simplement de laisser les parenthèses vides !
 
-## Plain Value Modification
+## Modification de Valeur Simple
 
-Patterns of plain values can be modified with any of the following operators:
+Les patterns de valeurs simples peuvent être modifiés avec l'un des opérateurs suivants :
 
 <MiniRepl client:only="react" tune={`"50 60 70".add("<0 1 2>").log()`} />
 
-Here, the add function modifies the numbers on the left.
-Again, there is no output because these numbers have no meaning without a param.
+Ici, la fonction add modifie les nombres à gauche.
+Encore une fois, il n'y a pas de sortie car ces nombres n'ont aucune signification sans paramètre.
 
-## Param Value Modification
+## Modification de Valeur de Paramètre
 
-To modify a parameter value, you can either:
+Pour modifier une valeur de paramètre, vous pouvez soit :
 
-- Use the operator on the plain value pattern, inside the param function:
+- Utiliser l'opérateur sur le pattern de valeur simple, à l'intérieur de la fonction de paramètre :
 
   <MiniRepl client:only="react" tune={`note("50 60 70".add("<0 1 2>")).room(.1).log()`} />
 
-- Similarly, use the operator on the plain value pattern and wrap it later:
+- De même, utiliser l'opérateur sur le pattern de valeur simple et l'envelopper plus tard :
 
   <MiniRepl client:only="react" tune={`"50 60 70".add("<0 1 2>").note().room(.1).log()`} />
 
-- Specify which param should be modified inside the operator function:
+- Spécifier quel paramètre doit être modifié à l'intérieur de la fonction d'opérateur :
 
   <MiniRepl client:only="react" tune={`note("50 60 70").room(.1).add(note("<0 1 2>")).log()`} />
 
-Remember the execution of the chained functions goes from left to right.
+N'oubliez pas que l'exécution des fonctions enchaînées se fait de gauche à droite.
 
-# Operators
+# Opérateurs
 
-This group of functions allows to modify the value of events.
+Ce groupe de fonctions permet de modifier la valeur des événements.
 
 ## add
 
@@ -136,9 +136,9 @@ This group of functions allows to modify the value of events.
 
 <JsDoc client:idle name="as" h={0} />
 
-# Custom Parameters
+# Paramètres Personnalisés
 
-You can also create your own parameters:
+Vous pouvez également créer vos propres paramètres :
 
 <MiniRepl
   client:only="react"
@@ -147,7 +147,7 @@ x(sine.range(0, 200))
 `}
 />
 
-Multiple params can also be created in a more consice way, using `createParams`:
+Plusieurs paramètres peuvent également être créés de manière plus concise, en utilisant `createParams` :
 
 <MiniRepl
   client:only="react"
@@ -156,6 +156,6 @@ x(sine.range(0, 200)).y(cosine.range(0, 200));
 `}
 />
 
-Note that these params will not do anything until you give them meaning in your custom output!
+Notez que ces paramètres ne feront rien tant que vous ne leur donnerez pas de signification dans votre sortie personnalisée !
 
-From modifying parameters we transition to the concept of [Signals](/learn/signals).
+De la modification des paramètres, nous passons au concept de [Signaux](/learn/signals).

@@ -1,49 +1,49 @@
 ---
-title: Pattern Aligment
+title: Alignement des Patterns
 layout: ../../layouts/MainLayout.astro
 ---
 
 import { MiniRepl } from '../../docs/MiniRepl';
 
-# Pattern Aligment & Combination
+# Alignement et Combinaison des Patterns
 
-One core aspect of Strudel, inherited from Tidal, is the flexible way that patterns can be combined, irrespective of their structure. Its declarative approach means a live coder does not have to think about the details of _how_ this is done, only _what_ is to be done.
+Un aspect fondamental de Strudel, hérité de Tidal, est la manière flexible dont les patterns peuvent être combinés, indépendamment de leur structure. Son approche déclarative signifie qu'un live codeur n'a pas à penser aux détails de _comment_ cela est fait, seulement _ce qui_ doit être fait.
 
-As a simple example, consider two number patterns `"0 [1 2] 3"`, and `"10 20"`. The first has three contiguous steps of equal lengths, with the second step broken down into two substeps, giving four events in total. There are a very large number of ways in which the structure of these two patterns could be combined, but the default method in both Strudel and Tidal is to line up the cycles of the two patterns, and then take events from the first pattern and match them with those in the second pattern. Therefore, the following two lines are equivalent:
+Comme exemple simple, considérez deux patterns de nombres `"0 [1 2] 3"`, et `"10 20"`. Le premier a trois étapes contiguës de longueurs égales, avec la deuxième étape décomposée en deux sous-étapes, donnant quatre événements au total. Il existe un très grand nombre de façons dont la structure de ces deux patterns pourrait être combinée, mais la méthode par défaut dans Strudel et Tidal est d'aligner les cycles des deux patterns, puis de prendre les événements du premier pattern et de les faire correspondre avec ceux du deuxième pattern. Par conséquent, les deux lignes suivantes sont équivalentes :
 
 ```js
 '0 [1 2] 3'.add('10 20');
 ('10 [11 22] 23');
 ```
 
-Where the events only partially overlap, they are treated as fragments
-of the event in the first pattern. This is a little difficult to
-conceptualise, but lets start by comparing the two patterns in the
-following example:
+Lorsque les événements ne se chevauchent que partiellement, ils sont traités comme des fragments
+de l'événement dans le premier pattern. C'est un peu difficile à
+conceptualiser, mais commençons par comparer les deux patterns dans
+l'exemple suivant :
 
 ```js
 '0 1 2'.add('10 20');
 ('10 [11 21] 22');
 ```
 
-They are similar to the previous example in that the number `1` is split in two, with its two halves added to `10` and `20` respectively. However, the `11` 'remembers' that it is a fragment of that original `1` event, and so is treated as having a duration of a third of a cycle, despite only being active for a sixth of a cycle. Likewise, the `21` is also a fragment of that original `1` event, but a fragment of its second half. Because the start of its event is missing, it wouldn't actually trigger a sound (unless it underwent further pattern transformations/combinations).
+Ils sont similaires à l'exemple précédent en ce sens que le nombre `1` est divisé en deux, avec ses deux moitiés ajoutées respectivement à `10` et `20`. Cependant, le `11` 'se souvient' qu'il est un fragment de cet événement `1` original, et est donc traité comme ayant une durée d'un tiers de cycle, bien qu'il ne soit actif que pendant un sixième de cycle. De même, le `21` est également un fragment de cet événement `1` original, mais un fragment de sa seconde moitié. Parce que le début de son événement est manquant, il ne déclencherait pas réellement un son (à moins qu'il ne subisse d'autres transformations/combinaisons de patterns).
 
-In practice, the effect of this default, implicit method for combining two patterns is that the second pattern is added _in_ to the first one, and indeed this can be made explicit:
+En pratique, l'effet de cette méthode implicite par défaut pour combiner deux patterns est que le deuxième pattern est ajouté _dans_ le premier, et en effet cela peut être rendu explicite :
 
 ```js
 '0 1 2'.add.in('10 20');
 ```
 
-This makes way for other ways to align the pattern, and several are already defined, in particular:
+Cela ouvre la voie à d'autres façons d'aligner le pattern, et plusieurs sont déjà définies, en particulier :
 
-- `in` - as explained above, aligns cycles, and applies values from the pattern on the right _in_ to the pattern on the left.
-- `out` - as with `in`, but values are applied _out_ of the pattern on the left (i.e. _in_ to the one on the right).
-- `mix` - structures from both patterns are combined, so that the new events are not fragments but are created at intersections of events from both sides.
-- `squeeze` - cycles from the pattern on the right are squeezed into events on the left. So that e.g. `"0 1 2".add.squeeze("10 20")` is equivalent to `"[10 20] [11 21] [12 22]"`.
-- `squeezeout` - as with `squeeze`, but cycles from the left are squeezed into events on the right. So, `"0 1 2".add.squeezeout("10 20")` is equivalent to `[10 11 12] [20 21 22]`.
-- `reset` is similar to `squeezeout` in that cycles from the right are aligned with events on the left. However those cycles are not 'squeezed', rather they are truncated to fit the event. So `"0 1 2 3 4 5 6 7".add.reset("10 [20 30]")` would be equivalent to `10 11 12 13 20 21 30 31`. In effect, events on the right 'reset' cycles on the left.
-- `restart` is similar to `reset`, but the pattern is 'restarted' from its very first cycle, rather than from the current cycle. `reset` and `restart` therefore only give different results where the leftmost pattern differs from one cycle to the next.
+- `in` - comme expliqué ci-dessus, aligne les cycles, et applique les valeurs du pattern de droite _dans_ le pattern de gauche.
+- `out` - comme avec `in`, mais les valeurs sont appliquées _hors_ du pattern de gauche (c'est-à-dire _dans_ celui de droite).
+- `mix` - les structures des deux patterns sont combinées, de sorte que les nouveaux événements ne sont pas des fragments mais sont créés aux intersections des événements des deux côtés.
+- `squeeze` - les cycles du pattern de droite sont compressés dans les événements de gauche. Ainsi par exemple `"0 1 2".add.squeeze("10 20")` est équivalent à `"[10 20] [11 21] [12 22]"`.
+- `squeezeout` - comme avec `squeeze`, mais les cycles de gauche sont compressés dans les événements de droite. Ainsi, `"0 1 2".add.squeezeout("10 20")` est équivalent à `[10 11 12] [20 21 22]`.
+- `reset` est similaire à `squeezeout` en ce sens que les cycles de droite sont alignés avec les événements de gauche. Cependant, ces cycles ne sont pas 'compressés', mais plutôt tronqués pour s'adapter à l'événement. Ainsi `"0 1 2 3 4 5 6 7".add.reset("10 [20 30]")` serait équivalent à `10 11 12 13 20 21 30 31`. En effet, les événements de droite 'réinitialisent' les cycles de gauche.
+- `restart` est similaire à `reset`, mais le pattern est 'redémarré' depuis son tout premier cycle, plutôt que depuis le cycle actuel. `reset` et `restart` ne donnent donc des résultats différents que lorsque le pattern le plus à gauche diffère d'un cycle à l'autre.
 
-We will save going deeper into the background, design and practicalities of these alignment functions for future publications. However in the next section, we take them as a case study for looking at the different design affordances offered by Haskell to Tidal, and JavaScript to Strudel.
+Nous réserverons l'approfondissement du contexte, de la conception et des aspects pratiques de ces fonctions d'alignement pour de futures publications. Cependant, dans la prochaine section, nous les prenons comme une étude de cas pour examiner les différentes possibilités de conception offertes par Haskell à Tidal, et JavaScript à Strudel.
 
-Ok, so how do Strudel and Tidal [compare](/learn/strudel-vs-tidal)?
+Ok, alors comment Strudel et Tidal [se comparent](/learn/strudel-vs-tidal) ?

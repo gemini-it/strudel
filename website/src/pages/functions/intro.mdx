@@ -1,33 +1,33 @@
 ---
-title: JavaScript API
+title: API JavaScript
 layout: ../../layouts/MainLayout.astro
 ---
 
 import { MiniRepl } from '../../docs/MiniRepl';
 import { JsDoc } from '../../docs/JsDoc';
 
-# Pattern Functions
+# Fonctions de Patterns
 
-Let's learn all about functions to create and modify patterns.
-At the core of Strudel, everything is made of functions.
+Apprenons tout sur les fonctions pour créer et modifier les patterns.
+Au cœur de Strudel, tout est constitué de fonctions.
 
-For example, everything you can do with the Mini-Notation can also be done with a function.
-This Pattern in Mini Notation:
+Par exemple, tout ce que vous pouvez faire avec la Mini-Notation peut également être fait avec une fonction.
+Ce Pattern en Mini Notation :
 
 <MiniRepl client:only="react" tune={`note("c3 eb3 g3")`} />
 
-is equivalent to this Pattern without Mini Notation:
+est équivalent à ce Pattern sans Mini Notation :
 
 <MiniRepl client:only="react" tune={`note(seq("c3", "eb3", "g3"))`} />
 
-Similarly, there is an equivalent function for every aspect of the mini notation.
+De même, il existe une fonction équivalente pour chaque aspect de la mini notation.
 
-Which representation to use is a matter of context. As a rule of thumb, functions
-are better suited in a larger context, while mini notation is more practical for individual rhythms.
+Quelle représentation utiliser est une question de contexte. En règle générale, les fonctions
+sont mieux adaptées dans un contexte plus large, tandis que la mini notation est plus pratique pour les rythmes individuels.
 
-## Limits of Mini Notation
+## Limites de la Mini Notation
 
-While the Mini Notation is a powerful way to write rhythms concisely, it also has its limits. Take this example:
+Bien que la Mini Notation soit un moyen puissant d'écrire des rythmes de manière concise, elle a aussi ses limites. Prenez cet exemple :
 
 <MiniRepl
   client:idle
@@ -37,12 +37,12 @@ While the Mini Notation is a powerful way to write rhythms concisely, it also ha
 )`}
 />
 
-Here, we are using mini notation for the individual rhythms, while using the function `stack` to mix them.
-While stack is also available as `,` in mini notation, we cannot use it here, because we have different types of sounds.
+Ici, nous utilisons la mini notation pour les rythmes individuels, tout en utilisant la fonction `stack` pour les mélanger.
+Bien que stack soit également disponible comme `,` dans la mini notation, nous ne pouvons pas l'utiliser ici, car nous avons différents types de sons.
 
-## Combining Patterns
+## Combiner des Patterns
 
-You can freely mix JS patterns, mini patterns and values! For example, this pattern:
+Vous pouvez librement mélanger les patterns JS, les mini patterns et les valeurs ! Par exemple, ce pattern :
 
 <MiniRepl
   client:idle
@@ -54,7 +54,7 @@ You can freely mix JS patterns, mini patterns and values! For example, this patt
 ).note()`}
 />
 
-...is equivalent to:
+...est équivalent à :
 
 <MiniRepl
   client:idle
@@ -66,11 +66,11 @@ You can freely mix JS patterns, mini patterns and values! For example, this patt
 ).note()`}
 />
 
-... as well as:
+... ainsi qu'à :
 
 <MiniRepl client:only="react" tune={`note("<[g3,b3,e4] [a3,c3,e4] [b3,d3,f#4] [b3,e4,g4]>")`} />
 
-While mini notation is almost always shorter, it only has a handful of modifiers: \* / ! @.
-When using JS patterns, there is a lot more you can do.
+Bien que la mini notation soit presque toujours plus courte, elle n'a qu'une poignée de modificateurs : \* / ! @.
+Lorsque vous utilisez des patterns JS, il y a beaucoup plus de possibilités.
 
-Next, let's look at how you can [create patterns](/learn/factories)
+Ensuite, voyons comment vous pouvez [créer des patterns](/learn/factories)

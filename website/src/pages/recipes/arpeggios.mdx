@@ -1,28 +1,28 @@
 ---
-title: Build Arpeggios
+title: Construire des Arpèges
 layout: ../../layouts/MainLayout.astro
 ---
 
 import { MiniRepl } from '../../docs/MiniRepl';
 import { JsDoc } from '../../docs/JsDoc';
 
-Note: This has been (partly) translated from https://tidalcycles.org/docs/patternlib/howtos/buildarpeggios
+Note : Ceci a été (partiellement) traduit de https://tidalcycles.org/docs/patternlib/howtos/buildarpeggios
 
-# Build Arpeggios
+# Construire des Arpèges
 
-This page will teach you how to get started writing arpeggios using different techniques. It is a good way to learn Strudel in a more intuitive way.
+Cette page vous apprendra comment commencer à écrire des arpèges en utilisant différentes techniques. C'est une bonne façon d'apprendre Strudel de manière plus intuitive.
 
-## Arpeggios from notes
+## Arpèges à partir de notes
 
-Start with a simple sequence of notes:
+Commencez avec une séquence simple de notes :
 
 <MiniRepl tune={`note("c a f e").piano().slow(2)`} client:idle />
 
-Now, let's play one per cycle:
+Maintenant, jouons-en une par cycle :
 
 <MiniRepl tune={`note("<c a f e>").piano().slow(2)`} client:idle />
 
-On top of that, put a copy of the sequence, offset in time and pitch:
+Par-dessus, placez une copie de la séquence, décalée dans le temps et la hauteur :
 
 <MiniRepl
   tune={`"<c a f e>".off(1/8, add(7))
@@ -30,7 +30,7 @@ On top of that, put a copy of the sequence, offset in time and pitch:
   client:idle
 />
 
-Add some structure to the original sequence:
+Ajoutez de la structure à la séquence originale :
 
 <MiniRepl
   tune={`"<c*2 a(3,8) f(3,8,2) e*2>"
@@ -39,7 +39,7 @@ Add some structure to the original sequence:
   client:idle
 />
 
-Reverse in one speaker:
+Inversez dans un haut-parleur :
 
 <MiniRepl
   tune={`"<c*2 a(3,8) f(3,8,2) e*2>"
@@ -49,7 +49,7 @@ Reverse in one speaker:
   client:idle
 />
 
-Let's add another layer:
+Ajoutons une autre couche :
 
 <MiniRepl
   tune={`"<c*2 a(3,8) f(3,8,2) e*2>"
@@ -60,10 +60,10 @@ Let's add another layer:
   client:idle
 />
 
-- added slow(2) to approximate tidals cps
-- n was replaced with note, because using n does not work as note for samples
-- legato 2 was removed because it does not work in combination with rev (bug)
+- ajout de slow(2) pour approximer le cps de tidal
+- n a été remplacé par note, car utiliser n ne fonctionne pas comme note pour les samples
+- legato 2 a été supprimé car il ne fonctionne pas en combinaison avec rev (bug)
 
-## Arpeggios from chords
+## Arpèges à partir d'accords
 
 TODO

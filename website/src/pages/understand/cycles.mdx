@@ -1,5 +1,5 @@
 ---
-title: Understanding Cycles
+title: Comprendre les Cycles
 layout: ../../layouts/MainLayout.astro
 ---
 
@@ -7,43 +7,43 @@ import { MiniRepl } from '../../docs/MiniRepl';
 import { PitchSlider } from '../../components/PitchSlider';
 import Box from '@components/Box.astro';
 
-# Understanding Cycles
+# Comprendre les Cycles
 
-The concept of cycles is very central to be able to understand how Strudel works.
-Strudel's mother language, TidalCycles, even has it in its name.
+Le concept de cycles est très central pour pouvoir comprendre comment fonctionne Strudel.
+Le langage mère de Strudel, TidalCycles, l'a même dans son nom.
 
-## Cycles and BPM
+## Cycles et BPM
 
-In most music software, the unit BPM (beats per minute) is used to set the tempo.
-Strudel expresses tempo as CPS (cycles per second), with a default of 0.5 CPS:
+Dans la plupart des logiciels de musique, l'unité BPM (battements par minute) est utilisée pour définir le tempo.
+Strudel exprime le tempo en CPS (cycles par seconde), avec une valeur par défaut de 0.5 CPS :
 
 <MiniRepl client:visible tune={`s("bd")`} />
 
-Here we can hear the 0.5CPS in action: The kick repeats once every two seconds.
-Let's make it 4 kicks:
+Ici, nous pouvons entendre le 0.5CPS en action : Le kick se répète une fois toutes les deux secondes.
+Faisons-en 4 kicks :
 
 <MiniRepl client:visible tune={`s("bd bd bd bd")`} />
 
-Now we have 4 kicks per cycle, but the whole pattern still plays at 0.5CPS.
-In terms of BPM, most musicians would tell you this is playing at 120bpm.
-What about this one:
+Maintenant nous avons 4 kicks par cycle, mais le pattern entier joue toujours à 0.5CPS.
+En termes de BPM, la plupart des musiciens vous diraient que cela joue à 120bpm.
+Qu'en est-il de celui-ci :
 
 <MiniRepl client:visible tune={`s("bd hh bd hh")`} />
 
-Because the second sound is now a hihat, the tempo feels slower again.
-This brings us to an important realization:
+Parce que le deuxième son est maintenant un charleston, le tempo semble à nouveau plus lent.
+Cela nous amène à une réalisation importante :
 
 <Box>
 
-Tempo is based on perception.
-The choice of sounds also has an impact on the tempo feel.
-This is why the same CPS can produce different perceived tempos.
+Le tempo est basé sur la perception.
+Le choix des sons a également un impact sur la sensation de tempo.
+C'est pourquoi le même CPS peut produire différents tempos perçus.
 
 </Box>
 
-## Setting CPM
+## Définir le CPM
 
-If you're familiar with BPM, you can use the `setcpm` method to set the global tempo in cycles per minute:
+Si vous êtes familier avec le BPM, vous pouvez utiliser la méthode `setcpm` pour définir le tempo global en cycles par minute :
 
 <MiniRepl
   client:visible
@@ -51,7 +51,7 @@ If you're familiar with BPM, you can use the `setcpm` method to set the global t
 s("bd hh")`}
 />
 
-If you want to add more beats per cycle, you might want to divide the cpm:
+Si vous voulez ajouter plus de battements par cycle, vous voudrez peut-être diviser le cpm :
 
 <MiniRepl
   client:visible
@@ -59,7 +59,7 @@ If you want to add more beats per cycle, you might want to divide the cpm:
 s("bd sd bd rim, hh*8")`}
 />
 
-Or using 2 beats per cycle:
+Ou en utilisant 2 battements par cycle :
 
 <MiniRepl
   client:visible
@@ -67,26 +67,26 @@ Or using 2 beats per cycle:
 s("bd sd, hh*4")`}
 />
 
-You can use the `setcps` method to set the global tempo in cycles per second. `setcpm(x)` is the same as `setcps(x / 60)`.
+Vous pouvez utiliser la méthode `setcps` pour définir le tempo global en cycles par seconde. `setcpm(x)` est identique à `setcps(x / 60)`.
 
 <Box>
 
-To set a specific bpm, use `setcpm(bpm/bpc)`
+Pour définir un bpm spécifique, utilisez `setcpm(bpm/bpc)`
 
-- bpm: the target beats per minute
-- bpc: the number of perceived beats per cycle
+- bpm : les battements par minute cibles
+- bpc : le nombre de battements perçus par cycle
 
 </Box>
 
-## Cycles and Bars
+## Cycles et Mesures
 
-Also in most music software, multiple beats form a bar (or measure).
-The so called time signature specifies how many beats are in each bar.
-In many types of music, it is common to use 4 beats per bar, also known as 4/4 time.
-Many music programs use it as a default.
+Dans la plupart des logiciels de musique, plusieurs battements forment une mesure.
+La signature rythmique spécifie combien de battements sont dans chaque mesure.
+Dans de nombreux types de musique, il est courant d'utiliser 4 battements par mesure, également connu sous le nom de temps 4/4.
+De nombreux programmes de musique l'utilisent par défaut.
 
-Strudel does not a have concept of bars or measures, there are only cycles.
-How you use them is up to you. Above, we've had this example:
+Strudel n'a pas de concept de mesures, il n'y a que des cycles.
+Comment vous les utilisez dépend de vous. Ci-dessus, nous avions cet exemple :
 
 <MiniRepl
   client:visible
@@ -94,8 +94,8 @@ How you use them is up to you. Above, we've had this example:
 s("bd sd bd rim, hh*8")`}
 />
 
-This could be interpreted as 4/4 time with a tempo of 110bpm.
-We could write out multiple bars like this:
+Cela pourrait être interprété comme un temps 4/4 avec un tempo de 110bpm.
+Nous pourrions écrire plusieurs mesures comme ceci :
 
 <MiniRepl
   client:visible
@@ -106,7 +106,7 @@ s(\`<
 >\`)`}
 />
 
-Instead of writing out each bar separately, we could express this much shorter:
+Au lieu d'écrire chaque mesure séparément, nous pourrions exprimer cela beaucoup plus court :
 
 <MiniRepl
   client:visible
@@ -114,21 +114,21 @@ Instead of writing out each bar separately, we could express this much shorter:
 s("bd <sd rim*<1 2>>,hh*4")`}
 />
 
-Here we can see that thinking in cycles rather than bars simplifies things a lot!
-These types of simplifications work because of the repetitive nature of rhythm.
-In computational terms, you could say the former notation has a lot of redundancy.
+Ici, nous pouvons voir que penser en cycles plutôt qu'en mesures simplifie beaucoup les choses !
+Ces types de simplifications fonctionnent grâce à la nature répétitive du rythme.
+En termes informatiques, vous pourriez dire que la notation précédente a beaucoup de redondance.
 
-## Time Signatures
+## Signatures Rythmiques
 
-To get a time signature, just change the number of elements per bar. Here is a rhythm with 7 beats:
+Pour obtenir une signature rythmique, changez simplement le nombre d'éléments par mesure. Voici un rythme avec 7 battements :
 
 <MiniRepl client:visible tune={`s("bd ~ rim bd bd rim ~")`} />
 
-or with 5:
+ou avec 5 :
 
 <MiniRepl client:visible tune={`s("bd hh hh bd hh hh bd rim bd hh")`} />
 
-We could also write multiple bars with different time signatures:
+Nous pourrions également écrire plusieurs mesures avec différentes signatures rythmiques :
 
 <MiniRepl
   client:visible
@@ -139,9 +139,9 @@ s(\`<
 >\`)`}
 />
 
-Here we switch between 3/4 and 4/4, keeping the same tempo.
+Ici, nous basculons entre 3/4 et 4/4, en gardant le même tempo.
 
-If we don't specify the length, we get what's called a metric modulation:
+Si nous ne spécifions pas la longueur, nous obtenons ce qu'on appelle une modulation métrique :
 
 <MiniRepl
   client:visible
@@ -152,4 +152,4 @@ s(\`<
 >\`)`}
 />
 
-Now the 3 elements get the same time as the 4 elements, which is why the tempo changes.
+Maintenant les 3 éléments obtiennent le même temps que les 4 éléments, c'est pourquoi le tempo change.

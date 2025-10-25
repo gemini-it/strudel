@@ -1,5 +1,5 @@
 ---
-title: Understanding Chord Voicings
+title: Comprendre les Voicings d'Accords
 layout: ../../layouts/MainLayout.astro
 ---
 
@@ -7,54 +7,54 @@ import { MiniRepl } from '../../docs/MiniRepl';
 import { PitchSlider } from '../../components/PitchSlider';
 import Box from '@components/Box.astro';
 
-# Understanding Chords and Voicings
+# Comprendre les Accords et les Voicings
 
-Let's dig deeper into how chords and voicings work in strudel.
-I'll try to keep theory jargon to a minimum, so hopefully this is approachable for anyone interested.
+Approfondissons le fonctionnement des accords et des voicings dans strudel.
+Je vais essayer de garder le jargon théorique au minimum, donc cela devrait être accessible à toute personne intéressée.
 
-## What is a chord
+## Qu'est-ce qu'un accord
 
-Playing more than one note at a time is generally called a `chord`. Here's an example:
+Jouer plus d'une note à la fois s'appelle généralement un `accord`. Voici un exemple :
 
 <MiniRepl client:visible tune={`note("<[c3,eb3,g3] [f3,a3,c4]>").room(.5)`} />
 
-Here's the same with midi numbers:
+Voici la même chose avec des numéros midi :
 
 <MiniRepl client:visible tune={`note("<[48,51,55] [53,57,60]>").room(.5)`} />
 
-Here, we have two 3-note chords played in a loop.
-You could already stop here and write chords in this style, which is totally fine and gives you control over individual notes.
-One downside is that it can be difficult to find good sounding chords and maybe you're yearning for a way to organize chords in some other way.
+Ici, nous avons deux accords de 3 notes joués en boucle.
+Vous pourriez déjà vous arrêter ici et écrire des accords dans ce style, ce qui est tout à fait correct et vous donne le contrôle sur les notes individuelles.
+Un inconvénient est qu'il peut être difficile de trouver des accords qui sonnent bien et peut-être aspirez-vous à une façon d'organiser les accords d'une autre manière.
 
-## Labeling Chords
+## Étiqueter les Accords
 
-Chords are typically given different labels depending on the relationship of the notes within.
-In the number example above, we have `48,51,55` and `53,57,60`.
+Les accords reçoivent généralement différentes étiquettes selon la relation des notes à l'intérieur.
+Dans l'exemple de numéros ci-dessus, nous avons `48,51,55` et `53,57,60`.
 
-To analyze the relationship of those notes, they are typically compared to some `root`, which is often the lowest note.
-In our case, the `roots` would be `48` (= `c3`) and `53` (= `f3`).
-We can express the same chords relative to those `roots` like this:
+Pour analyser la relation de ces notes, elles sont généralement comparées à une `fondamentale`, qui est souvent la note la plus basse.
+Dans notre cas, les `fondamentales` seraient `48` (= `c3`) et `53` (= `f3`).
+Nous pouvons exprimer les mêmes accords relativement à ces `fondamentales` comme ceci :
 
 <MiniRepl client:visible tune={`note("<[0,3,7] [0,4,7]>".add("<48 53>")).room(.5)`} />
 
-Now within each chord, each number represents the distance from the root.
-A distance between pitches is typically called `interval`, but let's stick to distance for now.
+Maintenant, dans chaque accord, chaque nombre représente la distance par rapport à la fondamentale.
+Une distance entre les hauteurs s'appelle typiquement un `intervalle`, mais restons-en à distance pour l'instant.
 
-Now we can see that our 2 chords are actually quite similar, as the only difference is the middle note (and the root of course).
-They are part of a group of chords called `triads` which are chords with 3 notes.
+Maintenant nous pouvons voir que nos 2 accords sont en fait assez similaires, car la seule différence est la note du milieu (et la fondamentale bien sûr).
+Ils font partie d'un groupe d'accords appelés `triades` qui sont des accords avec 3 notes.
 
-### Triads
+### Triades
 
-These 4 shapes are the most common types of `triads` you will encounter:
+Ces 4 formes sont les types de `triades` les plus courants que vous rencontrerez :
 
-| shape | label      |
+| forme | étiquette  |
 | ----- | ---------- |
-| 0,4,7 | major      |
-| 0,3,7 | minor      |
-| 0,3,6 | diminished |
-| 0,4,8 | augmented  |
+| 0,4,7 | majeur     |
+| 0,3,7 | mineur     |
+| 0,3,6 | diminué    |
+| 0,4,8 | augmenté   |
 
-Here they are in succession:
+Les voici en succession :
 
 <MiniRepl
   client:visible
@@ -62,7 +62,7 @@ Here they are in succession:
 .room(.5)._pitchwheel()`}
 />
 
-Many types of music often only use minor and major chords, so we already have the knowledge to accompany songs. Here's one:
+De nombreux types de musique n'utilisent souvent que des accords mineurs et majeurs, nous avons donc déjà les connaissances pour accompagner des chansons. En voici une :
 
 <MiniRepl
   client:visible
@@ -76,14 +76,14 @@ a e a e
 >\`)).room(.5)`}
 />
 
-These are the chords for "The House of the Rising Sun" by The Animals.
-So far, it doesn't sound too exciting, but at least it's recognizable.
+Ce sont les accords de "The House of the Rising Sun" par The Animals.
+Jusqu'à présent, cela ne sonne pas trop excitant, mais au moins c'est reconnaissable.
 
 ## Voicings
 
-A `voicing` is one of many ways a certain chord shape can be arranged.
-The term comes from choral music, where chords can be sung in different ways by assigning different notes to each voice.
-For example we could add 12 semitones to one or more notes in the chord:
+Un `voicing` est l'une des nombreuses façons dont une certaine forme d'accord peut être arrangée.
+Le terme vient de la musique chorale, où les accords peuvent être chantés de différentes manières en assignant différentes notes à chaque voix.
+Par exemple, nous pourrions ajouter 12 demi-tons à une ou plusieurs notes de l'accord :
 
 <MiniRepl
   client:visible
@@ -91,8 +91,8 @@ For example we could add 12 semitones to one or more notes in the chord:
 .room(.5)`}
 />
 
-Notes that are 12 semitone steps apart (= 1 `octave`) are considered to be equal in a harmonic sense, which is why they get the same note letter.
-Here's the same example with note letters:
+Les notes qui sont séparées de 12 demi-tons (= 1 `octave`) sont considérées comme égales au sens harmonique, c'est pourquoi elles obtiennent la même lettre de note.
+Voici le même exemple avec des lettres de notes :
 
 <MiniRepl
   client:visible
@@ -100,7 +100,7 @@ Here's the same example with note letters:
 .room(.5)`}
 />
 
-These types of voicings are also called `inversions`. There are many other ways we could `voice` this minor chord:
+Ces types de voicings sont également appelés `renversements`. Il existe de nombreuses autres façons de `voicer` cet accord mineur :
 
 <MiniRepl
   client:visible
@@ -108,16 +108,16 @@ These types of voicings are also called `inversions`. There are many other ways 
 .room(.5)`}
 />
 
-Here we are changing the flavour of the chord slightly by
+Ici, nous changeons légèrement la saveur de l'accord en
 
-1. doubling notes 12 steps higher,
-2. using very wide distances
-3. omitting notes
+1. doublant les notes 12 pas plus haut,
+2. utilisant des distances très larges
+3. omettant des notes
 
-## Voice Leading
+## Conduite des Voix
 
-When we want to meaningfully connect chords in a sequence, the chosen voicings affect the way each chord transitions to the next.
-Let's revisit "The House of the Rising Sun", this time using our newly acquired voicing techniques:
+Lorsque nous voulons connecter de manière significative les accords dans une séquence, les voicings choisis affectent la façon dont chaque accord transite vers le suivant.
+Revisitons "The House of the Rising Sun", cette fois en utilisant nos techniques de voicing nouvellement acquises :
 
 <MiniRepl
   client:visible
@@ -131,28 +131,28 @@ a e a e
   punchcard
 />
 
-These voicings make the chords sound more connected and less jumpy, compared to the earlier version, which didn't focus on voicing.
-The way chords interact is also called `voice leading`, reminiscent of how an
-individual choir voice would move through a sequence of chords.
+Ces voicings rendent les accords plus connectés et moins sautillants, par rapport à la version précédente, qui ne se concentrait pas sur le voicing.
+La façon dont les accords interagissent s'appelle aussi `conduite des voix`, rappelant comment une
+voix individuelle de chœur se déplacerait à travers une séquence d'accords.
 
-For example, try singing the top voice in the above example. Then try the same
-on the example not focusing on voice leading. Which one's easier?
+Par exemple, essayez de chanter la voix supérieure dans l'exemple ci-dessus. Essayez ensuite la même chose
+sur l'exemple ne se concentrant pas sur la conduite des voix. Laquelle est plus facile ?
 
-Naturally, there are many ways a progression of chords could be voiced and there is no definitive right or wrong.
+Naturellement, il existe de nombreuses façons dont une progression d'accords pourrait être voicée et il n'y a pas de bon ou de mauvais définitif.
 
-## Chord Symbols
+## Symboles d'Accords
 
-Musicians playing chord-based music often use a `lead sheet`, which is a simplified notation for a piece of music.
-These sheets condense the essential elements, such as chords, into symbols that make the music easy to read and follow.
-For example, a lead sheet for "The House of the Rising Sun" might include chords written like this:
+Les musiciens jouant de la musique basée sur les accords utilisent souvent une `grille d'accords`, qui est une notation simplifiée pour un morceau de musique.
+Ces grilles condensent les éléments essentiels, tels que les accords, en symboles qui rendent la musique facile à lire et à suivre.
+Par exemple, une grille d'accords pour "The House of the Rising Sun" pourrait inclure des accords écrits comme ceci :
 
 ```
 Am | C | D  | F
 Am | E | Am | E
 ```
 
-Here, each symbol consists of the `root` of the chord and optionally an `m` to signal it's a minor chord (just the root note means it's major).
-We could mirror that notation in strudel using the `pick` function:
+Ici, chaque symbole se compose de la `fondamentale` de l'accord et éventuellement un `m` pour signaler que c'est un accord mineur (juste la note fondamentale signifie qu'il est majeur).
+Nous pourrions refléter cette notation dans strudel en utilisant la fonction `pick` :
 
 <MiniRepl
   client:visible
@@ -168,19 +168,19 @@ We could mirror that notation in strudel using the `pick` function:
   punchcard
 />
 
-## The voicing function
+## La fonction voicing
 
-Coming up with good sounding voicings that connect well can be a difficult and time consuming process.
-The `chord` and `voicing` functions can be used to automate that:
+Trouver des voicings qui sonnent bien et se connectent bien peut être un processus difficile et chronophage.
+Les fonctions `chord` et `voicing` peuvent être utilisées pour automatiser cela :
 
 <MiniRepl client:visible tune={`chord("<Am C D F Am E Am E>").voicing().room(.5)`} punchcard />
 
-Here we're also using chord symbols but the voicings will be automatically generated with smooth `voice leading`, minimizing jumps.
-It is inspired by the way a piano or guitar player would pick chords to accompany a song.
+Ici, nous utilisons également des symboles d'accords mais les voicings seront automatiquement générés avec une `conduite de voix` fluide, minimisant les sauts.
+C'est inspiré de la façon dont un joueur de piano ou de guitare choisirait les accords pour accompagner une chanson.
 
-## Voicing Dictionaries
+## Dictionnaires de Voicing
 
-The voicing function internally uses so called `voicing dictionaries`, which can also be customized:
+La fonction voicing utilise en interne ce qu'on appelle des `dictionnaires de voicing`, qui peuvent également être personnalisés :
 
 <MiniRepl
   client:visible
@@ -194,14 +194,14 @@ chord("<Am C D F Am E Am E>")
   punchcard
 />
 
-In a `voicing dictionary`, each chord symbol is assigned one or more voicings.
-The `voicing` function then picks the voicing that is closest to the `anchor` (defaults to `c5`).
+Dans un `dictionnaire de voicing`, chaque symbole d'accord se voit attribuer un ou plusieurs voicings.
+La fonction `voicing` choisit ensuite le voicing qui est le plus proche de l'`ancre` (par défaut `c5`).
 
-The handy thing about this approach is that a `voicing dictionary` can be used to play any chord progression with automated voice leading!
+Le pratique avec cette approche est qu'un `dictionnaire de voicing` peut être utilisé pour jouer n'importe quelle progression d'accords avec une conduite de voix automatisée !
 
-## The default dictionary
+## Le dictionnaire par défaut
 
-When using the default dictionary, you can use these chord symbols:
+Lors de l'utilisation du dictionnaire par défaut, vous pouvez utiliser ces symboles d'accords :
 
 ```
 2 5 6 7 9 11 13 69 add9
@@ -221,17 +221,17 @@ m^7 -M7 m^9 -M9 m9 madd9
 m11 m7b5 mb6 m#5 mM7 mM9
 ```
 
-The available chords and the format is very much inspired by [ireal pro chords](https://technimo.helpshift.com/hc/en/3-ireal-pro/faq/88-chord-symbols-used-in-ireal-pro/).
-Some symbols are synonymous:
+Les accords disponibles et le format sont très inspirés par les [accords ireal pro](https://technimo.helpshift.com/hc/en/3-ireal-pro/faq/88-chord-symbols-used-in-ireal-pro/).
+Certains symboles sont synonymes :
 
-- "-" is the same as "m", for example C-7 = Cm7
-- "^" is the same as "M", for example C^7 = CM7
-- "+" is the same as "aug"
+- "-" est identique à "m", par exemple C-7 = Cm7
+- "^" est identique à "M", par exemple C^7 = CM7
+- "+" est identique à "aug"
 
-You can decide which ones you prefer. There is no international standard for these symbols.
-To get a full chord, the symbols have to be prefixed with a root pitch, e.g. D7#11 is the 7#11 chord relative to the pitch D.
+Vous pouvez décider lesquels vous préférez. Il n'y a pas de norme internationale pour ces symboles.
+Pour obtenir un accord complet, les symboles doivent être préfixés par une hauteur fondamentale, par exemple D7#11 est l'accord 7#11 relatif à la hauteur D.
 
-Here are all possible chords with root C:
+Voici tous les accords possibles avec la fondamentale C :
 
 <MiniRepl
   client:visible
@@ -256,25 +256,25 @@ Cm11 Cm7b5 Cmb6 Cm#5
   punchcard
 />
 
-Note that the default dictionary contains multiple ways (= `voicings`) to play each chord symbol.
-By default, the `voicing` function tries to minimize jumps.
-You can alter the picked voicings in various ways, which are now explained in further detail:
+Notez que le dictionnaire par défaut contient plusieurs façons (= `voicings`) de jouer chaque symbole d'accord.
+Par défaut, la fonction `voicing` essaie de minimiser les sauts.
+Vous pouvez modifier les voicings choisis de diverses manières, qui sont maintenant expliquées plus en détail :
 
 ## anchor
 
-The `anchor` is a note that is used to align the voicings to:
+L'`anchor` (ancre) est une note qui est utilisée pour aligner les voicings :
 
 <MiniRepl client:visible tune={`anchor("<c4 g4 c5 g5>").chord("C").voicing().room(.5)`} punchcard />
 
-By default, the anchor is the highest possible note the voicing can contain.
-When deciding which voicing of the dictionary to pick for a certain chord, the voicing with a top note closest to the anchor wins.
+Par défaut, l'ancre est la note la plus haute possible que le voicing peut contenir.
+Lors de la décision du voicing du dictionnaire à choisir pour un certain accord, le voicing avec une note supérieure la plus proche de l'ancre gagne.
 
-Note that the anchors in the above example match up with the top notes in the pianoroll.
-Like `note`, anchor accepts either midi numbers or note names.
+Notez que les ancres dans l'exemple ci-dessus correspondent aux notes supérieures dans le pianoroll.
+Comme `note`, anchor accepte soit des numéros midi soit des noms de notes.
 
 ## mode
 
-With `mode`, you can change the way the voicing relates to the `anchor`:
+Avec `mode`, vous pouvez changer la façon dont le voicing se rapporte à l'`anchor` :
 
 <MiniRepl
   client:visible
@@ -282,20 +282,20 @@ With `mode`, you can change the way the voicing relates to the `anchor`:
   punchcard
 />
 
-The modes are:
+Les modes sont :
 
-- `below`: the top note of the voicing is lower than or equal to the anchor (default)
-- `above`: the bottom note of the voicing is higher than or equal to the anchor
-- `duck`: the top note of the voicing is lower than the anchor
-- `root`: the bottom note of the voicing is always the root note closest to the anchor
+- `below` : la note supérieure du voicing est inférieure ou égale à l'ancre (par défaut)
+- `above` : la note inférieure du voicing est supérieure ou égale à l'ancre
+- `duck` : la note supérieure du voicing est inférieure à l'ancre
+- `root` : la note inférieure du voicing est toujours la note fondamentale la plus proche de l'ancre
 
-The `anchor` can also be set from within the `mode` function:
+L'`anchor` peut également être définie depuis la fonction `mode` :
 
 <MiniRepl client:visible tune={`mode("<below above duck root>:c5").chord("C").voicing().room(.5)`} punchcard />
 
 ## n
 
-The `n` control can be used with `voicing` to select individual notes:
+Le contrôle `n` peut être utilisé avec `voicing` pour sélectionner des notes individuelles :
 
 <MiniRepl
   client:visible
@@ -304,9 +304,9 @@ The `n` control can be used with `voicing` to select individual notes:
   punchcard
 />
 
-## Example
+## Exemple
 
-Here's an example of a Jazz Blues in F:
+Voici un exemple d'un Blues Jazz en Fa :
 
 <MiniRepl
   client:visible
@@ -322,4 +322,4 @@ $: n("0 - 1 -").set(chords).mode("root:g2").voicing()
   punchcard
 />
 
-The chords are reused for melody, chords and bassline of the tune.
+Les accords sont réutilisés pour la mélodie, les accords et la ligne de basse du morceau.
