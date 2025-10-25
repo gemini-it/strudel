@@ -71,28 +71,28 @@ function scaleOffset(scale, offset, note) {
 
 // Pattern.prototype._transpose = function (intervalOrSemitones: string | number) {
 /**
- * Change the pitch of each value by the given amount. Expects numbers or note strings as values.
- * The amount can be given as a number of semitones or as a string in interval short notation.
- * If you don't care about enharmonic correctness, just use numbers. Otherwise, pass the interval of
- * the form: ST where S is the degree number and T the type of interval with
+ * Change la hauteur de chaque valeur par la quantité donnée. Attend des nombres ou des chaînes de notes comme valeurs.
+ * La quantité peut être donnée comme un nombre de demi-tons ou comme une chaîne en notation courte d'intervalle.
+ * Si vous ne vous souciez pas de l'exactitude enharmonique, utilisez simplement des nombres. Sinon, passez l'intervalle de
+ * la forme : ST où S est le numéro de degré et T le type d'intervalle avec
  *
- * - M = major
- * - m = minor
- * - P = perfect
- * - A = augmented
- * - d = diminished
+ * - M = majeur
+ * - m = mineur
+ * - P = parfait
+ * - A = augmenté
+ * - d = diminué
  *
- * Examples intervals:
+ * Exemples d'intervalles :
  *
- * - 1P = unison
- * - 3M = major third
- * - 3m = minor third
- * - 4P = perfect fourth
- * - 4A = augmented fourth
- * - 5P = perfect fifth
- * - 5d = diminished fifth
+ * - 1P = unisson
+ * - 3M = tierce majeure
+ * - 3m = tierce mineure
+ * - 4P = quarte parfaite
+ * - 4A = quarte augmentée
+ * - 5P = quinte parfaite
+ * - 5d = quinte diminuée
  *
- * @param {string | number} amount Either number of semitones or interval string.
+ * @param {string | number} amount Soit le nombre de demi-tons soit une chaîne d'intervalle.
  * @returns Pattern
  * @memberof Pattern
  * @name transpose
@@ -141,12 +141,12 @@ export const { transpose, trans } = register(['transpose', 'trans'], function tr
 // or even `stack(c3).superimpose(transpose.slowcat(7, 5))` or
 
 /**
- * Transposes notes inside the scale by the number of steps.
- * Expected to be called on a Pattern which already has a {@link Pattern#scale}
+ * Transpose les notes à l'intérieur de la gamme par le nombre de pas.
+ * Attendu d'être appelé sur un Pattern qui a déjà un {@link Pattern#scale}
  *
  * @memberof Pattern
  * @name scaleTranspose
- * @param {offset} offset number of steps inside the scale
+ * @param {offset} offset nombre de pas à l'intérieur de la gamme
  * @returns Pattern
  * @synonyms scaleTrans, strans
  * @example
@@ -223,19 +223,19 @@ function _getNearestScaleNote(scaleName, note, preferHigher = true) {
 }
 
 /**
- * Turns numbers into notes in the scale (zero indexed) or quantizes notes to a scale.
+ * Transforme les nombres en notes dans la gamme (indexé à zéro) ou quantize les notes à une gamme.
  *
- * When describing notes via numbers, note that negative numbers can be used to wrap backwards
- * in the scale as well as sharps or flats (but not both) to produce notes outside of the scale.
+ * Lors de la description des notes via des nombres, notez que les nombres négatifs peuvent être utilisés pour revenir en arrière
+ * dans la gamme ainsi que les dièses ou bémols (mais pas les deux) pour produire des notes en dehors de la gamme.
  *
- * Also sets scale for other scale operations, like {@link Pattern#scaleTranspose}.
+ * Définit également la gamme pour d'autres opérations de gamme, comme {@link Pattern#scaleTranspose}.
  *
- * A scale consists of a root note (e.g. `c4`, `c`, `f#`, `bb4`) followed by semicolon (':') and then a [scale type](https://github.com/tonaljs/tonal/blob/main/packages/scale-type/data.ts).
+ * Une gamme se compose d'une note fondamentale (par ex. `c4`, `c`, `f#`, `bb4`) suivie d'un point-virgule (':') puis d'un [type de gamme](https://github.com/tonaljs/tonal/blob/main/packages/scale-type/data.ts).
  *
- * The root note defaults to octave 3, if no octave number is given.
+ * La note fondamentale par défaut est l'octave 3, si aucun numéro d'octave n'est donné.
  *
  * @name scale
- * @param {string} scale Name of scale
+ * @param {string} scale Nom de la gamme
  * @returns Pattern
  * @example
  * n("0 2 4 6 4 2").scale("C:major")
