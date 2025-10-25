@@ -21,7 +21,7 @@ export const signal = (func) => {
 };
 
 /**
- *  A sawtooth signal between 0 and 1.
+ *  Un signal en dents de scie entre 0 et 1.
  *
  * @return {Pattern}
  * @example
@@ -35,14 +35,14 @@ export const signal = (func) => {
 export const saw = signal((t) => t % 1);
 
 /**
- *  A sawtooth signal between -1 and 1 (like `saw`, but bipolar).
+ *  Un signal en dents de scie entre -1 et 1 (comme `saw`, mais bipolaire).
  *
  * @return {Pattern}
  */
 export const saw2 = saw.toBipolar();
 
 /**
- *  A sawtooth signal between 1 and 0 (like `saw`, but flipped).
+ *  Un signal en dents de scie entre 1 et 0 (comme `saw`, mais inversé).
  *
  * @return {Pattern}
  * @example
@@ -56,21 +56,21 @@ export const saw2 = saw.toBipolar();
 export const isaw = signal((t) => 1 - (t % 1));
 
 /**
- *  A sawtooth signal between 1 and -1 (like `saw2`, but flipped).
+ *  Un signal en dents de scie entre 1 et -1 (comme `saw2`, mais inversé).
  *
  * @return {Pattern}
  */
 export const isaw2 = isaw.toBipolar();
 
 /**
- *  A sine signal between -1 and 1 (like `sine`, but bipolar).
+ *  Un signal sinusoïdal entre -1 et 1 (comme `sine`, mais bipolaire).
  *
  * @return {Pattern}
  */
 export const sine2 = signal((t) => Math.sin(Math.PI * 2 * t));
 
 /**
- *  A sine signal between 0 and 1.
+ *  Un signal sinusoïdal entre 0 et 1.
  * @return {Pattern}
  * @example
  * n(sine.segment(16).range(0,15))
@@ -80,7 +80,7 @@ export const sine2 = signal((t) => Math.sin(Math.PI * 2 * t));
 export const sine = sine2.fromBipolar();
 
 /**
- *  A cosine signal between 0 and 1.
+ *  Un signal cosinus entre 0 et 1.
  *
  * @return {Pattern}
  * @example
@@ -91,14 +91,14 @@ export const sine = sine2.fromBipolar();
 export const cosine = sine._early(Fraction(1).div(4));
 
 /**
- *  A cosine signal between -1 and 1 (like `cosine`, but bipolar).
+ *  Un signal cosinus entre -1 et 1 (comme `cosine`, mais bipolaire).
  *
  * @return {Pattern}
  */
 export const cosine2 = sine2._early(Fraction(1).div(4));
 
 /**
- *  A square signal between 0 and 1.
+ *  Un signal carré entre 0 et 1.
  * @return {Pattern}
  * @example
  * n(square.segment(4).range(0,7)).scale("C:minor")
@@ -107,14 +107,14 @@ export const cosine2 = sine2._early(Fraction(1).div(4));
 export const square = signal((t) => Math.floor((t * 2) % 2));
 
 /**
- *  A square signal between -1 and 1 (like `square`, but bipolar).
+ *  Un signal carré entre -1 et 1 (comme `square`, mais bipolaire).
  *
  * @return {Pattern}
  */
 export const square2 = square.toBipolar();
 
 /**
- *  A triangle signal between 0 and 1.
+ *  Un signal triangulaire entre 0 et 1.
  *
  * @return {Pattern}
  * @example
@@ -124,14 +124,14 @@ export const square2 = square.toBipolar();
 export const tri = fastcat(saw, isaw);
 
 /**
- *  A triangle signal between -1 and 1 (like `tri`, but bipolar).
+ *  Un signal triangulaire entre -1 et 1 (comme `tri`, mais bipolaire).
  *
  * @return {Pattern}
  */
 export const tri2 = fastcat(saw2, isaw2);
 
 /**
- *  An inverted triangle signal between 1 and 0 (like `tri`, but flipped).
+ *  Un signal triangulaire inversé entre 1 et 0 (comme `tri`, mais inversé).
  *
  * @return {Pattern}
  * @example
@@ -141,21 +141,21 @@ export const tri2 = fastcat(saw2, isaw2);
 export const itri = fastcat(isaw, saw);
 
 /**
- *  An inverted triangle signal between -1 and 1 (like `itri`, but bipolar).
+ *  Un signal triangulaire inversé entre -1 et 1 (comme `itri`, mais bipolaire).
  *
  * @return {Pattern}
  */
 export const itri2 = fastcat(isaw2, saw2);
 
 /**
- *  A signal representing the cycle time.
+ *  Un signal représentant le temps du cycle.
  *
  * @return {Pattern}
  */
 export const time = signal(id);
 
 /**
- *  The mouse's x position value ranges from 0 to 1.
+ *  La position x de la souris varie de 0 à 1.
  * @name mousex
  * @return {Pattern}
  * @example
@@ -164,7 +164,7 @@ export const time = signal(id);
  */
 
 /**
- *  The mouse's y position value ranges from 0 to 1.
+ *  La position y de la souris varie de 0 à 1.
  * @name mousey
  * @return {Pattern}
  * @example
@@ -220,7 +220,7 @@ const timeToRands = (t, n) => timeToRandsPrime(timeToIntSeed(t), n);
  */
 
 /**
- * A discrete pattern of numbers from 0 to n-1
+ * Un pattern discret de nombres de 0 à n-1
  * @example
  * n(run(4)).scale("C4:pentatonic")
  * // n("0 1 2 3").scale("C4:pentatonic")
@@ -228,10 +228,10 @@ const timeToRands = (t, n) => timeToRandsPrime(timeToIntSeed(t), n);
 export const run = (n) => saw.range(0, n).round().segment(n);
 
 /**
- * Creates a pattern from a binary number.
+ * Crée un pattern à partir d'un nombre binaire.
  *
  * @name binary
- * @param {number} n - input number to convert to binary
+ * @param {number} n - nombre d'entrée à convertir en binaire
  * @example
  * "hh".s().struct(binary(5))
  * // "hh".s().struct("1 0 1")
@@ -242,11 +242,11 @@ export const binary = (n) => {
 };
 
 /**
- * Creates a pattern from a binary number, padded to n bits long.
+ * Crée un pattern à partir d'un nombre binaire, complété à n bits de longueur.
  *
  * @name binaryN
- * @param {number} n - input number to convert to binary
- * @param {number} nBits - pattern length, defaults to 16
+ * @param {number} n - nombre d'entrée à convertir en binaire
+ * @param {number} nBits - longueur du pattern, par défaut 16
  * @example
  * "hh".s().struct(binaryN(55532, 16))
  * // "hh".s().struct("1 1 0 1 1 0 0 0 1 1 1 0 1 1 0 0")
@@ -277,8 +277,8 @@ const _rearrangeWith = (ipat, n, pat) => {
 };
 
 /**
- * Slices a pattern into the given number of parts, then plays those parts in random order.
- * Each part will be played exactly once per cycle.
+ * Découpe un pattern en un nombre donné de parties, puis joue ces parties dans un ordre aléatoire.
+ * Chaque partie sera jouée exactement une fois par cycle.
  * @name shuffle
  * @example
  * note("c d e f").sound("piano").shuffle(4)
@@ -290,8 +290,8 @@ export const shuffle = register('shuffle', (n, pat) => {
 });
 
 /**
- * Slices a pattern into the given number of parts, then plays those parts at random. Similar to `shuffle`,
- * but parts might be played more than once, or not at all, per cycle.
+ * Découpe un pattern en un nombre donné de parties, puis joue ces parties de manière aléatoire. Similaire à `shuffle`,
+ * mais les parties peuvent être jouées plusieurs fois, ou pas du tout, par cycle.
  * @name scramble
  * @example
  * note("c d e f").sound("piano").scramble(4)
@@ -303,7 +303,7 @@ export const scramble = register('scramble', (n, pat) => {
 });
 
 /**
- * A continuous pattern of random numbers, between 0 and 1.
+ * Un pattern continu de nombres aléatoires, entre 0 et 1.
  *
  * @name rand
  * @example
@@ -313,24 +313,24 @@ export const scramble = register('scramble', (n, pat) => {
  */
 export const rand = signal(timeToRand);
 /**
- * A continuous pattern of random numbers, between -1 and 1
+ * Un pattern continu de nombres aléatoires, entre -1 et 1
  */
 export const rand2 = rand.toBipolar();
 
 export const _brandBy = (p) => rand.fmap((x) => x < p);
 
 /**
- * A continuous pattern of 0 or 1 (binary random), with a probability for the value being 1
+ * Un pattern continu de 0 ou 1 (aléatoire binaire), avec une probabilité que la valeur soit 1
  *
  * @name brandBy
- * @param {number} probability - a number between 0 and 1
+ * @param {number} probability - un nombre entre 0 et 1
  * @example
  * s("hh*10").pan(brandBy(0.2))
  */
 export const brandBy = (pPat) => reify(pPat).fmap(_brandBy).innerJoin();
 
 /**
- * A continuous pattern of 0 or 1 (binary random)
+ * Un pattern continu de 0 ou 1 (aléatoire binaire)
  *
  * @name brand
  * @example
@@ -341,10 +341,10 @@ export const brand = _brandBy(0.5);
 export const _irand = (i) => rand.fmap((x) => Math.trunc(x * i));
 
 /**
- * A continuous pattern of random integers, between 0 and n-1.
+ * Un pattern continu d'entiers aléatoires, entre 0 et n-1.
  *
  * @name irand
- * @param {number} n max value (exclusive)
+ * @param {number} n valeur maximale (exclusive)
  * @example
  * // randomly select scale notes from 0 - 7 (= C to C)
  * n(irand(8)).struct("x x*2 x x*3").scale("C:minor")
@@ -364,8 +364,8 @@ export const __chooseWith = (pat, xs) => {
   });
 };
 /**
- * Choose from the list of values (or patterns of values) using the given
- * pattern of numbers, which should be in the range of 0..1
+ * Choisit depuis la liste de valeurs (ou patterns de valeurs) en utilisant le
+ * pattern de nombres donné, qui doit être dans la plage de 0..1
  * @param {Pattern} pat
  * @param {*} xs
  * @returns {Pattern}
@@ -377,8 +377,8 @@ export const chooseWith = (pat, xs) => {
 };
 
 /**
- * As with {chooseWith}, but the structure comes from the chosen values, rather
- * than the pattern you're using to choose with.
+ * Comme {chooseWith}, mais la structure provient des valeurs choisies, plutôt
+ * que du pattern utilisé pour choisir.
  * @param {Pattern} pat
  * @param {*} xs
  * @returns {Pattern}
@@ -388,9 +388,9 @@ export const chooseInWith = (pat, xs) => {
 };
 
 /**
- * Chooses randomly from the given list of elements.
- * @param  {...any} xs values / patterns to choose from.
- * @returns {Pattern} - a continuous pattern.
+ * Choisit aléatoirement depuis la liste d'éléments donnée.
+ * @param  {...any} xs valeurs / patterns depuis lesquels choisir.
+ * @returns {Pattern} - un pattern continu.
  * @example
  * note("c2 g2!2 d2 f1").s(choose("sine", "triangle", "bd:6"))
  */
@@ -401,9 +401,9 @@ export const chooseIn = (...xs) => chooseInWith(rand, xs);
 export const chooseOut = choose;
 
 /**
- * Chooses from the given list of values (or patterns of values), according
- * to the pattern that the method is called on. The pattern should be in
- * the range 0 .. 1.
+ * Choisit depuis la liste de valeurs (ou patterns de valeurs) donnée, selon
+ * le pattern sur lequel la méthode est appelée. Le pattern doit être dans
+ * la plage 0 .. 1.
  * @param  {...any} xs
  * @returns {Pattern}
  */
@@ -412,8 +412,8 @@ Pattern.prototype.choose = function (...xs) {
 };
 
 /**
- * As with choose, but the pattern that this method is called on should be
- * in the range -1 .. 1
+ * Comme choose, mais le pattern sur lequel cette méthode est appelée doit être
+ * dans la plage -1 .. 1
  * @param  {...any} xs
  * @returns {Pattern}
  */
@@ -422,7 +422,7 @@ Pattern.prototype.choose2 = function (...xs) {
 };
 
 /**
- * Picks one of the elements at random each cycle.
+ * Choisit un des éléments au hasard à chaque cycle.
  * @synonyms randcat
  * @returns {Pattern}
  * @example
@@ -464,16 +464,16 @@ const _wchooseWith = function (pat, ...pairs) {
 const wchooseWith = (...args) => _wchooseWith(...args).outerJoin();
 
 /**
- * Chooses randomly from the given list of elements by giving a probability to each element
- * @param {...any} pairs arrays of value and weight
- * @returns {Pattern} - a continuous pattern.
+ * Choisit aléatoirement depuis la liste d'éléments donnée en attribuant une probabilité à chaque élément
+ * @param {...any} pairs tableaux de valeur et poids
+ * @returns {Pattern} - un pattern continu.
  * @example
  * note("c2 g2!2 d2 f1").s(wchoose(["sine",10], ["triangle",1], ["bd:6",1]))
  */
 export const wchoose = (...pairs) => wchooseWith(rand, ...pairs);
 
 /**
- * Picks one of the elements at random each cycle by giving a probability to each element
+ * Choisit un des éléments au hasard à chaque cycle en attribuant une probabilité à chaque élément
  * @synonyms wrandcat
  * @returns {Pattern}
  * @example
@@ -519,7 +519,7 @@ export const berlinWith = (tpat) => {
 };
 
 /**
- * Generates a continuous pattern of [perlin noise](https://en.wikipedia.org/wiki/Perlin_noise), in the range 0..1.
+ * Génère un pattern continu de [bruit de Perlin](https://en.wikipedia.org/wiki/Perlin_noise), dans la plage 0..1.
  *
  * @name perlin
  * @example
@@ -530,8 +530,8 @@ export const berlinWith = (tpat) => {
 export const perlin = perlinWith(time.fmap((v) => Number(v)));
 
 /**
- * Generates a continuous pattern of [berlin noise](conceived by Jame Coyne and Jade Rowland as a joke but turned out to be surprisingly cool and useful,
- * like perlin noise but with sawtooth waves), in the range 0..1.
+ * Génère un pattern continu de [bruit de Berlin](conçu par Jame Coyne et Jade Rowland comme une blague mais qui s'est avéré étonnamment cool et utile,
+ * comme le bruit de Perlin mais avec des ondes en dents de scie), dans la plage 0..1.
  *
  * @name berlin
  * @example
@@ -549,13 +549,13 @@ export const degradeByWith = register(
 );
 
 /**
- * Randomly removes events from the pattern by a given amount.
- * 0 = 0% chance of removal
- * 1 = 100% chance of removal
+ * Supprime aléatoirement des événements du pattern selon une quantité donnée.
+ * 0 = 0% de chance de suppression
+ * 1 = 100% de chance de suppression
  *
  * @name degradeBy
  * @memberof Pattern
- * @param {number} amount - a number between 0 and 1
+ * @param {number} amount - un nombre entre 0 et 1
  * @returns Pattern
  * @example
  * s("hh*8").degradeBy(0.2)
@@ -576,7 +576,7 @@ export const degradeBy = register(
 
 /**
  *
- * Randomly removes 50% of events from the pattern. Shorthand for `.degradeBy(0.5)`
+ * Supprime aléatoirement 50% des événements du pattern. Raccourci pour `.degradeBy(0.5)`
  *
  * @name degrade
  * @memberof Pattern
@@ -589,14 +589,14 @@ export const degradeBy = register(
 export const degrade = register('degrade', (pat) => pat._degradeBy(0.5), true, true);
 
 /**
- * Inverse of `degradeBy`: Randomly removes events from the pattern by a given amount.
- * 0 = 100% chance of removal
- * 1 = 0% chance of removal
- * Events that would be removed by degradeBy are let through by undegradeBy and vice versa (see second example).
+ * Inverse de `degradeBy` : Supprime aléatoirement des événements du pattern selon une quantité donnée.
+ * 0 = 100% de chance de suppression
+ * 1 = 0% de chance de suppression
+ * Les événements qui seraient supprimés par degradeBy sont laissés passer par undegradeBy et vice versa (voir le deuxième exemple).
  *
  * @name undegradeBy
  * @memberof Pattern
- * @param {number} amount - a number between 0 and 1
+ * @param {number} amount - un nombre entre 0 et 1
  * @returns Pattern
  * @example
  * s("hh*8").undegradeBy(0.2)
@@ -619,8 +619,8 @@ export const undegradeBy = register(
 );
 
 /**
- * Inverse of `degrade`: Randomly removes 50% of events from the pattern. Shorthand for `.undegradeBy(0.5)`
- * Events that would be removed by degrade are let through by undegrade and vice versa (see second example).
+ * Inverse de `degrade` : Supprime aléatoirement 50% des événements du pattern. Raccourci pour `.undegradeBy(0.5)`
+ * Les événements qui seraient supprimés par degrade sont laissés passer par undegrade et vice versa (voir le deuxième exemple).
  *
  * @name undegrade
  * @memberof Pattern
@@ -637,13 +637,13 @@ export const undegrade = register('undegrade', (pat) => pat._undegradeBy(0.5), t
 
 /**
  *
- * Randomly applies the given function by the given probability.
- * Similar to `someCyclesBy`
+ * Applique aléatoirement la fonction donnée selon la probabilité donnée.
+ * Similaire à `someCyclesBy`
  *
  * @name sometimesBy
  * @memberof Pattern
- * @param {number | Pattern} probability - a number between 0 and 1
- * @param {function} function - the transformation to apply
+ * @param {number | Pattern} probability - un nombre entre 0 et 1
+ * @param {function} function - la transformation à appliquer
  * @returns Pattern
  * @example
  * s("hh*8").sometimesBy(.4, x=>x.speed("0.5"))
@@ -657,11 +657,11 @@ export const sometimesBy = register('sometimesBy', function (patx, func, pat) {
 
 /**
  *
- * Applies the given function with a 50% chance
+ * Applique la fonction donnée avec 50% de chance
  *
  * @name sometimes
  * @memberof Pattern
- * @param {function} function - the transformation to apply
+ * @param {function} function - la transformation à appliquer
  * @returns Pattern
  * @example
  * s("hh*8").sometimes(x=>x.speed("0.5"))
@@ -672,13 +672,13 @@ export const sometimes = register('sometimes', function (func, pat) {
 
 /**
  *
- * Randomly applies the given function by the given probability on a cycle by cycle basis.
- * Similar to `sometimesBy`
+ * Applique aléatoirement la fonction donnée selon la probabilité donnée cycle par cycle.
+ * Similaire à `sometimesBy`
  *
  * @name someCyclesBy
  * @memberof Pattern
- * @param {number | Pattern} probability - a number between 0 and 1
- * @param {function} function - the transformation to apply
+ * @param {number | Pattern} probability - un nombre entre 0 et 1
+ * @param {function} function - la transformation à appliquer
  * @returns Pattern
  * @example
  * s("bd,hh*8").someCyclesBy(.3, x=>x.speed("0.5"))
@@ -697,7 +697,7 @@ export const someCyclesBy = register('someCyclesBy', function (patx, func, pat) 
 
 /**
  *
- * Shorthand for `.someCyclesBy(0.5, fn)`
+ * Raccourci pour `.someCyclesBy(0.5, fn)`
  *
  * @name someCycles
  * @memberof Pattern
@@ -711,7 +711,7 @@ export const someCycles = register('someCycles', function (func, pat) {
 
 /**
  *
- * Shorthand for `.sometimesBy(0.75, fn)`
+ * Raccourci pour `.sometimesBy(0.75, fn)`
  *
  * @name often
  * @memberof Pattern
@@ -725,7 +725,7 @@ export const often = register('often', function (func, pat) {
 
 /**
  *
- * Shorthand for `.sometimesBy(0.25, fn)`
+ * Raccourci pour `.sometimesBy(0.25, fn)`
  *
  * @name rarely
  * @memberof Pattern
@@ -739,7 +739,7 @@ export const rarely = register('rarely', function (func, pat) {
 
 /**
  *
- * Shorthand for `.sometimesBy(0.1, fn)`
+ * Raccourci pour `.sometimesBy(0.1, fn)`
  *
  * @name almostNever
  * @memberof Pattern
@@ -753,7 +753,7 @@ export const almostNever = register('almostNever', function (func, pat) {
 
 /**
  *
- * Shorthand for `.sometimesBy(0.9, fn)`
+ * Raccourci pour `.sometimesBy(0.9, fn)`
  *
  * @name almostAlways
  * @memberof Pattern
@@ -767,7 +767,7 @@ export const almostAlways = register('almostAlways', function (func, pat) {
 
 /**
  *
- * Shorthand for `.sometimesBy(0, fn)` (never calls fn)
+ * Raccourci pour `.sometimesBy(0, fn)` (n'appelle jamais fn)
  *
  * @name never
  * @memberof Pattern
@@ -781,7 +781,7 @@ export const never = register('never', function (_, pat) {
 
 /**
  *
- * Shorthand for `.sometimesBy(1, fn)` (always calls fn)
+ * Raccourci pour `.sometimesBy(1, fn)` (appelle toujours fn)
  *
  * @name always
  * @memberof Pattern
@@ -808,8 +808,8 @@ export function _keyDown(keyname) {
 
 /**
  *
- * Do something on a keypress, or array of keypresses
- * [Key name reference](https://developer.mozilla.org/en-US/docs/Web/API/UI_Events/Keyboard_event_key_values)
+ * Fait quelque chose lors d'une pression de touche, ou d'un tableau de pressions de touches
+ * [Référence des noms de touches](https://developer.mozilla.org/en-US/docs/Web/API/UI_Events/Keyboard_event_key_values)
  *
  * @name whenKey
  * @memberof Pattern
@@ -824,8 +824,8 @@ export const whenKey = register('whenKey', function (input, func, pat) {
 
 /**
  *
- * returns true when a key or array of keys is held
- * [Key name reference](https://developer.mozilla.org/en-US/docs/Web/API/UI_Events/Keyboard_event_key_values)
+ * retourne true lorsqu'une touche ou un tableau de touches est maintenu
+ * [Référence des noms de touches](https://developer.mozilla.org/en-US/docs/Web/API/UI_Events/Keyboard_event_key_values)
  *
  * @name keyDown
  * @memberof Pattern
