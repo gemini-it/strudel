@@ -1,10 +1,8 @@
 [build]
-  # Répertoire contenant le package.json
-  base = "website"
-  # Commande de build
+  # Commande de build (exécutée depuis la racine pour générer doc.json)
   command = "pnpm build"
   # Répertoire de sortie après le build
-  publish = "dist"
+  publish = "website/dist"
 
 [build.environment]
   # Version de Node.js
