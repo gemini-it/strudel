@@ -8,83 +8,83 @@ import { JsDoc } from '../../docs/JsDoc';
 
 # Notes
 
-Pitches are an important building block in many musical traditions.
-In Strudel, pitches can be expressed as note names, note numbers or frequencies.
-Here's the same pattern written in three different ways:
+Les hauteurs sont un élément constitutif important dans de nombreuses traditions musicales.
+Dans Strudel, les hauteurs peuvent être exprimées sous forme de noms de notes, de numéros de notes ou de fréquences.
+Voici le même pattern écrit de trois manières différentes :
 
-- `note`: letter notation, good for those who are familiar with western music theory:
+- `note` : notation en lettres, bien pour ceux qui sont familiers avec la théorie musicale occidentale :
 
   <MiniRepl client:idle tune={`note("a3 c#4 e4 a4")`} />
 
-- `note`: number notation, good for those who want to use recognisable pitches, but don't care about music theory:
+- `note` : notation en nombres, bien pour ceux qui veulent utiliser des hauteurs reconnaissables, mais ne se soucient pas de la théorie musicale :
 
   <MiniRepl client:idle tune={`note("57 61 64 69")`} />
 
-- `freq`: frequency notation, good for those who want to go beyond standardised tuning systems:
+- `freq` : notation en fréquences, bien pour ceux qui veulent aller au-delà des systèmes de tempérament standardisés :
 
   <MiniRepl client:idle tune={`freq("220 275 330 440")`} />
 
-Let's look at those in more detail...
+Examinons-les plus en détail...
 
-## `note` names
+## Noms de `note`
 
-Notes names can be notated with the note letter, followed by the octave number. You can notate flats with `b` and sharps with `#`.
+Les noms de notes peuvent être notés avec la lettre de la note, suivie du numéro d'octave. Vous pouvez noter les bémols avec `b` et les dièses avec `#`.
 
 <MiniRepl client:idle tune={`note("a3 c#4 e4 a4")`} />
 
-By the way, you can edit the contents of the player, and press "update" to hear your change!
-You can also press "play" on the next player without needing to stop the last one.
+Au fait, vous pouvez éditer le contenu du lecteur et appuyer sur "mettre à jour" pour entendre votre changement !
+Vous pouvez également appuyer sur "play" sur le lecteur suivant sans avoir besoin d'arrêter le précédent.
 
-## `note` numbers
+## Numéros de `note`
 
-If you prefer, you can also use numbers with `note` instead:
+Si vous préférez, vous pouvez également utiliser des nombres avec `note` à la place :
 
 <MiniRepl client:idle tune={`note("57 61 64 69")`} />
 
-These numbers are interpreted as so called [MIDI numbers](https://www.inspiredacoustics.com/en/MIDI_note_numbers_and_center_frequencies), where adjacent whole numbers are one 'semitone' apart.
+Ces nombres sont interprétés comme des [numéros MIDI](https://www.inspiredacoustics.com/en/MIDI_note_numbers_and_center_frequencies), où les nombres entiers adjacents sont séparés d'un 'demi-ton'.
 
-You could also write decimal numbers to get 'microtonal' pitches (in between the black and white piano notes):
+Vous pourriez également écrire des nombres décimaux pour obtenir des hauteurs 'microtonales' (entre les touches noires et blanches du piano) :
 
 <MiniRepl client:idle tune={`note("74.5 75 75.5 76")`} />
 
 ## `freq`
 
-To get maximum freedom, you can also use `freq` to directly control the frequency:
+Pour avoir une liberté maximale, vous pouvez également utiliser `freq` pour contrôler directement la fréquence :
 
 <MiniRepl client:idle tune={`freq("220 275 330 440")`} />
 
-## Hearing and frequency
+## Audition et fréquence
 
-In the above example, we play A3 (220Hz), C#4 natural (275Hz), E4 (330Hz) and A4 (440Hz), mirroring our previous examples.
+Dans l'exemple ci-dessus, nous jouons A3 (220Hz), C#4 naturel (275Hz), E4 (330Hz) et A4 (440Hz), reflétant nos exemples précédents.
 
-But can you hear the difference between these individual frequencies?
+Mais pouvez-vous entendre la différence entre ces fréquences individuelles ?
 
 <MiniRepl client:idle tune={`freq("220 221 223 224")`} />
 
-How about these?
+Et celles-ci ?
 
 <MiniRepl client:idle tune={`freq("2020 2021 2023 2024")`} />
 
-The higher we go up...
+Plus nous montons...
 
 <MiniRepl client:idle tune={`freq("5020 5021 5023 5024")`} />
 
-The less distance we can hear between the frequencies!
+Moins nous pouvons entendre de distance entre les fréquences !
 
 <MiniRepl client:idle tune={`freq("10020 10021 10023 10024")`} />
 
-Why is this? [Human hearing operates logarithmically](https://www.audiocheck.net/soundtests_nonlinear.php).
+Pourquoi cela ? [L'audition humaine fonctionne de manière logarithmique](https://www.audiocheck.net/soundtests_nonlinear.php).
 
-## From notes to sounds
+## Des notes aux sons
 
-In this page, when we played a pattern of notes like this:
+Dans cette page, quand nous avons joué un pattern de notes comme ceci :
 
 <MiniRepl client:idle tune={`note("a3 c#4 e4 a4")`} />
 
-We heard a simple synthesised sound, in fact we heard a [triangle wave oscillator](https://en.wikipedia.org/wiki/Triangle_wave).
+Nous avons entendu un son synthétisé simple, en fait nous avons entendu un [oscillateur d'onde triangulaire](https://en.wikipedia.org/wiki/Triangle_wave).
 
-This is the default synthesiser used by Strudel, but how do we then make different sounds in Strudel?
+C'est le synthétiseur par défaut utilisé par Strudel, mais comment faisons-nous alors pour créer différents sons dans Strudel ?
 
-Let's find out in the next page on [Sounds](/learn/sounds).
+Découvrons-le dans la page suivante sur les [Sons](/learn/sounds).
 
 <br />

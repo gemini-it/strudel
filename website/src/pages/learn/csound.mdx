@@ -7,84 +7,84 @@ import { MiniRepl } from '../../docs/MiniRepl';
 import { JsDoc } from '../../docs/JsDoc';
 import Colors from '../../docs/Colors.jsx';
 
-# Using CSound with Strudel
+# Utiliser CSound avec Strudel
 
-🧪 Strudel has experimental support for csound, using [@csound/browser](https://www.npmjs.com/package/@csound/browser).
+🧪 Strudel a un support expérimental pour csound, en utilisant [@csound/browser](https://www.npmjs.com/package/@csound/browser).
 
-## Importing .orc files
+## Importer des fichiers .orc
 
-To use existing csound instruments, you can load and use an orc file from an URL like this:
+Pour utiliser des instruments csound existants, vous pouvez charger et utiliser un fichier orc depuis une URL comme ceci :
 
 <MiniRepl
   client:only="react"
-  tune={`// livecode.orc by Steven Yi
+  tune={`// livecode.orc par Steven Yi
 await loadOrc('github:kunstmusik/csound-live-code/master/livecode.orc')
 note("c a f e").csound('FM1')
 `}
 />
 
-Note that the above url uses the `github:` shortcut, which resolves to the raw file on github, but you can use any URL you like.
+Notez que l'URL ci-dessus utilise le raccourci `github:`, qui résout vers le fichier brut sur GitHub, mais vous pouvez utiliser n'importe quelle URL que vous aimez.
 
-The awesome [`livecode.orc by Steven Yi`](https://github.com/kunstmusik/csound-live-code) comes packed with many sounds ready for use:
+L'impressionnant [`livecode.orc par Steven Yi`](https://github.com/kunstmusik/csound-live-code) est livré avec de nombreux sons prêts à l'emploi :
 
 <MiniRepl
   client:only="react"
-  tune={`// livecode.orc by Steven Yi
+  tune={`// livecode.orc par Steven Yi
 await loadOrc('github:kunstmusik/csound-live-code/master/livecode.orc')
 note("c a f e").csound(cat(
-"Sub1", // 	Substractive Synth, 3osc
-"Sub2", // 	Subtractive Synth, two saws, fifth freq apart
-"Sub3", // 	Subtractive Synth, three detuned saws, swells in
-"Sub4", // 	Subtractive Synth, detuned square/saw, stabby. Nice as a lead in octave 2, nicely grungy in octave -2, -1
-"Sub5", // 	Subtractive Synth, detuned square/triangle
-"Sub6", // 	Subtractive Synth, saw, K35 filters
-"Sub7", // 	Subtractive Synth, saw + tri, K35 filters
-"Sub8", // 	Subtractive Synth, square + saw + tri, diode ladder filter
-"SynBrass", // 	SynthBrass subtractive synth
-"SynHarp", // 	Synth Harp subtracitve Synth
-"SSaw", // 	SuperSaw sound using 9 bandlimited saws (3 sets of detuned saws at octaves)
-"Mode1", // 	Modal Synthesis Instrument: Percussive/organ-y sound
-"Plk", // 	Pluck sound using impulses, noise, and waveguides
-"Organ1", // 	Wavetable Organ sound using additive synthesis
-"Organ2", // 	Organ sound based on M1 Organ 2 patch
-"Organ3", // 	Wavetable Organ using Flute 8' and Flute 4', wavetable based on Claribel Flute http://www.pykett.org.uk/the\_tonal\_structure\_of\_organ\_flutes.htm
-"Bass", // 	Subtractive Bass sound
-"ms20_bass", // 	MS20-style Bass Sound
-"VoxHumana", // 	VoxHumana Patch
-"FM1", // 	FM 3:1 C:M ratio, 2->0.025 index, nice for bass
-"Noi", // 	Filtered noise, exponential envelope
-"Wobble", // 	Wobble patched based on Jacob Joaquin's "Tempo-Synced Wobble Bass"
-"Sine", // 	Simple Sine-wave instrument with exponential envelope
-"Square", // 	Simple Square-wave instrument with exponential envelope
-"Saw", // 	Simple Sawtooth-wave instrument with exponential envelope
-"Squine1", // 	Squinewave Synth, 2 osc
-"Form1", // 	Formant Synth, buzz source, soprano ah formants
-"Mono", // 	Monophone synth using sawtooth wave and 4pole lpf. Use "start("Mono") to run the monosynth, then use MonoNote instrument to play the instrument.
-"MonoNote", // 	Note playing instrument for Mono synth. Be careful to use this and not try to create multiple Mono instruments!
-"Click", // 	Bandpass-filtered impulse glitchy click sound. p4 = center frequency (e.g., 3000, 6000)
-"NoiSaw", // 	Highpass-filtered noise+saw sound. Use NoiSaw.cut channel to adjust cutoff.
-"Clap", // 	Modified clap instrument by Istvan Varga (clap1.orc)
-"BD", // 	Bass Drum - From Iain McCurdy's TR-808.csd
-"SD", // 	Snare Drum - From Iain McCurdy's TR-808.csd
-"OHH", // 	Open High Hat - From Iain McCurdy's TR-808.csd
-"CHH", // 	Closed High Hat - From Iain McCurdy's TR-808.csd
-"HiTom", // 	High Tom - From Iain McCurdy's TR-808.csd
-"MidTom", // 	Mid Tom - From Iain McCurdy's TR-808.csd
-"LowTom", // 	Low Tom - From Iain McCurdy's TR-808.csd
-"Cymbal", // 	Cymbal - From Iain McCurdy's TR-808.csd
-"Rimshot", // 	Rimshot - From Iain McCurdy's TR-808.csd
-"Claves", // 	Claves - From Iain McCurdy's TR-808.csd
-"Cowbell", // 	Cowbell - From Iain McCurdy's TR-808.csd
-"Maraca", // 	Maraca - from Iain McCurdy's TR-808.csd
-"HiConga", // 	High Conga - From Iain McCurdy's TR-808.csd
-"MidConga", // 	Mid Conga - From Iain McCurdy's TR-808.csd
-"LowConga", // 	Low Conga - From Iain McCurdy's TR-808.csd
+"Sub1", // 	Synthé soustractif, 3osc
+"Sub2", // 	Synthé soustractif, deux saws, écart de quinte en fréquence
+"Sub3", // 	Synthé soustractif, trois saws désaccordées, gonfle à l'entrée
+"Sub4", // 	Synthé soustractif, square/saw désaccordé, piquant. Sympa comme lead en octave 2, agréablement grinçant en octave -2, -1
+"Sub5", // 	Synthé soustractif, square/triangle désaccordé
+"Sub6", // 	Synthé soustractif, saw, filtres K35
+"Sub7", // 	Synthé soustractif, saw + tri, filtres K35
+"Sub8", // 	Synthé soustractif, square + saw + tri, filtre ladder diode
+"SynBrass", // 	Synthé de cuivres soustractif SynthBrass
+"SynHarp", // 	Synthé de harpe soustractif Synth Harp
+"SSaw", // 	Son SuperSaw utilisant 9 saws à bande limitée (3 ensembles de saws désaccordées en octaves)
+"Mode1", // 	Instrument de synthèse modale : son percussif/d'orgue
+"Plk", // 	Son Pluck utilisant des impulsions, du bruit et des guides d'ondes
+"Organ1", // 	Son d'orgue à table d'ondes utilisant la synthèse additive
+"Organ2", // 	Son d'orgue basé sur le patch M1 Organ 2
+"Organ3", // 	Orgue à table d'ondes utilisant Flute 8' et Flute 4', table d'ondes basée sur Claribel Flute http://www.pykett.org.uk/the\_tonal\_structure\_of\_organ\_flutes.htm
+"Bass", // 	Son de basse soustractif
+"ms20_bass", // 	Son de basse de style MS20
+"VoxHumana", // 	Patch VoxHumana
+"FM1", // 	FM ratio C:M de 3:1, index 2->0.025, sympa pour la basse
+"Noi", // 	Bruit filtré, enveloppe exponentielle
+"Wobble", // 	Patch Wobble basé sur "Tempo-Synced Wobble Bass" de Jacob Joaquin
+"Sine", // 	Instrument simple à onde sinusoïdale avec enveloppe exponentielle
+"Square", // 	Instrument simple à onde carrée avec enveloppe exponentielle
+"Saw", // 	Instrument simple à onde en dents de scie avec enveloppe exponentielle
+"Squine1", // 	Synthé Squinewave, 2 osc
+"Form1", // 	Synthé de formants, source buzz, formants soprano ah
+"Mono", // 	Synthé monophone utilisant une onde en dents de scie et un lpf 4 pôles. Utilisez "start("Mono") pour exécuter le monosynth, puis utilisez l'instrument MonoNote pour jouer l'instrument.
+"MonoNote", // 	Instrument de jeu de notes pour le synthé Mono. Attention à utiliser ceci et à ne pas essayer de créer plusieurs instruments Mono !
+"Click", // 	Son de clic glitchy filtré passe-bande. p4 = fréquence centrale (par exemple, 3000, 6000)
+"NoiSaw", // 	Son de bruit+saw filtré passe-haut. Utilisez NoiSaw.cut channel pour ajuster la coupure.
+"Clap", // 	Instrument clap modifié par Istvan Varga (clap1.orc)
+"BD", // 	Grosse caisse - De TR-808.csd d'Iain McCurdy
+"SD", // 	Caisse claire - De TR-808.csd d'Iain McCurdy
+"OHH", // 	Charleston ouverte - De TR-808.csd d'Iain McCurdy
+"CHH", // 	Charleston fermée - De TR-808.csd d'Iain McCurdy
+"HiTom", // 	Tom aigu - De TR-808.csd d'Iain McCurdy
+"MidTom", // 	Tom médium - De TR-808.csd d'Iain McCurdy
+"LowTom", // 	Tom grave - De TR-808.csd d'Iain McCurdy
+"Cymbal", // 	Cymbale - De TR-808.csd d'Iain McCurdy
+"Rimshot", // 	Rimshot - De TR-808.csd d'Iain McCurdy
+"Claves", // 	Claves - De TR-808.csd d'Iain McCurdy
+"Cowbell", // 	Cowbell - De TR-808.csd d'Iain McCurdy
+"Maraca", // 	Maraca - de TR-808.csd d'Iain McCurdy
+"HiConga", // 	Conga aigüe - De TR-808.csd d'Iain McCurdy
+"MidConga", // 	Conga médium - De TR-808.csd d'Iain McCurdy
+"LowConga", // 	Conga grave - De TR-808.csd d'Iain McCurdy
 ))`}
 />
 
-## Writing your own instruments
+## Écrire vos propres instruments
 
-You can define your own instrument(s) with `loadCsound` like this:
+Vous pouvez définir votre/vos propre(s) instrument(s) avec `loadCsound` comme ceci :
 
 <MiniRepl
   client:only="react"
@@ -100,7 +100,7 @@ instr CoolSynth
     asig += vco2(igain, ifreq * 2)
 
     idepth = 2
-    acut = transegr:a(0, .005, 0, idepth, .06, -4.2, 0.001, .01, -4.2, 0) ; filter envelope
+    acut = transegr:a(0, .005, 0, idepth, .06, -4.2, 0.001, .01, -4.2, 0) ; enveloppe de filtre
     asig = zdf_2pole(asig, cpsoct(ioct + acut + 2), 0.5)
 
     iattack = .01
@@ -121,34 +121,34 @@ endin\`
 .csound('CoolSynth')`}
 />
 
-## Parameters
+## Paramètres
 
-The `.csound` function sends the following p values:
+La fonction `.csound` envoie les valeurs p suivantes :
 
-|     |                                  |
-| --- | -------------------------------- |
-| p1  | instrument name e.g. `CoolSynth` |
-| p2  | time offset, when it should play |
-| p3  | the duration of the event / hap  |
-| p4  | frequency in Hertz               |
-| p5  | normalized `gain`, 0-1           |
+|     |                                      |
+| --- | ------------------------------------ |
+| p1  | nom de l'instrument ex. `CoolSynth`  |
+| p2  | décalage temporel, quand il doit jouer |
+| p3  | la durée de l'événement / hap        |
+| p4  | fréquence en Hertz                   |
+| p5  | `gain` normalisé, 0-1                |
 
-There is an alternative `.csoundm` function with a different flavor:
+Il existe une fonction alternative `.csoundm` avec une saveur différente :
 
-|     |                                   |
-| --- | --------------------------------- |
-| p4  | midi key number, unrounded, 0-127 |
-| p5  | midi velocity, 0-127              |
+|     |                                      |
+| --- | ------------------------------------ |
+| p4  | numéro de touche MIDI, non arrondi, 0-127 |
+| p5  | vélocité MIDI, 0-127                 |
 
-In both cases, p4 is derived from the value of `freq` or `note`.
+Dans les deux cas, p4 est dérivé de la valeur de `freq` ou `note`.
 
-## Limitations / Future Plans
+## Limitations / Plans futurs
 
-Apart from the above listed p values, no other parameter can be patterned so far.
-This also means that [audio effects](/learn/effects/) will not work.
-In the future, the integration could be improved by passing all patterned control parameters to the csound instrument.
-This could work by a unique [channel](https://kunstmusik.github.io/icsc2022-csound-web/tutorial2-interacting-with-csound/#step-4---writing-continuous-data-channels)
-for each value. Channels could be read [like this](https://github.com/csound/csound/blob/master/Android/CsoundForAndroid/CsoundAndroidExamples/src/main/res/raw/multitouch_xy.csd).
-Also, it might make sense to have a standard library of csound instruments for strudel's effects.
+En dehors des valeurs p listées ci-dessus, aucun autre paramètre ne peut être patterné pour l'instant.
+Cela signifie également que les [effets audio](/learn/effects/) ne fonctionneront pas.
+À l'avenir, l'intégration pourrait être améliorée en passant tous les paramètres de contrôle patternés à l'instrument csound.
+Cela pourrait fonctionner avec un [canal](https://kunstmusik.github.io/icsc2022-csound-web/tutorial2-interacting-with-csound/#step-4---writing-continuous-data-channels) unique
+pour chaque valeur. Les canaux pourraient être lus [comme ceci](https://github.com/csound/csound/blob/master/Android/CsoundForAndroid/CsoundAndroidExamples/src/main/res/raw/multitouch_xy.csd).
+De plus, il pourrait être logique d'avoir une bibliothèque standard d'instruments csound pour les effets de Strudel.
 
-Now, let's dive into the [Functional JavaScript API](/functions/intro)
+Maintenant, plongeons dans l'[API JavaScript fonctionnelle](/functions/intro)

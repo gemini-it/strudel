@@ -1,18 +1,18 @@
 ---
-title: Visual Feedback
+title: Retour visuel
 layout: ../../layouts/MainLayout.astro
 ---
 
 import { MiniRepl } from '../../docs/MiniRepl';
 import { JsDoc } from '../../docs/JsDoc';
 
-# Visual Feedback
+# Retour visuel
 
-There are several function that add visual feedback to your patterns.
+Il existe plusieurs fonctions qui ajoutent un retour visuel à vos patterns.
 
-## Mini Notation Highlighting
+## Mise en évidence de la Mini Notation
 
-When you write mini notation with "double quotes" or \`backticks\`, the active parts of the mini notation will be highlighted:
+Lorsque vous écrivez de la mini notation avec des "guillemets doubles" ou des \`backticks\`, les parties actives de la mini notation seront mises en évidence :
 
 <MiniRepl
   client:idle
@@ -21,7 +21,7 @@ When you write mini notation with "double quotes" or \`backticks\`, the active p
 .s("supersaw").lpf(300).lpenv("<4 3 2>\*4")`}
 />
 
-You can change the color as well, even pattern it:
+Vous pouvez également changer la couleur, même la patteriser :
 
 <MiniRepl
   client:idle
@@ -31,26 +31,26 @@ You can change the color as well, even pattern it:
 .color("cyan magenta")`}
 />
 
-## Global vs Inline Visuals
+## Visuels globaux vs en ligne
 
-The following functions all come with in 2 variants.
+Les fonctions suivantes viennent toutes en 2 variantes.
 
-**Without prefix**: renders the visual to the background of the page:
+**Sans préfixe** : rend le visuel sur l'arrière-plan de la page :
 
 <MiniRepl client:idle tune={`note("c a f e").color("white").punchcard()`} />
 
-**With `_` prefix**: renders the visual inside the code. Allows for multiple visuals
+**Avec préfixe `_`** : rend le visuel à l'intérieur du code. Permet plusieurs visuels
 
 <MiniRepl client:idle tune={`note("c a f e").color("white")._punchcard()`} />
 
-Here we see the 2 variants for `punchcard`. The same goes for all others below.
-To improve readability the following demos will all use the inline variant.
+Ici, nous voyons les 2 variantes pour `punchcard`. Il en va de même pour tous les autres ci-dessous.
+Pour améliorer la lisibilité, les démos suivantes utiliseront toutes la variante en ligne.
 
 ## Punchcard / Pianoroll
 
-These 2 functions render a pianoroll style visual.
-The only difference between the 2 is that `pianoroll` will render the pattern directly,
-while `punchcard` will also take the transformations into account that occur afterwards:
+Ces 2 fonctions rendent un visuel de style pianoroll.
+La seule différence entre les 2 est que `pianoroll` rendra le pattern directement,
+tandis que `punchcard` prendra également en compte les transformations qui se produisent après :
 
 <MiniRepl
   client:idle
@@ -60,8 +60,8 @@ while `punchcard` will also take the transformations into account that occur aft
   autodraw
 />
 
-Here, the `color` is still visible in the visual, even if it is applied after `_punchcard`.
-On the contrary, the color is not visible when using `_pianoroll`:
+Ici, la `color` est toujours visible dans le visuel, même si elle est appliquée après `_punchcard`.
+Au contraire, la couleur n'est pas visible lors de l'utilisation de `_pianoroll` :
 
 <MiniRepl
   client:idle
@@ -77,13 +77,13 @@ import Box from '@components/Box.astro';
 
 <Box>
 
-`punchcard` is less resource intensive because it uses the same data as used for the mini notation highlighting.
+`punchcard` est moins gourmand en ressources car il utilise les mêmes données que celles utilisées pour la mise en évidence de la mini notation.
 
 </Box>
 
-The visual can be customized by passing options. Those options are the same for both functions.
+Le visuel peut être personnalisé en passant des options. Ces options sont les mêmes pour les deux fonctions.
 
-What follows is the API doc of all the options you can pass:
+Ce qui suit est la documentation API de toutes les options que vous pouvez passer :
 
 <JsDoc client:idle name="pianoroll" h={0} />
 

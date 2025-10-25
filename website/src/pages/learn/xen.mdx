@@ -1,28 +1,28 @@
 ---
-title: Xen Harmonic Functions
+title: Fonctions harmoniques Xen
 layout: ../../layouts/MainLayout.astro
 ---
 
 import { MiniRepl } from '../../docs/MiniRepl';
 import { JsDoc } from '../../docs/JsDoc';
 
-# Xen Harmonic Functions
+# Fonctions harmoniques Xen
 
-These functions allow the use of scales other than your typical chromatic 12 based ones.
+Ces fonctions permettent l'utilisation de gammes autres que les typiques gammes chromatiques basées sur 12.
 
 ### tune(scale)
 
 <JsDoc client:idle name="tune" h={0} />
 
-Here's an example of how to configure a basic hexany scale:
+Voici un exemple de comment configurer une gamme hexany basique :
 
 <MiniRepl client:idle tune={`"0 1 2 3 4 5".tune("hexany15").mul("220").freq()`} />
 
-Try other scales like `hexany1`, `iraq`, `gumbeng`, `gunkali`, or `tranh3`
+Essayez d'autres gammes comme `hexany1`, `iraq`, `gumbeng`, `gunkali`, ou `tranh3`
 
-For a full list of available scales from tunejs, see http://abbernie.github.io/tune/scales.html
+Pour une liste complète des gammes disponibles depuis tunejs, voir http://abbernie.github.io/tune/scales.html
 
-You can set your root to be a particular note with `getFreq`
+Vous pouvez définir votre racine pour être une note particulière avec `getFreq`
 
 <MiniRepl
   client:idle
@@ -31,7 +31,7 @@ You can set your root to be a particular note with `getFreq`
     .freq().clip(.5).room(1)`}
 />
 
-Some tunings become more pronounced with a longer reverb decay:
+Certains accordages deviennent plus prononcés avec une décroissance de réverbération plus longue :
 
 <MiniRepl
   client:idle
@@ -40,7 +40,7 @@ Some tunings become more pronounced with a longer reverb decay:
   .freq().clip(.8).room("3:10").rdim(10000).rfade(5)`}
 />
 
-Additionally, you can combo this with `fmap` so that the base note changes:
+De plus, vous pouvez combiner cela avec `fmap` pour que la note de base change :
 
 <MiniRepl
   client:idle
@@ -49,7 +49,7 @@ Additionally, you can combo this with `fmap` so that the base note changes:
   .freq().legato("2 .7").room("1:15").rdim(8500).rlp(14000).rfade(8)`}
 />
 
-Combining this with various polyrhythm tricks can become very evocative:
+Combiner cela avec diverses astuces de polyrythme peut devenir très évocateur :
 
 <MiniRepl
   client:idle
@@ -60,10 +60,10 @@ Combining this with various polyrhythm tricks can become very evocative:
   .freq().clip(.5).room(1).rfade(9)`}
 />
 
-Another helpful trick when exploring new tunings is to strum them.
-Many have a much more enchanting sound that was chosen over many generations of musicians for being strummed.
+Une autre astuce utile lors de l'exploration de nouveaux accordages est de les gratter.
+Beaucoup ont un son beaucoup plus enchanteur qui a été choisi au fil de nombreuses générations de musiciens pour être gratté.
 
-Take the `sanza` tuning:
+Prenez l'accordage `sanza` :
 
 <MiniRepl
   client:idle
@@ -72,13 +72,13 @@ Take the `sanza` tuning:
   .freq()`}
 />
 
-Notes 7 and 9 will clash quite a bit if you arp them normally. Many tunings will have this sort of sound, and it can feel distracting on its own.
-See how close they are on the pitch wheel?
+Les notes 7 et 9 vont pas mal se heurter si vous les arpégez normalement. Beaucoup d'accordages auront ce genre de son, et cela peut sembler distrayant seul.
+Voyez comme elles sont proches sur la roue de hauteur ?
 
 <MiniRepl client:idle tune={`"[7 9]!3".tune("sanza").mul(getFreq('c3')).freq()._pitchwheel()`} />
 
-This quality is often due to how the tunings were formed with instruments that were played differently than a piano.
-As such, some tunings are much better strummed, with the subtle clash of the detuned notes actually making the sound much more magical:
+Cette qualité est souvent due à la façon dont les accordages ont été formés avec des instruments qui étaient joués différemment d'un piano.
+En tant que tel, certains accordages sont beaucoup mieux grattés, avec le heurt subtil des notes désaccordées rendant en fait le son beaucoup plus magique :
 
 <MiniRepl
   client:idle
@@ -89,7 +89,7 @@ As such, some tunings are much better strummed, with the subtle clash of the det
   .legato("3").room(1).rfade(5)`}
 />
 
-Note the legato and reverb effects make sure the sound of the strumming gets to wash together. Alternating the direction of the strum can make the
-tones sound even more alive, too.
+Notez que les effets de legato et de réverbération s'assurent que le son du grattage se mélange. Alterner la direction du grattage peut rendre les
+tons encore plus vivants, aussi.
 
-The `tranh3` tuning has a similar set of notes, with two clashing. You might trying plugging that in above and see if you find a favorite strumming pattern.
+L'accordage `tranh3` a un ensemble similaire de notes, avec deux qui se heurtent. Vous pourriez essayer de le brancher ci-dessus et voir si vous trouvez un pattern de grattage favori.

@@ -1,44 +1,44 @@
 ---
-title: Getting Started
+title: Commencer
 layout: ../../layouts/MainLayout.astro
 ---
 
 import { MiniRepl } from '../../docs/MiniRepl';
 import { examples } from '../../examples.mjs';
 
-# Welcome
+# Bienvenue
 
-<div className="w-32 animate-pulse md:float-right ml-8">![Strudel Icon](/icons/strudel_icon.png)</div>
+<div className="w-32 animate-pulse md:float-right ml-8">![Icône Strudel](/icons/strudel_icon.png)</div>
 
-Welcome to the Strudel documentation pages!
-You've come to the right place if you want to learn how to make music with code.
+Bienvenue sur les pages de documentation de Strudel !
+Vous êtes au bon endroit si vous voulez apprendre à faire de la musique avec du code.
 
-## What is Strudel?
+## Qu'est-ce que Strudel ?
 
-With Strudel, you can expressively write dynamic music pieces.<br/>
-It is an official port of the [Tidal Cycles](https://tidalcycles.org/) pattern language to JavaScript.<br/>
-You don't need to know JavaScript or Tidal Cycles to make music with Strudel.
-This interactive tutorial will guide you through the basics of Strudel.<br/>
-The best place to actually make music with Strudel is the [Strudel REPL](https://strudel.cc/)
+Avec Strudel, vous pouvez écrire de manière expressive des morceaux de musique dynamiques.<br/>
+C'est un portage officiel du langage de patterns [Tidal Cycles](https://tidalcycles.org/) vers JavaScript.<br/>
+Vous n'avez pas besoin de connaître JavaScript ou Tidal Cycles pour faire de la musique avec Strudel.
+Ce tutoriel interactif vous guidera à travers les bases de Strudel.<br/>
+Le meilleur endroit pour faire de la musique avec Strudel est le [Strudel REPL](https://strudel.cc/)
 
 <div className="clear-both" />
 
-## What can you do with Strudel?
+## Que pouvez-vous faire avec Strudel ?
 
-- live code music: make music with code in real time
-- algorithmic composition: compose music using tidal's unique approach to pattern manipulation
-- teaching: focussing on a low barrier of entry, Strudel is a good fit for teaching music and code at the same time.
-- integrate into your existing music setup: either via MIDI or OSC, you can use Strudel as a really flexible sequencer
+- coder de la musique en direct : faire de la musique avec du code en temps réel
+- composition algorithmique : composer de la musique en utilisant l'approche unique de Tidal pour la manipulation de patterns
+- enseigner : avec une faible barrière d'entrée, Strudel est un bon choix pour enseigner la musique et le code en même temps
+- intégrer dans votre configuration musicale existante : que ce soit via MIDI ou OSC, vous pouvez utiliser Strudel comme un séquenceur très flexible
 
-## Examples
+## Exemples
 
-Here are some examples of how strudel can sound:
+Voici quelques exemples de ce à quoi Strudel peut ressembler :
 
 <MiniRepl client:idle tunes={examples} />
 
-These examples cannot fully encompass the variety of things you can do, so [check out the showcase](/intro/showcase/) for some videos of how people use Strudel.
+Ces exemples ne peuvent pas englober entièrement la variété de choses que vous pouvez faire, alors [consultez la vitrine](/intro/showcase/) pour des vidéos montrant comment les gens utilisent Strudel.
 
-## Getting Started
+## Commencer
 
-The best way to start learning Strudel is the workshop.
-If you're ready to dive in, let's start with your [first sounds](/workshop/first-sounds)
+La meilleure façon de commencer à apprendre Strudel est l'atelier.
+Si vous êtes prêt à vous lancer, commençons avec vos [premiers sons](/workshop/first-sounds)

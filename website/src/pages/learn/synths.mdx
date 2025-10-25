@@ -1,18 +1,18 @@
 ---
-title: Synths
+title: Synthés
 layout: ../../layouts/MainLayout.astro
 ---
 
 import { MiniRepl } from '../../docs/MiniRepl';
 import { JsDoc } from '../../docs/JsDoc';
 
-# Synths
+# Synthés
 
-In addition to the sampling engine, strudel comes with a synthesizer to create sounds on the fly.
+En plus du moteur d'échantillonnage, Strudel est livré avec un synthétiseur pour créer des sons à la volée.
 
-## Basic Waveforms
+## Formes d'onde de base
 
-The basic waveforms are `sine`, `sawtooth`, `square` and `triangle`, which can be selected via `sound` (or `s`):
+Les formes d'onde de base sont `sine`, `sawtooth`, `square` et `triangle`, qui peuvent être sélectionnées via `sound` (ou `s`) :
 
 <MiniRepl
   client:idle
@@ -21,16 +21,16 @@ The basic waveforms are `sine`, `sawtooth`, `square` and `triangle`, which can b
 ._scope()`}
 />
 
-If you don't set a `sound` but a `note` the default value for `sound` is `triangle`!
+Si vous ne définissez pas de `sound` mais une `note`, la valeur par défaut pour `sound` est `triangle` !
 
-## Noise
+## Bruit
 
-You can also use noise as a source by setting the waveform to: `white`, `pink` or `brown`. These are different
-flavours of noise, here written from hard to soft.
+Vous pouvez également utiliser le bruit comme source en définissant la forme d'onde sur : `white`, `pink` ou `brown`. Ce sont différentes
+saveurs de bruit, ici écrites du plus dur au plus doux.
 
 <MiniRepl client:idle tune={`sound("<white pink brown>")._scope()`} />
 
-Here's a more musical example of how to use noise for hihats:
+Voici un exemple plus musical de comment utiliser le bruit pour des charleston :
 
 <MiniRepl
   client:idle
@@ -38,17 +38,17 @@ Here's a more musical example of how to use noise for hihats:
 .decay(.04).sustain(0)._scope()`}
 />
 
-Some amount of pink noise can also be added to any oscillator by using the `noise` paremeter:
+Une certaine quantité de bruit rose peut également être ajoutée à n'importe quel oscillateur en utilisant le paramètre `noise` :
 
 <MiniRepl client:idle tune={`note("c3").noise("<0.1 0.25 0.5>")._scope()`} />
 
-You can also use the `crackle` type to play some subtle noise crackles. You can control noise amount by using the `density` parameter:
+Vous pouvez également utiliser le type `crackle` pour jouer quelques craquements de bruit subtils. Vous pouvez contrôler la quantité de bruit en utilisant le paramètre `density` :
 
 <MiniRepl client:idle tune={`s("crackle*4").density("<0.01 0.04 0.2 0.5>".slow(2))._scope()`} />
 
-### Additive Synthesis
+### Synthèse additive
 
-To tame the harsh sound of the basic waveforms, we can set the `n` control to limit the overtones of the waveform:
+Pour adoucir le son dur des formes d'onde de base, nous pouvons définir le contrôle `n` pour limiter les harmoniques de la forme d'onde :
 
 <MiniRepl
   client:idle
@@ -58,8 +58,8 @@ To tame the harsh sound of the basic waveforms, we can set the `n` control to li
 ._scope()`}
 />
 
-When the `n` control is used on a basic waveform, it defines the number of harmonic partials the sound is getting.
-You can also set `n` directly in mini notation with `sound`:
+Lorsque le contrôle `n` est utilisé sur une forme d'onde de base, il définit le nombre de partiels harmoniques que le son obtient.
+Vous pouvez également définir `n` directement dans la mini notation avec `sound` :
 
 <MiniRepl
   client:idle
@@ -68,8 +68,8 @@ You can also set `n` directly in mini notation with `sound`:
 ._scope()`}
 />
 
-Note for tidal users: `n` in tidal is synonymous to `note` for synths only.
-In strudel, this is not the case, where `n` will always change timbre, be it though different samples or different waveforms.
+Note pour les utilisateurs de Tidal : `n` dans Tidal est synonyme de `note` pour les synthés uniquement.
+Dans Strudel, ce n'est pas le cas, où `n` changera toujours le timbre, que ce soit à travers différents échantillons ou différentes formes d'onde.
 
 ## Vibrato
 
@@ -81,11 +81,11 @@ In strudel, this is not the case, where `n` will always change timbre, be it tho
 
 <JsDoc client:idle name="vibmod" h={0} />
 
-## FM Synthesis
+## Synthèse FM
 
-FM Synthesis is a technique that changes the frequency of a basic waveform rapidly to alter the timbre.
+La synthèse FM est une technique qui change rapidement la fréquence d'une forme d'onde de base pour altérer le timbre.
 
-You can use fm with any of the above waveforms, although the below examples all use the default triangle wave.
+Vous pouvez utiliser la FM avec n'importe laquelle des formes d'onde ci-dessus, bien que les exemples ci-dessous utilisent tous l'onde triangulaire par défaut.
 
 ### fm
 
@@ -111,11 +111,11 @@ You can use fm with any of the above waveforms, although the below examples all 
 
 <JsDoc client:idle name="fmenv" h={0} />
 
-## Wavetable Synthesis
+## Synthèse par table d'ondes
 
-Strudel can also use the sampler to load custom waveforms as a replacement of the default waveforms used by WebAudio for the base synth. A default set of more than 1000 wavetables is accessible by default (coming from the [AKWF](https://www.adventurekid.se/akrt/waveforms/adventure-kid-waveforms/) set). You can also import/use your own. A wavetable is a one-cycle waveform, which is then repeated to create a sound at the desired frequency. It is a classic but very effective synthesis technique.
+Strudel peut également utiliser le sampler pour charger des formes d'onde personnalisées en remplacement des formes d'onde par défaut utilisées par WebAudio pour le synthé de base. Un ensemble par défaut de plus de 1000 tables d'ondes est accessible par défaut (provenant de l'ensemble [AKWF](https://www.adventurekid.se/akrt/waveforms/adventure-kid-waveforms/)). Vous pouvez également importer/utiliser les vôtres. Une table d'ondes est une forme d'onde d'un cycle, qui est ensuite répétée pour créer un son à la fréquence souhaitée. C'est une technique de synthèse classique mais très efficace.
 
-Any sample preceded by the `wt_` prefix will be loaded as a wavetable. This means that the `loop` argument will be set to `1` by default. You can scan over the wavetable by using `loopBegin` and `loopEnd` as well.
+Tout échantillon précédé du préfixe `wt_` sera chargé comme une table d'ondes. Cela signifie que l'argument `loop` sera défini sur `1` par défaut. Vous pouvez parcourir la table d'ondes en utilisant `loopBegin` et `loopEnd` également.
 
 <MiniRepl
   client:idle
@@ -131,39 +131,39 @@ note("<[g3,b3,e4]!2 [a3,c3,e4] [b3,d3,f#4]>")
 
 ## ZZFX
 
-The "Zuper Zmall Zound Zynth" [ZZFX](https://github.com/KilledByAPixel/ZzFX) is also integrated in strudel.
-Developed by [Frank Force](https://frankforce.com/), it is a synth and FX engine originally intended to be used for size coding games.
+Le "Zuper Zmall Zound Zynth" [ZZFX](https://github.com/KilledByAPixel/ZzFX) est également intégré dans Strudel.
+Développé par [Frank Force](https://frankforce.com/), c'est un moteur de synthé et d'effets initialement destiné à être utilisé pour les jeux de size coding.
 
-It has 20 parameters in total, here is a snippet that uses all:
+Il a 20 paramètres au total, voici un extrait qui les utilise tous :
 
 <MiniRepl
   client:idle
-  tune={`note("c2 eb2 f2 g2") // also supports freq
+  tune={`note("c2 eb2 f2 g2") // supporte aussi freq
   .s("{z_sawtooth z_tan z_noise z_sine z_square}%4")
-  .zrand(0) // randomization
-  // zzfx envelope
+  .zrand(0) // randomisation
+  // enveloppe zzfx
   .attack(0.001)
   .decay(0.1)
   .sustain(.8)
   .release(.1)
-  // special zzfx params
-  .curve(1) // waveshape 1-3
-  .slide(0) // +/- pitch slide
-  .deltaSlide(0) // +/- pitch slide (?)
-  .noise(0) // make it dirty
-  .zmod(0) // fm speed
+  // paramètres zzfx spéciaux
+  .curve(1) // forme d'onde 1-3
+  .slide(0) // glissement de hauteur +/-
+  .deltaSlide(0) // glissement de hauteur +/- (?)
+  .noise(0) // rendre sale
+  .zmod(0) // vitesse fm
   .zcrush(0) // bit crush 0 - 1
-  .zdelay(0) // simple delay
-  .pitchJump(0) // +/- pitch change after pitchJumpTime
-  .pitchJumpTime(0) // >0 time after pitchJump is applied
-  .lfo(0) // >0 resets slide + pitchJump + sets tremolo speed
-  .tremolo(0) // 0-1 lfo volume modulation amount
-  //.duration(.2) // overwrite strudel event duration
-  //.gain(1) // change volume
-  ._scope() // vizualise waveform (not zzfx related)
+  .zdelay(0) // delay simple
+  .pitchJump(0) // changement de hauteur +/- après pitchJumpTime
+  .pitchJumpTime(0) // >0 temps après lequel pitchJump est appliqué
+  .lfo(0) // >0 réinitialise slide + pitchJump + définit la vitesse du tremolo
+  .tremolo(0) // 0-1 quantité de modulation de volume lfo
+  //.duration(.2) // remplacer la durée de l'événement strudel
+  //.gain(1) // changer le volume
+  ._scope() // visualiser la forme d'onde (non lié à zzfx)
 `}
 />
 
-Note that you can also combine zzfx with all the other audio fx (next chapter).
+Notez que vous pouvez également combiner zzfx avec tous les autres effets audio (chapitre suivant).
 
-Next up: [Audio Effects](/learn/effects)...
+Ensuite : [Effets Audio](/learn/effects)...

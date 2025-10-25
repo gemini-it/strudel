@@ -1,20 +1,20 @@
 ---
-title: Tonal Functions
+title: Fonctions tonales
 layout: ../../layouts/MainLayout.astro
 ---
 
 import { MiniRepl } from '../../docs/MiniRepl';
 import { JsDoc } from '../../docs/JsDoc';
 
-# Tonal Functions
+# Fonctions tonales
 
-These functions use [tonaljs](https://github.com/tonaljs/tonal) to provide helpers for musical operations.
+Ces fonctions utilisent [tonaljs](https://github.com/tonaljs/tonal) pour fournir des aides aux opérations musicales.
 
 ### voicing()
 
 <JsDoc client:idle name="voicing" h={0} />
 
-Here's an example of how you can play chords and a bassline:
+Voici un exemple de comment vous pouvez jouer des accords et une ligne de basse :
 
 <MiniRepl
   client:idle
@@ -33,19 +33,19 @@ Here's an example of how you can play chords and a bassline:
 
 ### transpose(semitones)
 
-Transposes all notes to the given number of semitones:
+Transpose toutes les notes du nombre de demi-tons donné :
 
 <MiniRepl client:only="react" tune={`"[c2 c3]*4".transpose("<0 -2 5 3>").note()`} />
 
-This method gets really exciting when we use it with a pattern as above.
+Cette méthode devient vraiment passionnante quand nous l'utilisons avec un pattern comme ci-dessus.
 
-Instead of numbers, scientific interval notation can be used as well:
+Au lieu de nombres, la notation d'intervalle scientifique peut également être utilisée :
 
 <MiniRepl client:only="react" tune={`"[c2 c3]*4".transpose("<1P -2M 4P 3m>").note()`} />
 
 ### scaleTranspose(steps)
 
-Transposes notes inside the scale by the number of steps:
+Transpose les notes à l'intérieur de la gamme du nombre de pas :
 
 <MiniRepl
   client:idle
@@ -57,11 +57,11 @@ Transposes notes inside the scale by the number of steps:
 
 ### rootNotes(octave = 2)
 
-Turns chord symbols into root notes of chords in given octave.
+Transforme les symboles d'accords en notes fondamentales d'accords dans l'octave donnée.
 
 <MiniRepl client:only="react" tune={`"<C^7 A7b13 Dm7 G7>*2".rootNotes(3).note()`} />
 
-Together with layer, struct and voicings, this can be used to create a basic backing track:
+Avec layer, struct et voicings, cela peut être utilisé pour créer une piste d'accompagnement de base :
 
 <MiniRepl
   client:idle

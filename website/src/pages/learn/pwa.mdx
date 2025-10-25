@@ -1,85 +1,85 @@
 ---
-title: Offline
+title: Hors ligne
 layout: ../../layouts/MainLayout.astro
 ---
 
-# Using Strudel Offline
+# Utiliser Strudel hors ligne
 
-You can use Strudel even without a network! When you first visit the [Strudel REPL](https://strudel.cc/),
-your browser will download the whole web app including documentation.
-When the download is finished (&lt;1MB), you can visit the website even when offline,
-getting the downloaded website instead of the online one.
+Vous pouvez utiliser Strudel même sans réseau ! Lorsque vous visitez pour la première fois le [Strudel REPL](https://strudel.cc/),
+votre navigateur téléchargera toute l'application web y compris la documentation.
+Lorsque le téléchargement est terminé (&lt;1MB), vous pouvez visiter le site web même hors ligne,
+obtenant le site web téléchargé au lieu de celui en ligne.
 
-When the site gets updated, your browser will download that update on the next online visit.
-When an update is available, the site will refresh after the download is finished.
+Lorsque le site est mis à jour, votre navigateur téléchargera cette mise à jour lors de la prochaine visite en ligne.
+Lorsqu'une mise à jour est disponible, le site s'actualisera une fois le téléchargement terminé.
 
-This works because Strudel is implemented as progessive web app (using [Vite PWA](https://vite-pwa-org.netlify.app/)).
+Cela fonctionne parce que Strudel est implémenté comme une application web progressive (utilisant [Vite PWA](https://vite-pwa-org.netlify.app/)).
 
-## Samples
+## Échantillons
 
-While the browser will download the app itself, samples are only downloaded when you're actively using them.
-So to make sure a specific set of samples is available when offline, just use them.
-Also, only samples from these domains will be cached for offline use:
+Bien que le navigateur télécharge l'application elle-même, les échantillons ne sont téléchargés que lorsque vous les utilisez activement.
+Donc, pour vous assurer qu'un ensemble spécifique d'échantillons est disponible hors ligne, utilisez-les simplement.
+De plus, seuls les échantillons de ces domaines seront mis en cache pour une utilisation hors ligne :
 
-- `https://raw.githubusercontent.com/*` for samples uploaded to github
-- `https://freesound.org/*` / `https://cdn.freesound.org/*` for freesound
-- `https://shabda.ndre.gr/.*` for shabda
+- `https://raw.githubusercontent.com/*` pour les échantillons téléchargés sur GitHub
+- `https://freesound.org/*` / `https://cdn.freesound.org/*` pour freesound
+- `https://shabda.ndre.gr/.*` pour shabda
 
-## Inspecting / Clearing Cache
+## Inspecter / Effacer le cache
 
-You can view all cached files in your browser.
+Vous pouvez voir tous les fichiers mis en cache dans votre navigateur.
 
 ### Firefox
 
-- Open the Developer Tools (`Tools > Web Developer > Web Developer Tools`)
-- go to `Storage` tab and expand `Cache Storage > https://strudel.cc`.
-- or go to the `Application` tab and view the latest updates in `Service Workers`
+- Ouvrez les Outils de développement (`Outils > Développement Web > Outils de développement Web`)
+- allez dans l'onglet `Stockage` et développez `Cache Storage > https://strudel.cc`.
+- ou allez dans l'onglet `Application` et visualisez les dernières mises à jour dans `Service Workers`
 
-### Chromium based Browsers
+### Navigateurs basés sur Chromium
 
-- Open Developer Tools (`Right Click > Inspect`)
-- go to the `Application` tab
-- view downloaded files under `Cache > Cache Storage`
-- view the latest updates in `Service Workers`
+- Ouvrez les Outils de développement (`Clic droit > Inspecter`)
+- allez dans l'onglet `Application`
+- visualisez les fichiers téléchargés sous `Cache > Cache Storage`
+- visualisez les dernières mises à jour dans `Service Workers`
 
-## Strudel Standalone App
+## Application autonome Strudel
 
-You can also install Strudel as a standalone app on most devices.
-A standalone app has its own desktop / homescreen icon and launches in a separate window,
-without the browser ui.
+Vous pouvez également installer Strudel comme application autonome sur la plupart des appareils.
+Une application autonome a sa propre icône de bureau / d'écran d'accueil et se lance dans une fenêtre séparée,
+sans l'interface utilisateur du navigateur.
 
 <figure>
-  ![Strudel on MacOS](/pwa/strudel-macos.png)
-  <figcaption>Strudel on MacOS</figcaption>
+  ![Strudel sur MacOS](/pwa/strudel-macos.png)
+  <figcaption>Strudel sur MacOS</figcaption>
 </figure>
 
-### Desktop
+### Bureau
 
-With a chromium based browser:
+Avec un navigateur basé sur Chromium :
 
-1. go to the [Strudel REPL](https://strudel.cc).
-2. on the right of the adress bar, click `install Strudel REPL`
-3. the REPL should now run as a standalone chromium app
+1. allez sur le [Strudel REPL](https://strudel.cc).
+2. à droite de la barre d'adresse, cliquez sur `installer Strudel REPL`
+3. le REPL devrait maintenant s'exécuter comme une application chromium autonome
 
-Without a chromium based browser, you can use [nativefier](https://github.com/nativefier/nativefier) to generate a desktop app:
+Sans navigateur basé sur Chromium, vous pouvez utiliser [nativefier](https://github.com/nativefier/nativefier) pour générer une application de bureau :
 
-1. make sure you have NodeJS installed
-2. run `npx nativefier strudel.cc`
+1. assurez-vous d'avoir NodeJS installé
+2. exécutez `npx nativefier strudel.cc`
 
 <figure>
-  ![Strudel on Linux](/pwa/strudel-linux.png)
-  <figcaption>Strudel on Linux</figcaption>
+  ![Strudel sur Linux](/pwa/strudel-linux.png)
+  <figcaption>Strudel sur Linux</figcaption>
 </figure>
 
 ### iOS
 
-1. open to the [Strudel REPL](https://strudel.cc/) in safari
-2. press the share icon and tab `Add to homescreen`
-3. You should now have a strudel app icon that opens the repl in full screen
+1. ouvrez le [Strudel REPL](https://strudel.cc/) dans Safari
+2. appuyez sur l'icône de partage et onglet `Ajouter à l'écran d'accueil`
+3. Vous devriez maintenant avoir une icône d'application Strudel qui ouvre le REPL en plein écran
 
 ### Android
 
-1. open to the [Strudel REPL](https://strudel.cc/)
-2. Tab the install button at the bottom
+1. ouvrez le [Strudel REPL](https://strudel.cc/)
+2. Appuyez sur le bouton d'installation en bas
 
-Ok, what are [Patterns](/technical-manual/patterns) all about?
+Ok, de quoi parlent les [Patterns](/technical-manual/patterns) ?

@@ -6,57 +6,56 @@ layout: ../../layouts/MainLayout.astro
 import { MiniRepl } from '../../docs/MiniRepl';
 import { JsDoc } from '../../docs/JsDoc';
 
-# Comparing Strudel and Tidal
+# Comparer Strudel et Tidal
 
-This page is dedicated to exisiting tidal users, giving an overview of all the differences between Strudel and Tidal.
+Cette page est dédiée aux utilisateurs existants de Tidal, donnant un aperçu de toutes les différences entre Strudel et Tidal.
 
-## Language
+## Langage
 
-Strudel is written in JavaScript, while Tidal is written in Haskell.
+Strudel est écrit en JavaScript, tandis que Tidal est écrit en Haskell.
 
-### Example
+### Exemple
 
-This difference is most obvious when looking at the syntax:
+Cette différence est la plus évidente lorsqu'on regarde la syntaxe :
 
 ```haskell
 iter 4 $ every 3 (||+ n "10 20") $ (n "0 1 3") # s "triangle" # crush 4
 ```
 
-One _could_ express that pattern to Strudel like so:
+On _pourrait_ exprimer ce pattern dans Strudel comme ceci :
 
 ```
 iter(4, every(3, add.squeeze("10 20"), n("0 1 3").s("triangle").crush(4)))
 ```
 
-- The `$` operator does not exist, so the `iter` function has to wrap everything in parens.
-- Custom operators like `||+` are explicit function calls, `add.squeeze` in this case
-- The `#` operator is replaced with a chained function call `# crush 4` => `.crush(4)`
+- L'opérateur `$` n'existe pas, donc la fonction `iter` doit tout envelopper dans des parenthèses.
+- Les opérateurs personnalisés comme `||+` sont des appels de fonction explicites, `add.squeeze` dans ce cas
+- L'opérateur `#` est remplacé par un appel de fonction chaîné `# crush 4` => `.crush(4)`
 
-Unlike Haskell, JavaScript lacks the ability to define custom infix
-operators, or change the meaning of existing ones.
+Contrairement à Haskell, JavaScript n'a pas la capacité de définir des opérateurs infixes personnalisés, ou de changer la signification de ceux existants.
 
-Before you discard Strudel as an unwieldy paren monster, look at this alternative way to write the above:
+Avant de rejeter Strudel comme un monstre de parenthèses ingérable, regardez cette façon alternative d'écrire ce qui précède :
 
 ```
 n("0 1 3").every(3, add.squeeze("10 20")).iter(4).s("triangle").crush(4)
 ```
 
-By reordering calls, the parens are much less nested.
-As a general rule by thumb, you could say that everything Tidal does with `$` is reversed in Strudel:
+En réordonnant les appels, les parenthèses sont beaucoup moins imbriquées.
+En règle générale, on pourrait dire que tout ce que Tidal fait avec `$` est inversé dans Strudel :
 
 `iter 4 $ every 3 (||+ n "10 20") $ (n "0 1 3")`
 
-becomes
+devient
 
 `n("0 1 3").every(3, add.squeeze("10 20")).iter(4)`
 
-Simply put, `foo x $ bar x` becomes `bar(x).foo(x)`.
+Tout simplement, `foo x $ bar x` devient `bar(x).foo(x)`.
 
-### Operators
+### Opérateurs
 
-The [custom operators of tidal](https://tidalcycles.org/docs/reference/pattern_structure/#all-the-operators) are normal functions in strudel:
+Les [opérateurs personnalisés de Tidal](https://tidalcycles.org/docs/reference/pattern_structure/#all-the-operators) sont des fonctions normales dans Strudel :
 
-| function    | tidal  | strudel |
+| fonction    | tidal  | strudel |
 | ----------- | ------ | ------- |
 | add         | \|+ n  | .add(n) |
 | subtract    | \|- n  | .sub(n) |
@@ -65,9 +64,9 @@ The [custom operators of tidal](https://tidalcycles.org/docs/reference/pattern_s
 | modulo      | \|\% n | .mod(n) |
 | left values | \|\< n | .set(n) |
 
-The above list only displays the operators taking the structure comes from the `left`.
-For each of those, a `right` and `both` variant also exists.
-As this directional thinking only works with code, strudel calls these `in` / `out` / `mix`:
+La liste ci-dessus affiche uniquement les opérateurs prenant la structure venant de la `gauche`.
+Pour chacun d'entre eux, une variante `right` et `both` existe également.
+Comme cette pensée directionnelle ne fonctionne qu'avec du code, Strudel les appelle `in` / `out` / `mix` :
 
 | direction | tidal   | strudel     |
 | --------- | ------- | ----------- |
@@ -75,44 +74,44 @@ As this directional thinking only works with code, strudel calls these `in` / `o
 | right     | +\| n   | .add.out(n) |
 | both      | \|+\| n | .add.mix(n) |
 
-Instead of `+` / `add`, you can use any of the available operators of the first list.
+Au lieu de `+` / `add`, vous pouvez utiliser l'un des opérateurs disponibles de la première liste.
 
-## Function Compatibility
+## Compatibilité des fonctions
 
-[This issue](https://codeberg.org/uzu/strudel/issues/31) tracks which Tidal functions are implemented in Strudel.
-The list might not be 100% up to date and probably also misses some functions completely..
-Feel encouraged to search the source code for a function you're looking for.
-If you find a function that's not on the list, please tell!
+[Cette issue](https://codeberg.org/uzu/strudel/issues/31) suit quelles fonctions Tidal sont implémentées dans Strudel.
+La liste pourrait ne pas être à 100% à jour et manque probablement aussi complètement certaines fonctions..
+N'hésitez pas à rechercher dans le code source une fonction que vous recherchez.
+Si vous trouvez une fonction qui n'est pas sur la liste, veuillez le dire !
 
-## Control Params
+## Paramètres de contrôle
 
-As seen in the example, the `#` operator (shorthand for `|>`) is also just a function call in strudel.
-So `note "c5" # s "gtr"` becomes `note("c5").s('gtr')`.
+Comme vu dans l'exemple, l'opérateur `#` (raccourci pour `|>`) est également juste un appel de fonction dans Strudel.
+Donc `note "c5" # s "gtr"` devient `note("c5").s('gtr')`.
 
-[This file](https://codeberg.org/uzu/strudel/src/branch/main/packages/core/controls.mjs) lists all available control params.
-Note that not all of those work in the Webaudio Output of Strudel.
-If you find a tidal control that's not on the list, please tell!
+[Ce fichier](https://codeberg.org/uzu/strudel/src/branch/main/packages/core/controls.mjs) liste tous les paramètres de contrôle disponibles.
+Notez que tous ne fonctionnent pas dans la sortie Webaudio de Strudel.
+Si vous trouvez un contrôle Tidal qui n'est pas sur la liste, veuillez le dire !
 
-## Sound
+## Son
 
-Tidal is commonly paired with Superdirt / Supercollider for sound generation.
-While Strudel also has a way of [communicating with Superdirt](/learn/input-output/),
-it aims to provide a standalone live coding environment that runs entirely in the browser.
+Tidal est couramment associé à Superdirt / Supercollider pour la génération de son.
+Alors que Strudel a également un moyen de [communiquer avec Superdirt](/learn/input-output/),
+il vise à fournir un environnement de live coding autonome qui s'exécute entièrement dans le navigateur.
 
-### Audio Effects
+### Effets audio
 
-Many of SuperDirt's effects have been reimplemented in Strudel, using the Web Audio API.
-You can find a [list of available effects here](/learn/effects/).
+Beaucoup des effets de SuperDirt ont été réimplémentés dans Strudel, en utilisant l'API Web Audio.
+Vous pouvez trouver une [liste des effets disponibles ici](/learn/effects/).
 
 ### Sampler
 
-Strudel's sampler supports [a subset](/learn/samples) of Superdirt's sampler.
-Also, samples are always loaded from a URL rather than from the disk, although [that might be possible in the future](https://codeberg.org/uzu/strudel/issues/118).
+Le sampler de Strudel prend en charge [un sous-ensemble](/learn/samples) du sampler de Superdirt.
+De plus, les échantillons sont toujours chargés depuis une URL plutôt que depuis le disque, bien que [cela pourrait être possible à l'avenir](https://codeberg.org/uzu/strudel/issues/118).
 
-## Evaluation
+## Évaluation
 
-The Strudel REPL does not support [block based evaluation](https://codeberg.org/uzu/strudel/issues/34) yet.
-You can use labeled statements and `_` to mute:
+Le REPL Strudel ne prend pas encore en charge l'[évaluation par blocs](https://codeberg.org/uzu/strudel/issues/34).
+Vous pouvez utiliser des instructions étiquetées et `_` pour couper le son :
 
 <MiniRepl
   client:visible
@@ -123,11 +122,11 @@ tune={`$: n("[0 .. 8]*8/9").scale("C:minor:pentatonic")
 
 ## Tempo
 
-Strudels tempo is 1 cycle per second, while tidal defaults to `0.5625`.
-You can get the same tempo as tidal with:
+Le tempo de Strudel est de 1 cycle par seconde, tandis que Tidal utilise par défaut `0.5625`.
+Vous pouvez obtenir le même tempo que Tidal avec :
 
 ```
 note("c a f e").fast(.5625);
 ```
 
-Next up: the [REPL](/technical-manual/repl)
+Ensuite : le [REPL](/technical-manual/repl)

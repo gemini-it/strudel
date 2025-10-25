@@ -1,0 +1,47 @@
+[build]
+  # Répertoire contenant le package.json
+  base = "website"
+  # Commande de build
+  command = "pnpm build"
+  # Répertoire de sortie après le build
+  publish = "dist"
+
+[build.environment]
+  # Version de Node.js
+  NODE_VERSION = "18"
+  # Utiliser pnpm
+  NPM_FLAGS = "--version"
+
+# Redirections pour le SPA routing si nécessaire
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+  force = false
+
+# Headers pour optimiser les performances
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# Cache pour les assets statiques
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Support PWA
+[[headers]]
+  for = "/manifest.json"
+  [headers.values]
+    Content-Type = "application/manifest+json"
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/sw.js"
+  [headers.values]
+    Content-Type = "application/javascript"
+    Cache-Control = "public, max-age=0, must-revalidate"

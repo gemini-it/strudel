@@ -1,14 +1,14 @@
 ---
-title: Music metadata
+title: Métadonnées musicales
 layout: ../../layouts/MainLayout.astro
 ---
 
 import { MiniRepl } from '../../docs/MiniRepl';
 import { JsDoc } from '../../docs/JsDoc';
 
-# Music metadata
+# Métadonnées musicales
 
-You can optionally add some music metadata in your Strudel code, by using tags in code comments:
+Vous pouvez optionnellement ajouter des métadonnées musicales dans votre code Strudel, en utilisant des balises dans les commentaires de code :
 
 ```js
 // @title Hey Hoo
@@ -16,11 +16,11 @@ You can optionally add some music metadata in your Strudel code, by using tags i
 // @license CC BY-NC-SA
 ```
 
-Like other comments, those are ignored by Strudel, but it can be used by other tools to retrieve some information about the music.
+Comme d'autres commentaires, ceux-ci sont ignorés par Strudel, mais peuvent être utilisés par d'autres outils pour récupérer des informations sur la musique.
 
-## Alternative syntax
+## Syntaxe alternative
 
-You can also use comment blocks:
+Vous pouvez également utiliser des blocs de commentaires :
 
 ```js
 /*
@@ -30,33 +30,33 @@ You can also use comment blocks:
 */
 ```
 
-Or define multiple tags in one line:
+Ou définir plusieurs balises sur une ligne :
 
 ```js
 // @title Hey Hoo @by Sam Tagada @license CC BY-NC-SA
 ```
 
-The `title` tag has an alternative syntax using quotes (must be defined at the very begining):
+La balise `title` a une syntaxe alternative utilisant des guillemets (doit être définie tout au début) :
 
 ```js
 // "Hey Hoo" @by Sam Tagada
 ```
 
-## Tags list
+## Liste des balises
 
-Available tags are:
+Les balises disponibles sont :
 
-- `@title`: music title
-- `@by`: music author(s), separated by comma, eventually followed with a link in `<>` (ex: `@by John Doe <https://example.com>`)
-- `@license`: music license(s), e.g. CC BY-NC-SA. Unsure? [Choose a creative commons license here](https://creativecommons.org/choose/)
-- `@details`: some additional information about the music
-- `@url`: web page(s) related to the music (git repo, soundcloud link, etc.)
-- `@genre`: music genre(s) (pop, jazz, etc)
-- `@album`: music album name
+- `@title` : titre de la musique
+- `@by` : auteur(s) de la musique, séparés par une virgule, éventuellement suivi d'un lien dans `<>` (ex : `@by John Doe <https://example.com>`)
+- `@license` : licence(s) de la musique, par exemple CC BY-NC-SA. Pas sûr ? [Choisissez une licence creative commons ici](https://creativecommons.org/choose/)
+- `@details` : quelques informations supplémentaires sur la musique
+- `@url` : page(s) web liée(s) à la musique (dépôt git, lien soundcloud, etc.)
+- `@genre` : genre(s) musical(aux) (pop, jazz, etc)
+- `@album` : nom de l'album musical
 
-## Multiple values
+## Valeurs multiples
 
-Some of them accepts several values, using the comma or new line separator, or duplicating the tag:
+Certaines d'entre elles acceptent plusieurs valeurs, en utilisant la virgule ou le séparateur de nouvelle ligne, ou en dupliquant la balise :
 
 ```js
 /*
@@ -68,7 +68,7 @@ Some of them accepts several values, using the comma or new line separator, or d
 */
 ```
 
-You can also add optional prefixes and use tags where you want:
+Vous pouvez également ajouter des préfixes optionnels et utiliser des balises où vous voulez :
 
 ```js
 /*
@@ -79,14 +79,13 @@ samples @by Jimmy
 note("a3 c#4 e4 a4") // @by Sandy
 ```
 
-## Multiline
+## Multi-lignes
 
-If a tag doesn't accept a list, it can take multi-line values:
+Si une balise n'accepte pas de liste, elle peut prendre des valeurs multi-lignes :
 
 ```js
 /*
-@details I wrote this song in February 19th, 2023.
-         It was around midnight and I was lying on
-         the sofa in the living room.
+@details J'ai écrit cette chanson le 19 février 2023.
+         Il était environ minuit et j'étais allongé sur
+         le canapé dans le salon.
 */
-```

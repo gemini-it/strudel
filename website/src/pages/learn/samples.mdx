@@ -1,65 +1,65 @@
 ---
-title: Samples
+title: Échantillons
 layout: ../../layouts/MainLayout.astro
 ---
 
 import { MiniRepl } from '../../docs/MiniRepl';
 import { JsDoc } from '../../docs/JsDoc';
 
-# Samples
+# Échantillons
 
-Samples are the most common way to make sound with tidal and strudel.
-A sample is a (commonly short) piece of audio that is used as a basis for sound generation, undergoing various transformations.
-Music that is based on samples can be thought of as a collage of sound. [Read more about Sampling](<https://en.wikipedia.org/wiki/Sampling_(music)>)
+Les échantillons sont le moyen le plus courant de produire du son avec Tidal et Strudel.
+Un échantillon est un (généralement court) morceau d'audio qui est utilisé comme base pour la génération de son, subissant diverses transformations.
+La musique basée sur des échantillons peut être considérée comme un collage de sons. [En savoir plus sur l'échantillonnage](<https://en.wikipedia.org/wiki/Sampling_(music)>)
 
-Strudel allows loading samples in the form of audio files of various formats (wav, mp3, ogg) from any publicly available URL.
+Strudel permet de charger des échantillons sous forme de fichiers audio de différents formats (wav, mp3, ogg) depuis n'importe quelle URL publiquement accessible.
 
-# Default Samples
+# Échantillons par défaut
 
-By default, strudel comes with a built-in "sample map", providing a solid base to play with.
+Par défaut, Strudel est livré avec une "carte d'échantillons" intégrée, offrant une base solide pour jouer.
 
 <MiniRepl client:idle tune={`s("bd sd [~ bd] sd,hh*16, misc")`} />
 
-Here, we are using the `s` function to play back different default samples (`bd`, `sd`, `hh` and `misc`) to get a drum beat.
+Ici, nous utilisons la fonction `s` pour lire différents échantillons par défaut (`bd`, `sd`, `hh` et `misc`) pour obtenir un rythme de batterie.
 
-For drum sounds, strudel uses the comprehensive [tidal-drum-machines](https://github.com/ritchse/tidal-drum-machines) library, with the following naming convention:
+Pour les sons de batterie, Strudel utilise la bibliothèque complète [tidal-drum-machines](https://github.com/ritchse/tidal-drum-machines), avec la convention de nommage suivante :
 
-| Drum                 | Abbreviation |
-| -------------------- | ------------ |
-| Bass drum, Kick drum | bd           |
-| Snare drum           | sd           |
-| Rimshot              | rim          |
-| Clap                 | cp           |
-| Closed hi-hat        | hh           |
-| Open hi-hat          | oh           |
-| Crash                | cr           |
-| Ride                 | rd           |
-| High tom             | ht           |
-| Medium tom           | mt           |
-| Low tom              | lt           |
+| Batterie              | Abréviation |
+| --------------------- | ----------- |
+| Grosse caisse         | bd          |
+| Caisse claire         | sd          |
+| Rimshot               | rim         |
+| Clap                  | cp          |
+| Charleston fermée     | hh          |
+| Charleston ouverte    | oh          |
+| Cymbale crash         | cr          |
+| Cymbale ride          | rd          |
+| Tom aigu              | ht          |
+| Tom médium            | mt          |
+| Tom grave             | lt          |
 
 <img src="/img/drumset.png" />
 
 <a class="text-right text-xs" href="https://de.wikipedia.org/wiki/Schlagzeug#/media/Datei:Drum_set.svg" target="_blank">
-  original von Pbroks13
+  original de Pbroks13
 </a>
 
-More percussive sounds:
+Plus de sons percussifs :
 
-| Source                              | Abbreviation |
-| ----------------------------------- | ------------ |
-| Shakers (and maracas, cabasas, etc) | sh           |
-| Cowbell                             | cb           |
-| Tambourine                          | tb           |
-| Other percussions                   | perc         |
-| Miscellaneous samples               | misc         |
-| Effects                             | fx           |
+| Source                                  | Abréviation |
+| --------------------------------------- | ----------- |
+| Shakers (et maracas, cabasas, etc)      | sh          |
+| Cowbell                                 | cb          |
+| Tambourin                               | tb          |
+| Autres percussions                      | perc        |
+| Échantillons divers                     | misc        |
+| Effets                                  | fx          |
 
-Furthermore, strudel also loads instrument samples from [VCSL](https://github.com/sgossner/VCSL) by default.
+De plus, Strudel charge également des échantillons d'instruments depuis [VCSL](https://github.com/sgossner/VCSL) par défaut.
 
-To see which sample names are available, open the `sounds` tab in the [REPL](https://strudel.cc/).
+Pour voir quels noms d'échantillons sont disponibles, ouvrez l'onglet `sounds` dans le [REPL](https://strudel.cc/).
 
-You can also create custom aliases for existing sounds using the `soundAlias` function:
+Vous pouvez également créer des alias personnalisés pour les sons existants en utilisant la fonction `soundAlias` :
 
 <MiniRepl
   client:idle
@@ -67,46 +67,46 @@ You can also create custom aliases for existing sounds using the `soundAlias` fu
 s("kick")`}
 />
 
-Note that only the sample maps (mapping names to URLs) are loaded initially, while the audio samples themselves are not loaded until they are actually played.
-This behaviour of loading things only when they are needed is also called `lazy loading`.
-While it saves resources, it can also lead to sounds not being audible the first time they are triggered, because the sound is still loading.
-[This might be fixed in the future](https://codeberg.org/uzu/strudel/issues/187)
+Notez que seules les cartes d'échantillons (mappant les noms aux URLs) sont chargées initialement, tandis que les échantillons audio eux-mêmes ne sont pas chargés tant qu'ils ne sont pas réellement joués.
+Ce comportement de chargement des choses uniquement quand elles sont nécessaires est également appelé `chargement paresseux`.
+Bien qu'il économise des ressources, il peut également conduire à ce que les sons ne soient pas audibles la première fois qu'ils sont déclenchés, car le son est encore en cours de chargement.
+[Cela pourrait être corrigé à l'avenir](https://codeberg.org/uzu/strudel/issues/187)
 
-# Sound Banks
+# Banques de sons
 
-If we open the `sounds` tab and then `drum-machines`, we can see that the drum samples are all prefixed with drum machine names: `RolandTR808_bd`, `RolandTR808_sd`, `RolandTR808_hh` etc..
+Si nous ouvrons l'onglet `sounds` puis `drum-machines`, nous pouvons voir que les échantillons de batterie sont tous préfixés avec des noms de boîtes à rythmes : `RolandTR808_bd`, `RolandTR808_sd`, `RolandTR808_hh` etc..
 
-We _could_ use them like this:
+Nous _pourrions_ les utiliser comme ceci :
 
 <MiniRepl client:idle tune={`s("RolandTR808_bd RolandTR808_sd,RolandTR808_hh*16")`} />
 
-... but thats obviously a bit much to write. Using the `bank` function, we can shorten this to:
+... mais c'est évidemment un peu long à écrire. En utilisant la fonction `bank`, nous pouvons raccourcir cela à :
 
 <MiniRepl client:idle tune={`s("bd sd,hh*16").bank("RolandTR808")`} />
 
-You could even pattern the bank to switch between different drum machines:
+Vous pourriez même patteriser la banque pour basculer entre différentes boîtes à rythmes :
 
 <MiniRepl client:idle tune={`s("bd sd,hh*16").bank("<RolandTR808 RolandTR909>")`} />
 
-Behind the scenes, `bank` will just prepend the drum machine name to the sample name with `_` to get the full name.
-This of course only works because the name after `_` (`bd`, `sd` etc..) is standardized.
-Also note that some banks won't have samples for all sounds!
+En coulisses, `bank` va simplement ajouter le nom de la boîte à rythmes au nom de l'échantillon avec `_` pour obtenir le nom complet.
+Cela ne fonctionne bien sûr que parce que le nom après `_` (`bd`, `sd` etc..) est standardisé.
+Notez également que certaines banques n'auront pas d'échantillons pour tous les sons !
 
-# Selecting Sounds
+# Sélection des sons
 
-If we open the `sounds` tab again, followed by tab `drum machines`, there is also a number behind each name, indicating how many individual samples are available.
-For example `RolandTR909_hh(4)` means there are 4 samples of a TR909 hihat available.
-By default, `s` will play the first sample, but we can select the other ones using `n`, starting from 0:
+Si nous ouvrons à nouveau l'onglet `sounds`, suivi de l'onglet `drum machines`, il y a aussi un numéro derrière chaque nom, indiquant combien d'échantillons individuels sont disponibles.
+Par exemple `RolandTR909_hh(4)` signifie qu'il y a 4 échantillons d'un charleston TR909 disponibles.
+Par défaut, `s` jouera le premier échantillon, mais nous pouvons sélectionner les autres en utilisant `n`, à partir de 0 :
 
 <MiniRepl client:idle tune={`s("hh*8").bank("RolandTR909").n("0 1 2 3")`} />
 
-Numbers that are too high will just wrap around to the beginning
+Les numéros qui sont trop élevés vont simplement revenir au début
 
 <MiniRepl client:idle tune={`s("hh*8").bank("RolandTR909").n("0 1 2 3 4 5 6 7")`} />
 
-Here, 0-3 will play the same sounds as 4-7, because `RolandTR909_hh` only has 4 sounds.
+Ici, 0-3 joueront les mêmes sons que 4-7, car `RolandTR909_hh` n'a que 4 sons.
 
-Selecting sounds also works inside the mini notation, using "`:`" like this:
+La sélection de sons fonctionne également à l'intérieur de la mini notation, en utilisant "`:'" comme ceci :
 
 <MiniRepl
   client:idle
@@ -114,13 +114,13 @@ Selecting sounds also works inside the mini notation, using "`:`" like this:
 .bank("RolandTR909")`}
 />
 
-# Loading Custom Samples
+# Chargement d'échantillons personnalisés
 
-You can load a non-standard sample map using the `samples` function.
+Vous pouvez charger une carte d'échantillons non standard en utilisant la fonction `samples`.
 
-## Loading samples from file URLs
+## Chargement d'échantillons depuis des URLs de fichiers
 
-In this example we assign names `bassdrum`, `hihat` and `snaredrum` to specific audio files on a server:
+Dans cet exemple, nous attribuons les noms `bassdrum`, `hihat` et `snaredrum` à des fichiers audio spécifiques sur un serveur :
 
 <MiniRepl
   client:idle
@@ -133,24 +133,24 @@ In this example we assign names `bassdrum`, `hihat` and `snaredrum` to specific 
 s("bassdrum snaredrum:0 bassdrum snaredrum:1, hihat*16")`}
 />
 
-You can freely choose any combination of letters for each sample name. It is even possible to override the default sounds.
-The names you pick will be made available in the `s` function.
-Make sure that the URL and each sample path form a correct URL!
+Vous pouvez librement choisir n'importe quelle combinaison de lettres pour chaque nom d'échantillon. Il est même possible de remplacer les sons par défaut.
+Les noms que vous choisissez seront disponibles dans la fonction `s`.
+Assurez-vous que l'URL et chaque chemin d'échantillon forment une URL correcte !
 
-In the above example, `bassdrum` will load:
+Dans l'exemple ci-dessus, `bassdrum` chargera :
 
 ```
 https://raw.githubusercontent.com/tidalcycles/Dirt-Samples/master/bd/BT0AADA.wav
-|----------------------base path --------------------------------|--sample path-|
+|----------------------chemin de base ----------------------------------|--chemin échantillon-|
 ```
 
-Note that we can either load a single file, like for `bassdrum` and `hihat`, or a list of files like for `snaredrum`!
-As soon as you run the code, your chosen sample names will be listed in `sounds` -> `user`.
+Notez que nous pouvons soit charger un seul fichier, comme pour `bassdrum` et `hihat`, soit une liste de fichiers comme pour `snaredrum` !
+Dès que vous exécutez le code, vos noms d'échantillons choisis seront listés dans `sounds` -> `user`.
 
-## Loading Samples from a strudel.json file
+## Chargement d'échantillons depuis un fichier strudel.json
 
-The above way to load samples might be tedious to write out / copy paste each time you write a new pattern.
-To avoid that, you can simply pass a URL to a `strudel.json` file somewhere on the internet:
+La méthode ci-dessus pour charger des échantillons peut être fastidieuse à écrire/copier-coller chaque fois que vous écrivez un nouveau pattern.
+Pour éviter cela, vous pouvez simplement passer une URL vers un fichier `strudel.json` quelque part sur internet :
 
 <MiniRepl
   client:idle
@@ -158,9 +158,9 @@ To avoid that, you can simply pass a URL to a `strudel.json` file somewhere on t
 s("bd sd bd sd,hh*16")`}
 />
 
-The file is expected to define a sample map using JSON, in the same format as described above.
-Additionally, the base path can be defined with the `_base` key.
-The last section could be written as:
+Le fichier doit définir une carte d'échantillons en utilisant JSON, dans le même format que décrit ci-dessus.
+De plus, le chemin de base peut être défini avec la clé `_base`.
+La dernière section pourrait être écrite comme :
 
 ```json
 {
@@ -171,34 +171,29 @@ The last section could be written as:
 }
 ```
 
-Please note that browsers will often cache `strudel.json` on first load, and keep using the cached
-version even if the orginal has been updated. If this bites you (for example while developing a new
-sample pack), you can force the browser to download a new copy by i.e. changing capitalization of one
-character in the URL, or adding a URL attribute, such as:
+Veuillez noter que les navigateurs mettent souvent en cache `strudel.json` lors du premier chargement, et continuent d'utiliser la version en cache même si l'original a été mis à jour. Si cela vous pose problème (par exemple lors du développement d'un nouveau pack d'échantillons), vous pouvez forcer le navigateur à télécharger une nouvelle copie en changeant par exemple la casse d'un caractère dans l'URL, ou en ajoutant un attribut d'URL, tel que :
 
 ```javascript
 samples('https://raw.githubusercontent.com/tidalcycles/Dirt-Samples/master/strudel.json?version=2');
 ```
 
-that gets ignored by GitHub (but changes the URL, forcing the browser to reload every time we increase
-the version number).
+qui est ignoré par GitHub (mais change l'URL, forçant le navigateur à recharger chaque fois que nous augmentons le numéro de version).
 
-It is also possible, of course, to just remove it from cache (deleting cache in browser Privacy settings,
-or from the dev console if you're technically minded, or by using a cache deleting extension).
+Il est également possible, bien sûr, de simplement le supprimer du cache (en supprimant le cache dans les paramètres de confidentialité du navigateur, ou depuis la console de développement si vous êtes techniquement averti, ou en utilisant une extension de suppression de cache).
 
-## Generating strudel.json
+## Génération de strudel.json
 
-You can use [@strudel/sampler](https://www.npmjs.com/package/@strudel/sampler) to generate a strudel.json file for you, by running:
+Vous pouvez utiliser [@strudel/sampler](https://www.npmjs.com/package/@strudel/sampler) pour générer un fichier strudel.json pour vous, en exécutant :
 
 ```sh
 npx --yes @strudel/sampler --json > strudel.json
 ```
 
-See other uses of strudel/sampler further below, under "From Disk via @strudel/sampler".
+Voir d'autres utilisations de strudel/sampler plus bas, sous "Depuis le disque via @strudel/sampler".
 
-## Github Shortcut
+## Raccourci Github
 
-Because loading samples from github is common, there is a shortcut:
+Parce que le chargement d'échantillons depuis GitHub est courant, il existe un raccourci :
 
 <MiniRepl
   client:idle
@@ -206,20 +201,20 @@ Because loading samples from github is common, there is a shortcut:
 s("bd sd bd sd,hh*16")`}
 />
 
-The format is `samples('github:<user>/<repo>/<branch>')`. If you omit `branch` (like above), the `main` branch will be used.
-It assumes a `strudel.json` file to be present at the root of the repository:
+Le format est `samples('github:<utilisateur>/<repo>/<branche>')`. Si vous omettez `branche` (comme ci-dessus), la branche `main` sera utilisée.
+Il suppose qu'un fichier `strudel.json` soit présent à la racine du dépôt :
 
 ```
-https://raw.githubusercontent.com/<user>/<repo>/<branch>/strudel.json
+https://raw.githubusercontent.com/<utilisateur>/<repo>/<branche>/strudel.json
 ```
 
-## From Disk via "Import Sounds Folder"
+## Depuis le disque via "Import Sounds Folder"
 
-If you don't want to upload your samples to the internet, you can also load them from your local disk.
-Go to the `sounds` tab in the REPL and open the `import-sounds` tab below the search bar.
-Press the "import sounds folder" button and select a folder that contains audio files.
-The folder you select can also contain subfolders with audio files.
-Example:
+Si vous ne voulez pas télécharger vos échantillons sur internet, vous pouvez également les charger depuis votre disque local.
+Allez dans l'onglet `sounds` dans le REPL et ouvrez l'onglet `import-sounds` sous la barre de recherche.
+Appuyez sur le bouton "import sounds folder" et sélectionnez un dossier contenant des fichiers audio.
+Le dossier que vous sélectionnez peut également contenir des sous-dossiers avec des fichiers audio.
+Exemple :
 
 ```
 └─ samples
@@ -233,22 +228,22 @@ Example:
       └─ smashmiddle.wav
 ```
 
-In the above example the folder `samples` contains 2 subfolders `swoop` and `smash`, which contain audio files.
-If you select that `samples` folder, the `user` tab (next to the `import-sounds` tab) will then contain 2 new sounds: `swoop(3) smash(3)`
-The individual samples can the be played normally like `s("swoop:0 swoop:1 smash:2")`.
-The samples within each sound use zero-based indexing in alphabetical order.
+Dans l'exemple ci-dessus, le dossier `samples` contient 2 sous-dossiers `swoop` et `smash`, qui contiennent des fichiers audio.
+Si vous sélectionnez ce dossier `samples`, l'onglet `user` (à côté de l'onglet `import-sounds`) contiendra alors 2 nouveaux sons : `swoop(3) smash(3)`
+Les échantillons individuels peuvent alors être joués normalement comme `s("swoop:0 swoop:1 smash:2")`.
+Les échantillons de chaque son utilisent une indexation basée sur zéro par ordre alphabétique.
 
-## From Disk via @strudel/sampler
+## Depuis le disque via @strudel/sampler
 
-Instead of loading your samples into your browser with the "import sounds folder" button, you can also serve the samples from a local file server.
-The easiest way to do this is using [@strudel/sampler](https://www.npmjs.com/package/@strudel/sampler):
+Au lieu de charger vos échantillons dans votre navigateur avec le bouton "import sounds folder", vous pouvez également servir les échantillons depuis un serveur de fichiers local.
+Le moyen le plus simple de le faire est d'utiliser [@strudel/sampler](https://www.npmjs.com/package/@strudel/sampler) :
 
 ```sh
 cd samples
 npx @strudel/sampler
 ```
 
-Then you can load it via:
+Ensuite, vous pouvez le charger via :
 
 <MiniRepl
   client:idle
@@ -257,14 +252,14 @@ Then you can load it via:
 n("<0 1 2>").s("swoop smash")`}
 />
 
-The handy thing about `@strudel/sampler` is that it auto-generates the `strudel.json` file based on your folder structure.
-You can see what it generated by going to `http://localhost:5432` with your browser.
+L'avantage de `@strudel/sampler` est qu'il génère automatiquement le fichier `strudel.json` en fonction de votre structure de dossiers.
+Vous pouvez voir ce qu'il a généré en allant sur `http://localhost:5432` avec votre navigateur.
 
-Note: You need [NodeJS](https://nodejs.org/) installed on your system for this to work.
+Remarque : Vous devez avoir [NodeJS](https://nodejs.org/) installé sur votre système pour que cela fonctionne.
 
-## Specifying Pitch
+## Spécification de la hauteur
 
-To make sure your samples are in tune when playing them with `note`, you can specify a base pitch like this:
+Pour vous assurer que vos échantillons sont accordés lorsque vous les jouez avec `note`, vous pouvez spécifier une hauteur de base comme ceci :
 
 <MiniRepl
   client:idle
@@ -276,7 +271,7 @@ note("g3 [bb3 c4] <g4 f4 eb4 f3>@2").s("gtr,moog").clip(1)
   .gain(.5)`}
 />
 
-We can also declare different samples for different regions of the keyboard:
+Nous pouvons également déclarer différents échantillons pour différentes régions du clavier :
 
 <MiniRepl
   client:idle
@@ -293,14 +288,14 @@ note("g2!2 <bb2 c3>!2, <c4@3 [<eb4 bb3> g4 f4]>")
 .gain(.5)`}
 />
 
-The sampler will always pick the closest matching sample for the current note!
+Le sampler choisira toujours l'échantillon le plus proche correspondant à la note actuelle !
 
-Note that this notation for pitched sounds also works inside a `strudel.json` file.
+Notez que cette notation pour les sons à hauteur déterminée fonctionne également à l'intérieur d'un fichier `strudel.json`.
 
 ## Shabda
 
-If you don't want to select samples by hand, there is also the wonderful tool called [shabda](https://shabda.ndre.gr/).
-With it, you can enter any sample name(s) to query from [freesound.org](https://freesound.org/). Example:
+Si vous ne voulez pas sélectionner les échantillons à la main, il existe également le merveilleux outil appelé [shabda](https://shabda.ndre.gr/).
+Avec lui, vous pouvez entrer n'importe quel nom(s) d'échantillon à interroger depuis [freesound.org](https://freesound.org/). Exemple :
 
 <MiniRepl
   client:idle
@@ -311,8 +306,8 @@ $: n("0 1*2 2 3*2").s('hihat').clip(1)
 $: n("~ 0 ~ 1 ~ 0 0 1").s('rimshot')`}
 />
 
-You can also generate artificial voice samples with any text, in multiple languages.
-Note that the language code and the gender parameters are optional and default to `en-GB` and `f`
+Vous pouvez également générer des échantillons de voix artificiels avec n'importe quel texte, dans plusieurs langues.
+Notez que le code de langue et les paramètres de genre sont optionnels et par défaut `en-GB` et `f`
 
 <MiniRepl
   client:idle
@@ -323,9 +318,9 @@ $: s("the_drum*2").chop(16).speed(rand.range(0.85,1.1))
 $: s("forever magnifique").slow(4).late(0.125)`}
 />
 
-# Sampler Effects
+# Effets d'échantillonneur
 
-Sampler effects are functions that can be used to change the behaviour of sample playback.
+Les effets d'échantillonneur sont des fonctions qui peuvent être utilisées pour changer le comportement de la lecture d'échantillons.
 
 ### begin
 
@@ -387,4 +382,4 @@ Sampler effects are functions that can be used to change the behaviour of sample
 
 <JsDoc client:idle name="speed" h={0} />
 
-After samples, let's see what [Synths](/learn/synths) afford us.
+Après les échantillons, voyons ce que les [Synthés](/learn/synths) nous offrent.

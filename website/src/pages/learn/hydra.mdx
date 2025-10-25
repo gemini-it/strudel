@@ -5,9 +5,9 @@ layout: ../../layouts/MainLayout.astro
 
 import { MiniRepl } from '../../docs/MiniRepl';
 
-# Using Hydra inside Strudel
+# Utiliser Hydra dans Strudel
 
-You can write [hydra](https://hydra.ojack.xyz/) code in strudel! All you have to do is to call `await initHydra()` at the top:
+Vous pouvez écrire du code [hydra](https://hydra.ojack.xyz/) dans Strudel ! Tout ce que vous avez à faire est d'appeler `await initHydra()` en haut :
 
 <MiniRepl
   client:only="react"
@@ -42,9 +42,9 @@ note("[a,c,e,<a4 ab4 g4 gb4>,b4]/2")
 `}
 />
 
-## H patterns
+## Patterns H
 
-There is a special function `H` that allows you to use a pattern as an input to hydra:
+Il existe une fonction spéciale `H` qui vous permet d'utiliser un pattern comme entrée pour hydra :
 
 <MiniRepl
   client:only="react"
@@ -57,7 +57,7 @@ n(pattern).scale("A:minor").piano().room(1)
 
 ## detectAudio
 
-To use hydra audio capture, call `initHydra` with `{detectAudio:true}` configuration param:
+Pour utiliser la capture audio hydra, appelez `initHydra` avec le paramètre de configuration `{detectAudio:true}` :
 
 <MiniRepl
   client:only="react"
@@ -73,13 +73,13 @@ n(pattern).scale("A:minor").piano().room(1)
 `}
 />
 
-You might now be able to see this properly here: [open in REPL](/#YXdhaXQgaW5pdEh5ZHJhKCkKbGV0IHBhdHRlcm4gPSAiMyA0IDUgWzYgN10qMiIKc2hhcGUoSChwYXR0ZXJuKSkub3V0KG8wKQpuKHBhdHRlcm4pLnNjYWxlKCJBOm1pbm9yIikucGlhbm8oKS5yb29tKDEpIA%3D%3D)
+Vous pourriez maintenant pouvoir voir ceci correctement ici : [ouvrir dans REPL](/#YXdhaXQgaW5pdEh5ZHJhKCkKbGV0IHBhdHRlcm4gPSAiMyA0IDUgWzYgN10qMiIKc2hhcGUoSChwYXR0ZXJuKSkub3V0KG8wKQpuKHBhdHRlcm4pLnNjYWxlKCJBOm1pbm9yIikucGlhbm8oKS5yb29tKDEpIA%3D%3D)
 
-Similar to `detectAudio`, all the [available hydra options](https://github.com/hydra-synth/hydra-synth#api) can be passed to `initHydra`.
+Similaire à `detectAudio`, toutes les [options hydra disponibles](https://github.com/hydra-synth/hydra-synth#api) peuvent être passées à `initHydra`.
 
 ## feedStrudel
 
-Using the `feedStrudel` option, you can transform strudel visualizations with hydra:
+En utilisant l'option `feedStrudel`, vous pouvez transformer les visualisations strudel avec hydra :
 
 <MiniRepl
   client:only="react"
