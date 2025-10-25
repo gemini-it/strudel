@@ -1,27 +1,27 @@
 ---
-title: Testing
+title: Tests
 layout: ../../layouts/MainLayout.astro
 ---
 
-# Testing
+# Tests
 
-Strudel uses [vitest](https://vitest.dev/) for testing, with 2 types of testing strategies:
+Strudel utilise [vitest](https://vitest.dev/) pour les tests, avec 2 types de stratégies de test :
 
-- unit tests for fine grained testing
-- automated snapshot tests for broader testing
+- tests unitaires pour des tests à granularité fine
+- tests de snapshot automatisés pour des tests plus larges
 
-## Unit Tests
+## Tests Unitaires
 
-Each package has a `test` folder where tests are written on a file by file basis, e.g. `util.test.mjs` implements all tests for `util.mjs`.
+Chaque package a un dossier `test` où les tests sont écrits fichier par fichier, par exemple `util.test.mjs` implémente tous les tests pour `util.mjs`.
 
-## Snapshot Tests
+## Tests de Snapshot
 
-Snapshot tests allow testing larger chunks of data. Strudel uses snapshot tests for:
+Les tests de snapshot permettent de tester de plus gros morceaux de données. Strudel utilise les tests de snapshot pour :
 
-- Example Snippets: `examples.test.mjs`, using snippets under `@example` inside jsdoc comments
-- Example Tunes: `tunes.test.mjs`, using all patterns in `tunes.mjs`
+- Exemples de Snippets : `examples.test.mjs`, utilisant les snippets sous `@example` dans les commentaires jsdoc
+- Exemples de Tunes : `tunes.test.mjs`, utilisant tous les patterns dans `tunes.mjs`
 
-The snapshot (`.snap`) files contain all haps within a certain number of cycles for each tested pattern.
-They allow testing for breaking changes on a larger scale.
-If breaking changes are intentional, the snapshots can be updated with `npm run snapshot`.
-Just make sure to verify that all affected patterns behave as expected.
+Les fichiers de snapshot (`.snap`) contiennent tous les haps dans un certain nombre de cycles pour chaque pattern testé.
+Ils permettent de tester les changements cassants à plus grande échelle.
+Si les changements cassants sont intentionnels, les snapshots peuvent être mis à jour avec `npm run snapshot`.
+Assurez-vous simplement de vérifier que tous les patterns affectés se comportent comme prévu.

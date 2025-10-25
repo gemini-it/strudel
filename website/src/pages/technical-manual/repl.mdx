@@ -7,54 +7,54 @@ import { MiniRepl } from '../../docs/MiniRepl';
 
 # REPL
 
-{/* The [REPL](https://strudel.cc/) is the place where all packages come together to form a live coding system. It can also be seen as a reference implementation for users of the library. */}
+{/* Le [REPL](https://strudel.cc/) est l'endroit où tous les packages se rejoignent pour former un système de live coding. Il peut également être vu comme une implémentation de référence pour les utilisateurs de la bibliothèque. */}
 
-While Strudel can be used as a library in any JavaScript codebase, its main, reference user interface is the Strudel REPL[^1], which is a browser-based live coding environment. This live code editor is dedicated to manipulating Strudel patterns while they play. The REPL features built-in visual feedback, highlighting which elements in the patterned (mini-notation) sequences are influencing the event that is currently being played. This feedback is designed to support both learning and live use of Strudel.
+Bien que Strudel puisse être utilisé comme une bibliothèque dans n'importe quelle base de code JavaScript, son interface utilisateur principale de référence est le Strudel REPL[^1], qui est un environnement de live coding basé sur le navigateur. Cet éditeur de live code est dédié à la manipulation des patterns Strudel pendant qu'ils jouent. Le REPL propose un retour visuel intégré, mettant en évidence quels éléments dans les séquences rythmées (mini-notation) influencent l'événement qui est actuellement joué. Ce retour est conçu pour soutenir à la fois l'apprentissage et l'utilisation en direct de Strudel.
 
-[^1]: REPL stands for read, evaluate, print/play, loop. It is friendly jargon for an interactive programming interface from computing heritage, usually for a commandline interface but also applied to live coding editors.
+[^1]: REPL signifie read, evaluate, print/play, loop (lire, évaluer, imprimer/jouer, boucler). C'est un jargon amical pour une interface de programmation interactive issue de l'héritage informatique, généralement pour une interface en ligne de commande mais aussi appliqué aux éditeurs de live coding.
 
-Besides a UI for playback control and meta information, the main part of the REPL interface is the code editor powered by CodeMirror. In it, the user can edit and evaluate pattern code live, using one of the available synthesis outputs to create music and/or sound art. The control flow of the REPL follows 3 basic steps:
+Outre une UI pour le contrôle de la lecture et les méta-informations, la partie principale de l'interface du REPL est l'éditeur de code propulsé par CodeMirror. Dans celui-ci, l'utilisateur peut éditer et évaluer le code de pattern en direct, en utilisant l'une des sorties de synthèse disponibles pour créer de la musique et/ou de l'art sonore. Le flux de contrôle du REPL suit 3 étapes de base :
 
-1. The user writes and updates code. Each update transpiles and evaluates it to create a `Pattern` instance
-2. While the REPL is running, the `Scheduler` queries the active `Pattern` by a regular interval, generating `Events` (also known as `Haps` in Strudel) for the next time span.
-3. For each scheduling tick, all generated `Events` are triggered by calling their `onTrigger` method, which is set by the output.
+1. L'utilisateur écrit et met à jour le code. Chaque mise à jour le transpile et l'évalue pour créer une instance de `Pattern`
+2. Pendant que le REPL fonctionne, le `Scheduler` requête le `Pattern` actif à intervalles réguliers, générant des `Events` (aussi connus sous le nom de `Haps` dans Strudel) pour la période de temps suivante.
+3. Pour chaque tick de planification, tous les `Events` générés sont déclenchés en appelant leur méthode `onTrigger`, qui est définie par la sortie.
 
 <img src="https://codeberg.org/uzu/strudel/raw/branch/talk/talk/public/strudelflow.png" width="600" />
 
-## User Code
+## Code Utilisateur
 
-To create a `Pattern` from the user code, two steps are needed:
+Pour créer un `Pattern` à partir du code utilisateur, deux étapes sont nécessaires :
 
-1. Transpile the JS input code to make it functional
-2. Evaluate the transpiled code
+1. Transpiler le code JS d'entrée pour le rendre fonctionnel
+2. Évaluer le code transpilé
 
-### Transpilation & Evaluation
+### Transpilation & Évaluation
 
-In the JavaScript world, using transpilation is a common practise to be able to use language features that are not supported by the base language. Tools like `babel` will transpile code that contains unsupported language features into a version of the code without those features.
+Dans le monde JavaScript, l'utilisation de la transpilation est une pratique courante pour pouvoir utiliser des fonctionnalités de langage qui ne sont pas supportées par le langage de base. Des outils comme `babel` transpileront le code qui contient des fonctionnalités de langage non supportées en une version du code sans ces fonctionnalités.
 
-In the same tradition, Strudel can add a transpilation step to simplify the user code in the context of live coding. For example, the Strudel REPL lets the user create mini-notation patterns using just double quoted strings, while single quoted strings remain what they are:
+Dans la même tradition, Strudel peut ajouter une étape de transpilation pour simplifier le code utilisateur dans le contexte du live coding. Par exemple, le REPL Strudel permet à l'utilisateur de créer des patterns de mini-notation en utilisant juste des chaînes entre guillemets doubles, tandis que les chaînes entre guillemets simples restent ce qu'elles sont :
 
 ```strudel
 note("c3 [e3 g3]*2")
 ```
 
-is transpiled to:
+est transpilé en :
 
 ```strudel
 note(m('c3 [e3 g3]', 5))
 ```
 
-Here, the string is wrapped in `m`, which will create a pattern from a mini-notation string. As the second parameter, it gets passed source code location of the string, which enables highlighting active events later.
+Ici, la chaîne est enveloppée dans `m`, qui créera un pattern à partir d'une chaîne de mini-notation. Comme deuxième paramètre, elle reçoit l'emplacement du code source de la chaîne, ce qui permet de mettre en évidence les événements actifs plus tard.
 
-After the transpilation, the code is ready to be evaluated into a `Pattern`.
+Après la transpilation, le code est prêt à être évalué en un `Pattern`.
 
-Behind the scenes, the user code string is parsed with `acorn`, turning it into an Abstract Syntax Tree (AST). The AST allows changing the structure of the code before generating the transpiled version using `escodegen`.
+En coulisses, la chaîne de code utilisateur est analysée avec `acorn`, la transformant en un Arbre de Syntaxe Abstraite (AST). L'AST permet de changer la structure du code avant de générer la version transpilée en utilisant `escodegen`.
 
 ### Mini-notation
 
-While the transpilation allows JavaScript to express Patterns in a less verbose way, it is still preferable to use the mini-notation as a more compact way to express rhythm. Strudel aims to provide the same mini-notation features and syntax as used in Tidal.
+Bien que la transpilation permette à JavaScript d'exprimer des Patterns de manière moins verbeuse, il est toujours préférable d'utiliser la mini-notation comme une façon plus compacte d'exprimer le rythme. Strudel vise à fournir les mêmes fonctionnalités et syntaxe de mini-notation que celles utilisées dans Tidal.
 
-The mini-notation parser is implemented using `peggy`, which allows generating performant parsers for Domain Specific Languages (DSLs) using a concise grammar notation. The generated parser turns the mini-notation string into an AST which is used to call the respective Strudel functions with the given structure. For example, `"c3 [e3 g3]*2"` will result in the following calls:
+Le parseur de mini-notation est implémenté en utilisant `peggy`, qui permet de générer des parseurs performants pour les Langages Spécifiques au Domaine (DSL) en utilisant une notation de grammaire concise. Le parseur généré transforme la chaîne de mini-notation en un AST qui est utilisé pour appeler les fonctions Strudel respectives avec la structure donnée. Par exemple, `"c3 [e3 g3]*2"` résultera en les appels suivants :
 
 ```strudel
 seq(
@@ -63,27 +63,27 @@ seq(
 )
 ```
 
-### Highlighting Locations
+### Mise en Évidence des Emplacements
 
-As seen in the examples above, both the mini-notation parser adds the source code locations using `withLoc`.
-This location is calculated inside the `m` function, as the sum of 2 locations:
+Comme vu dans les exemples ci-dessus, le parseur de mini-notation ajoute les emplacements du code source en utilisant `withLoc`.
+Cet emplacement est calculé dans la fonction `m`, comme la somme de 2 emplacements :
 
-1. the location where the mini notation string begins, as obtained from the JS parser
-2. the location of the substring inside the mini notation, as obtained from the mini notation parser
+1. l'emplacement où la chaîne de mini notation commence, tel qu'obtenu du parseur JS
+2. l'emplacement de la sous-chaîne à l'intérieur de la mini notation, tel qu'obtenu du parseur de mini notation
 
-The sum of both is passed to `withLoc` to tell each element its location, which can be later used for highlighting when it's active.
+La somme des deux est passée à `withLoc` pour dire à chaque élément son emplacement, qui peut être utilisé plus tard pour la mise en évidence quand il est actif.
 
 ### Mini Notation
 
-Another important part of the user code is the mini notation, which allows to express rhythms in a short manner.
+Une autre partie importante du code utilisateur est la mini notation, qui permet d'exprimer des rythmes de manière courte.
 
-- the mini notation is [implemented as a PEG grammar](https://codeberg.org/uzu/strudel/src/branch/talk/packages/mini/krill.pegjs), living in the [mini package](https://codeberg.org/uzu/strudel/src/branch/main/packages/mini)
-- it is based on [krill](https://github.com/Mdashdotdashn/krill) by Mdashdotdashn
-- the peg grammar is used to generate a parser with [peggyjs](https://peggyjs.org/)
-- the generated parser takes a mini notation string and outputs an AST
-- the AST can then be used to construct a pattern using the regular Strudel API
+- la mini notation est [implémentée comme une grammaire PEG](https://codeberg.org/uzu/strudel/src/branch/talk/packages/mini/krill.pegjs), vivant dans le [package mini](https://codeberg.org/uzu/strudel/src/branch/main/packages/mini)
+- elle est basée sur [krill](https://github.com/Mdashdotdashn/krill) par Mdashdotdashn
+- la grammaire peg est utilisée pour générer un parseur avec [peggyjs](https://peggyjs.org/)
+- le parseur généré prend une chaîne de mini notation et produit un AST
+- l'AST peut ensuite être utilisé pour construire un pattern en utilisant l'API Strudel régulière
 
-Here's an example AST for `c3 [e3 g3]`
+Voici un exemple d'AST pour `c3 [e3 g3]`
 
 ```json
 {
@@ -115,42 +115,42 @@ Here's an example AST for `c3 [e3 g3]`
 }
 ```
 
-which translates to `seq(c3, seq(e3, g3))`
+qui se traduit en `seq(c3, seq(e3, g3))`
 
-## Scheduling Events
+## Planification des Événements
 
-After an instance of `Pattern` is obtained from the user code,
-it is used by the scheduler to get queried for events. Once started, the scheduler runs at a fixed interval to query the active pattern for events within the current interval's time span. A simplified implementation looks like this:
+Après qu'une instance de `Pattern` est obtenue à partir du code utilisateur,
+elle est utilisée par le planificateur pour être requêtée pour des événements. Une fois démarré, le planificateur fonctionne à intervalle fixe pour requêter le pattern actif pour des événements dans la période de temps de l'intervalle actuel. Une implémentation simplifiée ressemble à ceci :
 
 ```js
-let pattern = seq('c3', ['e3', 'g3']); // pattern from user
-let interval = 0.5; // query interval in seconds
-let time = 0; // beginning of current time span
-let minLatency = 0.1; // min time before a hap should trigger
+let pattern = seq('c3', ['e3', 'g3']); // pattern de l'utilisateur
+let interval = 0.5; // intervalle de requête en secondes
+let time = 0; // début de la période de temps actuelle
+let minLatency = 0.1; // temps min avant qu'un hap devrait se déclencher
 setInterval(() => {
   const haps = pattern.queryArc(time, time + interval);
-  time += interval; // increment time
+  time += interval; // incrémenter le temps
   haps.forEach((hap) => {
     const deadline = hap.whole.begin - time + minLatency;
     onTrigger(hap, deadline, duration);
   });
-}, interval * 1000); // query each "interval" seconds
+}, interval * 1000); // requêter chaque "interval" secondes
 ```
 
-Note that the above code is simplified for illustrative purposes. The actual implementation has to work around imprecise callbacks of `setInterval`. More about the implementation details can be read in [this blog post](https://loophole-letters.vercel.app/web-audio-scheduling).
+Notez que le code ci-dessus est simplifié à des fins illustratives. L'implémentation réelle doit contourner les callbacks imprécis de `setInterval`. Plus de détails sur l'implémentation peuvent être lus dans [cet article de blog](https://loophole-letters.vercel.app/web-audio-scheduling).
 
-The fact that `Pattern.queryArc` is a pure function that maps a time span to a set of events allows us to choose any interval we like without changing the resulting output. It also means that when the pattern is changed from outside, the next scheduling callback will work with the new pattern, keeping its clock running.
+Le fait que `Pattern.queryArc` soit une fonction pure qui mappe une période de temps à un ensemble d'événements nous permet de choisir n'importe quel intervalle que nous aimons sans changer la sortie résultante. Cela signifie également que lorsque le pattern est changé de l'extérieur, le prochain callback de planification fonctionnera avec le nouveau pattern, gardant son horloge en marche.
 
-The latency between the time the pattern is evaluated and the change is heard is between `minLatency` and `interval + minLatency`, in our example between 100ms and 600ms. In Strudel, the current query interval is 50ms with a minLatency of 100ms, meaning the latency is between 50ms and 150ms.
+La latence entre le moment où le pattern est évalué et le changement est entendu est entre `minLatency` et `interval + minLatency`, dans notre exemple entre 100ms et 600ms. Dans Strudel, l'intervalle de requête actuel est de 50ms avec une minLatency de 100ms, ce qui signifie que la latence est entre 50ms et 150ms.
 
-## Output
+## Sortie
 
-The last step is to trigger each event in the chosen output.
-This is where the given time and value of each event is used to generate audio or any other form of time based output. The default output of the Strudel REPL is the WebAudio output. To understand what an output does, we first have to understand what control parameters are.
+La dernière étape est de déclencher chaque événement dans la sortie choisie.
+C'est là que le temps et la valeur donnés de chaque événement sont utilisés pour générer de l'audio ou toute autre forme de sortie basée sur le temps. La sortie par défaut du REPL Strudel est la sortie WebAudio. Pour comprendre ce que fait une sortie, nous devons d'abord comprendre ce que sont les paramètres de contrôle.
 
-### Control Parameters
+### Paramètres de Contrôle
 
-To be able to manipulate multiple aspects of sound in parallel, so called control parameters are used to shape the value of each event. Example:
+Pour pouvoir manipuler plusieurs aspects du son en parallèle, des paramètres de contrôle sont utilisés pour façonner la valeur de chaque événement. Exemple :
 
 ```js
 note('c3 e3')
@@ -164,20 +164,20 @@ note('c3 e3')
 ] */
 ```
 
-Here, the control parameter functions `note`, `cutoff` and `s` are used, where each controls a different property in the value object. Each control parameter function accepts a primitive value, a list of values to be sequenced into a `Pattern`, or a `Pattern`. In the example, `note` gets a `Pattern` from a mini-notation expression (double quoted), while `cutoff` and `s` are given a `Number` and a (single quoted) `String` respectively.
+Ici, les fonctions de paramètres de contrôle `note`, `cutoff` et `s` sont utilisées, où chacune contrôle une propriété différente dans l'objet de valeur. Chaque fonction de paramètre de contrôle accepte une valeur primitive, une liste de valeurs à séquencer en un `Pattern`, ou un `Pattern`. Dans l'exemple, `note` obtient un `Pattern` d'une expression de mini-notation (guillemets doubles), tandis que `cutoff` et `s` reçoivent respectivement un `Number` et une `String` (guillemets simples).
 
-Strudel comes with a large default set of control parameter functions that are based on the ones used by Tidal and SuperDirt, focusing on music and audio terminology. It is however possible to create custom control parameters for any purpose:
+Strudel vient avec un grand ensemble par défaut de fonctions de paramètres de contrôle qui sont basées sur celles utilisées par Tidal et SuperDirt, se concentrant sur la terminologie musicale et audio. Il est cependant possible de créer des paramètres de contrôle personnalisés pour n'importe quel but :
 
 ```js
 const { x, y } = createParams('x', 'y');
 x(sine.range(0, 200)).y(cosine.range(0, 200));
 ```
 
-This example creates the custom control parameters `x` and `y` which are then used to form a pattern that descibes the coordinates of a circle.
+Cet exemple crée les paramètres de contrôle personnalisés `x` et `y` qui sont ensuite utilisés pour former un pattern qui décrit les coordonnées d'un cercle.
 
-### Outputs
+### Sorties
 
-Now that we know how the value of an event is manipulated using control parameters, we can look at how outputs can use that value to generate anything. The scheduler above was calling the `onTrigger` function which is used to implement the output. A very simple version of the web audio output could look like this:
+Maintenant que nous savons comment la valeur d'un événement est manipulée en utilisant des paramètres de contrôle, nous pouvons regarder comment les sorties peuvent utiliser cette valeur pour générer n'importe quoi. Le planificateur ci-dessus appelait la fonction `onTrigger` qui est utilisée pour implémenter la sortie. Une version très simple de la sortie web audio pourrait ressembler à ceci :
 
 ```js
 function onTrigger(hap, deadline, duration) {
@@ -191,6 +191,6 @@ function onTrigger(hap, deadline, duration) {
 }
 ```
 
-The above example will create an `OscillatorNode` for each event, where the frequency is controlled by the `note` param. In essence, this is how the WebAudio API output of Strudel works, only with many more parameters to control synths, samples and effects.
+L'exemple ci-dessus créera un `OscillatorNode` pour chaque événement, où la fréquence est contrôlée par le paramètre `note`. En essence, c'est ainsi que fonctionne la sortie de l'API WebAudio de Strudel, seulement avec beaucoup plus de paramètres pour contrôler les synthés, samples et effets.
 
-I want to help, how do I contribute to the [Docs](/technical-manual/docs)?
+Je veux aider, comment puis-je contribuer à la [Documentation](/technical-manual/docs) ?

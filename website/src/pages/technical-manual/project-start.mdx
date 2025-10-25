@@ -1,47 +1,47 @@
 ---
-title: Using Strudel in your Project
+title: Utiliser Strudel dans votre Projet
 layout: ../../layouts/MainLayout.astro
 ---
 
-# Using Strudel in your Project
+# Utiliser Strudel dans votre Projet
 
-This Guide shows you the different ways to get started with using Strudel in your own project.
+Ce guide vous montre les différentes façons de démarrer avec Strudel dans votre propre projet.
 
-## Respect the license
+## Respecter la licence
 
-First, please take a moment to understand Strudel's free/open source license,
+Tout d'abord, prenez un moment pour comprendre la licence libre/open source de Strudel,
 [AGPL-3.0](https://www.gnu.org/licenses/agpl-3.0.en.html).
 
-Here is a lay summary, but check the license for legal definitions and responsibilities.
+Voici un résumé simple, mais consultez la licence pour les définitions légales et les responsabilités.
 
-- You can distribute modified versions if you keep track of the changes and the date you made them.
-- You must license derivative work under the same license.
-- Source code must be distributed along with web publication.
+- Vous pouvez distribuer des versions modifiées si vous gardez trace des changements et de la date à laquelle vous les avez effectués.
+- Vous devez licencier les travaux dérivés sous la même licence.
+- Le code source doit être distribué avec la publication web.
 
-Among other things, it means that when you share your work, the whole application must be shared under the same free/open source license, or one compatible with it. This is because we want Strudel to stay free/open source. In other words, you are not permitted to distribute integrations of Strudel with libraries or other code that does not have a compatible free/open source license.
+Entre autres choses, cela signifie que lorsque vous partagez votre travail, l'application entière doit être partagée sous la même licence libre/open source, ou une compatible avec celle-ci. C'est parce que nous voulons que Strudel reste libre/open source. En d'autres termes, vous n'êtes pas autorisé à distribuer des intégrations de Strudel avec des bibliothèques ou d'autres codes qui n'ont pas une licence libre/open source compatible.
 
-This also applies to clones informed by reading Strudel's source code, as legally speaking, that counts as a 'derivative work'. Again, please [read the licence](https://www.gnu.org/licenses/agpl-3.0.en.html) for details.
+Cela s'applique également aux clones inspirés de la lecture du code source de Strudel, car légalement parlant, cela compte comme un 'travail dérivé'. Encore une fois, veuillez [lire la licence](https://www.gnu.org/licenses/agpl-3.0.en.html) pour plus de détails.
 
-## Embedding the Strudel REPL
+## Intégrer le REPL Strudel
 
-There are 3 quick ways to embed strudel in your website:
+Il existe 3 façons rapides d'intégrer strudel dans votre site web :
 
-1. Embed the strudel website as an iframe directly
-2. Embed the strudel website as an iframe using `@strudel/embed`
-3. Embed the REPL directly using `@strudel/repl`
+1. Intégrer le site web strudel directement comme une iframe
+2. Intégrer le site web strudel comme une iframe en utilisant `@strudel/embed`
+3. Intégrer le REPL directement en utilisant `@strudel/repl`
 
-### Inside an iframe
+### Dans une iframe
 
-Using an iframe is the most easy way to embed a studel tune.
-You can embed any pattern of your choice via an iframe and the URL of the pattern of your choice:
+Utiliser une iframe est le moyen le plus facile d'intégrer un morceau strudel.
+Vous pouvez intégrer n'importe quel pattern de votre choix via une iframe et l'URL du pattern de votre choix :
 
 ```html
 <iframe src="https://strudel.cc/?xwWRfuCE8TAR" width="600" height="300"></iframe>
 ```
 
-The URL can be obtained by pressing `share` in the REPL.
-Note that these share links depend on a database, which is not guaranteed to live forever.
-To make sure your code is not lost, you can also use the long url:
+L'URL peut être obtenue en appuyant sur `share` dans le REPL.
+Notez que ces liens de partage dépendent d'une base de données, qui n'est pas garantie de vivre éternellement.
+Pour vous assurer que votre code n'est pas perdu, vous pouvez également utiliser l'URL longue :
 
 ```html
 <iframe
@@ -51,11 +51,11 @@ To make sure your code is not lost, you can also use the long url:
 ></iframe>
 ```
 
-That long URL can just be copy pasted from the URL bar when you're on the strudel website. It always reflects the latest evaluation of your code.
+Cette longue URL peut simplement être copiée et collée depuis la barre d'URL lorsque vous êtes sur le site web strudel. Elle reflète toujours la dernière évaluation de votre code.
 
 ### @strudel/embed
 
-To simplify the process of emebdding via an iframe, you can use the package `@strudel/embed`:
+Pour simplifier le processus d'intégration via une iframe, vous pouvez utiliser le package `@strudel/embed` :
 
 ```html
 <script src="https://unpkg.com/@strudel/embed@latest"></script>
@@ -73,14 +73,14 @@ n("<0 1 2 3 4>*8").scale('G4 minor')
 </strudel-repl>
 ```
 
-This will load the strudel website in an iframe, using the code provided within the HTML comments `<!-- -->`.
-The HTML comments are needed to make sure the browser won't interpret it as HTML.
+Cela chargera le site web strudel dans une iframe, en utilisant le code fourni dans les commentaires HTML `<!-- -->`.
+Les commentaires HTML sont nécessaires pour s'assurer que le navigateur ne l'interprète pas comme du HTML.
 
-For alternative ways to load this package, see the [@strudel/embed README](https://codeberg.org/uzu/strudel/src/branch/main/packages/embed#strudel-embed).
+Pour des moyens alternatifs de charger ce package, voir le [@strudel/embed README](https://codeberg.org/uzu/strudel/src/branch/main/packages/embed#strudel-embed).
 
 ### @strudel/repl
 
-Loading strudel directly in your site, without an iframe, looks similar to the iframe variant:
+Charger strudel directement dans votre site, sans iframe, ressemble à la variante iframe :
 
 ```html
 <script src="https://unpkg.com/@strudel/repl@latest"></script>
@@ -98,10 +98,10 @@ n("<0 1 2 3 4>*8").scale('G4 minor')
 </strudel-editor>
 ```
 
-Here, we're loading `@strudel/repl` instead of `@strudel/embed`, and the component is called `strudel-editor` instead of `strudel-repl`.
-Yes the naming is a bit confusing..
+Ici, nous chargeons `@strudel/repl` au lieu de `@strudel/embed`, et le composant s'appelle `strudel-editor` au lieu de `strudel-repl`.
+Oui, le nommage est un peu confus...
 
-The upside of using the repl without an iframe is that you can pin the strudel version you're using:
+L'avantage d'utiliser le repl sans iframe est que vous pouvez épingler la version de strudel que vous utilisez :
 
 ```html
 <script src="https://unpkg.com/@strudel/repl@1.0.2"></script>
@@ -112,20 +112,20 @@ The upside of using the repl without an iframe is that you can pin the strudel v
 </strudel-editor>
 ```
 
-This will guarantee your pattern wont break due to changes to the strudel project in the future.
+Cela garantira que votre pattern ne cassera pas en raison de changements au projet strudel à l'avenir.
 
-For more info on this package, see the [@strudel/repl README](https://codeberg.org/uzu/strudel/src/branch/main/packages/repl#strudel-repl).
+Pour plus d'informations sur ce package, voir le [@strudel/repl README](https://codeberg.org/uzu/strudel/src/branch/main/packages/repl#strudel-repl).
 
-## With your own UI
+## Avec votre propre UI
 
-The above approach assumes you want to use the builtin [codemirror](https://codemirror.net/) editor.
-If you'd rather use your own UI, you can use the `@strudel/web` package:
+L'approche ci-dessus suppose que vous voulez utiliser l'éditeur [codemirror](https://codemirror.net/) intégré.
+Si vous préférez utiliser votre propre UI, vous pouvez utiliser le package `@strudel/web` :
 
 ```html
 <!doctype html>
 <script src="https://unpkg.com/@strudel/web@1.0.3"></script>
-<button id="play">play</button>
-<button id="stop">stop</button>
+<button id="play">jouer</button>
+<button id="stop">arrêter</button>
 <script>
   initStrudel();
   document.getElementById('play').addEventListener('click', () => note('<c a f e>(3,8)').jux(rev).play());
@@ -133,12 +133,12 @@ If you'd rather use your own UI, you can use the `@strudel/web` package:
 </script>
 ```
 
-For more info on this package, see the [@strudel/web README]https://codeberg.org/uzu/strudel/src/branch/main/packages/web#strudel-web).
+Pour plus d'informations sur ce package, voir le [@strudel/web README]https://codeberg.org/uzu/strudel/src/branch/main/packages/web#strudel-web).
 
 ## Via npm
 
-[All the packages and many more are available on npm under the @strudel namespace](https://www.npmjs.com/search?q=%40strudel).
-There are actually many more packages you can use to have fine grained control over what you use and what not.
-To use these packages, you have to use a bundler that supports es modules, like [vite](https://vitejs.dev/).
+[Tous les packages et bien d'autres sont disponibles sur npm sous le namespace @strudel](https://www.npmjs.com/search?q=%40strudel).
+Il y a en fait beaucoup plus de packages que vous pouvez utiliser pour avoir un contrôle précis sur ce que vous utilisez ou non.
+Pour utiliser ces packages, vous devez utiliser un bundler qui supporte les modules es, comme [vite](https://vitejs.dev/).
 
-To find out more about the purpose of each package, see [Packages](/technical-manual/packages)
+Pour en savoir plus sur le but de chaque package, voir [Packages](/technical-manual/packages)

@@ -8,9 +8,9 @@ import { JsDoc } from '../../docs/JsDoc';
 
 # Patterns
 
-Patterns are the essence of Tidal. Its patterns are abstract entities that represent flows of time as functions, adapting a technique called pure functional reactive programming. Taking a time span as its input, a Pattern can output a set of events that happen within that time span. It depends on the structure of the Pattern how the events are located in time.
-From now on, this process of generating events from a time span will be called **querying**.
-Example:
+Les patterns sont l'essence de Tidal. Ses patterns sont des entités abstraites qui représentent des flux de temps sous forme de fonctions, adaptant une technique appelée programmation fonctionnelle réactive pure. En prenant une période de temps en entrée, un Pattern peut produire un ensemble d'événements qui se produisent dans cette période de temps. La manière dont les événements sont situés dans le temps dépend de la structure du Pattern.
+Désormais, ce processus de génération d'événements à partir d'une période de temps sera appelé **requête**.
+Exemple :
 
 <MiniRepl
   client:idle
@@ -20,9 +20,9 @@ console.log(events.map((e) => e.show()))
 silence`}
 />
 
-In this example, we create a pattern using the `sequence` function and **query** it for the time span from `0` to `1`.
-Those numbers represent units of time called **cycles**. The length of one cycle depends on the tempo, which defaults to one cycle per second.
-The resulting events are:
+Dans cet exemple, nous créons un pattern en utilisant la fonction `sequence` et le **requêtons** pour la période de temps de `0` à `1`.
+Ces nombres représentent des unités de temps appelées **cycles**. La longueur d'un cycle dépend du tempo, qui par défaut est d'un cycle par seconde.
+Les événements résultants sont :
 
 ```js
 [
@@ -32,10 +32,10 @@ The resulting events are:
 ];
 ```
 
-Each event has a value, a begin time and an end time, where time is represented as a fraction. In the above case, the events are placed in sequential order, where c3 takes the first half, and e3 and g3 together take the second half. This temporal placement is the result of the `sequence` function, which divides its arguments equally over one cycle. If an argument is an array, the same rule applies to that part of the cycle. In the example, e3 and g3 are divided equally over the second half of the whole cycle.
+Chaque événement a une valeur, une heure de début et une heure de fin, où le temps est représenté sous forme de fraction. Dans le cas ci-dessus, les événements sont placés dans un ordre séquentiel, où c3 prend la première moitié, et e3 et g3 ensemble prennent la seconde moitié. Ce placement temporel est le résultat de la fonction `sequence`, qui divise ses arguments de manière égale sur un cycle. Si un argument est un tableau, la même règle s'applique à cette partie du cycle. Dans l'exemple, e3 et g3 sont divisés de manière égale sur la seconde moitié du cycle entier.
 
-Note that the query function is not just a way to access a pattern, but true to the principles of functional programming, is the pattern itself. This means that in theory there is no way to change a pattern, it is opaque as a pure function. In practice though, Strudel and Tidal are all about transforming patterns, so how is this done? The answer is, by replacing the pattern with a new one, that calls the old one. This new one is only able to manipulate the query before passing it to the old pattern, and manipulate the results from it before returning them to caller. But, this is enough to support all the temporal and structural manipulations provided by Strudel (and Tidal's) extensive library of functions.
+Notez que la fonction de requête n'est pas seulement un moyen d'accéder à un pattern, mais fidèle aux principes de la programmation fonctionnelle, est le pattern lui-même. Cela signifie qu'en théorie, il n'y a aucun moyen de changer un pattern, il est opaque comme une fonction pure. En pratique cependant, Strudel et Tidal consistent à transformer des patterns, alors comment cela se fait-il ? La réponse est, en remplaçant le pattern par un nouveau, qui appelle l'ancien. Ce nouveau n'est capable que de manipuler la requête avant de la passer à l'ancien pattern, et de manipuler les résultats de celui-ci avant de les renvoyer à l'appelant. Mais cela suffit pour prendre en charge toutes les manipulations temporelles et structurelles fournies par la vaste bibliothèque de fonctions de Strudel (et Tidal).
 
-The above examples do not represent how Strudel is used in practice. In the live coding editor, the user only has to type in the pattern itself, the querying will be handled by the scheduler. The scheduler will repeatedly query the pattern for events, which are then scheduled as sound synthesis or other event triggers.
+Les exemples ci-dessus ne représentent pas la façon dont Strudel est utilisé en pratique. Dans l'éditeur de live coding, l'utilisateur doit seulement taper le pattern lui-même, la requête sera gérée par le planificateur. Le planificateur requêtera à plusieurs reprises le pattern pour les événements, qui sont ensuite planifiés comme synthèse sonore ou autres déclencheurs d'événements.
 
-Can we [align](/technical-manual/alignment) patterns?
+Pouvons-nous [aligner](/technical-manual/alignment) les patterns ?
