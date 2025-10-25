@@ -26,8 +26,8 @@ const _pick = function (lookup, pat, modulo = true) {
   });
 };
 
-/** * Picks patterns (or plain values) either from a list (by index) or a lookup table (by name).
- * Similar to `inhabit`, but maintains the structure of the original patterns.
+/** * Sélectionne des patterns (ou valeurs simples) soit depuis une liste (par index) soit depuis une table de correspondance (par nom).
+ * Similaire à `inhabit`, mais conserve la structure des patterns originaux.
  * @param {Pattern} pat
  * @param {*} xs
  * @returns {Pattern}
@@ -53,10 +53,10 @@ const __pick = register('pick', function (lookup, pat) {
   return _pick(lookup, pat, false).innerJoin();
 });
 
-/** * The same as `pick`, but if you pick a number greater than the size of the list,
- * it wraps around, rather than sticking at the maximum value.
- * For example, if you pick the fifth pattern of a list of three, you'll get the
- * second one.
+/** * Identique à `pick`, mais si vous sélectionnez un nombre supérieur à la taille de la liste,
+ * il boucle au début plutôt que de rester à la valeur maximale.
+ * Par exemple, si vous sélectionnez le cinquième pattern d'une liste de trois, vous obtiendrez le
+ * deuxième.
  * @param {Pattern} pat
  * @param {*} xs
  * @returns {Pattern}
@@ -66,10 +66,10 @@ export const pickmod = register('pickmod', function (lookup, pat) {
   return _pick(lookup, pat, true).innerJoin();
 });
 
-/** * pickF lets you use a pattern of numbers to pick which function to apply to another pattern.
+/** * pickF vous permet d'utiliser un pattern de nombres pour choisir quelle fonction appliquer à un autre pattern.
  * @param {Pattern} pat
- * @param {Pattern} lookup a pattern of indices
- * @param {function[]} funcs the array of functions from which to pull
+ * @param {Pattern} lookup un pattern d'indices
+ * @param {function[]} funcs le tableau de fonctions depuis lequel piocher
  * @returns {Pattern}
  * @example
  * s("bd [rim hh]").pickF("<0 1 2>", [rev,jux(rev),fast(2)])
@@ -81,18 +81,18 @@ export const pickF = register('pickF', function (lookup, funcs, pat) {
   return pat.apply(pick(lookup, funcs));
 });
 
-/** * The same as `pickF`, but if you pick a number greater than the size of the functions list,
- * it wraps around, rather than sticking at the maximum value.
+/** * Identique à `pickF`, mais si vous sélectionnez un nombre supérieur à la taille de la liste de fonctions,
+ * il boucle au début plutôt que de rester à la valeur maximale.
  * @param {Pattern} pat
- * @param {Pattern} lookup a pattern of indices
- * @param {function[]} funcs the array of functions from which to pull
+ * @param {Pattern} lookup un pattern d'indices
+ * @param {function[]} funcs le tableau de fonctions depuis lequel piocher
  * @returns {Pattern}
  */
 export const pickmodF = register('pickmodF', function (lookup, funcs, pat) {
   return pat.apply(pickmod(lookup, funcs));
 });
 
-/** * Similar to `pick`, but it applies an outerJoin instead of an innerJoin.
+/** * Similaire à `pick`, mais applique un outerJoin au lieu d'un innerJoin.
  * @param {Pattern} pat
  * @param {*} xs
  * @returns {Pattern}
@@ -101,8 +101,8 @@ export const pickOut = register('pickOut', function (lookup, pat) {
   return _pick(lookup, pat, false).outerJoin();
 });
 
-/** * The same as `pickOut`, but if you pick a number greater than the size of the list,
- * it wraps around, rather than sticking at the maximum value.
+/** * Identique à `pickOut`, mais si vous sélectionnez un nombre supérieur à la taille de la liste,
+ * il boucle au début plutôt que de rester à la valeur maximale.
  * @param {Pattern} pat
  * @param {*} xs
  * @returns {Pattern}
@@ -111,7 +111,7 @@ export const pickmodOut = register('pickmodOut', function (lookup, pat) {
   return _pick(lookup, pat, true).outerJoin();
 });
 
-/** * Similar to `pick`, but the choosen pattern is restarted when its index is triggered.
+/** * Similaire à `pick`, mais le pattern choisi redémarre lorsque son index est déclenché.
  * @param {Pattern} pat
  * @param {*} xs
  * @returns {Pattern}
@@ -120,8 +120,8 @@ export const pickRestart = register('pickRestart', function (lookup, pat) {
   return _pick(lookup, pat, false).restartJoin();
 });
 
-/** * The same as `pickRestart`, but if you pick a number greater than the size of the list,
-   * it wraps around, rather than sticking at the maximum value.
+/** * Identique à `pickRestart`, mais si vous sélectionnez un nombre supérieur à la taille de la liste,
+   * il boucle au début plutôt que de rester à la valeur maximale.
    * @param {Pattern} pat
    * @param {*} xs
    * @returns {Pattern}
@@ -137,7 +137,7 @@ export const pickmodRestart = register('pickmodRestart', function (lookup, pat) 
   return _pick(lookup, pat, true).restartJoin();
 });
 
-/** * Similar to `pick`, but the choosen pattern is reset when its index is triggered.
+/** * Similaire à `pick`, mais le pattern choisi est réinitialisé lorsque son index est déclenché.
  * @param {Pattern} pat
  * @param {*} xs
  * @returns {Pattern}
@@ -146,8 +146,8 @@ export const pickReset = register('pickReset', function (lookup, pat) {
   return _pick(lookup, pat, false).resetJoin();
 });
 
-/** * The same as `pickReset`, but if you pick a number greater than the size of the list,
- * it wraps around, rather than sticking at the maximum value.
+/** * Identique à `pickReset`, mais si vous sélectionnez un nombre supérieur à la taille de la liste,
+ * il boucle au début plutôt que de rester à la valeur maximale.
  * @param {Pattern} pat
  * @param {*} xs
  * @returns {Pattern}
@@ -156,8 +156,8 @@ export const pickmodReset = register('pickmodReset', function (lookup, pat) {
   return _pick(lookup, pat, true).resetJoin();
 });
 
-/** Picks patterns (or plain values) either from a list (by index) or a lookup table (by name).
-   * Similar to `pick`, but cycles are squeezed into the target ('inhabited') pattern.
+/** Sélectionne des patterns (ou valeurs simples) soit depuis une liste (par index) soit depuis une table de correspondance (par nom).
+   * Similaire à `pick`, mais les cycles sont compressés dans le pattern cible ('habité').
    * @name inhabit
    * @synonyms pickSqueeze
    * @param {Pattern} pat
@@ -174,10 +174,10 @@ export const { inhabit, pickSqueeze } = register(['inhabit', 'pickSqueeze'], fun
   return _pick(lookup, pat, false).squeezeJoin();
 });
 
-/** * The same as `inhabit`, but if you pick a number greater than the size of the list,
- * it wraps around, rather than sticking at the maximum value.
- * For example, if you pick the fifth pattern of a list of three, you'll get the
- * second one.
+/** * Identique à `inhabit`, mais si vous sélectionnez un nombre supérieur à la taille de la liste,
+ * il boucle au début plutôt que de rester à la valeur maximale.
+ * Par exemple, si vous sélectionnez le cinquième pattern d'une liste de trois, vous obtiendrez le
+ * deuxième.
  * @name inhabitmod
  * @synonyms pickmodSqueeze
  * @param {Pattern} pat
@@ -190,8 +190,8 @@ export const { inhabitmod, pickmodSqueeze } = register(['inhabitmod', 'pickmodSq
 });
 
 /**
- * Pick from the list of values (or patterns of values) via the index using the given
- * pattern of integers. The selected pattern will be compressed to fit the duration of the selecting event
+ * Sélectionne depuis la liste de valeurs (ou patterns de valeurs) via l'index en utilisant le
+ * pattern d'entiers donné. Le pattern sélectionné sera compressé pour correspondre à la durée de l'événement sélecteur
  * @param {Pattern} pat
  * @param {*} xs
  * @returns {Pattern}
