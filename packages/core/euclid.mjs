@@ -52,17 +52,17 @@ export const bjork = function (ons, steps) {
 };
 
 /**
- * Changes the structure of the pattern to form an Euclidean rhythm.
- * Euclidean rhythms are rhythms obtained using the greatest common
- * divisor of two numbers.  They were described in 2004 by Godfried
- * Toussaint, a Canadian computer scientist.  Euclidean rhythms are
- * really useful for computer/algorithmic music because they can
- * describe a large number of rhythms with a couple of numbers.
+ * Modifie la structure du pattern pour former un rythme euclidien.
+ * Les rythmes euclidiens sont des rythmes obtenus en utilisant le plus grand
+ * diviseur commun de deux nombres. Ils ont été décrits en 2004 par Godfried
+ * Toussaint, un informaticien canadien. Les rythmes euclidiens sont
+ * très utiles pour la musique informatique/algorithmique car ils peuvent
+ * décrire un grand nombre de rythmes avec quelques nombres.
  *
  * @memberof Pattern
  * @name euclid
- * @param {number} pulses the number of onsets/beats
- * @param {number} steps the number of steps to fill
+ * @param {number} pulses le nombre d'impulsions/battements
+ * @param {number} steps le nombre de pas à remplir
  * @returns Pattern
  * @example
  * // The Cuban tresillo pattern.
@@ -70,12 +70,12 @@ export const bjork = function (ons, steps) {
  */
 
 /**
- * Like `euclid`, but has an additional parameter for 'rotating' the resulting sequence.
+ * Comme `euclid`, mais avec un paramètre supplémentaire pour 'faire tourner' la séquence résultante.
  * @memberof Pattern
  * @name euclidRot
- * @param {number} pulses the number of onsets/beats
- * @param {number} steps the number of steps to fill
- * @param {number} rotation offset in steps
+ * @param {number} pulses le nombre d'impulsions/battements
+ * @param {number} steps le nombre de pas à remplir
+ * @param {number} rotation décalage en pas
  * @returns Pattern
  * @example
  * // A Samba rhythm necklace from Brazil
@@ -152,13 +152,13 @@ export const { euclidrot, euclidRot } = register(['euclidrot', 'euclidRot'], fun
 });
 
 /**
- * Similar to `euclid`, but each pulse is held until the next pulse,
- * so there will be no gaps.
+ * Similaire à `euclid`, mais chaque impulsion est maintenue jusqu'à la prochaine impulsion,
+ * il n'y aura donc pas de silences.
  * @name euclidLegato
  * @memberof Pattern
- * @param {number} pulses the number of onsets/beats
- * @param {number} steps the number of steps to fill
- * @param rotation offset in steps
+ * @param {number} pulses le nombre d'impulsions/battements
+ * @param {number} steps le nombre de pas à remplir
+ * @param rotation décalage en pas
  * @param pat
  * @example
  * note("c3").euclidLegato(3,8)
@@ -182,14 +182,14 @@ export const euclidLegato = register(['euclidLegato'], function (pulses, steps, 
 });
 
 /**
- * Similar to `euclid`, but each pulse is held until the next pulse,
- * so there will be no gaps, and has an additional parameter for 'rotating'
- * the resulting sequence
+ * Similaire à `euclid`, mais chaque impulsion est maintenue jusqu'à la prochaine impulsion,
+ * il n'y aura donc pas de silences, et avec un paramètre supplémentaire pour 'faire tourner'
+ * la séquence résultante
  * @name euclidLegatoRot
  * @memberof Pattern
- * @param {number} pulses the number of onsets/beats
- * @param {number} steps the number of steps to fill
- * @param {number} rotation offset in steps
+ * @param {number} pulses le nombre d'impulsions/battements
+ * @param {number} steps le nombre de pas à remplir
+ * @param {number} rotation décalage en pas
  * @example
  * note("c3").euclidLegatoRot(3,5,2)
  */
@@ -198,19 +198,19 @@ export const euclidLegatoRot = register(['euclidLegatoRot'], function (pulses, s
 });
 
 /**
- * A 'euclid' variant with an additional parameter that morphs the resulting
- * rhythm from 0 (no morphing) to 1 (completely 'even'). For example
- * `sound("bd").euclidish(3,8,0)` would be the same as
- * `sound("bd").euclid(3,8)`, and `sound("bd").euclidish(3,8,1)` would be the
- * same as `sound("bd bd bd")`. `sound("bd").euclidish(3,8,0.5)` would have a
- * groove somewhere between.
- * Inspired by the work of Malcom Braff.
+ * Une variante de 'euclid' avec un paramètre supplémentaire qui transforme le rythme
+ * résultant de 0 (aucune transformation) à 1 (complètement 'uniforme'). Par exemple
+ * `sound("bd").euclidish(3,8,0)` serait identique à
+ * `sound("bd").euclid(3,8)`, et `sound("bd").euclidish(3,8,1)` serait identique à
+ * `sound("bd bd bd")`. `sound("bd").euclidish(3,8,0.5)` aurait un
+ * groove quelque part entre les deux.
+ * Inspiré du travail de Malcolm Braff.
  * @name euclidish
  * @synonyms eish
  * @memberof Pattern
- * @param {number} pulses the number of onsets
- * @param {number} steps the number of steps to fill
- * @param {number} groove exists between the extremes of 0 (straight euclidian) and 1 (straight pulse)
+ * @param {number} pulses le nombre d'impulsions
+ * @param {number} steps le nombre de pas à remplir
+ * @param {number} groove existe entre les extrêmes de 0 (euclidien strict) et 1 (pulsation stricte)
  * @example
  * sound("hh").euclidish(7,12,sine.slow(8))
  * .pan(sine.slow(8))
