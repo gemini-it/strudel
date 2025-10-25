@@ -1,194 +1,194 @@
-# 🌀 Contributing to Strudel 🌀
+# 🌀 Contribuer à Strudel 🌀
 
-Thanks for wanting to contribute!!! There are many ways you can add value to this project
+Merci de vouloir contribuer !!! Il existe de nombreuses façons d'apporter de la valeur à ce projet
 
-## Move to codeberg
+## Déménagement vers codeberg
 
-We are currently in the process of moving from github to codeberg -- not everything is working, please bear with us.
+Nous sommes actuellement en train de déménager de github vers codeberg -- tout ne fonctionne pas encore, merci de votre patience.
 
-To update your local clone, you can run this command:
+Pour mettre à jour votre clone local, vous pouvez exécuter cette commande :
 
 ```
 git remote set-url origin git@codeberg.org:uzu/strudel.git
 ```
 
 
-## Communication Channels
+## Canaux de Communication
 
-To get in touch with the contributors, either
+Pour entrer en contact avec les contributeurs, soit
 
-- [join the Tidal Discord Channel](https://discord.com/invite/HGEdXmRkzT) and go to the #strudel channel
-- Find related discussions on the [tidal club forum](https://club.tidalcycles.org/)
+- [rejoindre le canal Discord de Tidal](https://discord.com/invite/HGEdXmRkzT) et aller sur le canal #strudel
+- Trouver des discussions connexes sur le [forum tidal club](https://club.tidalcycles.org/)
 
-## Ask a Question
+## Poser une Question
 
-If you have any questions about strudel, make sure you've glanced through the
-[docs](https://strudel.cc/learn/) to find out if it answers your question.
-If not, use one of the Communication Channels above!
+Si vous avez des questions sur strudel, assurez-vous d'avoir parcouru la
+[documentation](https://strudel.cc/learn/) pour voir si elle répond à votre question.
+Sinon, utilisez l'un des canaux de communication ci-dessus !
 
-Don't be afraid to ask! Your question might be of great value for other people too.
+N'ayez pas peur de poser des questions ! Votre question pourrait être de grande valeur pour d'autres personnes aussi.
 
-## Give Feedback
+## Donner un Retour
 
-No matter if you've used the Strudel REPL or if you are using the strudel packages, we are happy to hear some feedback.
-Use one of the Communication Channels listed above and drop us a line or two!
+Que vous ayez utilisé le REPL Strudel ou que vous utilisiez les packages strudel, nous sommes heureux d'entendre vos retours.
+Utilisez l'un des canaux de communication listés ci-dessus et envoyez-nous un message !
 
-## Share Music
+## Partager de la Musique
 
-If you made some music with strudel, you can give back some love and share what you've done!
-Your creation could also be part of the random selection in the REPL if you want.
-Use one of the Communication Channels listed above.
+Si vous avez créé de la musique avec strudel, vous pouvez rendre un peu d'amour et partager ce que vous avez fait !
+Votre création pourrait également faire partie de la sélection aléatoire dans le REPL si vous le souhaitez.
+Utilisez l'un des canaux de communication listés ci-dessus.
 
-## Improve the Docs
+## Améliorer la Documentation
 
-If you find some weak spots in the [docs](https://strudel.cc/workshop/getting-started/),
-you can edit each file directly on codeburg. (we are currently fixing the "Edit this page" links in the right sidebar)
+Si vous trouvez des points faibles dans la [documentation](https://strudel.cc/workshop/getting-started/),
+vous pouvez éditer chaque fichier directement sur codeburg. (nous sommes en train de corriger les liens "Éditer cette page" dans la barre latérale droite)
 
-## Propose a Feature
+## Proposer une Fonctionnalité
 
-If you want a specific feature that is not part of strudel yet, feel free to use one of the communication channels above.
-Maybe you even want to help with the implementation of that feature!
+Si vous voulez une fonctionnalité spécifique qui ne fait pas encore partie de strudel, n'hésitez pas à utiliser l'un des canaux de communication ci-dessus.
+Peut-être voulez-vous même aider à l'implémentation de cette fonctionnalité !
 
-## Report a Bug
+## Signaler un Bug
 
-If you've found a bug, or some behaviour that does not seem right, you are welcome to file an [issue](https://codeberg.org/uzu/strudel/issues).
-Please check that it has not been reported before.
+Si vous avez trouvé un bug, ou un comportement qui ne semble pas correct, vous êtes bienvenu pour créer une [issue](https://codeberg.org/uzu/strudel/issues).
+Veuillez vérifier qu'il n'a pas déjà été signalé auparavant.
 
-## Fix a Bug
+## Corriger un Bug
 
-To fix a bug that has been reported,
+Pour corriger un bug qui a été signalé,
 
-1. check that nobody else is already fixing it and respond to the issue to let people know you're on it
-2. fork the repository
-3. make sure you've setup the project (see below)
-4. hopefully fix the bug
-5. make sure the tests pass
-6. send a pull request
+1. vérifiez que personne d'autre ne le corrige déjà et répondez à l'issue pour informer les gens que vous vous en occupez
+2. forkez le dépôt
+3. assurez-vous d'avoir configuré le projet (voir ci-dessous)
+4. corrigez le bug (espérons-le)
+5. assurez-vous que les tests passent
+6. envoyez une pull request
 
-## Write Tests
+## Écrire des Tests
 
-There are still many tests that have not been written yet! Reading and writing tests is a great opportunity to get familiar with the codebase.
-You can find the tests in each package in the `test` folder. To run all tests, run `pnpm test` from the root folder.
+Il y a encore beaucoup de tests qui n'ont pas encore été écrits ! Lire et écrire des tests est une excellente opportunité pour se familiariser avec la base de code.
+Vous pouvez trouver les tests dans chaque package dans le dossier `test`. Pour exécuter tous les tests, exécutez `pnpm test` depuis le dossier racine.
 
-## Project Setup
+## Configuration du Projet
 
-To get the project up and running for development, make sure you have installed:
+Pour faire fonctionner le projet pour le développement, assurez-vous d'avoir installé :
 
 - [git](https://git-scm.com/)
 - [node](https://nodejs.org/en/) >= 18
 - [pnpm](https://pnpm.io/) (`curl -fsSL https://get.pnpm.io/install.sh | env PNPM_VERSION=8.11.0 sh -`)
 
-then, do the following:
+ensuite, faites ce qui suit :
 
 ```sh
 git clone https://codeberg.org/uzu/strudel.git && cd strudel
-pnpm i # install at root to symlink packages
-pnpm start # start repl
+pnpm i # installer à la racine pour créer des liens symboliques des packages
+pnpm start # démarrer le repl
 ```
 
-Those commands might look slightly different for your OS.
-Please report any problems you've had with the setup instructions!
+Ces commandes peuvent sembler légèrement différentes pour votre système d'exploitation.
+Veuillez signaler tout problème que vous avez rencontré avec les instructions de configuration !
 
-## Code Style
+## Style de Code
 
-To make sure the code changes only where it should, we are using prettier to unify the code style.
+Pour s'assurer que le code ne change que là où il le devrait, nous utilisons prettier pour unifier le style de code.
 
-- You can format all files at once by running `pnpm codeformat` from the project root
-- Run `pnpm format-check` from the project root to check if all files are well formatted
+- Vous pouvez formater tous les fichiers en une fois en exécutant `pnpm codeformat` depuis la racine du projet
+- Exécutez `pnpm format-check` depuis la racine du projet pour vérifier si tous les fichiers sont bien formatés
 
-If you use VSCode, you can
+Si vous utilisez VSCode, vous pouvez
 
-1. install [the prettier extension](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
-2. open command palette and run "Format Document With..."
-3. Choose "Configure Default Formatter..."
-4. Select prettier
+1. installer [l'extension prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+2. ouvrir la palette de commandes et exécuter "Format Document With..."
+3. Choisir "Configure Default Formatter..."
+4. Sélectionner prettier
 
 ## ESLint
 
-To prevent unwanted runtime errors, this project uses [eslint](https://eslint.org/).
+Pour prévenir les erreurs d'exécution indésirables, ce projet utilise [eslint](https://eslint.org/).
 
-- You can check for lint errors by running `pnpm lint`
+- Vous pouvez vérifier les erreurs lint en exécutant `pnpm lint`
 
-There are also eslint extensions / plugins for most editors.
+Il existe également des extensions / plugins eslint pour la plupart des éditeurs.
 
-## Running Tests
+## Exécuter les Tests
 
-- Run all tests with `pnpm test`
-- Run all tests with UI using `pnpm test-ui`
+- Exécuter tous les tests avec `pnpm test`
+- Exécuter tous les tests avec l'UI en utilisant `pnpm test-ui`
 
-## Running all CI Checks
+## Exécuter toutes les Vérifications CI
 
-When opening a PR, the CI runner will automatically check the code style and eslint, as well as run all tests.
-You can run the same check with `pnpm check`
+Lors de l'ouverture d'une PR, le runner CI vérifiera automatiquement le style de code et eslint, ainsi que l'exécution de tous les tests.
+Vous pouvez exécuter la même vérification avec `pnpm check`
 
-## Package Workflow
+## Workflow des Packages
 
-The project is split into multiple [packages](https://codeberg.org/uzu/strudel/src/branch/main/packages) with independent versioning.
-When you run `pnpm i` on the root folder, [pnpm workspaces](https://pnpm.io/workspaces) will install all dependencies of all subpackages. This will allow any js file to import `@strudel/<package-name>` to get the local version,
-allowing to develop multiple packages at the same time.
+Le projet est divisé en plusieurs [packages](https://codeberg.org/uzu/strudel/src/branch/main/packages) avec versionnage indépendant.
+Lorsque vous exécutez `pnpm i` sur le dossier racine, [pnpm workspaces](https://pnpm.io/workspaces) installera toutes les dépendances de tous les sous-packages. Cela permettra à n'importe quel fichier js d'importer `@strudel/<nom-du-package>` pour obtenir la version locale,
+permettant de développer plusieurs packages en même temps.
 
-## Package Publishing
+## Publication des Packages
 
-To publish all packages that have been changed since the last release, run:
+Pour publier tous les packages qui ont été modifiés depuis la dernière version, exécutez :
 
 ```sh
 npm login
 
-# this will increment all the versions in package.json files of non private packages to selected versions
+# cela incrémentera toutes les versions dans les fichiers package.json des packages non privés aux versions sélectionnées
 npx lerna version --no-private
 
-# publish all packages inside /packages using pnpm! don't use lerna to publish!!
+# publier tous les packages à l'intérieur de /packages en utilisant pnpm! n'utilisez pas lerna pour publier!!
 pnpm --filter "./packages/**" publish --dry-run
 
-# the last command was only a dry-run. if everything looks ok, run this:
+# la dernière commande n'était qu'un dry-run. si tout semble ok, exécutez ceci:
 
 pnpm --filter "./packages/**" publish --access public
 ```
 
-To manually publish a single package, increase the version in the `package.json`, then run `pnpm publish`.
-Important: Always publish with `pnpm`, as `npm` does not support overriding main files in `publishConfig`, which is done in all the packages.
+Pour publier manuellement un seul package, augmentez la version dans le `package.json`, puis exécutez `pnpm publish`.
+Important : Toujours publier avec `pnpm`, car `npm` ne supporte pas le remplacement des fichiers main dans `publishConfig`, ce qui est fait dans tous les packages.
 
 
-## useful commands
+## commandes utiles
 
 ```sh
-#regenerate the test snapshots (ex: when updating or creating new pattern functions)
+#régénérer les snapshots de test (ex: lors de la mise à jour ou de la création de nouvelles fonctions de pattern)
 pnpm snapshot 
 
-#start the OSC server
+#démarrer le serveur OSC
 pnpm run osc
 
-#build the standalone version
+#construire la version standalone
 pnpm tauri build
 ```
 
-## version tag patching
+## patching de tags de version
 
-here's a little guide on how to patch patterns in the database to prevent breaking old patterns due to breaking changes in newer versions.
+voici un petit guide sur comment patcher les patterns dans la base de données pour éviter de casser les anciens patterns en raison de changements cassants dans les nouvelles versions.
 
-the general tactic is to use `// @version x.y` to tag a pattern with a specific strudel version. when a pattern is evaluated, this metadata will de-activate any breaking changes that came after the specified version. 
-for example, in version 1.1, the default value for `fanchor` was changed from `0.5` to `0`.
-if play a pattern that was made before that change, sounds that use filter evenlopes can sound very different, so by adding `// @version 1.0` will make it sound like it used to.
-before releasing a new version with breaking changes, we can edit all patterns in the database, inserting the version tag they were created under:
+la tactique générale est d'utiliser `// @version x.y` pour taguer un pattern avec une version strudel spécifique. lorsqu'un pattern est évalué, ces métadonnées désactiveront tous les changements cassants qui sont venus après la version spécifiée.
+par exemple, dans la version 1.1, la valeur par défaut pour `fanchor` a été changée de `0.5` à `0`.
+si on joue un pattern qui a été créé avant ce changement, les sons qui utilisent des enveloppes de filtre peuvent sonner très différemment, donc en ajoutant `// @version 1.0` il sonnera comme avant.
+avant de publier une nouvelle version avec des changements cassants, nous pouvons éditer tous les patterns dans la base de données, en insérant le tag de version sous lequel ils ont été créés :
 
-as an example, to release version 1.2, do the following:
+comme exemple, pour publier la version 1.2, faites ce qui suit :
 
-1. get date range
+1. obtenir la plage de dates
 
 ```sh
-# get date of last version:
+# obtenir la date de la dernière version:
 git log -1 --format=%aI @strudel/core@1.1.0
 # 2024-05-31T23:07:26+02:00
 
-# get date of current version:
+# obtenir la date de la version actuelle:
 git log -1 --format=%aI @strudel/core@1.2.0
 # 2025-05-01T12:39:24+02:00
-# might also use todays timestamp if version is not yet released
+# peut aussi utiliser le timestamp d'aujourd'hui si la version n'est pas encore publiée
 ```
 
-now we know, all patterns between these 2 dates have to receive a version tag (unless they already have one).
+maintenant nous savons, tous les patterns entre ces 2 dates doivent recevoir un tag de version (sauf s'ils en ont déjà un).
 
-2. get patterns in question
+2. obtenir les patterns en question
 
 ```sql
 SELECT *
@@ -199,12 +199,12 @@ AND created_at < '2025-05-01T12:39:24+02:00'
 ORDER BY created_at ASC;
 ```
 
-this gives us all unversioned patterns that were saved between 1.1.0 and 1.2.0. in this case, it's 9373 patterns!
+cela nous donne tous les patterns non versionnés qui ont été sauvegardés entre 1.1.0 et 1.2.0. dans ce cas, c'est 9373 patterns !
 
-3. insert version tags
+3. insérer les tags de version
 
-we are now ready to insert the version tag to these patterns.
-before updating thousands of patterns, it's probably a good idea to test if a single one gets udpated:
+nous sommes maintenant prêts à insérer le tag de version à ces patterns.
+avant de mettre à jour des milliers de patterns, c'est probablement une bonne idée de tester si un seul est mis à jour :
 
 ```sql
 UPDATE code_v1
@@ -212,7 +212,7 @@ SET code = code || E'\n// @version 1.1'
 WHERE hash = 'Ns2sMB40yIw4';
 ```
 
-after [verifying](https://strudel.cc/?Ns2sMB40yIw4) that the version tag has been added, let's insert it everywhere:
+après avoir [vérifié](https://strudel.cc/?Ns2sMB40yIw4) que le tag de version a été ajouté, insérons-le partout :
 
 ```sql
 UPDATE code_v1
@@ -222,9 +222,9 @@ AND created_at > '2024-05-31T23:07:26+02:00'
 AND created_at < '2025-05-01T12:39:24+02:00'
 ```
 
-4. verify
+4. vérifier
 
-we can verify that the edits worked by querying all patterns that contain the new version tag:
+nous pouvons vérifier que les modifications ont fonctionné en interrogeant tous les patterns qui contiennent le nouveau tag de version :
 
 ```sql
 SELECT *
@@ -236,6 +236,6 @@ ORDER BY created_at ASC;
 ```
 
 
-## Have Fun
+## Amusez-vous
 
-Remember to have fun, and that this project is driven by the passion of volunteers!
+N'oubliez pas de vous amuser, et que ce projet est porté par la passion des bénévoles !

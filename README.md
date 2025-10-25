@@ -1,49 +1,49 @@
 # strudel
 
-Live coding patterns on the web
+Live coding de patterns sur le web
 https://strudel.cc/
 
-- Try it here: <https://strudel.cc>
-- Docs: <https://strudel.cc/learn>
-- Technical Blog Post: <https://loophole-letters.vercel.app/strudel>
-- 1 Year of Strudel Blog Post: <https://loophole-letters.vercel.app/strudel1year>
-- 2 Years of Strudel Blog Post: <https://strudel.cc/blog/#year-2>
+- Essayez-le ici : <https://strudel.cc>
+- Documentation : <https://strudel.cc/learn>
+- Article de blog technique : <https://loophole-letters.vercel.app/strudel>
+- Article de blog 1 an de Strudel : <https://loophole-letters.vercel.app/strudel1year>
+- Article de blog 2 ans de Strudel : <https://strudel.cc/blog/#year-2>
 
-## Running Locally
+## Exécuter localement
 
-After cloning the project, you can run the REPL locally:
+Après avoir cloné le projet, vous pouvez exécuter le REPL localement :
 
-1. Install [Node.js](https://nodejs.org/)
-2. Install [pnpm](https://pnpm.io/installation)
-3. Install dependencies by running the following command:
+1. Installez [Node.js](https://nodejs.org/)
+2. Installez [pnpm](https://pnpm.io/installation)
+3. Installez les dépendances en exécutant la commande suivante :
    ```bash
    pnpm i
    ```
-4. Run the development server:
+4. Lancez le serveur de développement :
    ```bash
    pnpm dev
    ```
 
-## Using Strudel In Your Project
+## Utiliser Strudel dans votre projet
 
-This project is organized into many [packages](./packages), which are also available on [npm](https://www.npmjs.com/search?q=%40strudel).
+Ce projet est organisé en plusieurs [packages](./packages), qui sont également disponibles sur [npm](https://www.npmjs.com/search?q=%40strudel).
 
-Read more about how to use these in your own project [here](https://strudel.cc/technical-manual/project-start).
+En savoir plus sur la façon d'utiliser ces packages dans votre propre projet [ici](https://strudel.cc/technical-manual/project-start).
 
-You will need to abide by the terms of the [GNU Affero Public Licence v3](LICENSE). As such, Strudel code can only be shared within free/open source projects under the same license -- see the license for details.
+Vous devrez respecter les termes de la [Licence Publique Générale Affero GNU v3](LICENSE). Ainsi, le code Strudel ne peut être partagé que dans des projets libres/open source sous la même licence -- voir la licence pour plus de détails.
 
-Licensing info for the default sound banks can be found over on the [dough-samples](https://github.com/felixroos/dough-samples/blob/main/README.md) repository.
+Les informations de licence pour les banques de sons par défaut peuvent être trouvées sur le dépôt [dough-samples](https://github.com/felixroos/dough-samples/blob/main/README.md).
 
-## Contributing
+## Contribuer
 
-There are many ways to contribute to this project! See [contribution guide](./CONTRIBUTING.md). You can find the full list of contributors [here](https://codeberg.org/uzu/strudel/activity/contributors).
+Il existe de nombreuses façons de contribuer à ce projet ! Consultez le [guide de contribution](./CONTRIBUTING.md). Vous pouvez trouver la liste complète des contributeurs [ici](https://codeberg.org/uzu/strudel/activity/contributors).
 
-## Community
+## Communauté
 
-There is a #strudel channel on the TidalCycles discord: <https://discord.com/invite/HGEdXmRkzT>
+Il y a un canal #strudel sur le discord TidalCycles : <https://discord.com/invite/HGEdXmRkzT>
 
-You can also ask questions and find related discussions on the tidal club forum: <https://club.tidalcycles.org/>
+Vous pouvez également poser des questions et trouver des discussions connexes sur le forum tidal club : <https://club.tidalcycles.org/>
 
-The discord and forum is shared with the haskell (tidal) and python (vortex) siblings of this project.
+Le discord et le forum sont partagés avec les projets frères haskell (tidal) et python (vortex).
 
-We also have a mastodon account: <a rel="me" href="https://social.toplap.org/@strudel">social.toplap.org/@strudel</a>
+Nous avons également un compte mastodon : <a rel="me" href="https://social.toplap.org/@strudel">social.toplap.org/@strudel</a>
