@@ -76,12 +76,12 @@ export function VerticalPanel({ context }) {
 }
 
 const tabNames = {
-  welcome: 'intro',
+  welcome: 'accueil',
   patterns: 'patterns',
   sounds: 'sounds',
-  reference: 'reference',
+  reference: 'référence',
   console: 'console',
-  settings: 'settings',
+  settings: 'parametres',
 };
 if (TAURI) {
   tabNames.files = 'files';

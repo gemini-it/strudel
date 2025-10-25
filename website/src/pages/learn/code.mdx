@@ -1,24 +1,24 @@
 ---
-title: Syntaxe du code
+title: Syntaxe de code
 layout: ../../layouts/MainLayout.astro
 ---
 
 import { MiniRepl } from '../../docs/MiniRepl';
 import { JsDoc } from '../../docs/JsDoc';
 
-# Syntaxe du Code
+# Syntaxe de code
 
-Prenons du recul et comprenons comment fonctionne la syntaxe dans Strudel.
+Revenons en arrière et comprenons comment la syntaxe fonctionne dans Strudel.
 
-Regardez cet exemple simple :
+Jetez un œil à cet exemple simple :
 
 <MiniRepl client:idle tune={`note("c a f e").s("piano")`} />
 
-- Nous avons un mot `note` qui est suivi de parenthèses `()` avec des mots/lettres/nombres à l'intérieur, entourés de guillemets `"c a f e"`
+- Nous avons le mot `note` qui est suivi de parenthèses `()` avec des mots/lettres/chiffres à l'intérieur, entourés de guillemets `"c a f e"`
 - Ensuite, nous avons un point `.` suivi d'un autre morceau de code similaire `s("piano")`.
 - Nous pouvons également voir que ces textes sont _mis en évidence_ avec des couleurs : le mot `note` est violet, les parenthèses `()` sont grises, et le contenu à l'intérieur des `""` est vert. (Les couleurs pourraient être différentes si vous avez changé le thème par défaut)
 
-Que se passe-t-il si nous essayons de 'casser' ce modèle de différentes manières ?
+Que se passe-t-il si nous essayons de « casser » ce modèle de différentes manières ?
 
 <MiniRepl client:idle tune={`note(c a f e).s(piano)`} />
 
@@ -26,13 +26,13 @@ Que se passe-t-il si nous essayons de 'casser' ce modèle de différentes maniè
 
 <MiniRepl client:idle tune={`note["c a f e"].s{"piano"}`} />
 
-Ok, aucun de ceux-ci ne semble fonctionner...
+Ok, aucun de ceux-ci ne semble fonctionner…
 
 <MiniRepl client:idle tune={`s("piano").note("c a f e")`} />
 
-Celui-ci fonctionne, mais maintenant nous n'entendons que la première note...
+Celui-ci fonctionne, mais maintenant nous n'entendons que la première note…
 
-Alors que se passe-t-il ici ?
+Alors, que se passe-t-il ici ?
 
 # Fonctions, arguments et chaînage
 
@@ -44,12 +44,12 @@ xxx("foo").yyy("bar")
 
 En général, `xxx` et `yyy` sont appelées [_fonctions_](<https://en.wikipedia.org/wiki/Function_(computer_programming)>), tandis que `foo` et `bar` sont appelés [_arguments_ ou _paramètres_](<https://en.wikipedia.org/wiki/Parameter_(computer_programming)>) de fonction.
 Jusqu'à présent, nous avons utilisé les fonctions pour déclarer quel aspect du son nous voulons contrôler, et leurs arguments pour les données réelles.
-La fonction `yyy` est appelée une fonction [_chaînée_](https://en.wikipedia.org/wiki/Method_chaining), car elle est précédée d'un point (`.`).
+La fonction `yyy` est appelée une fonction de [_chaînage de méthodes_](https://en.wikipedia.org/wiki/Method_chaining), car elle est précédée d'un point (`.`).
 
 En général, l'idée du chaînage est que du code tel que `a("this").b("that").c("other")` permet aux fonctions `a`, `b` et `c` de se produire dans un ordre spécifié, sans avoir besoin de les écrire sur trois lignes de code séparées.
 Vous pouvez considérer cela comme similaire au chaînage d'effets audio ensemble en utilisant des pédales de guitare ou des effets audio numériques.
 
-Strudel utilise massivement les fonctions chaînées. Voici un exemple plus sophistiqué :
+Strudel utilise massivement le chaînage de méthodes. Voici un exemple plus sophistiqué :
 
 <MiniRepl
   client:idle
@@ -79,9 +79,9 @@ Essayez d'ajouter `.rev()` après `effectChain()` pour entendre d'autres effets 
 
 # Commentaires
 
-Le `//` dans l'exemple ci-dessus est un commentaire de ligne, ce qui fait que la fonction `delay` est ignorée.
+Le `//` dans l'exemple ci-dessus est un commentaire de ligne, ce qui signifie que la fonction `delay` est ignorée.
 C'est un moyen pratique d'activer et de désactiver rapidement le code.
-Essayez de décommenter cette ligne en supprimant `//` et en rafraîchissant le pattern.
+Essayez de décommenter cette ligne en supprimant `//` et en rafraîchissant le motif.
 Vous pouvez également utiliser le raccourci clavier `cmd-/` pour activer et désactiver les commentaires.
 
 Vous avez peut-être remarqué que certains commentaires dans les exemples REPL incluent des mots commençant par un "@", comme `@by` ou `@license`.
@@ -92,9 +92,9 @@ Ce ne sont qu'une convention pour définir des informations sur la musique. Nous
 Ok, et qu'en est-il du contenu à l'intérieur des guillemets (par exemple `"c a f e"`) ?
 En JavaScript, comme dans la plupart des langages de programmation, ce contenu est appelé une [_chaîne de caractères_](<https://en.wikipedia.org/wiki/String_(computer_science)>).
 Une chaîne est simplement une séquence de caractères individuels.
-Dans TidalCycles, les chaînes entre guillemets doubles sont utilisées pour écrire des _patterns_ en utilisant la mini-notation, et vous pourriez entendre l'expression _chaîne de pattern_ de temps en temps.
-Si vous voulez créer une chaîne normale et pas un pattern, vous pouvez utiliser des guillemets simples, par exemple `'C minor'` ne sera pas analysé comme de la Mini Notation.
+Dans TidalCycles, les chaînes entre guillemets doubles sont utilisées pour écrire des _motifs_ en utilisant la mini-notation, et vous pourriez entendre l'expression _chaîne de motif_ de temps en temps.
+Si vous voulez créer une chaîne normale et non un motif, vous pouvez utiliser des guillemets simples, par exemple `'C minor'` ne sera pas analysé comme de la mini-notation.
 
-La bonne nouvelle, c'est que cela couvre la plupart de la syntaxe JavaScript nécessaire pour Strudel !
+La bonne nouvelle, c'est que cela couvre la majeure partie de la syntaxe JavaScript nécessaire pour Strudel !
 
 <br />

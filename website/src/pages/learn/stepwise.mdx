@@ -6,35 +6,35 @@ layout: ../../layouts/MainLayout.astro
 import { MiniRepl } from '../../docs/MiniRepl';
 import { JsDoc } from '../../docs/JsDoc';
 
-# Patternisation par pas (expérimental)
+# Création de motifs par étapes (expérimental)
 
-Il s'agit d'un domaine en développement de Strudel, et le comportement pourrait changer ou être renommé dans les versions futures. Les retours et idées sont les bienvenus !
+Ceci est un domaine en développement de Strudel, et le comportement pourrait changer ou être renommé dans les versions futures. Vos retours et idées sont les bienvenus !
 
 ## Introduction
 
-Habituellement dans Strudel, le seul point de référence pour la plupart des transformations de pattern est le _cycle_. Il est maintenant possible de travailler également avec des _pas_, via une gamme croissante de fonctions.
+Habituellement dans Strudel, le seul point de référence pour la plupart des transformations de motifs est le _cycle_. Il est maintenant aussi possible de travailler avec des _étapes_, via une gamme croissante de fonctions.
 
-Par exemple, habituellement lorsque vous `fastcat` deux patterns ensemble, les cycles seront compressés en un demi-cycle chacun :
+Par exemple, habituellement lorsque vous `fastcat` deux motifs ensemble, les cycles seront compressés en un demi-cycle chacun :
 
 <MiniRepl client:idle tune={`fastcat("bd hh hh", "bd hh hh cp hh").sound()`} />
 
-Avec la nouvelle fonction stepwise `stepcat`, les pas des deux patterns seront répartis uniformément sur le cycle :
+Avec la nouvelle fonction par étapes `stepcat`, les étapes des deux motifs seront réparties uniformément sur le cycle :
 
 <MiniRepl client:idle tune={`stepcat("bd hh hh", "bd hh hh cp hh").sound()`} />
 
-Par défaut, les pas sont comptés selon le 'niveau supérieur' dans la mini-notation. Par exemple `"a [b c] d e"` a cinq événements en un cycle, mais est compté comme quatre pas, où `[b c]` est compté comme un seul pas.
+Par défaut, les étapes sont comptées selon le « niveau supérieur » dans la mini-notation. Par exemple `"a [b c] d e"` a cinq événements en un cycle, mais est compté comme quatre étapes, où `[b c]` est compté comme une seule étape.
 
-Cependant, vous pouvez marquer un niveau métrique différent pour compter les pas relativement, en utilisant un `^` au début d'un sous-pattern. Si nous faisons cela au sous-pattern dans notre exemple : `"a [^b c] d e"`, alors le pattern est maintenant compté comme ayant _huit_ pas. C'est parce que 'b' et 'c' sont chacun comptés comme des pas simples, et les événements dans le pattern sont deux fois plus longs, et sont donc comptés comme deux pas chacun.
+Cependant, vous pouvez marquer un niveau métrique différent pour compter les étapes relativement, en utilisant un `^` au début d'un sous-motif. Si nous faisons cela au sous-motif dans notre exemple : `"a [^b c] d e"`, alors le motif est maintenant compté comme ayant _huit_ étapes. C'est parce que 'b' et 'c' sont chacun comptés comme des étapes simples, et les événements dans le motif sont deux fois plus longs, et sont donc comptés comme deux étapes chacun.
 
-## Rythmer les pas
+## Rythmer les étapes
 
-Certaines fonctions stepwise ne semblent pas faire grand-chose par elles-mêmes, par exemple ces deux exemples de la fonction `expand` sonnent exactement pareil malgré être étendus de différentes quantités :
+Certaines fonctions par étapes ne semblent pas faire grand-chose par elles-mêmes, par exemple ces deux exemples de la fonction `expand` sonnent exactement pareil malgré être étendus de différentes quantités :
 
 <MiniRepl client:idle tune={`"c a f e".expand(2).note().sound("folkharp")`} />
 
 <MiniRepl client:idle tune={`"c a f e".expand(4).note().sound("folkharp")`} />
 
-Le nombre de pas par cycle est modifié en coulisses, mais seul, cela ne fait rien. Vous entendrez une différence cependant, une fois que vous utilisez une autre fonction stepwise avec elle, par exemple `stepcat` :
+Le nombre d'étapes par cycle est modifié en coulisses, mais seul, cela ne fait rien. Vous entendrez une différence cependant, une fois que vous utilisez une autre fonction par étapes avec elle, par exemple `stepcat` :
 
 <MiniRepl
   client:idle
@@ -48,9 +48,9 @@ Le nombre de pas par cycle est modifié en coulisses, mais seul, cela ne fait ri
   .sound("folkharp")`}
 />
 
-Vous devriez pouvoir entendre que `expand` augmente la durée des pas du premier sous-pattern, proportionnellement au second.
+Vous devriez pouvoir entendre que `expand` augmente la durée des étapes du premier sous-motif, proportionnellement au second.
 
-Vous pouvez également changer la vitesse d'un pattern pour correspondre à un nombre donné de pas par cycle, avec la fonction `pace` :
+Vous pouvez également changer la vitesse d'un motif pour correspondre à un nombre donné d'étapes par cycle, avec la fonction `pace` :
 
 <MiniRepl
   client:idle
@@ -66,19 +66,19 @@ Vous pouvez également changer la vitesse d'un pattern pour correspondre à un n
   .pace(8)`}
 />
 
-Le premier exemple a dix pas, et le deuxième exemple a 18 pas, mais sont ensuite tous deux joués à une vitesse de 8 pas par cycle.
+Le premier exemple a dix étapes, et le deuxième exemple a 18 étapes, mais sont ensuite tous deux joués à une vitesse de 8 étapes par cycle.
 
-L'argument de `expand` peut également être patterné, et sera traité de manière stepwise. Cela signifie que les patterns provenant des valeurs changeantes dans l'argument seront `stepcat`és ensemble :
+L'argument de `expand` peut également être modélisé, et sera traité par étapes. Cela signifie que les motifs provenant des valeurs changeantes dans l'argument seront `stepcat`és ensemble :
 
 <MiniRepl client:idle tune={`note("c a f e").sound("folkharp").expand("3 2 1 1 2 3")`} />
 
-Cela résulte en un pattern dense, car les différentes versions étendues sont compressées en un seul cycle. `pace` est à nouveau pratique ici pour ralentir le pattern à un nombre particulier de pas par cycle :
+Cela résulte en un motif dense, car les différentes versions étendues sont compressées en un seul cycle. `pace` est à nouveau pratique ici pour ralentir le motif à un nombre particulier d'étapes par cycle :
 
 <MiniRepl client:idle tune={`note("c a f e").sound("folkharp").expand("3 2 1 1 2 3").pace(8)`} />
 
-Les versions antérieures de nombreuses de ces fonctions avaient des préfixes `s_`, et la fonction `pace` était précédemment connue sous le nom de `steps`. Celles-ci existent toujours en tant qu'alias, mais peuvent avoir changé de comportement et seront bientôt supprimées. Veuillez mettre à jour vos patterns !
+Les versions antérieures de nombreuses de ces fonctions avaient des préfixes `s_`, et la fonction `pace` était auparavant connue sous le nom de `steps`. Celles-ci existent toujours en tant qu'alias, mais peuvent avoir changé de comportement et seront bientôt supprimées. Veuillez mettre à jour vos motifs !
 
-## Fonctions stepwise
+## Fonctions par étapes
 
 ### pace
 

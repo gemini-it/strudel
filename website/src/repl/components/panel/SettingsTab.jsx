@@ -118,7 +118,7 @@ export function SettingsTab({ started }) {
   return (
     <div className="text-foreground p-4 space-y-4 w-full" style={{ fontFamily }}>
       {canChangeAudioDevice && (
-        <FormItem label="Audio Output Device">
+        <FormItem label="Périphérique de sortie audio">
           <AudioDeviceSelector
             isDisabled={started}
             audioDeviceName={audioDeviceName}
@@ -133,7 +133,7 @@ export function SettingsTab({ started }) {
           />
         </FormItem>
       )}
-      <FormItem label="Audio Engine Target">
+      <FormItem label="Cible du moteur audio">
         <AudioEngineTargetSelector
           target={audioEngineTarget}
           onChange={(target) => {
@@ -147,7 +147,7 @@ export function SettingsTab({ started }) {
         />
       </FormItem>
 
-      <FormItem label="Maximum Polyphony">
+      <FormItem label="Polyphonie maximale">
         <Textbox
           min={1}
           max={Infinity}
@@ -168,7 +168,7 @@ export function SettingsTab({ started }) {
       </FormItem>
       <FormItem>
         <Checkbox
-          label="Multi Channel Orbits"
+          label="Orbites multi-canaux"
           onChange={(cbEvent) => {
             const val = cbEvent.target.checked;
             confirmDialog(RELOAD_MSG).then((r) => {
@@ -182,18 +182,18 @@ export function SettingsTab({ started }) {
           value={multiChannelOrbits}
         />
       </FormItem>
-      <FormItem label="Theme">
+      <FormItem label="Thème">
         <SelectInput options={themeOptions} value={theme} onChange={(theme) => settingsMap.setKey('theme', theme)} />
       </FormItem>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 font-sans">
-        <FormItem label="Font Family">
+        <FormItem label="Famille de police">
           <SelectInput
             options={fontFamilyOptions}
             value={fontFamily}
             onChange={(fontFamily) => settingsMap.setKey('fontFamily', fontFamily)}
           />
         </FormItem>
-        <FormItem label="Font Size">
+        <FormItem label="Taille de police">
           <NumberSlider
             value={fontSize}
             onChange={(fontSize) => settingsMap.setKey('fontSize', fontSize)}
@@ -203,85 +203,85 @@ export function SettingsTab({ started }) {
           />
         </FormItem>
       </div>
-      <FormItem label="Keybindings">
+      <FormItem label="Raccourcis clavier">
         <ButtonGroup
           value={keybindings}
           onChange={(keybindings) => settingsMap.setKey('keybindings', keybindings)}
           items={{ codemirror: 'Codemirror', vim: 'Vim', emacs: 'Emacs', vscode: 'VSCode' }}
         ></ButtonGroup>
       </FormItem>
-      <FormItem label="Panel Position">
+      <FormItem label="Position du panneau">
         <ButtonGroup
           value={panelPosition}
           onChange={(value) => settingsMap.setKey('panelPosition', value)}
           items={{ bottom: 'Bottom', right: 'Right' }}
         ></ButtonGroup>
       </FormItem>
-      <FormItem label="Open Panel on:                       ">
+      <FormItem label="Ouvrir le panneau au :                       ">
         <ButtonGroup
           value={togglePanelTrigger}
           onChange={(value) => settingsMap.setKey('togglePanelTrigger', value)}
           items={{ click: 'Click', hover: 'Hover' }}
         />
       </FormItem>
-      <FormItem label="More Settings">
+      <FormItem label="Plus de paramètres">
         <Checkbox
-          label="Enable bracket matching"
+          label="Activer la correspondance des parenthèses"
           onChange={(cbEvent) => settingsMap.setKey('isBracketMatchingEnabled', cbEvent.target.checked)}
           value={isBracketMatchingEnabled}
         />
         <Checkbox
-          label="Auto close brackets"
+          label="Fermeture automatique des parenthèses"
           onChange={(cbEvent) => settingsMap.setKey('isBracketClosingEnabled', cbEvent.target.checked)}
           value={isBracketClosingEnabled}
         />
         <Checkbox
-          label="Display line numbers"
+          label="Afficher les numéros de ligne"
           onChange={(cbEvent) => settingsMap.setKey('isLineNumbersDisplayed', cbEvent.target.checked)}
           value={isLineNumbersDisplayed}
         />
         <Checkbox
-          label="Highlight active line"
+          label="Surligner la ligne active"
           onChange={(cbEvent) => settingsMap.setKey('isActiveLineHighlighted', cbEvent.target.checked)}
           value={isActiveLineHighlighted}
         />
         <Checkbox
-          label="Highlight events in code"
+          label="Surligner les événements dans le code"
           onChange={(cbEvent) => settingsMap.setKey('isPatternHighlightingEnabled', cbEvent.target.checked)}
           value={isPatternHighlightingEnabled}
         />
         <Checkbox
-          label="Enable auto-completion"
+          label="Activer l'auto-complétion"
           onChange={(cbEvent) => settingsMap.setKey('isAutoCompletionEnabled', cbEvent.target.checked)}
           value={isAutoCompletionEnabled}
         />
         <Checkbox
-          label="Enable tooltips on Ctrl and hover"
+          label="Activer les info-bulles sur Ctrl et survol"
           onChange={(cbEvent) => settingsMap.setKey('isTooltipEnabled', cbEvent.target.checked)}
           value={isTooltipEnabled}
         />
         <Checkbox
-          label="Enable line wrapping"
+          label="Activer le retour à la ligne automatique"
           onChange={(cbEvent) => settingsMap.setKey('isLineWrappingEnabled', cbEvent.target.checked)}
           value={isLineWrappingEnabled}
         />
         <Checkbox
-          label="Enable Tab indentation"
+          label="Activer l'indentation par tabulation"
           onChange={(cbEvent) => settingsMap.setKey('isTabIndentationEnabled', cbEvent.target.checked)}
           value={isTabIndentationEnabled}
         />
         <Checkbox
-          label="Enable Multi-Cursor (Cmd/Ctrl+Click)"
+          label="Activer les multi-curseurs (Cmd/Ctrl+Clic)"
           onChange={(cbEvent) => settingsMap.setKey('isMultiCursorEnabled', cbEvent.target.checked)}
           value={isMultiCursorEnabled}
         />
         <Checkbox
-          label="Enable flashing on evaluation"
+          label="Activer le clignotement à l'évaluation"
           onChange={(cbEvent) => settingsMap.setKey('isFlashEnabled', cbEvent.target.checked)}
           value={isFlashEnabled}
         />
         <Checkbox
-          label="Sync across Browser Tabs / Windows"
+          label="Synchroniser entre les onglets/fenêtres du navigateur"
           onChange={(cbEvent) => {
             const newVal = cbEvent.target.checked;
             confirmDialog(RELOAD_MSG).then((r) => {
@@ -295,18 +295,18 @@ export function SettingsTab({ started }) {
           value={isSyncEnabled}
         />
         <Checkbox
-          label="Hide top buttons"
+          label="Masquer les boutons du haut"
           onChange={(cbEvent) => settingsMap.setKey('isButtonRowHidden', cbEvent.target.checked)}
           value={isButtonRowHidden}
         />
         <Checkbox
-          label="Disable CSS Animations"
+          label="Désactiver les animations CSS"
           onChange={(cbEvent) => settingsMap.setKey('isCSSAnimationDisabled', cbEvent.target.checked)}
           value={isCSSAnimationDisabled}
         />
       </FormItem>
-      <FormItem label="Zen Mode">Try clicking the logo in the top left!</FormItem>
-      <FormItem label="Reset Settings">
+      <FormItem label="Mode Zen">Essayez de cliquer sur le logo en haut à gauche !</FormItem>
+      <FormItem label="Réinitialiser les paramètres">
         <button
           className="bg-background p-2 max-w-[300px] rounded-md hover:opacity-50"
           onClick={() => {
@@ -318,7 +318,7 @@ export function SettingsTab({ started }) {
             });
           }}
         >
-          restore default settings
+          restaurer les paramètres par défaut
         </button>
       </FormItem>
     </div>

@@ -14,7 +14,7 @@ Nous avons des sons, nous avons des notes, maintenant voyons les effets !
 
 ## Quelques effets de base
 
-**filtre passe-bas**
+**Filtre passe-bas**
 
 <MiniRepl
   client:visible
@@ -31,7 +31,7 @@ lpf = **f**iltre **p**asse-**b**as (**l**ow **p**ass **f**ilter)
 
 </Box>
 
-**patteriser le filtre**
+**Patteriser le filtre**
 
 <MiniRepl
   client:visible
@@ -42,7 +42,7 @@ lpf = **f**iltre **p**asse-**b**as (**l**ow **p**ass **f**ilter)
 <Box>
 
 - Essayez d'ajouter plus de valeurs
-- Remarquez comment le pattern dans lpf ne change pas le rythme global
+- Remarquez comment le motif dans lpf ne change pas le rythme global
 
 Nous apprendrons comment automatiser avec des ondes plus tard...
 
@@ -71,7 +71,7 @@ punchcard
 Le rythme est une question de dynamique !
 
 - Supprimez `.gain(...)` et remarquez comme le son devient plat.
-- Ramenez-le en annulant (ctrl+z)
+- Ramenez-le en annulant (Ctrl+z)
 
 </Box>
 
@@ -90,7 +90,7 @@ $: note("<[c3,g3,e4] [bb2,f3,d4] [a2,f3,c4] [bb2,g3,eb4]>")
 .sound("sawtooth").vowel("<a e i o>")`}
 />
 
-**façonner le son avec une enveloppe adsr**
+**Façonner le son avec une enveloppe ADSR**
 
 <MiniRepl
   client:visible
@@ -104,7 +104,7 @@ $: note("<[c3,g3,e4] [bb2,f3,d4] [a2,f3,c4] [bb2,g3,eb4]>")
 
 <Box>
 
-Essayez de découvrir ce que font les nombres.. Comparez les éléments suivants
+Essayez de découvrir ce que font les nombres. Comparez les éléments suivants :
 
 - attack (attaque) : `.5` vs `0`
 - decay (décroissance) : `.5` vs `0`
@@ -160,8 +160,8 @@ Que se passe-t-il si vous utilisez `.delay(".8:.06:.8")` ? Pouvez-vous deviner c
 
 `delay("a:b:c")` :
 
-- a : volume du delay
-- b : temps du delay
+- a : volume du délai
+- b : temps du délai
 - c : feedback (nombre plus petit = fondu plus rapide)
 
 </QA>
@@ -179,11 +179,11 @@ Que se passe-t-il si vous utilisez `.delay(".8:.06:.8")` ? Pouvez-vous deviner c
 
 Essayez différentes valeurs !
 
-Ajoutez aussi un delay !
+Ajoutez aussi un délai !
 
 </Box>
 
-**petit morceau dub**
+**Petit morceau de dub**
 
 <MiniRepl
   client:visible
@@ -217,7 +217,7 @@ $: n("[0 [~ 0] 4 [3 2] [0 ~] [0 ~] <0 2> ~]/2")
 
 <Box>
 
-Essayez d'ajouter `.hush()` à la fin d'un des patterns dans la pile...
+Essayez d'ajouter `.hush()` à la fin d'un des motifs dans la pile...
 
 </Box>
 
@@ -235,7 +235,7 @@ Essayez d'ajouter `.hush()` à la fin d'un des patterns dans la pile...
 
 **fast et slow**
 
-Nous pouvons utiliser `fast` et `slow` pour changer le tempo d'un pattern en dehors de la Mini-Notation :
+Nous pouvons utiliser `fast` et `slow` pour changer le tempo d'un motif en dehors de la mini-notation :
 
 <MiniRepl client:visible tune={`sound("bd*4,~ rim ~ cp").slow(2)`} />
 
@@ -243,15 +243,15 @@ Nous pouvons utiliser `fast` et `slow` pour changer le tempo d'un pattern en deh
 
 Changez la valeur de `slow`. Essayez de la remplacer par `fast`.
 
-Que se passe-t-il si vous utilisez un pattern comme `.fast("<1 [2 4]>")` ?
+Que se passe-t-il si vous utilisez un motif comme `.fast("<1 [2 4]>")` ?
 
 </Box>
 
-D'ailleurs, dans la Mini-Notation, `fast` correspond à `*` et `slow` correspond à `/`.
+D'ailleurs, dans la mini-notation, `fast` correspond à `*` et `slow` correspond à `/`.
 
 <MiniRepl client:visible tune={`sound("[bd*4,~ rim ~ cp]*<1 [2 4]>")`} />
 
-## modulation avec des signaux
+## Modulation avec des signaux
 
 Au lieu de changer les valeurs par paliers, nous pouvons également les contrôler avec des signaux :
 
@@ -267,7 +267,7 @@ Le gain est visualisé comme la transparence dans le pianoroll.
 
 </Box>
 
-**définir une plage**
+**Définir une plage**
 
 Par défaut, les ondes oscillent entre 0 et 1. Nous pouvons changer cela avec `range` :
 
@@ -308,4 +308,4 @@ La modulation complète prendra maintenant 8 cycles pour se répéter.
 | signals | `sine`, `saw`, `square`, `tri`, `rand`, `perlin`<br/><MiniRepl client:visible tune={`s("hh*16").gain  (saw)`} /> |
 | range   | <MiniRepl client:visible tune={`s("hh*16").lpf(saw.range(200,4000))`} />                                         |
 
-Jetons maintenant un coup d'œil à certains [effets de pattern](/workshop/pattern-effects) typiques de Tidal.
+Jetons maintenant un coup d'œil à certains [effets de motif](/workshop/pattern-effects) typiques de Tidal.

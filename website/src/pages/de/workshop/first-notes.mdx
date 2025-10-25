@@ -1,5 +1,5 @@
 ---
-title: Erste Töne
+title: Premières Notes
 layout: ../../../layouts/MainLayout.astro
 ---
 
@@ -8,13 +8,13 @@ import { midi2note } from '@strudel/core/';
 import Box from '@components/Box.astro';
 import QA from '@components/QA';
 
-# Erste Töne
+# Premières Notes
 
-Jetzt schauen wir uns an wie man mit Tönen mit der `note` Funktion spielt.
+Maintenant, nous allons voir comment jouer avec des notes en utilisant la fonction `note`.
 
-## Zahlen und Noten
+## Chiffres et Notes
 
-**Töne mit Zahlen**
+**Jouer des notes avec des nombres**
 
 <MiniRepl
   client:visible
@@ -29,13 +29,13 @@ Jetzt schauen wir uns an wie man mit Tönen mit der `note` Funktion spielt.
 
 <Box>
 
-Probiere verschiedene Zahlen aus!
+Essaie différents chiffres !
 
-Versuch auch mal Kommazahlen, z.B. 55.5 (beachte die englische Schreibweise von Kommazahlen mit "." anstatt ",")
+Essaie aussi des nombres décimaux, par exemple 55.5 (note la façon anglaise d'écrire les nombres décimaux avec un "." au lieu d'une virgule).
 
 </Box>
 
-**Töne mit Buchstaben**
+**Jouer des notes avec des lettres**
 
 <MiniRepl
   client:visible
@@ -46,13 +46,13 @@ Versuch auch mal Kommazahlen, z.B. 55.5 (beachte die englische Schreibweise von 
 
 <Box>
 
-Versuch verschiedene Buchstaben aus (a - g).
+Essaie différentes lettres (a - g).
 
-Findest du Melodien die auch gleichzeitig ein Wort sind? Tipp: ☕ 🙈 🧚
+Trouves-tu des mélodies qui sont aussi un mot ? Indice : ☕ 🙈 🧚
 
 </Box>
 
-**Vorzeichen**
+**Altérations**
 
 <MiniRepl
   client:visible
@@ -72,7 +72,7 @@ Findest du Melodien die auch gleichzeitig ein Wort sind? Tipp: ☕ 🙈 🧚
   )}
 />
 
-**Andere Oktaven**
+**Autres octaves**
 
 <MiniRepl
   client:visible
@@ -88,37 +88,37 @@ Findest du Melodien die auch gleichzeitig ein Wort sind? Tipp: ☕ 🙈 🧚
 
 <Box>
 
-Probiere verschiedene Oktaven aus (1-8)
+Essaie différentes octaves (1-8)
 
 </Box>
 
-Normalerweise kommen Leute die keine Noten besser mit Zahlen anstatt mit Buchstaben zurecht.
-Daher benutzen die folgenden Beispiele meistens Zahlen.
-Später sehen wir auch noch ein paar Tricks die es uns erleichtern Töne zu spielen die zueinander passen.
+Normalement, les personnes qui ne lisent pas de partitions s'en sortent mieux avec les chiffres qu'avec les lettres.
+Par conséquent, les exemples suivants utiliseront principalement des chiffres.
+Plus tard, nous verrons aussi quelques astuces pour nous aider à jouer des notes qui s'accordent bien.
 
-## Den Sound verändern
+## Changer le son
 
-Genau wie bei geräuschhaften Sounds können wir den Klang unserer Töne mit `sound` verändern:
+Tout comme pour les sons bruités, nous pouvons modifier le son de nos notes avec `sound` :
 
 <MiniRepl client:visible tune={`note("36 43, 52 59 62 64").sound("piano")`} />
 
 <Box>
 
-Probier ein paar sounds aus:
+Essaie quelques sons :
 
-- gm_electric_guitar_muted - E-Gitarre
-- gm_acoustic_bass - Kontrabass
-- gm_voice_oohs - Chords
-- gm_blown_bottle - Flasche
-- sawtooth - Sägezahn-Welle
-- square - Rechteck-Welle
-- triangle - Dreieck-Welle
-- Was ist mit bd, sd oder hh?
-- Entferne `.sound('...')` komplett
+- gm_electric_guitar_muted - Guitare électrique
+- gm_acoustic_bass - Contrebasse
+- gm_voice_oohs - Accords
+- gm_blown_bottle - Bouteille
+- sawtooth - Onde en dents de scie
+- square - Onde carrée
+- triangle - Onde triangulaire
+- Qu'en est-il de bd, sd ou hh ?
+- Supprime `.sound('...')` complètement
 
 </Box>
 
-**Zwischen Sounds hin und her wechseln**
+**Alterner entre les sons**
 
 <MiniRepl
   client:visible
@@ -126,7 +126,7 @@ Probier ein paar sounds aus:
 .sound("piano gm_electric_guitar_muted")`}
 />
 
-**Gleichzeitige Sounds**
+**Sons simultanés**
 
 <MiniRepl
   client:visible
@@ -136,52 +136,52 @@ Probier ein paar sounds aus:
 
 <Box>
 
-Die patterns in `note` und `sound` werden kombiniert!
+Les motifs dans `note` et `sound` sont combinés !
 
-Wir schauen uns später noch mehr Möglichkeiten an wie man patterns kombiniert.
+Nous verrons plus tard d'autres façons de combiner les motifs.
 
 </Box>
 
-## Längere Sequenzen
+## Séquences plus longues
 
-**Sequenzen verlangsamen mit `/`**
+**Ralentir les séquences avec `/`**
 
 <MiniRepl client:visible tune={`note("[36 34 41 39]/4").sound("gm_acoustic_bass")`} punchcard />
 
 <Box>
 
-Das `/4` spielt die Sequenz 4 mal so langsam, also insgesamt 4 cycles = 8s.
+Le `/4` joue la séquence 4 fois plus lentement, soit un total de 4 cycles = 8 secondes.
 
-Jede Note ist nun also 2s lang.
+Chaque note dure donc maintenant 2 secondes.
 
-Schreib noch mehr Töne in die Klammern und achte darauf dass es schneller wird.
+Écris plus de notes entre parenthèses et observe comment ça va plus vite.
 
 </Box>
 
-Wenn eine Sequenz unabhängig von ihrem Inhalt immer gleich schnell bleiben soll, gibt es noch eine andere Art Klammern:
+Si une séquence doit toujours conserver la même vitesse, quel que soit son contenu, il existe un autre type de parenthèses :
 
-**Eins pro Cycle per \< \>**
+**Un par cycle avec \< \>**
 
-Im letzten Kapitel haben wir schon gelernt dass `< ... >` (angle brackets) nur ein Element pro Cycle spielt.
-Das ist für Melodien auch sehr nützlich:
+Dans le dernier chapitre, nous avons déjà appris que `< ... >` (chevrons) ne jouent qu'un seul élément par cycle.
+C'est également très utile pour les mélodies :
 
 <MiniRepl client:visible tune={`note("<36 34 41 39>").sound("gm_acoustic_bass")`} punchcard />
 
 <Box>
 
-Füg noch mehr Töne hinzu und achte darauf wie das Tempo gleich bleibt!
+Ajoute d'autres notes et observe comment le tempo reste le même !
 
-Tatsächlich sind diese Klammern nur eine Abkürzung:
+En fait, ces parenthèses ne sont qu'une abréviation :
 
 `<a b c>` = `[a b c]/3`
 
 `<a b c d>` = `[a b c d]/4`
 
-usw..
+etc..
 
 </Box>
 
-**Eine Sequenz pro Cycle**
+**Une séquence par cycle**
 
 <MiniRepl
   client:visible
@@ -190,7 +190,7 @@ usw..
   punchcard
 />
 
-oder auch...
+ou aussi...
 
 <MiniRepl
   client:visible
@@ -199,9 +199,9 @@ oder auch...
   punchcard
 />
 
-**Alternativen**
+**Alternatives**
 
-Ähnlich wie Unter-Sequenzen, kann auch `<...>` innerhalb einer Sequenz verwendet werden:
+Comme pour les sous-séquences, `<...>` peut également être utilisé dans une séquence :
 
 <MiniRepl
   client:visible
@@ -210,7 +210,7 @@ oder auch...
   punchcard
 />
 
-Das ist auch praktisch für atonale Sounds:
+C'est aussi pratique pour les sons atonaux :
 
 <MiniRepl
   client:visible
@@ -219,10 +219,10 @@ Das ist auch praktisch für atonale Sounds:
   punchcard
 />
 
-## Skalen
+## Échelles
 
-Es kann mühsam sein die richtigen Noten zu finden wenn man alle zur Verfügung hat.
-Mit Skalen ist das einfacher:
+Il peut être fastidieux de trouver les bonnes notes quand on a toutes les options disponibles.
+Avec les échelles, c'est plus simple :
 
 <MiniRepl
   client:visible
@@ -233,9 +233,9 @@ Mit Skalen ist das einfacher:
 
 <Box>
 
-Probier verschiedene Zahlen aus. Jede klingt gut!
+Essaie différents chiffres. Chacun sonne bien !
 
-Probier verschiedene Skalen:
+Essaie différentes échelles :
 
 - C:major
 - A2:minor
@@ -246,9 +246,9 @@ Probier verschiedene Skalen:
 
 </Box>
 
-**Automatisierte Skalen**
+**Échelles automatisées**
 
-Wie alle Funktionen können auch Skalen mit einem Pattern automatisiert werden:
+Comme toutes les fonctions, les échelles peuvent également être automatisées avec un motif :
 
 <MiniRepl
   client:visible
@@ -260,28 +260,28 @@ Wie alle Funktionen können auch Skalen mit einem Pattern automatisiert werden:
 
 <Box>
 
-Wenn du keine Ahnung hast was die Skalen bedeuten, keine Sorge.
-Es sind einfach nur Namen für verschiedene Gruppen von Tönen die gut zusammenpassen.
+Si tu n'as pas la moindre idée de ce que signifient les échelles, ne t'inquiète pas.
+Ce sont simplement des noms pour différents groupes de sons qui s'accordent bien.
 
-Nimm dir Zeit um herauszufinden welche Skalen du magst.
+Prends le temps de découvrir quelles échelles tu aimes.
 
 </Box>
 
-## Wiederholen und Verlängern
+## Répéter et Étendre
 
-**Verlängern mit @**
+**Étendre avec @**
 
 <MiniRepl client:visible tune={`note("c@3 eb").sound("gm_acoustic_bass")`} punchcard />
 
 <Box>
 
-Ein Element ohne `@` ist gleichbedeutend mit `@1`. Im Beispiel ist `c` drei Einheiten lang, `eb` nur eine.
+Un élément sans `@` est équivalent à `@1`. Dans l'exemple, `c` a une longueur de trois unités, `eb` seulement une.
 
-Spiel mit der Länge!
+Joue avec la longueur !
 
 </Box>
 
-**Unter-Sequenzen verlängern**
+**Étendre les sous-séquences**
 
 <MiniRepl
   client:visible
@@ -293,46 +293,46 @@ Spiel mit der Länge!
 
 <Box>
 
-Dieser Groove wird auch `shuffle` genannt.
-Jeder Schlag enthält 2 Töne, wobei der erste doppelt so lang wie der zweite ist.
-Das nennt man auch manchmal `triolen swing`. Es ist ein typischer Rhythmus im Blues und Jazz.
+Ce rythme est également appelé `shuffle`.
+Chaque temps contient 2 notes, la première étant deux fois plus longue que la seconde.
+Cela est parfois appelé `swing ternaire`. C'est un rythme typique du blues et du jazz.
 
 </Box>
 
-**Wiederholen**
+**Répéter**
 
 <MiniRepl client:visible tune={`note("c!2 [eb,<g a bb a>]").sound("piano")`} punchcard />
 
 <Box>
 
-Wechsel zwischen `!`, `*` und `@` hin und her.
+Alternez entre `!`, `*` et `@`.
 
-Was ist der Unterschied?
+Quelle est la différence ?
 
 </Box>
 
-## Rückblick
+## Résumé
 
-Das haben wir in diesem Kapitel gelernt:
+Voici ce que nous avons appris dans ce chapitre :
 
 | Concept      | Syntax | Example                                                  |
 | ------------ | ------ | -------------------------------------------------------- |
-| Verlangsamen | \/     | <MiniRepl client:visible tune={`note("[c a f e]/2")`} /> |
-| Alternativen | \<\>   | <MiniRepl client:visible tune={`note("c <e g>")`} />     |
-| Verlängern   | @      | <MiniRepl client:visible tune={`note("c@3 e")`} />       |
-| Wiederholen  | !      | <MiniRepl client:visible tune={`note("c!3 e")`} />       |
+| Ralentir     | \/     | <MiniRepl client:visible tune={`note("[c a f e]/2")`} /> |
+| Alternatives | \<\>   | <MiniRepl client:visible tune={`note("c <e g>")`} />     |
+| Étendre      | @      | <MiniRepl client:visible tune={`note("c@3 e")`} />       |
+| Répéter      | !      | <MiniRepl client:visible tune={`note("c!3 e")`} />       |
 
-Neue Funktionen:
+Nouvelles fonctions :
 
 | Name  | Description                             | Example                                                                           |
 | ----- | --------------------------------------- | --------------------------------------------------------------------------------- |
-| note  | Tonhöhe als Buchstabe oder Zahl         | <MiniRepl client:visible tune={`note("b g e c").sound("piano")`} />               |
-| scale | Interpretiert `n` als Skalenstufe       | <MiniRepl client:visible tune={`n("6 4 2 0").scale("C:minor").sound("piano")`} /> |
-| stack | Spiele mehrere Patterns parallel (s.u.) | <MiniRepl client:visible tune={`stack(s("bd sd"),note("c eb g"))`} />             |
+| note  | Hauteur en tant que lettre ou nombre      | <MiniRepl client:visible tune={`note("b g e c").sound("piano")`} />               |
+| scale | Interprète `n` comme un degré d'échelle   | <MiniRepl client:visible tune={`n("6 4 2 0").scale("C:minor").sound("piano")`} /> |
+| stack | Joue plusieurs motifs en parallèle (voir ci-dessous) | <MiniRepl client:visible tune={`stack(s("bd sd"),note("c eb g"))`} />             |
 
-## Beispiele
+## Exemples
 
-**Bassline**
+**Ligne de basse**
 
 <MiniRepl
   client:visible
@@ -341,7 +341,7 @@ Neue Funktionen:
 .lpf(800) // <-- we'll learn about this soon`}
 />
 
-**Melodie**
+**Mélodie**
 
 <MiniRepl
   client:visible
@@ -354,7 +354,7 @@ Neue Funktionen:
 .sound("gm_synth_strings_1")`}
 />
 
-**Drums**
+**Batterie**
 
 <MiniRepl
   client:visible
@@ -362,11 +362,11 @@ Neue Funktionen:
 .bank("RolandTR909")`}
 />
 
-**Wenn es doch nur einen Weg gäbe das alles gleichzeitig zu spielen.......**
+**S'il y avait un moyen de tout jouer en même temps.......**
 
 <Box>
 
-Das geht mit `stack` 😙
+C'est possible avec `stack` 😙
 
 </Box>
 
@@ -387,5 +387,5 @@ Das geht mit `stack` 😙
 )`}
 />
 
-Das hört sich doch langsam nach echter Musik an!
-Wir haben Sounds, wir haben Töne.. noch ein Puzzleteil fehlt: [Effekte](/de/workshop/first-effects)
+Ça ressemble enfin à de la vraie musique !
+Nous avons les sons, nous avons les notes... il manque encore une pièce du puzzle : les [Effets](/de/workshop/first-effects).

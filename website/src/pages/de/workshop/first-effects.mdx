@@ -1,18 +1,18 @@
 ---
-title: Erste Effekte
+title: Premiers Effets
 layout: ../../../layouts/MainLayout.astro
 ---
 
 import { MiniRepl } from '../../../docs/MiniRepl';
 import QA from '@components/QA';
 
-# Erste Effekte
+# Premiers Effets
 
 import Box from '@components/Box.astro';
 
-## Ein paar grundlegende Effekte
+## Quelques effets fondamentaux
 
-**low-pass filter**
+**lpf**
 
 <MiniRepl
   client:visible
@@ -22,14 +22,14 @@ import Box from '@components/Box.astro';
 
 <Box>
 
-lpf = **l**ow **p**ass **f**ilter
+lpf = **f**iltre **p**asse-**b**as
 
-- Ändere `lpf` in 200. Hörst du, wie der Bass dumpfer klingt? Es klingt so, als würde die Musik hinter einer geschlossenen Tür spielen 🚪
-- Lass uns nun die Tür öffnen: Ändere `lpf` in 5000. Der Klang wird dadurch viel heller und schärfer ✨🪩
+- Change `lpf` en 200. Entends-tu comme la basse sonne plus étouffée ? On dirait que la musique joue derrière une porte fermée 🚪.
+- Maintenant, ouvrons la porte : change `lpf` en 5000. Le son devient beaucoup plus lumineux et plus net ✨🪩.
 
 </Box>
 
-**filter automatisieren**
+**Automatiser le filtre**
 
 <MiniRepl
   client:visible
@@ -39,14 +39,14 @@ lpf = **l**ow **p**ass **f**ilter
 
 <Box>
 
-- Füg noch mehr `lpf` Werte hinzu
-- Das Pattern in `lpf` ändert nicht den Rhythmus der Basslinie
+- Ajoute encore plus de valeurs `lpf`.
+- Le motif dans `lpf` ne change pas le rythme de la ligne de basse.
 
-Später sehen wir, wie man mit Wellenformen Dinge automatisieren kann.
+Plus tard, nous verrons comment automatiser des choses avec des formes d'onde.
 
 </Box>
 
-**vowel = Vokal**
+**vowel (voyelle)**
 
 <MiniRepl
   client:visible
@@ -54,7 +54,7 @@ Später sehen wir, wie man mit Wellenformen Dinge automatisieren kann.
 .sound("sawtooth").vowel("<a e i o>/2")`}
 />
 
-**gain = Verstärkung**
+**gain (gain)**
 
 <MiniRepl
   client:visible
@@ -67,16 +67,16 @@ Später sehen wir, wie man mit Wellenformen Dinge automatisieren kann.
 
 <Box>
 
-Bei Rhythmen ist die Dynamik (= Veränderungen der Lautstärke) sehr wichtig.
+Dans les rythmes, la dynamique (= changements de volume) est très importante.
 
-- Entferne `.gain(...)` und achte darauf, wie es viel flacher klingt.
-- Mach es rückgängig (strg+z dann strg+enter)
+- Supprime `.gain(...)` et observe à quel point le son est beaucoup plus plat.
+- Annule (Ctrl+z puis Ctrl+Entrée).
 
 </Box>
 
-**stacks in stacks**
+**Stacks dans les stacks**
 
-Lass uns die obigen Beispiele kombinieren:
+Combinons les exemples ci-dessus :
 
 <MiniRepl
   client:visible
@@ -94,13 +94,13 @@ Lass uns die obigen Beispiele kombinieren:
 
 <Box>
 
-Versuche die einzelnen Teile innerhalb von `stack` zu erkennen. Schau dir an wie die Kommas gesetzt sind.
+Essaie d'identifier les parties individuelles à l'intérieur de `stack`. Regarde comment les virgules sont placées.
 
-Die 3 Teile (Drums, Bass, Akkorde) sind genau wie vorher, nur in einem `stack`, getrennt durch Kommas.
+Les 3 parties (batterie, basse, accords) sont exactement comme avant, juste dans un `stack`, séparées par des virgules.
 
 </Box>
 
-**Den Sound formen mit ADSR-Hüllkurve**
+**Façonner le son avec l'enveloppe ADSR**
 
 <MiniRepl
   client:visible
@@ -114,29 +114,29 @@ Die 3 Teile (Drums, Bass, Akkorde) sind genau wie vorher, nur in einem `stack`, 
 
 <Box>
 
-Versuche herauszufinden, was die Zahlen machen. Probier folgendes:
+Essaie de comprendre ce que font les chiffres. Essaie ce qui suit :
 
 - attack: `.5` vs `0`
 - decay: `.5` vs `0`
 - sustain: `1` vs `.25` vs `0`
 - release: `0` vs `.5` vs `1`
 
-Kannst du erraten, was die einzelnen Werte machen?
+Peux-tu deviner ce que fait chaque valeur ?
 
 </Box>
 
-<QA q="Lösung anzeigen" client:visible>
+<QA q="Afficher la solution" client:visible>
 
-- attack (anschlagen): Zeit des Aufbaus
-- decay (zerfallen): Zeit des Abfalls
-- sustain (erhalten): Lautstärke nach Abfall
-- release (loslassen): Zeit des Abfalls nach dem Ende
+- attack (attaque) : Temps de montée
+- decay (déclin) : Temps de descente
+- sustain (maintien) : Volume après le déclin
+- release (relâchement) : Temps de descente après la fin
 
 ![ADSR](https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/ADSR_parameter.svg/1920px-ADSR_parameter.svg.png)
 
 </QA>
 
-**adsr-Kurznotation**
+**Notation abrégée ADSR**
 
 <MiniRepl
   client:visible
@@ -146,7 +146,7 @@ Kannst du erraten, was die einzelnen Werte machen?
 `}
 />
 
-**delay = Verzögerung**
+**delay (délai)**
 
 <MiniRepl
   client:visible
@@ -159,25 +159,25 @@ Kannst du erraten, was die einzelnen Werte machen?
 
 <Box>
 
-Probier verschiedene `delay` Werte zwischen 0 und 1. Übrigens: `.5` ist kurz für `0.5`.
+Essaie différentes valeurs de `delay` entre 0 et 1. D'ailleurs : `.5` est l'abréviation de `0.5`.
 
-Was passiert, wenn du `.delay(".8:.125")` schreibst? Kannst du erraten, was die zweite Zahl macht?
+Que se passe-t-il si tu écris `.delay(".8:.125")` ? Peux-tu deviner ce que fait le deuxième chiffre ?
 
-Was passiert, wenn du `.delay(".8:.06:.8")` schreibst? Kannst du erraten, was die dritte Zahl macht?
+Que se passe-t-il si tu écris `.delay(".8:.06:.8")` ? Peux-tu deviner ce que fait le troisième chiffre ?
 
 </Box>
 
-<QA q="Lösung anzeigen" client:visible>
+<QA q="Afficher la solution" client:visible>
 
-`delay("a:b:c")`:
+`delay("a:b:c")` :
 
-- a: Lautstärke des Delays
-- b: Verzögerungszeit
-- c: Feedback (je kleiner, desto schneller verschwindet das Delay)
+- a : Volume du délai
+- b : Temps de retard
+- c : Feedback (plus le chiffre est petit, plus le délai disparaît vite)
 
 </QA>
 
-**room aka reverb = Hall**
+**room alias reverb (réverbération)**
 
 <MiniRepl
   client:visible
@@ -188,13 +188,13 @@ Was passiert, wenn du `.delay(".8:.06:.8")` schreibst? Kannst du erraten, was di
 
 <Box>
 
-Spiel mit verschiedenen Werten.
+Joue avec différentes valeurs.
 
-Füg auch ein Delay hinzu!
+Ajoute aussi un délai !
 
 </Box>
 
-**kleiner Dub-Tune**
+**Petit morceau de dub**
 
 <MiniRepl
   client:visible
@@ -208,7 +208,7 @@ Füg auch ein Delay hinzu!
 )`}
 />
 
-Für echten Dub fehlt noch der Bass:
+Pour du vrai dub, il manque encore la basse :
 
 <MiniRepl
   client:visible
@@ -227,11 +227,11 @@ Für echten Dub fehlt noch der Bass:
 
 <Box>
 
-Füg `.hush()` ans Ende eines Patterns im stack...
+Ajoute `.hush()` à la fin d'un motif dans le stack...
 
 </Box>
 
-**pan = Panorama**
+**pan (panoramique)**
 
 <MiniRepl
   client:visible
@@ -240,59 +240,59 @@ Füg `.hush()` ans Ende eines Patterns im stack...
 .slow(2)`}
 />
 
-**speed = Geschwindigkeit**
+**speed (vitesse)**
 
 <MiniRepl client:visible tune={`sound("bd rim").speed("<1 2 -1 -2>").room(.2)`} />
 
-**fast and slow = schnell und langsam**
+**fast and slow (rapide et lent)**
 
-Mit `fast` und `slow` kann man das Tempo eines Patterns außerhalb der Mini-Notation ändern:
+Avec `fast` et `slow`, on peut changer le tempo d'un motif en dehors de la mini-notation :
 
 <MiniRepl client:visible tune={`sound("bd*2,~ rim").slow(2)`} />
 
 <Box>
 
-Ändere den `slow`-Wert. Ersetze `slow` durch `fast`.
+Modifie la valeur de `slow`. Remplace `slow` par `fast`.
 
-Was passiert, wenn du den Wert automatisierst? z.b. `.fast("<1 [2 4]>")` ?
+Que se passe-t-il si tu automatises la valeur ? Par exemple `.fast("<1 [2 4]>")` ?
 
 </Box>
 
-Übrigens, innerhalb der Mini-Notation: `fast` ist `*` und `slow` ist `/`.
+D'ailleurs, dans la mini-notation : `fast` est `*` et `slow` est `/`.
 
 <MiniRepl client:visible tune={`sound("[bd*2,~ rim]*<1 [2 4]>")`} />
 
-## Automation mit Signalen
+## Automatisation avec les signaux
 
-Anstatt Werte schrittweise zu automatisieren, können wir auch sogenannte Signale benutzen:
+Au lieu d'automatiser des valeurs pas à pas, nous pouvons également utiliser des signaux :
 
 <MiniRepl client:visible tune={`sound("hh*16").gain(sine)`} punchcard punchcardLabels={false} />
 
 <Box>
 
-Die grundlegenden Wellenformen sind `sine`, `saw`, `square`, `tri` 🌊
+Les formes d'onde de base sont `sine`, `saw`, `square`, `tri` 🌊.
 
-Probiere auch die zufälligen Signale `rand` und `perlin`!
+Essaie aussi les signaux aléatoires `rand` et `perlin` !
 
-Der `gain`-Wert (Verstärkung) wird in der Visualisierung als Transparenz dargestellt.
+La valeur `gain` (amplification) est représentée dans la visualisation comme une transparence.
 
 </Box>
 
-**Bereich ändern mit `range`**
+**Changer la plage avec `range`**
 
-Signale bewegen sich standardmäßig zwischen 0 und 1. Wir können das mit `range` ändern:
+Les signaux ont une plage de 0 à 1 par défaut. Nous pouvons changer cela avec `range` :
 
 <MiniRepl client:visible tune={`sound("hh*8").lpf(saw.range(500, 2000))`} />
 
-`range` ist nützlich wenn wir Funktionen mit einem anderen Wertebereich als 0 und 1 automatisieren wollen (z.b. `lpf`)
+`range` est utile lorsque nous voulons automatiser des fonctions avec une plage de valeurs différente de 0 et 1 (par exemple `lpf`).
 
 <Box>
 
-Was passiert wenn du die beiden Werte vertauschst?
+Que se passe-t-il si tu inverses les deux valeurs ?
 
 </Box>
 
-Wir können die Geschwindigkeit der Automation mit slow / fast ändern:
+Nous pouvons changer la vitesse de l'automatisation avec slow / fast :
 
 <MiniRepl
   client:visible
@@ -303,11 +303,11 @@ Wir können die Geschwindigkeit der Automation mit slow / fast ändern:
 
 <Box>
 
-Die ganze Automation braucht nun 8 cycle bis sie sich wiederholt.
+L'automatisation entière prend maintenant 8 cycles jusqu'à ce qu'elle se répète.
 
 </Box>
 
-## Rückblick
+## Résumé
 
 | Name  | Beispiel                                                                                |
 | ----- | --------------------------------------------------------------------------------------- |
@@ -320,4 +320,4 @@ Die ganze Automation braucht nun 8 cycle bis sie sich wiederholt.
 | speed | <MiniRepl client:visible tune={`s("bd rim").speed("<1 2 -1 -2>")`} />                   |
 | range | <MiniRepl client:visible tune={`s("hh*16").lpf(saw.range(200,4000))`} />                |
 
-Lass uns nun die für Tidal typischen [Pattern-Effekte anschauen](/de/workshop/pattern-effects).
+Regardons maintenant les [effets de motif](/de/workshop/pattern-effects) typiques de Tidal.

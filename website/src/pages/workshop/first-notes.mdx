@@ -10,11 +10,11 @@ import QA from '@components/QA';
 
 # Premières Notes
 
-Voyons comment nous pouvons jouer des notes
+Voyons comment nous pouvons jouer des notes.
 
-## nombres et notes
+## Nombres et notes
 
-**jouer des notes avec des nombres**
+**Jouer des notes avec des nombres**
 
 <MiniRepl
   client:visible
@@ -35,7 +35,7 @@ Essayez des nombres décimaux, comme 55.5
 
 </Box>
 
-**jouer des notes avec des lettres**
+**Jouer des notes avec des lettres**
 
 <MiniRepl
   client:visible
@@ -52,7 +52,7 @@ Pouvez-vous trouver des mélodies qui sont des mots réels ? Indice : ☕ 😉 �
 
 </Box>
 
-**ajouter des bémols ou des dièses pour jouer les touches noires**
+**Ajouter des bémols ou des dièses pour jouer les touches noires**
 
 <MiniRepl
   client:visible
@@ -72,7 +72,7 @@ Pouvez-vous trouver des mélodies qui sont des mots réels ? Indice : ☕ 😉 �
   )}
 />
 
-**jouer des notes avec des lettres dans différentes octaves**
+**Jouer des notes avec des lettres dans différentes octaves**
 
 <MiniRepl
   client:visible
@@ -95,7 +95,7 @@ Si vous n'êtes pas à l'aise avec le système de lettres de notes, il devrait �
 La plupart des exemples ci-dessous utiliseront des nombres pour cette raison.
 Nous verrons également des moyens de faciliter le jeu des bonnes notes plus tard.
 
-## changer le son
+## Changer le son
 
 Tout comme avec les sons sans hauteur, nous pouvons changer le son de nos notes avec `sound` :
 
@@ -115,11 +115,11 @@ Essayez différents sons :
 - square
 - triangle
 - que diriez-vous de bd, sd ou hh ?
-- supprimez `.sound('...')` complètement
+- supprimez complètement `.sound('...')`
 
 </Box>
 
-**basculer entre les sons**
+**Basculer entre les sons**
 
 <MiniRepl
   client:visible
@@ -127,7 +127,7 @@ Essayez différents sons :
 .sound("piano gm_electric_guitar_muted")`}
 />
 
-**superposer plusieurs sons**
+**Superposer plusieurs sons**
 
 <MiniRepl
   client:visible
@@ -137,9 +137,9 @@ Essayez différents sons :
 
 <Box>
 
-Les patterns `note` et `sound` sont combinés !
+Les motifs `note` et `sound` sont combinés !
 
-Nous verrons plus de façons de combiner des patterns plus tard..
+Nous verrons plus de façons de combiner des motifs plus tard..
 
 </Box>
 
@@ -212,7 +212,7 @@ Ceci est également utile pour les sons sans hauteur :
 
 ## Gammes
 
-Trouver les bonnes notes peut être difficile.. Les gammes sont là pour aider :
+Trouver les bonnes notes peut être difficile... Les gammes sont là pour aider :
 
 <MiniRepl
   client:visible
@@ -237,9 +237,9 @@ Essayez différentes gammes :
 
 </Box>
 
-**automatiser les gammes**
+**Automatiser les gammes**
 
-Tout comme n'importe quoi, nous pouvons automatiser la gamme avec un pattern :
+Tout comme n'importe quoi, nous pouvons automatiser la gamme avec un motif :
 
 <MiniRepl
   client:visible
@@ -267,7 +267,7 @@ Prenez votre temps et vous trouverez des gammes que vous aimez !
 
 <Box>
 
-Ne pas utiliser `@` revient à utiliser `@1`. Dans l'exemple ci-dessus, c dure 3 unités et eb dure 1 unité.
+Le fait de ne pas utiliser `@` revient à utiliser `@1`. Dans l'exemple ci-dessus, c dure 3 unités et eb dure 1 unité.
 
 Essayez de changer ce nombre !
 
@@ -303,7 +303,7 @@ note("c!2 [eb,<g a bb a>]").sound("piano")`}
 
 <Box>
 
-Essayez de basculer entre `!`, `*` et `@`
+Essayez de basculer entre `!`, `*` et `@`.
 
 Quelle est la différence ?
 
@@ -325,12 +325,12 @@ Nouvelles fonctions :
 | Nom   | Description                           | Exemple                                                                           |
 | ----- | ------------------------------------- | --------------------------------------------------------------------------------- |
 | note  | définir la hauteur en nombre ou lettre | <MiniRepl client:visible tune={`note("b g e c").sound("piano")`} />               |
-| scale | interpréter `n` comme degré de gamme  | <MiniRepl client:visible tune={`n("6 4 2 0").scale("C:minor").sound("piano")`} /> |
-| $:    | jouer des patterns en parallèle       | <MiniRepl client:visible tune={'$: s("bd sd")\n$: note("c eb g")'} />             |
+| scale | interpréter `n` comme degré d'échelle   | <MiniRepl client:visible tune={`n("6 4 2 0").scale("C:minor").sound("piano")`} /> |
+| $:    | jouer des motifs en parallèle         | <MiniRepl client:visible tune={'$: s("bd sd")\n$: note("c eb g")'} />             |
 
 ## Exemples
 
-**Ligne de basse classe**
+**Ligne de basse classique**
 
 <MiniRepl
   client:visible
@@ -339,7 +339,7 @@ Nouvelles fonctions :
 .lpf(800) // <-- nous apprendrons cela bientôt`}
 />
 
-**Mélodie classe**
+**Mélodie classique**
 
 <MiniRepl
   client:visible
@@ -352,7 +352,7 @@ Nouvelles fonctions :
 .sound("gm_synth_strings_1")`}
 />
 
-**Batterie classe**
+**Batterie classique**
 
 <MiniRepl
   client:visible
@@ -368,9 +368,9 @@ Vous pouvez utiliser `$:` 😙
 
 </Box>
 
-## Jouer plusieurs patterns
+## Jouer plusieurs motifs
 
-Si vous voulez jouer plusieurs patterns en même temps, assurez-vous d'écrire `$:` avant chacun :
+Si vous voulez jouer plusieurs motifs en même temps, assurez-vous d'écrire `$:` avant chacun :
 
 <MiniRepl
   client:visible
@@ -395,4 +395,4 @@ Essayez de changer `$` en `_$` pour couper le son d'une partie !
 
 </Box>
 
-Ça commence à ressembler à de la vraie musique ! Nous avons des sons, nous avons des notes, maintenant la dernière pièce du puzzle manque : [les effets](/workshop/first-effects)
+Ça commence à ressembler à de la vraie musique ! Nous avons des sons, nous avons des notes, maintenant la dernière pièce du puzzle manque : [les effets](/workshop/first-effects).

@@ -8,7 +8,7 @@ import { JsDoc } from '../../docs/JsDoc';
 
 # Métadonnées musicales
 
-Vous pouvez optionnellement ajouter des métadonnées musicales dans votre code Strudel, en utilisant des balises dans les commentaires de code :
+Vous pouvez optionnellement ajouter des métadonnées musicales à votre code Strudel, en utilisant des balises dans les commentaires :
 
 ```js
 // @title Hey Hoo
@@ -48,15 +48,15 @@ Les balises disponibles sont :
 
 - `@title` : titre de la musique
 - `@by` : auteur(s) de la musique, séparés par une virgule, éventuellement suivi d'un lien dans `<>` (ex : `@by John Doe <https://example.com>`)
-- `@license` : licence(s) de la musique, par exemple CC BY-NC-SA. Pas sûr ? [Choisissez une licence creative commons ici](https://creativecommons.org/choose/)
+- `@license` : licence(s) de la musique, par exemple CC BY-NC-SA. Pas sûr ? [Choisissez une licence Creative Commons ici](https://creativecommons.org/choose/)
 - `@details` : quelques informations supplémentaires sur la musique
-- `@url` : page(s) web liée(s) à la musique (dépôt git, lien soundcloud, etc.)
+- `@url` : page(s) web liée(s) à la musique (dépôt git, lien SoundCloud, etc.)
 - `@genre` : genre(s) musical(aux) (pop, jazz, etc)
 - `@album` : nom de l'album musical
 
 ## Valeurs multiples
 
-Certaines d'entre elles acceptent plusieurs valeurs, en utilisant la virgule ou le séparateur de nouvelle ligne, ou en dupliquant la balise :
+Certaines balises acceptent plusieurs valeurs, en utilisant la virgule ou le séparateur de nouvelle ligne, ou en dupliquant la balise :
 
 ```js
 /*
@@ -68,7 +68,7 @@ Certaines d'entre elles acceptent plusieurs valeurs, en utilisant la virgule ou 
 */
 ```
 
-Vous pouvez également ajouter des préfixes optionnels et utiliser des balises où vous voulez :
+Vous pouvez également ajouter des préfixes optionnels et utiliser des balises où vous le souhaitez :
 
 ```js
 /*
@@ -81,7 +81,7 @@ note("a3 c#4 e4 a4") // @by Sandy
 
 ## Multi-lignes
 
-Si une balise n'accepte pas de liste, elle peut prendre des valeurs multi-lignes :
+Si une balise n'accepte pas de liste, elle peut prendre des valeurs sur plusieurs lignes :
 
 ```js
 /*

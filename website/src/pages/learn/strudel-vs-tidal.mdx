@@ -22,17 +22,17 @@ Cette différence est la plus évidente lorsqu'on regarde la syntaxe :
 iter 4 $ every 3 (||+ n "10 20") $ (n "0 1 3") # s "triangle" # crush 4
 ```
 
-On _pourrait_ exprimer ce pattern dans Strudel comme ceci :
+On _pourrait_ exprimer ce motif dans Strudel comme ceci :
 
 ```
 iter(4, every(3, add.squeeze("10 20"), n("0 1 3").s("triangle").crush(4)))
 ```
 
 - L'opérateur `$` n'existe pas, donc la fonction `iter` doit tout envelopper dans des parenthèses.
-- Les opérateurs personnalisés comme `||+` sont des appels de fonction explicites, `add.squeeze` dans ce cas
-- L'opérateur `#` est remplacé par un appel de fonction chaîné `# crush 4` => `.crush(4)`
+- Les opérateurs personnalisés comme `||+` sont des appels de fonction explicites, `add.squeeze` dans ce cas.
+- L'opérateur `#` est remplacé par un appel de fonction chaîné `# crush 4` => `.crush(4)`.
 
-Contrairement à Haskell, JavaScript n'a pas la capacité de définir des opérateurs infixes personnalisés, ou de changer la signification de ceux existants.
+Contrairement à Haskell, JavaScript n'a pas la capacité de définir des opérateurs infixes personnalisés, ni de changer la signification de ceux existants.
 
 Avant de rejeter Strudel comme un monstre de parenthèses ingérable, regardez cette façon alternative d'écrire ce qui précède :
 
@@ -79,7 +79,7 @@ Au lieu de `+` / `add`, vous pouvez utiliser l'un des opérateurs disponibles de
 ## Compatibilité des fonctions
 
 [Cette issue](https://codeberg.org/uzu/strudel/issues/31) suit quelles fonctions Tidal sont implémentées dans Strudel.
-La liste pourrait ne pas être à 100% à jour et manque probablement aussi complètement certaines fonctions..
+La liste pourrait ne pas être à 100 % à jour et manque probablement aussi complètement certaines fonctions..
 N'hésitez pas à rechercher dans le code source une fonction que vous recherchez.
 Si vous trouvez une fonction qui n'est pas sur la liste, veuillez le dire !
 
@@ -89,13 +89,13 @@ Comme vu dans l'exemple, l'opérateur `#` (raccourci pour `|>`) est également j
 Donc `note "c5" # s "gtr"` devient `note("c5").s('gtr')`.
 
 [Ce fichier](https://codeberg.org/uzu/strudel/src/branch/main/packages/core/controls.mjs) liste tous les paramètres de contrôle disponibles.
-Notez que tous ne fonctionnent pas dans la sortie Webaudio de Strudel.
+Notez que tous ne fonctionnent pas dans la sortie Web Audio de Strudel.
 Si vous trouvez un contrôle Tidal qui n'est pas sur la liste, veuillez le dire !
 
 ## Son
 
-Tidal est couramment associé à Superdirt / Supercollider pour la génération de son.
-Alors que Strudel a également un moyen de [communiquer avec Superdirt](/learn/input-output/),
+Tidal est couramment associé à SuperDirt / SuperCollider pour la génération de son.
+Alors que Strudel a également un moyen de [communiquer avec SuperDirt](/learn/input-output/),
 il vise à fournir un environnement de live coding autonome qui s'exécute entièrement dans le navigateur.
 
 ### Effets audio
@@ -103,9 +103,9 @@ il vise à fournir un environnement de live coding autonome qui s'exécute enti�
 Beaucoup des effets de SuperDirt ont été réimplémentés dans Strudel, en utilisant l'API Web Audio.
 Vous pouvez trouver une [liste des effets disponibles ici](/learn/effects/).
 
-### Sampler
+### Échantillonneur
 
-Le sampler de Strudel prend en charge [un sous-ensemble](/learn/samples) du sampler de Superdirt.
+L'échantillonneur de Strudel prend en charge [un sous-ensemble](/learn/samples) de l'échantillonneur de SuperDirt.
 De plus, les échantillons sont toujours chargés depuis une URL plutôt que depuis le disque, bien que [cela pourrait être possible à l'avenir](https://codeberg.org/uzu/strudel/issues/118).
 
 ## Évaluation

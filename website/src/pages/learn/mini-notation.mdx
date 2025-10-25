@@ -1,5 +1,5 @@
 ---
-title: Mini Notation
+title: Mini-notation
 layout: ../../layouts/MainLayout.astro
 ---
 
@@ -8,17 +8,17 @@ import { JsDoc } from '../../docs/JsDoc';
 
 # Mini-notation
 
-Tout comme [Tidal Cycles](https://tidalcycles.org/), Strudel utilise une soi-disant "Mini-Notation", qui est un langage personnalisé conçu pour écrire des patterns rythmiques en utilisant peu de texte.
+Tout comme [Tidal Cycles](https://tidalcycles.org/), Strudel utilise une soi-disant "Mini-Notation", qui est un langage personnalisé conçu pour écrire des motifs rythmiques en utilisant peu de texte.
 
 ## Remarque
 
-Cette page explique simplement l'intégralité de la syntaxe de la Mini-Notation.
-Si vous débutez avec Strudel, vous pouvez apprendre les bases de la Mini-Notation d'une manière plus pratique dans l'[atelier](/workshop/first-sounds).
+Cette page explique l'intégralité de la syntaxe de la mini-notation.
+Si vous débutez avec Strudel, vous pouvez apprendre les bases de la mini-notation d'une manière plus pratique dans l'[atelier](/workshop/first-sounds).
 Après cela, vous pouvez revenir ici si vous voulez comprendre chaque petit détail.
 
 ## Exemple
 
-Avant de plonger plus profondément dans les détails, voici un aperçu de ce à quoi ressemble la Mini-Notation :
+Avant de plonger plus profondément dans les détails, voici un aperçu de ce à quoi ressemble la mini-notation :
 
 <MiniRepl
   client:idle
@@ -43,7 +43,7 @@ Avant de plonger plus profondément dans les détails, voici un aperçu de ce à
 >\`)`}
 />
 
-## Format de la Mini Notation
+## Format de la mini-notation
 
 L'extrait ci-dessus est entouré de backticks (`), ce qui vous permet d'écrire des chaînes multi-lignes.
 
@@ -63,14 +63,14 @@ Essayez d'ajouter ou de supprimer des notes et remarquez comment le tempo change
 <MiniRepl client:idle tune={`note("c d e f g a b")`} punchcard />
 
 Notez que la durée totale du temps ne change pas, et au lieu de cela, la longueur de chaque note diminue.
-C'est une idée clé, car elle illustre le 'Cycle' dans TidalCycles !
+C'est une idée clé, car elle illustre le « Cycle » dans TidalCycles !
 
 Chaque note séparée par un espace dans cette séquence est un _événement_.
 La durée de chaque événement est basée sur la vitesse ou le tempo du cycle, et combien d'événements sont présents.
 En prenant les deux exemples ci-dessus, nous avons quatre et huit événements respectivement, et comme ils ont la même durée de cycle, ils doivent chacun adapter leurs événements dans la même quantité de temps.
 
 Cela peut être contre-intuitif si vous avez l'habitude d'ajouter des notes dans un séquenceur ou un piano roll et que la longueur globale augmente.
-Mais, cela commencera à avoir du sens à mesure que nous passerons en revue plus d'éléments de la mini-notation.
+Mais, cela commencera à avoir du sens à mesure que nous passerons en revue davantage d'éléments de la mini-notation.
 
 ## Multiplication
 
@@ -133,7 +133,7 @@ Comparez la différence entre les éléments suivants :
 Que se passe-t-il ici ? Lorsque nous imbriquons/enfermons plusieurs événements à l'intérieur de crochets (`[]`), leur durée devient la longueur d'un événement dans la séquence externe.
 
 C'est un changement très simple à faire, mais il a des conséquences profondes.
-Rappelez-vous ce que nous avons dit plus tôt sur la façon dont les cycles dans tidal restent de la même longueur, et les longueurs d'événements individuels sont divisées dans ce cycle ?
+Rappelez-vous ce que nous avons dit plus tôt sur la façon dont les cycles dans Tidal restent de la même longueur, et les longueurs d'événements individuels sont divisées dans ce cycle ?
 Eh bien, ce que cela signifie, c'est que dans TidalCycles, non seulement vous pouvez diviser le temps de n'importe quelle manière, mais vous pouvez également subdiviser le temps de n'importe quelle manière !
 
 ## Silences
@@ -170,11 +170,11 @@ En utilisant "!" nous pouvons répéter sans accélérer :
 
 ## Aléatoire
 
-Les événements avec un "?" placé après eux auront 50% de chances d'être retirés du pattern :
+Les événements avec un "?" placé après eux auront 50 % de chances d'être retirés du motif :
 
 <MiniRepl client:idle tune={`note("[g3,b3,e4]*8?")`} punchcard />
 
-Ajouter un nombre entre 0 et 1 après le "?" affectera la probabilité que l'événement soit retiré. Par exemple, les événements avec "?0.1" placés après eux auront 10% de chances d'être retirés :
+Ajouter un nombre entre 0 et 1 après le "?" affectera la probabilité que l'événement soit retiré. Par exemple, les événements avec "?0.1" placés après eux auront 10 % de chances d'être retirés :
 
 <MiniRepl client:idle tune={`note("[g3,b3,e4]*8?0.1")`} punchcard />
 
@@ -184,7 +184,7 @@ Les événements séparés par un "|" seront choisis au hasard :
 
 ## Révision de la mini-notation
 
-Pour récapituler ce que nous avons appris jusqu'à présent, comparez les patterns suivants :
+Pour récapituler ce que nous avons appris jusqu'à présent, comparez les motifs suivants :
 
 <MiniRepl client:idle tune={`note("<g3 b3 e4 [a3,c3,e4] [b3,d3,f#4]>*2")`} />
 <MiniRepl client:idle tune={`note("<[g3,b3,e4] [a3,c3,e4] [b3,d3,f#4]>*2")`} />
@@ -199,7 +199,7 @@ Pour récapituler ce que nous avons appris jusqu'à présent, comparez les patte
 ## Rythmes euclidiens
 
 En utilisant des parenthèses rondes après un événement, nous pouvons créer des subdivisions rythmiques basées sur trois paramètres : `beats`, `segments` et `offset`.
-Cet algorithme peut être trouvé dans de nombreux types de logiciels musicaux, et est souvent appelé séquenceur de [rythme euclidien](https://en.wikipedia.org/wiki/Euclidean_rhythm), d'après l'informaticien Godfriend Toussaint.
+Cet algorithme peut être trouvé dans de nombreux types de logiciels musicaux, et est souvent appelé séquenceur de [rythme euclidien](https://en.wikipedia.org/wiki/Euclidean_rhythm), d'après l'informaticien Godfried Toussaint.
 Pourquoi est-ce intéressant ? Eh bien, considérez l'exemple simple suivant :
 
 <MiniRepl client:idle tune={`s("bd(3,8,0)")`} punchcard canvasHeight={50} />
@@ -213,7 +213,7 @@ Ces rythmes peuvent être trouvés dans toutes les cultures musicales, et l'algo
 
 Mais en utilisant la notation de rythme euclidien, nous n'avons besoin d'exprimer que "3 battements sur 8 segments, commençant à la position 1".
 
-Cela facilite l'écriture de patterns avec des structures rythmiques intéressantes et des variations qui sonnent toujours familières :
+Cela facilite l'écriture de motifs avec des structures rythmiques intéressantes et des variations qui sonnent toujours familières :
 
 <MiniRepl client:idle tune={`note("e5(2,8) b4(3,8) d5(2,8) c5(3,8)").slow(2)`} punchcard canvasHeight={50} />
 
@@ -253,7 +253,7 @@ Nous avons besoin d'un rythme secondaire pour entendre la différence :
 
 La chose la plus amusante à propos de la mini-notation, c'est que tout ce que vous venez d'apprendre peut être combiné de diverses manières !
 
-En commençant par ce `n`, pouvez-vous faire une _chaîne de pattern_ qui utilise chaque élément de mini-notation ci-dessus ?
+En commençant par ce `n`, pouvez-vous faire une _chaîne de motif_ qui utilise chaque élément de mini-notation ci-dessus ?
 
 <MiniRepl client:idle tune={`n("60")`} />
 

@@ -1,6 +1,6 @@
 # @strudel/motion
 
-This package adds device motion sensing functionality to strudel Patterns.
+Ce paquet ajoute la fonctionnalité de détection de mouvement de l'appareil aux motifs strudel.
 
 ## Install
 
@@ -10,13 +10,13 @@ npm i @strudel/motion --save
 
 ## Usage
 
-| Motion  | Long Names & Aliases | Description |
+| Mouvement | Noms longs et alias | Description |
 |----------------------------|-----------------------------------------------------------|------------------------------------------|
-| Acceleration | accelerationX (accX), accelerationY (accY), accelerationZ (accZ) | X, Y, Z-axis acceleration values |
-| Gravity | gravityX (gravX), gravityY (gravY), gravityZ (gravZ) | X, Y, Z-axis gravity values |
-| Rotation | rotationAlpha (rotA, rotZ), rotationBeta (rotB, rotX), rotationGamma (rotG, rotY) | Rotation around alpha, beta, gamma axes and mapped to X, Y, Z  |
-| Orientation | orientationAlpha (oriA, oriZ), orientationBeta (oriB, oriX), orientationGamma (oriG, oriY) | Orientation alpha, beta, gamma values and mapped to X, Y, Z  |
-| Absolute Orientation | absoluteOrientationAlpha (absOriA, absOriZ), absoluteOrientationBeta (absOriB, absOriX), absoluteOrientationGamma (absOriG, absOriY) | Absolute orientation alpha, beta, gamma values and mapped to X, Y, Z |
+| Accélération | accelerationX (accX), accelerationY (accY), accelerationZ (accZ) | Valeurs d'accélération des axes X, Y, Z |
+| Gravité | gravityX (gravX), gravityY (gravY), gravityZ (gravZ) | Valeurs de gravité des axes X, Y, Z |
+| Rotation | rotationAlpha (rotA, rotZ), rotationBeta (rotB, rotX), rotationGamma (rotG, rotY) | Rotation autour des axes alpha, bêta, gamma et mappée aux axes X, Y, Z |
+| Orientation | orientationAlpha (oriA, oriZ), orientationBeta (oriB, oriX), orientationGamma (oriG, oriY) | Valeurs d'orientation alpha, bêta, gamma et mappées aux axes X, Y, Z |
+| Orientation absolue | absoluteOrientationAlpha (absOriA, absOriZ), absoluteOrientationBeta (absOriB, absOriX), absoluteOrientationGamma (absOriG, absOriY) | Valeurs d'orientation absolue alpha, bêta, gamma et mappées aux axes X, Y, Z |
 
 ## Example
 
@@ -44,15 +44,15 @@ $:n("0 1 3 1 5 4")
 
 ## Setup SSL for Local Development
 
-`DeviceMotionEvent` only works with HTTPS, so you'll need to enable SSL for local development.
-Try installing an SSL plugin for Vite.
+`DeviceMotionEvent` ne fonctionne qu'avec HTTPS, vous devrez donc activer SSL pour le développement local.
+Essayez d'installer un plugin SSL pour Vite.
 
 ```sh
 cd website
 pnpm install -D @vitejs/plugin-basic-ssl
 ```
 
-add the basicSsl plugin to the defineConfig block in `strudel/website/astro.config.mjs`
+ajoutez le plugin basicSsl au bloc defineConfig dans `strudel/website/astro.config.mjs`
 
 ```js
 vite: {
@@ -67,6 +67,6 @@ vite: {
 },
 ```
 
-generate an SSL certificate to avoid security warnings.
+générer un certificat SSL pour éviter les avertissements de sécurité.
 
 `openssl req -new -newkey rsa:2048 -days 365 -nodes -x509 -keyout key.pem -out cert.pem`

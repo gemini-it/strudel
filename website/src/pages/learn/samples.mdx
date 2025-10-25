@@ -67,7 +67,7 @@ Vous pouvez également créer des alias personnalisés pour les sons existants e
 s("kick")`}
 />
 
-Notez que seules les cartes d'échantillons (mappant les noms aux URLs) sont chargées initialement, tandis que les échantillons audio eux-mêmes ne sont pas chargés tant qu'ils ne sont pas réellement joués.
+Notez que seules les cartes d'échantillons (mappant les noms aux URL) sont chargées initialement, tandis que les échantillons audio eux-mêmes ne sont pas chargés tant qu'ils ne sont pas réellement joués.
 Ce comportement de chargement des choses uniquement quand elles sont nécessaires est également appelé `chargement paresseux`.
 Bien qu'il économise des ressources, il peut également conduire à ce que les sons ne soient pas audibles la première fois qu'ils sont déclenchés, car le son est encore en cours de chargement.
 [Cela pourrait être corrigé à l'avenir](https://codeberg.org/uzu/strudel/issues/187)
@@ -84,12 +84,12 @@ Nous _pourrions_ les utiliser comme ceci :
 
 <MiniRepl client:idle tune={`s("bd sd,hh*16").bank("RolandTR808")`} />
 
-Vous pourriez même patteriser la banque pour basculer entre différentes boîtes à rythmes :
+Vous pourriez même utiliser la banque pour basculer entre différentes boîtes à rythmes :
 
 <MiniRepl client:idle tune={`s("bd sd,hh*16").bank("<RolandTR808 RolandTR909>")`} />
 
 En coulisses, `bank` va simplement ajouter le nom de la boîte à rythmes au nom de l'échantillon avec `_` pour obtenir le nom complet.
-Cela ne fonctionne bien sûr que parce que le nom après `_` (`bd`, `sd` etc..) est standardisé.
+Cela ne fonctionne bien sûr que parce que le nom après `_` (`bd`, `sd` etc.) est standardisé.
 Notez également que certaines banques n'auront pas d'échantillons pour tous les sons !
 
 # Sélection des sons
@@ -100,13 +100,13 @@ Par défaut, `s` jouera le premier échantillon, mais nous pouvons sélectionner
 
 <MiniRepl client:idle tune={`s("hh*8").bank("RolandTR909").n("0 1 2 3")`} />
 
-Les numéros qui sont trop élevés vont simplement revenir au début
+Les numéros qui sont trop élevés reviendront simplement au début.
 
 <MiniRepl client:idle tune={`s("hh*8").bank("RolandTR909").n("0 1 2 3 4 5 6 7")`} />
 
 Ici, 0-3 joueront les mêmes sons que 4-7, car `RolandTR909_hh` n'a que 4 sons.
 
-La sélection de sons fonctionne également à l'intérieur de la mini notation, en utilisant "`:'" comme ceci :
+La sélection de sons fonctionne également à l'intérieur de la mini-notation, en utilisant "`:`" comme ceci :
 
 <MiniRepl
   client:idle
@@ -118,7 +118,7 @@ La sélection de sons fonctionne également à l'intérieur de la mini notation,
 
 Vous pouvez charger une carte d'échantillons non standard en utilisant la fonction `samples`.
 
-## Chargement d'échantillons depuis des URLs de fichiers
+## Chargement d'échantillons depuis des URL de fichiers
 
 Dans cet exemple, nous attribuons les noms `bassdrum`, `hihat` et `snaredrum` à des fichiers audio spécifiques sur un serveur :
 
@@ -149,8 +149,8 @@ Dès que vous exécutez le code, vos noms d'échantillons choisis seront listés
 
 ## Chargement d'échantillons depuis un fichier strudel.json
 
-La méthode ci-dessus pour charger des échantillons peut être fastidieuse à écrire/copier-coller chaque fois que vous écrivez un nouveau pattern.
-Pour éviter cela, vous pouvez simplement passer une URL vers un fichier `strudel.json` quelque part sur internet :
+La méthode ci-dessus pour charger des échantillons peut être fastidieuse à écrire/copier-coller chaque fois que vous écrivez un nouveau motif.
+Pour éviter cela, vous pouvez simplement passer une URL vers un fichier `strudel.json` quelque part sur Internet :
 
 <MiniRepl
   client:idle
@@ -191,7 +191,7 @@ npx --yes @strudel/sampler --json > strudel.json
 
 Voir d'autres utilisations de strudel/sampler plus bas, sous "Depuis le disque via @strudel/sampler".
 
-## Raccourci Github
+## Raccourci GitHub
 
 Parce que le chargement d'échantillons depuis GitHub est courant, il existe un raccourci :
 
@@ -208,11 +208,11 @@ Il suppose qu'un fichier `strudel.json` soit présent à la racine du dépôt :
 https://raw.githubusercontent.com/<utilisateur>/<repo>/<branche>/strudel.json
 ```
 
-## Depuis le disque via "Import Sounds Folder"
+## Depuis le disque via "Importer un dossier de sons"
 
-Si vous ne voulez pas télécharger vos échantillons sur internet, vous pouvez également les charger depuis votre disque local.
-Allez dans l'onglet `sounds` dans le REPL et ouvrez l'onglet `import-sounds` sous la barre de recherche.
-Appuyez sur le bouton "import sounds folder" et sélectionnez un dossier contenant des fichiers audio.
+Si vous ne voulez pas télécharger vos échantillons sur Internet, vous pouvez également les charger depuis votre disque local.
+Allez dans l'onglet `sounds` du REPL et ouvrez l'onglet `import-sounds` sous la barre de recherche.
+Appuyez sur le bouton "importer un dossier de sons" et sélectionnez un dossier contenant des fichiers audio.
 Le dossier que vous sélectionnez peut également contenir des sous-dossiers avec des fichiers audio.
 Exemple :
 
@@ -235,7 +235,7 @@ Les échantillons de chaque son utilisent une indexation basée sur zéro par or
 
 ## Depuis le disque via @strudel/sampler
 
-Au lieu de charger vos échantillons dans votre navigateur avec le bouton "import sounds folder", vous pouvez également servir les échantillons depuis un serveur de fichiers local.
+Au lieu de charger vos échantillons dans votre navigateur avec le bouton "importer un dossier de sons", vous pouvez également servir les échantillons depuis un serveur de fichiers local.
 Le moyen le plus simple de le faire est d'utiliser [@strudel/sampler](https://www.npmjs.com/package/@strudel/sampler) :
 
 ```sh
@@ -307,7 +307,7 @@ $: n("~ 0 ~ 1 ~ 0 0 1").s('rimshot')`}
 />
 
 Vous pouvez également générer des échantillons de voix artificiels avec n'importe quel texte, dans plusieurs langues.
-Notez que le code de langue et les paramètres de genre sont optionnels et par défaut `en-GB` et `f`
+Notez que le code de langue et les paramètres de genre sont optionnels et par défaut `en-GB` (anglais britannique) et `f` (féminin).
 
 <MiniRepl
   client:idle

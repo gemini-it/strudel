@@ -9,9 +9,9 @@ import QA from '@components/QA';
 
 # Premiers Sons
 
-Ceci est le premier chapitre de l'Atelier Strudel, content de vous avoir à bord !
+Ceci est le premier chapitre de l'atelier Strudel, content de vous avoir à bord !
 
-## Champs de Code
+## Champs de code
 
 L'atelier est rempli de champs de code interactifs. Apprenons à les utiliser. En voici un :
 
@@ -20,10 +20,10 @@ L'atelier est rempli de champs de code interactifs. Apprenons à les utiliser. E
 <Box>
 
 1. ⬆️ cliquez dans le champ de texte ci-dessus ⬆️
-2. appuyez sur `ctrl`+`entrée` pour jouer
+2. appuyez sur `Ctrl`+`Entrée` pour jouer
 3. changez `casio` en `metal`
-4. appuyez sur `ctrl`+`entrée` pour mettre à jour
-5. appuyez sur `ctrl`+`.` pour arrêter
+4. appuyez sur `Ctrl`+`Entrée` pour mettre à jour
+5. appuyez sur `Ctrl`+`.` pour arrêter
 
 </Box>
 
@@ -68,7 +68,7 @@ Ne pas ajouter de numéro équivaut à faire `:0`
 Maintenant vous savez comment utiliser différents sons.
 Pour l'instant, nous nous en tiendrons à cette petite sélection de sons, mais nous découvrirons comment charger vos propres sons plus tard.
 
-## Sons de Batterie
+## Sons de batterie
 
 Par défaut, Strudel est livré avec une large sélection de sons de batterie :
 
@@ -108,7 +108,7 @@ C'est une boîte à rythmes célèbre pour les rythmes house et techno.
 
 <Box>
 
-Essayez de changer `RolandTR909` en l'un de
+Essayez de changer `RolandTR909` en l'un des suivants :
 
 - `AkaiLinn`
 - `RhythmAce`
@@ -116,7 +116,7 @@ Essayez de changer `RolandTR909` en l'un de
 - `RolandTR707`
 - `ViscoSpaceDrum`
 
-Il y en a beaucoup plus, mais restons simples pour l'instant
+Il y en a beaucoup plus, mais restons simples pour l'instant.
 
 🦥 Astuce Pro : Marquez un nom par double-clic. Ensuite, copiez et collez !
 
@@ -179,9 +179,9 @@ sound("<bd hh rim hh>*8")`}
 
 cpm = cycles par minute
 
-Par défaut, le tempo est de 30 cycles par minute = 120/4 = 1 cycle toutes les 2 secondes
+Par défaut, le tempo est de 30 cycles par minute = 120/4 = 1 cycle toutes les 2 secondes.
 
-En termes de musique occidentale, on pourrait dire que ce qui précède sont des croches à 90bpm en 4/4.
+En termes de musique occidentale, on pourrait dire que ce qui précède sont des croches à 90 bpm en 4/4.
 Mais ne vous inquiétez pas si vous ne connaissez pas ces termes, car ils ne sont pas nécessaires pour faire de la musique avec Strudel.
 
 </Box>
@@ -190,7 +190,7 @@ Mais ne vous inquiétez pas si vous ne connaissez pas ces termes, car ils ne son
 
 <MiniRepl client:visible tune={`sound("bd hh - rim - bd hh rim")`} punchcard />
 
-**Sous-Séquences avec [crochets]**
+**Sous-séquences avec [crochets]**
 
 <MiniRepl client:visible tune={`sound("bd [hh hh] sd [hh bd] bd - [hh sd] cp")`} punchcard />
 
@@ -210,7 +210,7 @@ Similaire à la séquence entière, le contenu d'une sous-séquence sera compres
 
 <MiniRepl client:visible tune={`sound("bd [hh rim]*2 bd [hh rim]*1.5")`} punchcard />
 
-**Multiplication : Accéléééééérer les choses**
+**Multiplication : Accélérer les choses**
 
 <MiniRepl client:visible tune={`sound("bd hh*32 rim hh*16")`} punchcard />
 
@@ -220,7 +220,7 @@ Hauteur = rythme très rapide
 
 </Box>
 
-**Sous-Sous-Séquences avec [[crochets]]**
+**Sous-sous-séquences avec [[crochets]]**
 
 <MiniRepl client:visible tune={`sound("bd [[rim rim] hh] bd cp")`} punchcard />
 
@@ -281,8 +281,8 @@ Voici ce que nous avons appris jusqu'à présent :
 | Numéro d'échantillon | :x    | <MiniRepl client:visible tune={`sound("hh:0 hh:1 hh:2 hh:3")`} />       |
 | Silences          | - ou ~   | <MiniRepl client:visible tune={`sound("metal - jazz jazz:1")`} />       |
 | Alterner          | \<\>     | <MiniRepl client:visible tune={`sound("<bd hh rim oh bd rim>")`} />     |
-| Sous-Séquences    | \[\]     | <MiniRepl client:visible tune={`sound("bd wind [metal jazz] hh")`} />   |
-| Sous-Sous-Séquences | \[\[\]\] | <MiniRepl client:visible tune={`sound("bd [metal [jazz [sd cp]]]")`} /> |
+| Sous-séquences    | \[\]     | <MiniRepl client:visible tune={`sound("bd wind [metal jazz] hh")`} />   |
+| Sous-sous-séquences | \[\[\]\] | <MiniRepl client:visible tune={`sound("bd [metal [jazz [sd cp]]]")`} /> |
 | Accélérer         | \*       | <MiniRepl client:visible tune={`sound("bd sd*2 cp*3")`} />              |
 | Parallèle         | ,        | <MiniRepl client:visible tune={`sound("bd*2, hh*2 [hh oh]")`} />        |
 
@@ -290,10 +290,10 @@ La Mini-Notation est généralement utilisée à l'intérieur d'une fonction. Vo
 
 | Nom    | Description                         | Exemple                                                                           |
 | ------ | ----------------------------------- | --------------------------------------------------------------------------------- |
-| sound  | joue le son du nom donné            | <MiniRepl client:visible tune={`sound("bd sd [- bd] sd")`} />                     |
-| bank   | sélectionne la banque de sons       | <MiniRepl client:visible tune={`sound("bd sd [- bd] sd").bank("RolandTR909")`} /> |
-| setcpm | définit le tempo en cycles par minute | <MiniRepl client:visible tune={`setcpm(45); sound("bd sd [- bd] sd")`} />       |
-| n      | sélectionne le numéro d'échantillon | <MiniRepl client:visible tune={`n("0 1 4 2 0 6 3 2").sound("jazz")`} />           |
+| sound  | Joue le son du nom donné            | <MiniRepl client:visible tune={`sound("bd sd [- bd] sd")`} />                     |
+| bank   | Sélectionne la banque de sons       | <MiniRepl client:visible tune={`sound("bd sd [- bd] sd").bank("RolandTR909")`} /> |
+| setcpm | Définit le tempo en cycles par minute | <MiniRepl client:visible tune={`setcpm(45); sound("bd sd [- bd] sd")`} />       |
+| n      | Sélectionne le numéro d'échantillon | <MiniRepl client:visible tune={`n("0 1 4 2 0 6 3 2").sound("jazz")`} />           |
 
 ## Exemples
 
@@ -312,12 +312,12 @@ sound("[bd sd]*2, hh*8").bank("RolandTR505")`}
 
 <Box>
 
-Remarquez que les deux patterns sont extrêmement similaires.
-Certains patterns de batterie sont réutilisés à travers les genres.
+Remarquez que les deux motifs sont extrêmement similaires.
+Certains motifs de batterie sont réutilisés à travers les genres.
 
 </Box>
 
-We Will Rock you
+We Will Rock You
 
 <MiniRepl
   client:visible
@@ -365,7 +365,7 @@ sound(\`
   punchcard
 />
 
-**Pas votre batterie moyenne**
+**Pas une batterie moyenne**
 
 <MiniRepl
   client:visible
@@ -377,4 +377,4 @@ insect [crow metal] - -,
   punchcard
 />
 
-Maintenant que nous connaissons les bases de la création de rythmes, voyons comment nous pouvons jouer des [notes](/workshop/first-notes)
+Maintenant que nous connaissons les bases de la création de rythmes, voyons comment nous pouvons jouer des [notes](/workshop/first-notes).

@@ -8,7 +8,7 @@ import { JsDoc } from '../../docs/JsDoc';
 
 # Mondo Notation
 
-"Mondo Notation" est un nouveau type de notation similaire à la [Mini Notation](/learn/mini-notation/), mais avec suffisamment de capacités pour en faire un langage de pattern autonome.
+La "Mondo Notation" est un nouveau type de notation similaire à la [Mini Notation](/learn/mini-notation/), mais avec suffisamment de capacités pour en faire un langage de motifs autonome.
 Voici un exemple :
 
 <MiniRepl
@@ -37,16 +37,16 @@ $ s oh\*4 # press # bank tr909 # speed.8
 
 ## Mondo dans le REPL
 
-Pour l'instant, vous ne pouvez utiliser mondo dans le REPL que comme ceci :
+Pour l'instant, vous ne pouvez utiliser Mondo dans le REPL que de cette manière :
 
 <MiniRepl client:idle tune={'mondo`s hh*8`'} />
 
 Le reste de ce site utilisera uniquement la notation mondo elle-même.
-À l'avenir, le REPL pourrait avoir un moyen d'utiliser la notation mondo directement.
+À l'avenir, le REPL pourrait avoir un moyen d'utiliser directement la Mondo Notation.
 
 ## Appel de fonctions
 
-Par rapport à la Mini Notation, la caractéristique la plus notable de la Mondo Notation est la capacité d'appeler des fonctions en utilisant des parenthèses rondes :
+Par rapport à la mini-notation, la caractéristique la plus notable de la Mondo Notation est la capacité d'appeler des fonctions en utilisant des parenthèses rondes :
 
 <MiniRepl mondo client:idle tune={`(s hh*8)`} />
 
@@ -58,9 +58,9 @@ Les parenthèses les plus externes ne sont pas nécessaires, nous pouvons donc l
 
 <MiniRepl mondo client:idle tune={`s hh*8`} />
 
-## Fonctionnalités de la Mini Notation
+## Fonctionnalités de la mini-notation
 
-En plus de l'appel de fonction avec des parenthèses rondes, la Mondo Notation a beaucoup en commun avec la Mini Notation :
+En plus de l'appel de fonction avec des parenthèses rondes, la Mondo Notation a beaucoup en commun avec la mini-notation :
 
 ### Crochets
 
@@ -100,7 +100,7 @@ En plus de l'appel de fonction avec des parenthèses rondes, la Mondo Notation a
 
 ## Chaînage de fonctions
 
-Similaire à comment "." fonctionne en JavaScript (JS), nous pouvons chaîner les appels de fonctions avec l'opérateur "#" :
+Similaire à la façon dont "." fonctionne en JavaScript (JS), nous pouvons chaîner les appels de fonctions avec l'opérateur "#" :
 
 <MiniRepl
   mondo
@@ -129,11 +129,11 @@ Une fonction peut être appliquée à un seul élément en l'enveloppant dans de
 
 <MiniRepl mondo client:idle tune={`s [bd hh bd (cp # delay .6)] # bank tr909`} />
 
-dans ce cas, `delay .6` ne sera appliqué qu'à `cp`. comparez ceci avec la version JS :
+Dans ce cas, `delay .6` ne sera appliqué qu'à `cp`. Comparez ceci avec la version JS :
 
 <MiniRepl client:idle tune={`s(seq("bd", "hh", "bd", "cp".delay(.6))).bank('tr909')`} />
 
-ici nous pouvons voir combien nous pouvons économiser quand il n'y a pas de frontière entre la mini notation et les appels de fonctions !
+Ici, nous pouvons voir combien nous pouvons économiser quand il n'y a pas de frontière entre la mini-notation et les appels de fonctions !
 
 ### Chaînage d'opérateurs infixes
 
@@ -141,7 +141,7 @@ Les opérateurs infixes existent comme des fonctions régulières, donc ils peuv
 
 <MiniRepl client:idle mondo tune={`s [bd hh] # bank tr909 # *2`} />
 
-Dans ce cas, le \*2 sera appliqué à tout le pattern.
+Dans ce cas, le \*2 sera appliqué à tout le motif.
 
 ### Fonctions Lambda
 
@@ -149,11 +149,11 @@ Certaines fonctions dans Strudel attendent une fonction en entrée, par exemple 
 
 <MiniRepl client:idle tune={`n("0 .. 7").scale("C:minor").sometimes(x=>x.dec(.1))`} />
 
-dans mondo, le `x=>x.` peut être raccourci en :
+Dans Mondo, le `x=>x.` peut être raccourci en :
 
 <MiniRepl client:idle mondo tune={`n 0..7 # scale C:minor # sometimes (# dec .1)`} />
 
-le chaînage fonctionne comme prévu :
+Le chaînage fonctionne comme prévu :
 
 <MiniRepl client:idle mondo tune={`n 0..7 # scale C:minor # sometimes (# dec .1 # jux rev)`} />
 
@@ -163,9 +163,9 @@ Vous pouvez utiliser des "guillemets doubles" et des 'guillemets simples' pour o
 
 <MiniRepl client:idle mondo tune={`n 0..7 # scale 'C minor'`} />
 
-## Patterns multiples
+## Motifs multiples
 
-Le signe `$` peut être utilisé pour séparer plusieurs patterns :
+Le signe `$` peut être utilisé pour séparer plusieurs motifs :
 
 <MiniRepl
   client:idle
@@ -175,11 +175,11 @@ $ chord <Dm9!3 Db7> # voicing
   # struct[x ~ ~ x ~ x ~ ~] # delay .5`}
 />
 
-Le signe `$` est un alias pour `,` donc il créera un stack en coulisses.
+Le signe `$` est un alias pour `,` donc il créera une pile en coulisses.
 
 ## variables
 
-en utilisant le mot-clé `def`, vous pouvez définir des variables :
+En utilisant le mot-clé `def`, vous pouvez définir des variables :
 
 <MiniRepl
   client:idle

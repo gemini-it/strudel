@@ -1,5 +1,5 @@
 ---
-title: Erste Sounds
+title: Premiers Sons
 layout: ../../../layouts/MainLayout.astro
 ---
 
@@ -7,78 +7,78 @@ import { MiniRepl } from '@src/docs/MiniRepl';
 import Box from '@components/Box.astro';
 import QA from '@components/QA';
 
-# Erste Sounds
+# Premiers Sons
 
-Dies ist das erste Kapitel im Strudel Workshop, schön dich an Bord zu haben!
+Ceci est le premier chapitre de l'atelier Strudel, ravi de te compter à bord !
 
-## Textfelder
+## Champs de texte
 
-Der Workshop ist voller interaktiver Textfelder. Lass uns lernen wie sie funktionieren. Hier ist eins:
+L'atelier est rempli de champs de texte interactifs. Apprenons comment ils fonctionnent. En voici un :
 
 <MiniRepl client:visible tune={`sound("casio")`} />
 
 <Box>
 
-1. ⬆️ Klicke in das obige Textfeld ⬆️
-2. Drücke `Strg`+`Enter` zum Abspielen
-3. Ändere `casio` in `metal`
-4. Drücke `Strg`+`Enter` zum Aktualisieren
-5. Drücke `Strg`+`Punkt` zum Stoppen
+1. ⬆️ Clique dans le champ de texte ci-dessus ⬆️
+2. Appuie sur `Ctrl`+`Entrée` pour jouer
+3. Change `casio` en `metal`
+4. Appuie sur `Ctrl`+`Entrée` pour actualiser
+5. Appuie sur `Ctrl`+`Point` pour arrêter
 
-Mac: `Strg` = `control` oder auch `option`
+Mac : `Ctrl` = `control` ou `option`
 
 </Box>
 
-Glückwunsch, du kannst jetzt live coden!
+Félicitations, tu peux maintenant faire du live coding !
 
-## Sounds
+## Sons
 
-Gerade haben wir schon den ersten sound mit `sound` abgespielt:
+Nous venons de jouer le premier son avec `sound` :
 
 <MiniRepl client:visible tune={`sound("casio")`} />
 
 <Box>
 
-`casio` ist einer von vielen Standard Sounds.
+`casio` est l'un des nombreux sons standards.
 
-Probier ein paar andere Sounds aus:
+Essaie quelques autres sons :
 
 ```
 insect wind jazz metal east crow casio space numbers
 ```
 
-Es kann sein, dass du kurz nichts hörst während ein neuer Sound lädt.
+Il se peut que tu n'entendes rien pendant un court instant pendant qu'un nouveau son se charge.
 
 </Box>
 
-**Sample Nummer ändern mit :**
+**Changer le numéro d'échantillon avec :**
 
-Ein Sound kann mehrere Samples (Audio Dateien) enthalten.
+Un son peut contenir plusieurs échantillons (fichiers audio).
 
-Du kannst ein anderes Sample wählen, indem du `:` und eine Zahl an den Sound-Namen anhängst:
+Tu peux choisir un autre échantillon en ajoutant `:` et un chiffre au nom du son :
 
 <MiniRepl client:visible tune={`sound("casio:1")`} />
 
 <Box>
 
-Probiere verschiedene Sound / Zahlen Kombinationen.
+Essaie différentes combinaisons son / chiffre.
 
-Ohne Zahl ist gleichbedeutend mit `:0`
+Sans chiffre est équivalent à `:0`
 
 </Box>
 
-Jetzt weißt du wie man Sounds abspielt und ihre Sample Nummer einstellt.
-Vorerst bleiben wir bei den voreingestellten Sounds, später erfahren wir noch wie man eigene benutzt.
+Maintenant, tu sais comment jouer des sons et régler leur numéro d'échantillon.
+Pour l'instant, nous nous en tiendrons aux sons prédéfinis, nous apprendrons plus tard comment utiliser les nôtres.
 
-## Drum Sounds
+## Sons de batterie
 
-Strudel kommt von Haus aus mit einer breiten Auswahl an Drum Sounds:
+Strudel est livré avec une large sélection de sons de batterie :
 
 <MiniRepl client:visible tune={`sound("bd hh sd oh")`} />
 
 <Box>
 
-Diese Kombinationen von Buchstaben stehen für verschiedene Teile eines Schlagzeugs:
+Ces combinaisons de lettres représentent différentes parties d'une batterie :
 
 <img src="/img/drumset.png" />
 
@@ -86,30 +86,30 @@ Diese Kombinationen von Buchstaben stehen für verschiedene Teile eines Schlagze
   original von Pbroks13
 </a>
 
-- `bd` = **b**ass **d**rum - Basstrommel
-- `sd` = **s**nare **d**rum - Schnarrtrommel
-- `rim` = **rim**shot - Rahmenschlag
-- `hh` = **h**i**h**at - Hallo Hut
-- `oh` = **o**pen **h**ihat - Offener Hallo Hut
-- `lt` = **l**ow tom
-- `mt` = **m**iddle tom
-- `ht` = **h**igh tom
-- `rd` = **r**i**d**e cymbal
-- `cr` = **cr**ash cymbal
+- `bd` = **b**ass **d**rum - Grosse caisse
+- `sd` = **s**nare **d**rum - Caisse claire
+- `rim` = **rim**shot - Coup de cercle
+- `hh` = **h**i**h**at - Charleston
+- `oh` = **o**pen **h**ihat - Charleston ouverte
+- `lt` = **l**ow tom - Tom basse
+- `mt` = **m**iddle tom - Tom médium
+- `ht` = **h**igh tom - Tom haute
+- `rd` = **r**i**d**e cymbal - Cymbale ride
+- `cr` = **cr**ash cymbal - Cymbale crash
 
-Probier verschiedene Sounds aus!
+Essaie différents sons !
 
 </Box>
 
-Wir können den Charakter des Drum Sounds verändern, indem wir mit `bank` die Drum Machine auswählen:
+Nous pouvons modifier le caractère du son de batterie en sélectionnant la boîte à rythmes avec `bank` :
 
 <MiniRepl client:visible tune={`sound("bd hh sd oh").bank("RolandTR909")`} />
 
-In diesem Beispiel ist `RolandTR909` der Name der Drum Machine, die eine prägende Rolle für House und Techno Musik spielte.
+Dans cet exemple, `RolandTR909` est le nom de la boîte à rythmes qui a joué un rôle déterminant dans la musique House et Techno.
 
 <Box>
 
-Ändere `RolandTR909` in
+Change `RolandTR909` en
 
 - `AkaiLinn`
 - `RhythmAce`
@@ -117,58 +117,58 @@ In diesem Beispiel ist `RolandTR909` der Name der Drum Machine, die eine prägen
 - `RolandTR707`
 - `ViscoSpaceDrum`
 
-Es gibt noch viel mehr, aber das sollte fürs Erste reichen..
+Il y en a encore bien d'autres, mais cela devrait suffire pour l'instant..
 
-🦥 Tipp für faule: Mach Doppel-Klick auf einen Namen um ihn zu markieren.
-Dann kannst du ihn mit `Strg`+`C` kopieren und mit `Strg`+`V` einfügen.
+🦥 Astuce pour les paresseux : Double-clique sur un nom pour le sélectionner.
+Ensuite, tu peux le copier avec `Ctrl`+`C` et le coller avec `Ctrl`+`V`.
 
 </Box>
 
-## Sequenzen / Sequences
+## Séquences
 
-Im letzten Beispiel haben wir schon gesehen dass man mehrere Sounds hintereinander abspielen kann wenn man sie durch Leerzeichen trennt:
+Dans le dernier exemple, nous avons déjà vu que l'on peut jouer plusieurs sons à la suite en les séparant par des espaces :
 
 <MiniRepl client:visible tune={`sound("bd hh sd hh")`} punchcard />
 
-Beachte wie der aktuell gespielte Sound im Code markiert und auch darunter visualisiert wird.
+Observe comment le son actuellement joué est mis en évidence dans le code et également visualisé en dessous.
 
 <Box>
 
-Versuch noch mehr Sounds hinzuzfügen!
+Essaie d'ajouter encore plus de sons !
 
 </Box>
 
-**Je länger die Sequence, desto schneller**
+**Plus la séquence est longue, plus elle est rapide**
 
 <MiniRepl client:visible tune={`sound("bd bd hh bd rim bd hh bd")`} punchcard />
 
-Der Inhalt einer Sequence wird in einen sogenannten Cycle (=Zyklus) zusammengequetscht. Ein Cycle ist standardmäßig 2 Sekunden lang.
+Le contenu d'une séquence est compressé dans un Cycle (=cycle). Un cycle dure par défaut 2 secondes.
 
-**Eins pro Cycle mit `< .. >`**
+**Un par cycle avec `< .. >`**
 
-Hier ist die gleiche Sequence, aber dieses mal umgeben von `< .. >` (angle brackets):
+Voici la même séquence, mais cette fois-ci entourée de `< .. >` (chevrons) :
 
 <MiniRepl client:visible tune={`sound("<bd bd hh bd rim bd hh bd>")`} punchcard />
 
-Jetzt spielt nur ein Sound pro Cycle. Mit diesen Klammern bleibt das Tempo immer gleich, ganz egal wieviele Elemente enhalten sind!
+Maintenant, seul un son est joué par cycle. Avec ces parenthèses, le tempo reste toujours le même, quel que soit le nombre d'éléments inclus !
 
-Das ist jetzt aber etwas langsam, machen wir es schneller mit `*`:
+Mais c'est un peu lent maintenant, accélérons avec `*` :
 
 <MiniRepl client:visible tune={`sound("<bd bd hh bd rim bd hh bd>*8")`} punchcard />
 
-Die `*8` macht die ganze Sequenz 8 mal so schnell.
+Le `*8` rend la séquence entière 8 fois plus rapide.
 
 <Box>
 
-Warte mal, ist das jetzt nicht das gleiche Ergebnis wie ohne `< ... >*8`? Wofür ist das dann gut?
+Attends une minute, n'est-ce pas le même résultat que sans `< ... >*8` ? Alors à quoi ça sert ?
 
-Korrekt, der echte Vorteil dieser Schreibweise zeigt sich wenn du Elemente entfernst oder hinzufügst. Versuch es mal!
+Correct, le véritable avantage de cette syntaxe se manifeste lorsque vous supprimez ou ajoutez des éléments. Essayez-le !
 
-Ändere auch mal die Zahl am Ende um das Tempo zu verändern.
+Change aussi le chiffre à la fin pour modifier le tempo.
 
 </Box>
 
-**Tempo ändern mit `setcpm`**
+**Changer le tempo avec `setcpm`**
 
 <MiniRepl
   client:visible
@@ -179,62 +179,62 @@ sound("<bd hh rim hh>*8")`}
 
 <Box>
 
-cpm = **c**ycles per **m**inute = Cycles pro Minute
+cpm = **c**ycles **p**er **m**inute = Cycles par minute
 
-Das Tempo is standardmäßig is 30 Cycles pro Minute = 120/4 = 1 Cycle alle 2 Sekunden
+Le tempo est par défaut de 30 Cycles par minute = 120/4 = 1 Cycle toutes les 2 secondes.
 
-In taditioneller Musik-Terminologie könnte man sagen, das Pattern oben besteht aus 8tel Noten auf 90bpm im 4/4 Takt.
+Dans la terminologie musicale traditionnelle, on pourrait dire que le motif ci-dessus est composé de croches à 90 bpm en 4/4.
 
-Kein Sorge wenn dir diese Begriffe nichts sagen, das ist nicht notwendig um mit Strudel Musik zu machen.
+Ne t'inquiète pas si ces termes ne te disent rien, ce n'est pas nécessaire pour faire de la musique avec Strudel.
 
 </Box>
 
-Wir werden später noch mehr Möglichkeiten kennen lernen das Tempo zu verändern.
+Nous verrons plus tard d'autres façons de modifier le tempo.
 
-**Pausen mit '-' oder '~'**
+**Pauses avec '-' ou '~'**
 
 <MiniRepl client:visible tune={`sound("bd hh - rim")`} punchcard />
 
 <Box>
 
-Du siehst wahrscheinlich auch Patterns von anderen Leuten mit '~' als Pausensymbol.
-Besonders für deutsche Tastaturen ist `-` eine Alternative zum schwer tippbaren `~`.
+Tu verras probablement aussi des motifs d'autres personnes avec `~` comme symbole de pause.
+Surtout pour les claviers allemaux, `-` est une alternative au `~` difficile à taper.
 
 </Box>
 
-**Unter-Sequenzen mit [Klammern]**
+**Sous-séquences avec [parenthèses]**
 
 <MiniRepl client:visible tune={`sound("bd [hh hh] rim [hh hh]")`} punchcard />
 
 <Box>
 
-Der Inhalt der Klammer wird ebenfalls zusammengequetscht!
+Le contenu de la parenthèse est également compressé !
 
-Füge noch mehr Sounds in die Klammern ein!
+Ajoute d'autres sons entre parenthèses !
 
 </Box>
 
-Genau wie bei der ganzen Sequence wird eine Unter-Sequence schneller je mehr drin ist.
+Tout comme pour la séquence entière, une sous-séquence devient plus rapide plus il y a de contenu.
 
-**Multiplikation: Dinge schneller machen**
+**Multiplication : Rendre les choses plus rapides**
 
 <MiniRepl client:visible tune={`sound("bd hh*2 sd hh*3")`} punchcard />
 
-**Multiplikation: Vieeeeeeel schneller**
+**Multiplication : Beaaaaaucoup plus rapide**
 
 <MiniRepl client:visible tune={`sound("bd hh*16 sd hh*8")`} punchcard />
 
 <Box>
 
-Tonhöhe = sehr schneller Rhythmus
+Hauteur = rythme très rapide
 
 </Box>
 
-**Multiplikation: Ganze Unter-Sequences schneller machen**
+**Multiplication : Rendre des sous-séquences entières plus rapides**
 
 <MiniRepl client:visible tune={`sound("bd [sd hh]*2")`} punchcard />
 
-Bolero:
+Boléro :
 
 <MiniRepl
   client:visible
@@ -244,37 +244,37 @@ sound("sd sd*3 sd sd*3 sd sd sd sd*3 sd sd*3 sd*3 sd*3")`}
   punchcard
 />
 
-**Unter-Unter-Sequenzen mit [[Klammern]]**
+**Sous-sous-séquences avec [[parenthèses]]**
 
 <MiniRepl client:visible tune={`sound("bd [[rim rim] hh]")`} punchcard />
 
 <Box>
 
-Du kannst so tief verschachteln wie du willst!
+Tu peux imbriquer aussi profondément que tu veux !
 
 </Box>
 
-**Parallele Sequenzen mit Komma**
+**Séquences parallèles avec virgule**
 
 <MiniRepl client:visible tune={`sound("hh hh hh, bd casio")`} punchcard />
 
-Du kannst so viele Kommas benutzen wie du möchtest:
+Tu peux utiliser autant de virgules que tu le souhaites :
 
 <MiniRepl client:visible tune={`sound("hh hh hh, bd bd, - casio")`} punchcard />
 
-Kommas können auch in Unter-Sequenzen verwendet werden:
+Les virgules peuvent également être utilisées dans les sous-séquences :
 
 <MiniRepl client:visible tune={`sound("hh hh hh, bd [bd,casio]")`} punchcard />
 
 <Box>
 
-Ist dir aufgefallen dass sich die letzten beiden Beispiele gleich anhören?
+As-tu remarqué que les 2 derniers exemples se ressemblent ?
 
-Es kommt öfter vor, dass man die gleiche Idee auf verschiedene Arten ausdrücken kann.
+Il arrive souvent que l'on puisse exprimer la même idée de différentes manières.
 
 </Box>
 
-**Mehrere Zeilen schreiben mit \` (backtick)**
+**Écrire plusieurs lignes avec \` (anti-quote)**
 
 <MiniRepl
   client:visible
@@ -286,49 +286,49 @@ Es kommt öfter vor, dass man die gleiche Idee auf verschiedene Arten ausdrücke
 
 <Box>
 
-Ob man " oder \` benutzt ist nur eine Frage der Übersichtlichkeit.
+Utiliser " ou \` est uniquement une question de clarté.
 
 </Box>
 
-**Sample Nummer separat auswählen**
+**Sélectionner les numéros d'échantillon séparément**
 
-Benutzt man nur einen Sound mit unterschiedlichen Sample Nummer sieht das so aus:
+Si on n'utilise qu'un seul son avec différents numéros d'échantillon, cela ressemble à ceci :
 
 <MiniRepl client:visible tune={`sound("jazz:0 jazz:1 [jazz:4 jazz:2] jazz:3*2")`} punchcard />
 
-Das gleiche kann man auch so schreiben:
+On peut aussi l'écrire comme ça :
 
 <MiniRepl client:visible tune={`n("0 1 [4 2] 3*2").sound("jazz")`} punchcard />
 
-## Rückblick
+## Résumé
 
-Wir haben jetzt die Grundlagen der sogenannten Mini-Notation gelernt, der Rhythmus-Sprache von Tidal.
+Nous avons maintenant appris les bases de la mini-notation, le langage rythmique de Tidal.
 
-Das haben wir bisher gelernt:
+Voici ce que nous avons appris jusqu'à présent :
 
 | Concept               | Syntax      | Example                                                               |
 | --------------------- | ----------- | --------------------------------------------------------------------- |
-| Sequenz               | Leerzeichen | <MiniRepl client:visible tune={`sound("bd bd sd hh")`} />             |
-| Sound Nummer          | :x          | <MiniRepl client:visible tune={`sound("hh:0 hh:1 hh:2 hh:3")`} />     |
-| Pausen                | -           | <MiniRepl client:visible tune={`sound("metal - jazz jazz:1")`} />     |
-| Unter-Sequenzen       | \[\]        | <MiniRepl client:visible tune={`sound("bd wind [metal jazz] hh")`} /> |
-| Unter-Unter-Sequenzen | \[\[\]\]    | <MiniRepl client:visible tune={`sound("bd [metal [jazz sd]]")`} />    |
-| Schneller             | \*          | <MiniRepl client:visible tune={`sound("bd sd*2 cp*3")`} />            |
-| Parallel              | ,           | <MiniRepl client:visible tune={`sound("bd*2, hh*2 [hh oh]")`} />      |
+| Séquence              | Espaces     | <MiniRepl client:visible tune={`sound("bd bd sd hh")`} />             |
+| Numéro d'échantillon  | :x          | <MiniRepl client:visible tune={`sound("hh:0 hh:1 hh:2 hh:3")`} />     |
+| Pauses                | -           | <MiniRepl client:visible tune={`sound("metal - jazz jazz:1")`} />     |
+| Sous-séquences        | \[\]        | <MiniRepl client:visible tune={`sound("bd wind [metal jazz] hh")`} /> |
+| Sous-sous-séquences   | \[\[\]\]    | <MiniRepl client:visible tune={`sound("bd [metal [jazz sd]]")`} />    |
+| Plus rapide           | \*          | <MiniRepl client:visible tune={`sound("bd sd*2 cp*3")`} />            |
+| Parallèle             | ,           | <MiniRepl client:visible tune={`sound("bd*2, hh*2 [hh oh]")`} />      |
 
-Die mit Apostrophen umgebene Mini-Notation benutzt man normalerweise in einer sogenannten Funktion.
-Die folgenden Funktionen haben wir bereits gesehen:
+La mini-notation entourée d'apostrophes est normalement utilisée dans une fonction.
+Nous avons déjà vu les fonctions suivantes :
 
 | Name   | Description                            | Example                                                                 |
 | ------ | -------------------------------------- | ----------------------------------------------------------------------- |
-| sound  | Spielt den Sound mit dem Namen         | <MiniRepl client:visible tune={`sound("bd sd")`} />                     |
-| bank   | Wählt die Soundbank / Drum Machine     | <MiniRepl client:visible tune={`sound("bd sd").bank("RolandTR909")`} /> |
-| setcpm | Tempo in **C**ycles **p**ro **M**inute | <MiniRepl client:visible tune={`setcpm(90); sound("bd sd")`} />         |
-| n      | Sample Nummer                          | <MiniRepl client:visible tune={`n("0 1 4 2").sound("jazz")`} />         |
+| sound  | Joue le son avec le nom                | <MiniRepl client:visible tune={`sound("bd sd")`} />                     |
+| bank   | Sélectionne la banque de sons / boîte à rythmes | <MiniRepl client:visible tune={`sound("bd sd").bank("RolandTR909")`} /> |
+| setcpm | Tempo en **C**ycles **p**ar **M**inute | <MiniRepl client:visible tune={`setcpm(90); sound("bd sd")`} />         |
+| n      | Numéro d'échantillon                   | <MiniRepl client:visible tune={`n("0 1 4 2").sound("jazz")`} />         |
 
-## Beispiele
+## Exemples
 
-**Einfacher Rock Beat**
+**Rythme Rock Simple**
 
 <MiniRepl
   client:visible
@@ -337,18 +337,18 @@ sound("bd sd, hh*4").bank("RolandTR505")`}
   punchcard
 />
 
-**Klassischer House**
+**House Classique**
 
 <MiniRepl client:visible tune={`sound("bd*2, - cp, [- hh]*2").bank("RolandTR909")`} punchcard />
 
 <Box>
 
-Ist die aufgefallen dass die letzten 2 Patterns extrem ähnlich sind?
-Bestimmte Drum Patterns werden oft genreübergreifend wiederverwendet.
+As-tu remarqué que les 2 derniers motifs sont extrêmement similaires ?
+Certains motifs de batterie sont souvent réutilisés à travers les genres.
 
 </Box>
 
-We Will Rock you
+We Will Rock You
 
 <MiniRepl
   client:visible
@@ -366,7 +366,7 @@ sound("bd*2 cp").bank("RolandTR707")`}
   punchcard
 />
 
-**Nachahmung eines 16 step sequencers**
+**Imitation d'un séquenceur 16 pas**
 
 <MiniRepl
   client:visible
@@ -380,7 +380,7 @@ sound(\`
   punchcard
 />
 
-**Noch eins**
+**Encore un**
 
 <MiniRepl
   client:visible
@@ -394,7 +394,7 @@ sound(\`
   punchcard
 />
 
-**Nicht so typische Drums**
+**Batteries moins typiques**
 
 <MiniRepl
   client:visible
@@ -406,5 +406,5 @@ insect [crow metal] - -,
   punchcard
 />
 
-Jetzt haben wir eine grundlegende Ahnung davon wie man mit Strudel Beats baut!
-Im nächsten Kapitel werden wir ein paar [Töne spielen](/de/workshop/first-notes).
+Nous avons maintenant une idée de base de la façon de créer des rythmes avec Strudel !
+Dans le prochain chapitre, nous allons [jouer quelques notes](/de/workshop/first-notes).

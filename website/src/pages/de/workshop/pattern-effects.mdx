@@ -1,5 +1,5 @@
 ---
-title: Pattern-Effekte
+title: Effets de motifs
 layout: ../../../layouts/MainLayout.astro
 ---
 
@@ -7,21 +7,21 @@ import { MiniRepl } from '@src/docs/MiniRepl';
 import Box from '@components/Box.astro';
 import QA from '@components/QA';
 
-# Pattern-Effekte
+# Effets de motifs
 
-Bis jetzt sind die meisten Funktionen, die wir kennengelernt haben, ähnlich wie Funktionen in anderen Musik Programmen: Sequencing von Sounds, Noten und Effekten.
+Jusqu'à présent, la plupart des fonctions que nous avons apprises sont similaires aux fonctions d'autres programmes musicaux : séquençage de sons, de notes et d'effets.
 
-In diesem Kapitel beschäftigen wir uns mit Funktionen die weniger herkömmlich oder auch einzigartig sind.
+Dans ce chapitre, nous allons nous intéresser à des fonctions moins conventionnelles, voire uniques.
 
-**rev = rückwärts abspielen**
+**rev = jouer à l'envers**
 
 <MiniRepl client:visible tune={`n("0 1 [4 3] 2").sound("jazz").rev()`} />
 
-**jux = einen stereo kanal modifizieren**
+**jux = modifier un canal stéréo**
 
 <MiniRepl client:visible tune={`n("0 1 [4 3] 2").sound("jazz").jux(rev)`} />
 
-So würde man das ohne `jux` schreiben:
+Voici comment on l'écrirait sans `jux` :
 
 <MiniRepl
   client:visible
@@ -31,7 +31,7 @@ So würde man das ohne `jux` schreiben:
 )`}
 />
 
-Lass uns visualisieren, was hier passiert:
+Visualisons ce qui se passe ici :
 
 <MiniRepl
   client:visible
@@ -44,15 +44,15 @@ Lass uns visualisieren, was hier passiert:
 
 <Box>
 
-Schreibe `//` vor eine der beiden Zeilen im `stack`!
+Écris `//` devant l'une des deux lignes dans le `stack` !
 
 </Box>
 
-**mehrere tempos**
+**Plusieurs tempos**
 
 <MiniRepl client:visible tune={`note("c2, eb3 g3 [bb3 c4]").sound("piano").slow("1,2,3")`} />
 
-Das hat den gleichen Effekt, wie:
+Cela a le même effet que :
 
 <MiniRepl
   client:visible
@@ -66,11 +66,11 @@ Das hat den gleichen Effekt, wie:
 
 <Box>
 
-Schreibe wieder `//` vor eine oder mehrere Zeilen im `stack`.
+Écris à nouveau `//` devant une ou plusieurs lignes du `stack`.
 
 </Box>
 
-**add = addieren**
+**add = ajouter**
 
 <MiniRepl
   client:visible
@@ -82,13 +82,13 @@ Schreibe wieder `//` vor eine oder mehrere Zeilen im `stack`.
 
 <Box>
 
-Addiert man eine Zahl zu einer Note, verhält sich diese wie eine Zahl.
+Si on ajoute un nombre à une note, celle-ci se comporte comme un nombre.
 
-z.B. c4 = 60, also ist c4 + 2 = 62
+Par exemple, c4 = 60, donc c4 + 2 = 62.
 
 </Box>
 
-Man kann auch mehrmals addieren:
+On peut aussi additionner plusieurs fois :
 
 <MiniRepl
   client:visible
@@ -108,7 +108,7 @@ Man kann auch mehrmals addieren:
   punchcard
 />
 
-**Alles zusammen**
+**Tout ensemble**
 
 <MiniRepl
   client:visible
@@ -129,13 +129,13 @@ Man kann auch mehrmals addieren:
 
 <MiniRepl client:visible tune={`sound("hh, bd rim").bank("RolandTR707").ply(2)`} punchcard />
 
-das ist wie:
+C'est comme :
 
 <MiniRepl client:visible tune={`sound("hh*2, bd*2 rim*2").bank("RolandTR707")`} punchcard />
 
 <Box>
 
-Probier `ply` mit einem pattern zu automatisieren, z.b. `"<1 2 1 3>"`
+Essaie d'automatiser `ply` avec un motif, par exemple `"<1 2 1 3>"`.
 
 </Box>
 
@@ -153,11 +153,11 @@ Probier `ply` mit einem pattern zu automatisieren, z.b. `"<1 2 1 3>"`
 
 <Box>
 
-In der Notation `x=>x.`, ist `x` das Pattern, das wir bearbeiten.
+Dans la notation `x=>x.`, `x` est le motif que nous éditons.
 
 </Box>
 
-`off` ist auch nützlich für Sounds:
+`off` est également utile pour les sons :
 
 <MiniRepl
   client:visible
@@ -167,8 +167,8 @@ In der Notation `x=>x.`, ist `x` das Pattern, das wir bearbeiten.
 
 | Name | Beschreibung                      | Beispiel                                                                            |
 | ---- | --------------------------------- | ----------------------------------------------------------------------------------- |
-| rev  | rückwärts                         | <MiniRepl client:visible tune={`n("0 2 4 6").scale("C:minor").rev()`} />            |
-| jux  | einen Stereo-Kanal modifizieren   | <MiniRepl client:visible tune={`n("0 2 4 6").scale("C:minor").jux(rev)`} />         |
-| add  | addiert Zahlen oder Noten         | <MiniRepl client:visible tune={`n("0 2 4 6".add("<0 1 2 1>")).scale("C:minor")`} /> |
-| ply  | multipliziert jedes Element x mal | <MiniRepl client:visible tune={`s("bd sd").ply("<1 2 3>")`} />                      |
-| off  | verzögert eine modifizierte Kopie | <MiniRepl client:visible tune={`s("bd sd, hh*4").off(1/8, x=>x.speed(2))`} />       |
+| rev  | à l'envers                        | <MiniRepl client:visible tune={`n("0 2 4 6").scale("C:minor").rev()`} />            |
+| jux  | modifier un canal stéréo          | <MiniRepl client:visible tune={`n("0 2 4 6").scale("C:minor").jux(rev)`} />         |
+| add  | additionne des nombres ou des notes | <MiniRepl client:visible tune={`n("0 2 4 6".add("<0 1 2 1>")).scale("C:minor")`} /> |
+| ply  | multiplie chaque élément x fois   | <MiniRepl client:visible tune={`s("bd sd").ply("<1 2 3>")`} />                      |
+| off  | retarde une copie modifiée        | <MiniRepl client:visible tune={`s("bd sd, hh*4").off(1/8, x=>x.speed(2))`} />       |

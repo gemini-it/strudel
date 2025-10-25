@@ -9,7 +9,7 @@ import { JsDoc } from '../../docs/JsDoc';
 # Effets audio
 
 Que vous utilisiez un synthé ou un échantillon, vous pouvez appliquer l'un des effets audio intégrés suivants.
-Comme vous pouvez le soupçonner, les effets peuvent être chaînés ensemble, et ils acceptent une chaîne de pattern comme argument.
+Comme vous pouvez vous en douter, les effets peuvent être chaînés ensemble, et ils acceptent une chaîne de motifs comme argument.
 
 # Chaîne de signal
 
@@ -17,15 +17,15 @@ Comme vous pouvez le soupçonner, les effets peuvent être chaînés ensemble, e
 
 La chaîne de signal dans Strudel est la suivante :
 
-- Un événement générateur de son est déclenché par un pattern
+- Un événement générateur de son est déclenché par un motif
   - Cela a une heure de début et une durée, qui est généralement
     contrôlée par la longueur de la note et les paramètres ADSR
   - Si nous dépassons la polyphonie maximale, les anciens sons commencent à s'éteindre
   - Les sons muets (ceux dont la valeur `s` est `-`, `~`, ou `_`) sont ignorés
 - Un son est produit (à travers, disons, un échantillon ou un oscillateur)
   - C'est là que les effets basés sur le désaccordage (comme `detune`, `penv`, etc. se produisent)
-- Ce qui suit se produira _dans l'ordre_ et seulement s'ils ont été appelés dans le pattern. Notez que tous ces
-  effets à usage unique, ce qui signifie que plusieurs occurrences d'entre eux dans un pattern remplaceront simplement les valeurs
+- Ce qui suit se produira _dans l'ordre_ et seulement s'ils ont été appelés dans le motif. Notez que tous ces
+  effets à usage unique, ce qui signifie que plusieurs occurrences d'entre eux dans un motif remplaceront simplement les valeurs
   (par exemple, vous ne pouvez pas faire `s("bd").lpf(100).distort(2).lpf(800)` pour filtre passe-bas, distordre, puis filtre passe-bas
   à nouveau)
   - Vocodeur de phase (`stretch`)
@@ -51,27 +51,27 @@ La chaîne de signal dans Strudel est la suivante :
       - Ceux-ci sont utilisés pour l'outillage comme `scope` et `spectrum` et leur configuration se fait généralement en coulisses
     - Delay (quantité contrôlée par le paramètre `delay`)
     - Reverb (quantité contrôlée par le paramètre `room`)
-- La sortie sèche, le delay et la reverb sont joints dans ce qu'on appelle l'"orbite" du pattern (voir plus dans la section ci-dessous)
+- La sortie sèche, le délai et la réverbération sont joints dans ce qu'on appelle l'"orbite" du motif (voir plus dans la section ci-dessous)
   - L'effet `duck` affecte le volume de tous les signaux dans l'orbite
   - L'orbite est ensuite envoyée au mixeur
 
 ## Orbites
 
-Les orbites sont la façon dont les sorties sont gérées dans Strudel. Elles prescrivent également quel delay et reverb associer au signal sec.
-Par défaut, toutes les orbites sont mixées vers les canaux `1` et `2` en stéréo, cependant avec le paramètre "Multi Channel Orbits"
+Les orbites sont la façon dont les sorties sont gérées dans Strudel. Elles prescrivent également quel délai et quelle réverbération associer au signal sec.
+Par défaut, toutes les orbites sont mixées vers les canaux `1` et `2` en stéréo, cependant avec le paramètre "Orbites multi-canaux"
 (sous Paramètres à droite) vous pouvez les utiliser comme sorties stéréo individuelles à 2 canaux (l'orbite `i` sera mappée vers
 les canaux `2i` et `2i + 1`). Vous pouvez ensuite utiliser des routeurs comme Blackhole 16 pour récupérer et enregistrer tous les canaux dans un DAW pour un traitement ultérieur.
 
-L'orbite par défaut est `1` et elle est définie avec `orbit`. Vous pouvez envoyer un son vers plusieurs orbites via mininotation
+L'orbite par défaut est `1` et elle est définie avec `orbit`. Vous pouvez envoyer un son vers plusieurs orbites via la mini-notation
 
 <MiniRepl client:visible tune={`s("white").orbit("2,3,4").gain(0.2)`} />
 
 mais soyez prudent car cela créera trois copies du son en coulisses, ce qui signifie que s'ils sont mixés
 vers une seule sortie, ils tripleront le volume. Nous avons réduit le gain ici pour préserver vos oreilles.
 
-⚠️ Il n'y a qu'un seul delay et reverb par orbite, alors soyez conscient que si vous tentez de changer les paramètres sur deux
-patterns pointant vers la même orbite, cela peut conduire à des résultats imprévisibles. Comparez, par exemple, ce joli pluck
-avec une grande reverb :
+⚠️ Il n'y a qu'un seul délai et réverbération par orbite, alors soyez conscient que si vous tentez de changer les paramètres sur deux
+motifs pointant vers la même orbite, cela peut conduire à des résultats imprévisibles. Comparez, par exemple, ce joli pluck
+avec une grande réverbération :
 
 <MiniRepl
   client:visible
@@ -114,7 +114,7 @@ modifiés de manière continue dans le temps. Par exemple,
 s("supersaw").lpf(tri.range(100, 5000).slow(2))`}
 />
 
-Ne produira pas un filtre passe-bas continuellement LFO'd en raison du `tri` n'étant échantillonné que chaque fois que la note frappe
+Ne produira pas un filtre passe-bas continuellement modulé par LFO en raison du `tri` n'étant échantillonné que chaque fois que la note frappe
 (dans ce cas, la valeur par défaut d'une fois par cycle). Vous pouvez le simuler en introduisant plus d'événements générateurs de son, par exemple :
 
 <MiniRepl
@@ -145,8 +145,8 @@ Strudel est livré avec 3 types de filtres :
 
 Chaque filtre a 2 paramètres :
 
-- cutoff : la fréquence à laquelle le filtre commence à fonctionner. par exemple, un filtre passe-bas avec une coupure de 1000Hz permet aux fréquences inférieures à 1000Hz de passer.
-- valeur q : Contrôle la résonance du filtre. Des valeurs plus élevées sonnent plus agressives. Voir aussi [Facteur Q](https://en.wikipedia.org/wiki/Q_factor)
+- coupure : la fréquence à laquelle le filtre commence à fonctionner. par exemple, un filtre passe-bas avec une coupure de 1000Hz permet aux fréquences inférieures à 1000Hz de passer.
+- valeur Q : Contrôle la résonance du filtre. Des valeurs plus élevées sonnent plus agressives. Voir aussi [Facteur Q](https://en.wikipedia.org/wiki/Q_factor)
 
 ## lpf
 
@@ -211,7 +211,7 @@ La modulation d'amplitude change l'amplitude (gain) périodiquement au fil du te
 # Enveloppe d'amplitude
 
 L'[enveloppe](<https://en.wikipedia.org/wiki/Envelope_(music)>) d'amplitude contrôle le contour dynamique d'un son.
-Strudel utilise des enveloppes ADSR, qui sont probablement le moyen le plus courant de décrire une enveloppe :
+Strudel utilise des enveloppes ADSR, qui sont probablement le moyen le plus courant de décrire une enveloppe.
 
 ![ADSR](https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/ADSR_parameter.svg/1920px-ADSR_parameter.svg.png)
 
@@ -239,7 +239,7 @@ Strudel utilise des enveloppes ADSR, qui sont probablement le moyen le plus cour
 
 # Enveloppe de filtre
 
-Chaque filtre peut recevoir une enveloppe de filtre supplémentaire contrôlant la valeur de coupure dynamiquement. Il utilise une enveloppe ADSR similaire à celle utilisée pour l'amplitude. Il y a un paramètre supplémentaire pour contrôler la profondeur de la modulation du filtre : `lpenv`|`hpenv`|`bpenv`. Cela vous permet de jouer des modulations de filtre subtiles ou énormes de la même manière en augmentant ou diminuant simplement la profondeur.
+Chaque filtre peut recevoir une enveloppe de filtre supplémentaire contrôlant dynamiquement la valeur de coupure. Il utilise une enveloppe ADSR similaire à celle utilisée pour l'amplitude. Il y a un paramètre supplémentaire pour contrôler la profondeur de la modulation du filtre : `lpenv`|`hpenv`|`bpenv`. Cela vous permet de jouer des modulations de filtre subtiles ou énormes de la même manière en augmentant ou diminuant simplement la profondeur.
 
 <MiniRepl
   client:idle
@@ -304,7 +304,7 @@ Les enveloppes de hauteur peuvent insuffler de la vie dans des sons statiques :
   .size(4).fast(1.5)`}
 />
 
-Vous créez également de jolis sons de style chiptune :
+Vous pouvez également créer de jolis sons de style chiptune :
 
 <MiniRepl
   client:idle
@@ -397,14 +397,14 @@ Décomposons tous les contrôles d'enveloppe de hauteur :
 
 ## Effets locaux vs globaux
 
-Alors que les effets "locaux" listés ci-dessus créeront toujours une chaîne d'effets séparée pour chaque événement,
+Alors que les effets « locaux » listés ci-dessus créeront toujours une chaîne d'effets séparée pour chaque événement,
 les effets globaux utilisent la même chaîne pour tous les événements de la même orbite :
 
 ## orbit
 
 <JsDoc client:idle name="orbit" h={0} />
 
-## Delay
+## Délai
 
 ### delay
 
@@ -418,7 +418,7 @@ les effets globaux utilisent la même chaîne pour tous les événements de la m
 
 <JsDoc client:idle name="delayfeedback" h={0} />
 
-## Reverb
+## Réverbération
 
 ### room
 
@@ -476,4 +476,4 @@ les effets globaux utilisent la même chaîne pour tous les événements de la m
 
 <JsDoc client:idle name="duckdepth" h={0} />
 
-Ensuite, nous examinerons l'entrée / sortie via [MIDI, OSC et autres méthodes](/learn/input-output).
+Ensuite, nous examinerons l'entrée/sortie via [MIDI, OSC et autres méthodes](/learn/input-output).

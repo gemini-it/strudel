@@ -1,29 +1,29 @@
 ---
-title: Recap
+title: Récapitulatif
 layout: ../../../layouts/MainLayout.astro
 ---
 
 import { MiniRepl } from '../../../docs/MiniRepl';
 
-# Workshop Rückblick
+# Récapitulatif de l'atelier
 
-Diese Seite ist eine Auflistung aller im Workshop vorgestellten Funktionen.
+Cette page est une liste de toutes les fonctions présentées dans l'atelier.
 
 ## Mini Notation
 
-| Konzept               | Syntax   | Beispiel                                                              |
+| Concept               | Syntaxe  | Exemple                                                              |
 | --------------------- | -------- | --------------------------------------------------------------------- |
-| Sequenz               | space    | <MiniRepl client:visible tune={`sound("bd bd sn hh")`} />             |
-| Sample-Nummer         | :x       | <MiniRepl client:visible tune={`sound("hh:0 hh:1 hh:2 hh:3")`} />     |
-| Pausen                | ~        | <MiniRepl client:visible tune={`sound("metal ~ jazz jazz:1")`} />     |
-| Unter-Sequenzen       | \[\]     | <MiniRepl client:visible tune={`sound("bd wind [metal jazz] hh")`} /> |
-| Unter-Unter-Sequenzen | \[\[\]\] | <MiniRepl client:visible tune={`sound("bd [metal [jazz sn]]")`} />    |
-| Schneller             | \*       | <MiniRepl client:visible tune={`sound("bd sn*2 cp*3")`} />            |
-| Verlangsamen          | \/       | <MiniRepl client:visible tune={`note("[c a f e]/2")`} />              |
-| Parallel              | ,        | <MiniRepl client:visible tune={`sound("bd*2, hh*2 [hh oh]")`} />      |
-| Alternieren           | \<\>     | <MiniRepl client:visible tune={`note("c <e g>")`} />                  |
-| Verlängern            | @        | <MiniRepl client:visible tune={`note("c@3 e")`} />                    |
-| Wiederholen           | !        | <MiniRepl client:visible tune={`note("c!3 e")`} />                    |
+| Séquence              | espace   | <MiniRepl client:visible tune={`sound("bd bd sn hh")`} />             |
+| Numéro d'échantillon  | :x       | <MiniRepl client:visible tune={`sound("hh:0 hh:1 hh:2 hh:3")`} />     |
+| Pauses                | ~        | <MiniRepl client:visible tune={`sound("metal ~ jazz jazz:1")`} />     |
+| Sous-séquences        | \[\]     | <MiniRepl client:visible tune={`sound("bd wind [metal jazz] hh")`} /> |
+| Sous-sous-séquences   | \[\[\]\] | <MiniRepl client:visible tune={`sound("bd [metal [jazz sn]]")`} />    |
+| Plus rapide           | \*       | <MiniRepl client:visible tune={`sound("bd sn*2 cp*3")`} />            |
+| Plus lent             | \/       | <MiniRepl client:visible tune={`note("[c a f e]/2")`} />              |
+| Parallèle             | ,        | <MiniRepl client:visible tune={`sound("bd*2, hh*2 [hh oh]")`} />      |
+| Alterner              | \<\>     | <MiniRepl client:visible tune={`note("c <e g>")`} />                  |
+| Allonger              | @        | <MiniRepl client:visible tune={`note("c@3 e")`} />                    |
+| Répéter               | !        | <MiniRepl client:visible tune={`note("c!3 e")`} />                    |
 
 ## Sounds
 
@@ -35,11 +35,11 @@ Diese Seite ist eine Auflistung aller im Workshop vorgestellten Funktionen.
 
 ## Noten
 
-| Name      | Beschreibung                       | Beispiel                                                                          |
-| --------- | ---------------------------------- | --------------------------------------------------------------------------------- |
-| note      | wählt Note per Zahl oder Buchstabe | <MiniRepl client:visible tune={`note("b g e c").sound("piano")`} />               |
-| n + scale | wählt Note n in Skala              | <MiniRepl client:visible tune={`n("6 4 2 0").scale("C:minor").sound("piano")`} /> |
-| stack     | spielt mehrere Patterns parallel   | <MiniRepl client:visible tune={`stack(s("bd sd"),note("c eb g"))`} />             |
+| Nom       | Description                          | Exemple                                                                          |
+| --------- | ------------------------------------ | --------------------------------------------------------------------------------- |
+| note      | sélectionne la note par nombre ou lettre | <MiniRepl client:visible tune={`note("b g e c").sound("piano")`} />             |
+| n + scale | sélectionne la note n dans la gamme  | <MiniRepl client:visible tune={`n("6 4 2 0").scale("C:minor").sound("piano")`} /> |
+| stack     | joue plusieurs motifs en parallèle   | <MiniRepl client:visible tune={`stack(s("bd sd"),note("c eb g"))`} />             |
 
 ## Audio-Effekte
 
@@ -56,13 +56,13 @@ Diese Seite ist eine Auflistung aller im Workshop vorgestellten Funktionen.
 
 ## Pattern-Effekte
 
-| Name   | Beschreibung                      | Beispiel                                                                            |
-| ------ | --------------------------------- | ----------------------------------------------------------------------------------- |
-| setcpm | Tempo in Cycles pro Minute        | <MiniRepl client:visible tune={`setcpm(90); sound("bd sd")`} />                     |
-| fast   | schneller                         | <MiniRepl client:visible tune={`sound("bd sd").fast(2)`} />                         |
-| slow   | langsamer                         | <MiniRepl client:visible tune={`sound("bd sd").slow(2)`} />                         |
-| rev    | rückwärts                         | <MiniRepl client:visible tune={`n("0 2 4 6").scale("C:minor").rev()`} />            |
-| jux    | einen Stereo-Kanal modifizieren   | <MiniRepl client:visible tune={`n("0 2 4 6").scale("C:minor").jux(rev)`} />         |
-| add    | addiert Zahlen oder Noten         | <MiniRepl client:visible tune={`n("0 2 4 6".add("<0 1 2 1>")).scale("C:minor")`} /> |
-| ply    | jedes Element schneller machen    | <MiniRepl client:visible tune={`s("bd sd").ply("<1 2 3>")`} />                      |
-| off    | verzögert eine modifizierte Kopie | <MiniRepl client:visible tune={`s("bd sd, hh*4").off(1/8, x=>x.speed(2))`} />       |
+| Nom    | Description                         | Exemple                                                                             |
+| ------ | ----------------------------------- | ----------------------------------------------------------------------------------- |
+| setcpm | Tempo en cycles par minute          | <MiniRepl client:visible tune={`setcpm(90); sound("bd sd")`} />                     |
+| fast   | plus rapide                         | <MiniRepl client:visible tune={`sound("bd sd").fast(2)`} />                         |
+| slow   | plus lent                           | <MiniRepl client:visible tune={`sound("bd sd").slow(2)`} />                         |
+| rev    | à l'envers                          | <MiniRepl client:visible tune={`n("0 2 4 6").scale("C:minor").rev()`} />            |
+| jux    | modifier le canal stéréo           | <MiniRepl client:visible tune={`n("0 2 4 6").scale("C:minor").jux(rev)`} />         |
+| add    | ajoute des nombres ou des notes     | <MiniRepl client:visible tune={`n("0 2 4 6".add("<0 1 2 1>")).scale("C:minor")`} /> |
+| ply    | rend chaque élément plus rapide     | <MiniRepl client:visible tune={`s("bd sd").ply("<1 2 3>")`} />                      |
+| off    | retarde une copie modifiée          | <MiniRepl client:visible tune={`s("bd sd, hh*4").off(1/8, x=>x.speed(2))`} />       |

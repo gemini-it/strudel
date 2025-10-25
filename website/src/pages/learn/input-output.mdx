@@ -8,13 +8,13 @@ import { JsDoc } from '../../docs/JsDoc';
 
 # MIDI, OSC et MQTT
 
-Normalement, Strudel est utilisé pour patteriser le son, en utilisant son propre synthétiseur basé sur '[web audio](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API)' appelé [SuperDough](https://codeberg.org/uzu/strudel/src/branch/main/packages/superdough).
+Normalement, Strudel est utilisé pour créer des motifs sonores, en utilisant son propre synthétiseur basé sur '[web audio](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API)' appelé [SuperDough](https://codeberg.org/uzu/strudel/src/branch/main/packages/superdough).
 
-Il est également possible de patteriser d'autres choses avec Strudel, comme des synthétiseurs logiciels et matériels avec MIDI, d'autres logiciels utilisant Open Sound Control/OSC (y compris le synthétiseur [SuperDirt](https://github.com/musikinformatik/SuperDirt/) couramment utilisé avec le frère de Strudel [TidalCycles](https://tidalcycles.org/)), ou le protocole 'internet des objets' MQTT.
+Il est également possible de créer des motifs pour d'autres éléments avec Strudel, comme des synthétiseurs logiciels et matériels avec MIDI, d'autres logiciels utilisant Open Sound Control/OSC (y compris le synthétiseur [SuperDirt](https://github.com/musikinformatik/SuperDirt/) couramment utilisé avec le frère de Strudel [TidalCycles](https://tidalcycles.org/)), ou le protocole 'Internet des objets' MQTT.
 
 # MIDI
 
-Strudel prend en charge MIDI sans aucun logiciel supplémentaire (grâce à [webmidi](https://npmjs.com/package/webmidi)), simplement en ajoutant des méthodes à votre pattern :
+Strudel prend en charge MIDI sans aucun logiciel supplémentaire (grâce à [webmidi](https://npmjs.com/package/webmidi)), simplement en ajoutant des méthodes à votre motif :
 
 ## midiin(inputName?)
 
@@ -22,8 +22,8 @@ Strudel prend en charge MIDI sans aucun logiciel supplémentaire (grâce à [web
 
 ## midi(outputName?,options?)
 
-Connectez soit un périphérique MIDI ou utilisez le pilote IAC (Mac) ou le port Midi Through (Linux) pour les messages MIDI internes.
-Si aucun outputName n'est donné, il utilise la première sortie MIDI qu'il trouve.
+Connectez soit un périphérique MIDI, soit utilisez le pilote IAC (Mac) ou le port Midi Through (Linux) pour les messages MIDI internes.
+Si aucun outputName n'est fourni, il utilise la première sortie MIDI qu'il trouve.
 
 <MiniRepl
   client:idle
@@ -32,7 +32,7 @@ $: chord("<C^7 A7 Dm7 G7>").voicing().midi('IAC Driver')
 `}
 />
 
-Dans la console, vous verrez un log des périphériques MIDI disponibles dès que vous exécutez le code,
+Dans la console, vous verrez un journal des périphériques MIDI disponibles dès que vous exécutez le code,
 par exemple
 
 ```
@@ -52,20 +52,20 @@ La fonction `.midi()` accepte un objet d'options avec les propriétés suivantes
 
 | Option       | Type          | Défaut    | Description                                                                   |
 | ------------ | ------------- | --------- | ----------------------------------------------------------------------------- |
-| isController | boolean       | false     | Lorsque true, désactive l'envoi de messages de notes. Utile pour contrôleurs MIDI |
-| latencyMs    | number        | 34        | Latence en millisecondes pour aligner MIDI avec le moteur audio               |
-| noteOffsetMs | number        | 10        | Décalage en millisecondes pour les messages note-off pour éviter les glitchs  |
-| midichannel  | number        | 1         | Canal MIDI par défaut (1-16)                                                   |
-| velocity     | number        | 0.9       | Vélocité de note par défaut (0-1)                                              |
-| gain         | number        | 1         | Multiplicateur de gain par défaut pour la vélocité (0-1)                       |
-| midimap      | string        | 'default' | Nom du mapping MIDI à utiliser pour les changements de contrôle               |
-| midiport     | string/number | -         | Nom ou index du périphérique MIDI                                              |
+| isController | booléen       | false     | Lorsque vrai, désactive l'envoi de messages de notes. Utile pour contrôleurs MIDI |
+| latencyMs    | nombre        | 34        | Latence en millisecondes pour aligner MIDI avec le moteur audio               |
+| noteOffsetMs | nombre        | 10        | Décalage en millisecondes pour les messages note-off pour éviter les glitchs  |
+| midichannel  | nombre        | 1         | Canal MIDI par défaut (1-16)                                                   |
+| velocity     | nombre        | 0.9       | Vélocité de note par défaut (0-1)                                              |
+| gain         | nombre        | 1         | Multiplicateur de gain par défaut pour la vélocité (0-1)                       |
+| midimap      | chaîne        | 'default' | Nom du mappage MIDI à utiliser pour les changements de contrôle               |
+| midiport     | chaîne/nombre | -         | Nom ou index du périphérique MIDI                                              |
 
 </details>
 
 ### midiport(outputName)
 
-Sélectionne le périphérique de sortie MIDI à utiliser, le pattern peut être utilisé pour basculer entre les périphériques.
+Sélectionne le périphérique de sortie MIDI à utiliser, le motif peut être utilisé pour basculer entre les périphériques.
 
 ```javascript
 $: midiport('IAC Driver');
@@ -76,7 +76,7 @@ $: note('c a f e').midiport('<0 1 2 3>').midi();
 
 ## midichan(number)
 
-Sélectionne le canal MIDI à utiliser. Si non utilisé, `.midi` utilisera le canal 1 par défaut.
+Sélectionne le canal MIDI à utiliser. Si non spécifié, `.midi` utilisera le canal 1 par défaut.
 
 ## midicmd(command)
 
@@ -102,16 +102,16 @@ Il prend en charge les commandes suivantes :
 ## control, ccn && ccv
 
 - `control` envoie des messages de changement de contrôle MIDI à votre périphérique MIDI.
-- `ccn` définit le numéro cc. Dépend du mapping MIDI de votre synthé
-- `ccv` définit la valeur cc. normalisée de 0 à 1.
+- `ccn` définit le numéro de CC. Dépend du mappage MIDI de votre synthétiseur.
+- `ccv` définit la valeur de CC, normalisée de 0 à 1.
 
 <MiniRepl client:idle tune={`note("c a f e").control([74, sine.slow(4)]).midi()`} />
 
 <MiniRepl client:idle tune={`note("c a f e").ccn(74).ccv(sine.slow(4)).midi()`} />
 
-Dans l'extrait ci-dessus, `ccn` est défini sur 74, qui est la coupure de filtre pour de nombreux synthés. `ccv` est contrôlé par un pattern saw.
-Ayant tout dans un pattern, le pattern `ccv` sera aligné avec le pattern de notes, car la structure vient de la gauche par défaut.
-Mais vous pouvez également contrôler les messages cc séparément comme ceci :
+Dans l'extrait ci-dessus, `ccn` est défini sur 74, qui est la coupure de filtre pour de nombreux synthétiseurs. `ccv` est contrôlé par un motif en dents de scie.
+Ayant tout dans un motif, le motif `ccv` sera aligné avec le motif de notes, car la structure vient de la gauche par défaut.
+Mais vous pouvez également contrôler les messages CC séparément comme ceci :
 
 <MiniRepl
   client:idle
@@ -119,7 +119,7 @@ Mais vous pouvez également contrôler les messages cc séparément comme ceci :
 $: ccv(sine.segment(16).slow(4)).ccn(74).midi()`}
 />
 
-Au lieu de définir `ccn` et `ccv` directement, vous pouvez également créer des mappings avec `midimaps` :
+Au lieu de définir `ccn` et `ccv` directement, vous pouvez également créer des mappages avec `midimaps` :
 
 ## midimaps
 
@@ -131,7 +131,7 @@ Au lieu de définir `ccn` et `ccv` directement, vous pouvez également créer de
 
 ## progNum (Program Change)
 
-`progNum` envoie des messages de changement de programme MIDI pour basculer entre différents presets/patches sur votre périphérique MIDI.
+`progNum` envoie des messages de changement de programme MIDI pour basculer entre différents préréglages/patchs sur votre périphérique MIDI.
 Les valeurs de changement de programme doivent être des nombres entre 0 et 127.
 
 <MiniRepl client:idle tune={`// Basculer entre les programmes 0 et 1 à chaque cycle
@@ -140,14 +140,14 @@ progNum("<0 1>").midi()
 // Jouer des notes tout en changeant de programmes
 note("c3 e3 g3").progNum("<0 1 2>").midi()`} />
 
-Les messages de changement de programme sont utiles pour basculer entre différents sons d'instruments ou presets pendant une performance.
+Les messages de changement de programme sont utiles pour basculer entre différents sons d'instruments ou préréglages pendant une performance.
 Le son exact auquel chaque numéro de programme correspond dépend de la configuration de votre périphérique MIDI.
 
 ## sysex, sysexid && sysexdata (Message System Exclusive)
 
 `sysex` envoie des messages MIDI System Exclusive (SysEx) à votre périphérique MIDI.
 Les messages SysEx sont des commandes spécifiques au périphérique qui permettent un contrôle plus profond sur les paramètres du synthétiseur.
-La valeur doit être un tableau de nombres entre 0-255 représentant les octets de données SysEx.
+La valeur doit être un tableau de nombres entre 0 et 255 représentant les octets de données SysEx.
 
 <MiniRepl
   client:idle
@@ -164,8 +164,8 @@ Consultez le guide d'implémentation MIDI de votre périphérique pour plus de d
 
 ## midibend && miditouch
 
-`midibend` définit le pitch bend MIDI (-1 - 1)
-`miditouch` définit le key after touch MIDI (0-1)
+`midibend` définit la plage de pitch bend MIDI (-1 - 1)
+`miditouch` définit le key aftertouch MIDI (0-1)
 
 <MiniRepl client:idle tune={`note("c a f e").midibend(sine.slow(4).range(-0.4,0.4)).midi()`} />
 
@@ -179,12 +179,12 @@ Il existe également [StrudelDirt](https://github.com/daslyfe/StrudelDirt) qui e
 
 ## Prérequis
 
-Pour faire fonctionner SuperDirt avec Strudel, vous devez
+Pour faire fonctionner SuperDirt avec Strudel, vous devez :
 
-1. installer SuperCollider + plugins sc3, voir [Tidal Docs](https://tidalcycles.org/docs/) (Install Tidal) pour plus d'informations.
+1. installer SuperCollider + plugins sc3, voir [Tidal Docs](https://tidalcycles.org/docs/) (Installer Tidal) pour plus d'informations.
 2. installer SuperDirt, ou le fork [StrudelDirt](https://github.com/daslyfe/StrudelDirt) qui est optimisé pour une utilisation avec Strudel
 3. installer [node.js](https://nodejs.org/en/)
-4. télécharger le [dépôt Strudel](https://codeberg.org/uzu/strudel/) (ou git clone, si vous avez git installé)
+4. télécharger le [dépôt Strudel](https://codeberg.org/uzu/strudel/) (ou cloner le dépôt git, si vous avez git installé)
 5. exécuter `pnpm i` dans le répertoire strudel
 6. exécuter `pnpm run osc` pour démarrer le serveur OSC, qui transfère les messages OSC du REPL Strudel vers SuperCollider
 
@@ -192,16 +192,16 @@ Vous êtes maintenant prêt !
 
 ## Utilisation
 
-1. Démarrez SuperCollider, soit en utilisant SuperCollider IDE, soit en exécutant `sclang` dans un terminal
-2. Ouvrez le [Strudel REPL](https://strudel.cc/#cygiYmQgc2QiKS5vc2MoKQ%3D%3D)
+1. Démarrez SuperCollider, soit en utilisant l'IDE SuperCollider, soit en exécutant `sclang` dans un terminal.
+2. Ouvrez le [Strudel REPL](https://strudel.cc/#cygiYmQgc2QiKS5vc2MoKQ%3D%3D).
 
 ...ou testez-le ici :
 
 <MiniRepl client:only="react" tune={`s("bd sd").osc()`} />
 
-Si vous entendez maintenant du son, félicitations ! Sinon, vous pouvez obtenir de l'aide sur le [canal #strudel dans le discord TidalCycles](https://discord.com/invite/HGEdXmRkzT).
+Si vous entendez maintenant du son, félicitations ! Sinon, vous pouvez obtenir de l'aide sur le [canal #strudel dans le Discord TidalCycles](https://discord.com/invite/HGEdXmRkzT).
 
-Remarque : si vous avez la 'Cible du moteur audio' dans les paramètres définie sur 'OSC', vous n'avez pas besoin d'ajouter .osc() à la fin de votre pattern.
+Remarque : si vous avez la 'Cible du moteur audio' dans les paramètres définie sur 'OSC', vous n'avez pas besoin d'ajouter .osc() à la fin de votre motif.
 
 ### Pattern.osc
 
@@ -217,9 +217,9 @@ Mais pouvons-nous utiliser Strudel [hors ligne](/learn/pwa) ?
 
 # MQTT
 
-MQTT est un protocole réseau léger, conçu pour les périphériques 'internet des objets'. Pour une utilisation avec Strudel, vous aurez
-besoin d'un accès à un serveur MQTT appelé 'broker' configuré pour accepter des connexions 'websocket' sécurisées. Vous pourriez
-en exécuter un vous-même (par exemple en exécutant [mosquitto](https://mosquitto.org/)), bien qu'obtenir un certificat SSL que
+MQTT est un protocole réseau léger, conçu pour les appareils de l'« Internet des objets ». Pour une utilisation avec Strudel, vous aurez
+besoin d'un accès à un serveur MQTT appelé « broker » configuré pour accepter des connexions « websocket » sécurisées. Vous pourriez
+en exécuter un vous-même (par exemple en exécutant [mosquitto](https://mosquitto.org/)), bien qu'obtenir un certificat SSL auquel
 votre navigateur web fera confiance pourrait être un peu délicat pour ceux sans expérience en administration système.
 Alternativement, vous pouvez utiliser [un broker public](https://www.hivemq.com/mqtt/public-mqtt-broker/).
 
@@ -227,7 +227,7 @@ Strudel ne prend pas encore en charge la réception de messages via MQTT, seulem
 
 ## Utilisation
 
-L'exemple suivant montre comment envoyer un pattern à un broker MQTT :
+L'exemple suivant montre comment envoyer un motif à un broker MQTT :
 
 <MiniRepl
   client:only="react"
@@ -255,7 +255,7 @@ D'autres logiciels peuvent alors recevoir les messages. Par exemple en utilisant
 
 ```
 
-Les patterns de contrôle seront encodés en JSON, par exemple :
+Les motifs de contrôle seront encodés en JSON, par exemple :
 
 <MiniRepl
   client:only="react"

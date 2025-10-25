@@ -7,13 +7,13 @@ import { MiniRepl } from '../../docs/MiniRepl';
 import { JsDoc } from '../../docs/JsDoc';
 import Colors from '../../docs/Colors.jsx';
 
-# Utiliser CSound avec Strudel
+# Utilisation de Csound avec Strudel
 
-🧪 Strudel a un support expérimental pour csound, en utilisant [@csound/browser](https://www.npmjs.com/package/@csound/browser).
+🧪 Strudel dispose d'un support expérimental pour csound, en utilisant [@csound/browser](https://www.npmjs.com/package/@csound/browser).
 
 ## Importer des fichiers .orc
 
-Pour utiliser des instruments csound existants, vous pouvez charger et utiliser un fichier orc depuis une URL comme ceci :
+Pour utiliser les instruments csound existants, vous pouvez charger et utiliser un fichier orc à partir d'une URL comme ceci :
 
 <MiniRepl
   client:only="react"
@@ -23,9 +23,9 @@ note("c a f e").csound('FM1')
 `}
 />
 
-Notez que l'URL ci-dessus utilise le raccourci `github:`, qui résout vers le fichier brut sur GitHub, mais vous pouvez utiliser n'importe quelle URL que vous aimez.
+Notez que l'URL ci-dessus utilise le raccourci `github:`, qui renvoie au fichier brut sur GitHub, mais vous pouvez utiliser n'importe quelle URL que vous souhaitez.
 
-L'impressionnant [`livecode.orc par Steven Yi`](https://github.com/kunstmusik/csound-live-code) est livré avec de nombreux sons prêts à l'emploi :
+L'impressionnant [`livecode.orc de Steven Yi`](https://github.com/kunstmusik/csound-live-code) est livré avec de nombreux sons prêts à l'emploi :
 
 <MiniRepl
   client:only="react"
@@ -84,7 +84,7 @@ note("c a f e").csound(cat(
 
 ## Écrire vos propres instruments
 
-Vous pouvez définir votre/vos propre(s) instrument(s) avec `loadCsound` comme ceci :
+Vous pouvez définir votre ou vos propres instruments avec `loadCsound` comme ceci :
 
 <MiniRepl
   client:only="react"
@@ -127,28 +127,28 @@ La fonction `.csound` envoie les valeurs p suivantes :
 
 |     |                                      |
 | --- | ------------------------------------ |
-| p1  | nom de l'instrument ex. `CoolSynth`  |
-| p2  | décalage temporel, quand il doit jouer |
-| p3  | la durée de l'événement / hap        |
-| p4  | fréquence en Hertz                   |
-| p5  | `gain` normalisé, 0-1                |
+| p1  | nom de l'instrument (ex. `CoolSynth`) |
+| p2  | décalage temporel, moment de jeu       |
+| p3  | durée de l'événement/hap              |
+| p4  | fréquence en Hertz                    |
+| p5  | `gain` normalisé (0-1)                |
 
 Il existe une fonction alternative `.csoundm` avec une saveur différente :
 
 |     |                                      |
 | --- | ------------------------------------ |
-| p4  | numéro de touche MIDI, non arrondi, 0-127 |
-| p5  | vélocité MIDI, 0-127                 |
+| p4  | numéro de note MIDI, non arrondi (0-127) |
+| p5  | vélocité MIDI (0-127)                    |
 
 Dans les deux cas, p4 est dérivé de la valeur de `freq` ou `note`.
 
-## Limitations / Plans futurs
+## Limitations / Projets futurs
 
-En dehors des valeurs p listées ci-dessus, aucun autre paramètre ne peut être patterné pour l'instant.
+En dehors des valeurs p listées ci-dessus, aucun autre paramètre ne peut être utilisé comme motif pour l'instant.
 Cela signifie également que les [effets audio](/learn/effects/) ne fonctionneront pas.
-À l'avenir, l'intégration pourrait être améliorée en passant tous les paramètres de contrôle patternés à l'instrument csound.
+À l'avenir, l'intégration pourrait être améliorée en passant tous les paramètres de contrôle à l'instrument csound.
 Cela pourrait fonctionner avec un [canal](https://kunstmusik.github.io/icsc2022-csound-web/tutorial2-interacting-with-csound/#step-4---writing-continuous-data-channels) unique
 pour chaque valeur. Les canaux pourraient être lus [comme ceci](https://github.com/csound/csound/blob/master/Android/CsoundForAndroid/CsoundAndroidExamples/src/main/res/raw/multitouch_xy.csd).
 De plus, il pourrait être logique d'avoir une bibliothèque standard d'instruments csound pour les effets de Strudel.
 
-Maintenant, plongeons dans l'[API JavaScript fonctionnelle](/functions/intro)
+Maintenant, plongeons dans l'[API JavaScript fonctionnelle](/functions/intro).

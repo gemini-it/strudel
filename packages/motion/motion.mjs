@@ -3,7 +3,7 @@
 import { signal } from '../core/signal.mjs';
 
 /**
- *  The accelerometer's x-axis value ranges from 0 to 1.
+ *  La valeur de l'axe x de l'accéléromètre varie de 0 à 1.
  * @name accelerationX
  * @return {Pattern}
  * @synonyms accX
@@ -13,7 +13,7 @@ import { signal } from '../core/signal.mjs';
  */
 
 /**
- *  The accelerometer's y-axis value ranges from 0 to 1.
+ *  La valeur de l'axe y de l'accéléromètre varie de 0 à 1.
  * @name accelerationY
  * @return {Pattern}
  * @synonyms accY
@@ -23,7 +23,7 @@ import { signal } from '../core/signal.mjs';
  */
 
 /**
- *  The accelerometer's z-axis value ranges from 0 to 1.
+ *  La valeur de l'axe z de l'accéléromètre varie de 0 à 1.
  * @name accelerationZ
  * @return {Pattern}
  * @synonyms accZ
@@ -33,7 +33,7 @@ import { signal } from '../core/signal.mjs';
  */
 
 /**
- *  The device's gravity x-axis value ranges from 0 to 1.
+ *  La valeur de l'axe x de la gravité de l'appareil varie de 0 à 1.
  * @name gravityX
  * @return {Pattern}
  * @synonyms gravX
@@ -43,7 +43,7 @@ import { signal } from '../core/signal.mjs';
  */
 
 /**
- *  The device's gravity y-axis value ranges from 0 to 1.
+ *  La valeur de l'axe y de la gravité de l'appareil varie de 0 à 1.
  * @name gravityY
  * @return {Pattern}
  * @synonyms gravY
@@ -53,7 +53,7 @@ import { signal } from '../core/signal.mjs';
  */
 
 /**
- *  The device's gravity z-axis value ranges from 0 to 1.
+ *  La valeur de l'axe z de la gravité de l'appareil varie de 0 à 1.
  * @name gravityZ
  * @return {Pattern}
  * @synonyms gravZ
@@ -63,7 +63,7 @@ import { signal } from '../core/signal.mjs';
  */
 
 /**
- *  The device's rotation around the alpha-axis value ranges from 0 to 1.
+ *  La valeur de rotation de l'appareil autour de l'axe alpha varie de 0 à 1.
  * @name rotationAlpha
  * @return {Pattern}
  * @synonyms rotA, rotZ, rotationZ
@@ -73,7 +73,7 @@ import { signal } from '../core/signal.mjs';
  */
 
 /**
- *  The device's rotation around the beta-axis value ranges from 0 to 1.
+ *  La valeur de rotation de l'appareil autour de l'axe bêta varie de 0 à 1.
  * @name rotationBeta
  * @return {Pattern}
  * @synonyms rotB, rotX, rotationX
@@ -83,7 +83,7 @@ import { signal } from '../core/signal.mjs';
  */
 
 /**
- *  The device's rotation around the gamma-axis value ranges from 0 to 1.
+ *  La valeur de rotation de l'appareil autour de l'axe gamma varie de 0 à 1.
  * @name rotationGamma
  * @return {Pattern}
  * @synonyms rotG, rotY, rotationY
@@ -93,7 +93,7 @@ import { signal } from '../core/signal.mjs';
  */
 
 /**
- *  The device's orientation alpha value ranges from 0 to 1.
+ *  La valeur alpha de l'orientation de l'appareil varie de 0 à 1.
  * @name orientationAlpha
  * @return {Pattern}
  * @synonyms oriA, oriZ, orientationZ
@@ -103,7 +103,7 @@ import { signal } from '../core/signal.mjs';
  */
 
 /**
- *  The device's orientation beta value ranges from 0 to 1.
+ *  La valeur bêta de l'orientation de l'appareil varie de 0 à 1.
  * @name orientationBeta
  * @return {Pattern}
  * @synonyms oriB, oriX, orientationX
@@ -113,7 +113,7 @@ import { signal } from '../core/signal.mjs';
  */
 
 /**
- *  The device's orientation gamma value ranges from 0 to 1.
+ *  La valeur gamma de l'orientation de l'appareil varie de 0 à 1.
  * @name orientationGamma
  * @return {Pattern}
  * @synonyms oriG, oriY, orientationY
@@ -123,7 +123,7 @@ import { signal } from '../core/signal.mjs';
  */
 
 /**
- *  The device's absolute orientation alpha value ranges from 0 to 1.
+ *  La valeur alpha de l'orientation absolue de l'appareil varie de 0 à 1.
  * @name absoluteOrientationAlpha
  * @return {Pattern}
  * @synonyms absOriA, absOriZ, absoluteOrientationZ
@@ -133,7 +133,7 @@ import { signal } from '../core/signal.mjs';
  */
 
 /**
- *  The device's absolute orientation beta value ranges from 0 to 1.
+ *  La valeur bêta de l'orientation absolue de l'appareil varie de 0 à 1.
  * @name absoluteOrientationBeta
  * @return {Pattern}
  * @synonyms absOriB, absOriX, absoluteOrientationX
@@ -143,7 +143,7 @@ import { signal } from '../core/signal.mjs';
  */
 
 /**
- *  The device's absolute orientation gamma value ranges from 0 to 1.
+ *  La valeur gamma de l'orientation absolue de l'appareil varie de 0 à 1.
  * @name absoluteOrientationGamma
  * @return {Pattern}
  * @synonyms absOriG, absOriY, absoluteOrientationY
