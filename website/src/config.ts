@@ -25,6 +25,7 @@ export type Frontmatter = {
 export const KNOWN_LANGUAGES = {
   English: 'en',
   German: 'de',
+  French: 'fr',
 } as const;
 export const KNOWN_LANGUAGE_CODES = Object.values(KNOWN_LANGUAGES);
 
@@ -42,6 +43,69 @@ export const ALGOLIA = {
 export type SidebarLang = Record<string, { text: string; link: string }[]>;
 export type Sidebar = Record<(typeof KNOWN_LANGUAGE_CODES)[number], SidebarLang>;
 export const SIDEBAR: Sidebar = {
+  fr: {
+    Présentation: [
+      { text: 'Qu\'est-ce que Strudel ?', link: 'workshop/getting-started' },
+      { text: 'Vitrine', link: 'intro/showcase' },
+      { text: 'Blog', link: 'blog' },
+    ],
+    Atelier: [
+      { text: 'Premiers Sons', link: 'workshop/first-sounds' },
+      { text: 'Premières Notes', link: 'workshop/first-notes' },
+      { text: 'Premiers Effets', link: 'workshop/first-effects' },
+      { text: 'Effets de Pattern', link: 'workshop/pattern-effects' },
+      { text: 'Récapitulatif', link: 'workshop/recap' },
+      { text: 'Atelier en Allemand', link: 'de/workshop/getting-started' },
+    ],
+    'Produire du Son': [
+      { text: 'Samples', link: 'learn/samples' },
+      { text: 'Synthétiseurs', link: 'learn/synths' },
+      { text: 'Effets Audio', link: 'learn/effects' },
+      { text: 'MIDI & OSC', link: 'learn/input-output' },
+    ],
+    Plus: [
+      { text: 'Recettes', link: 'recipes/recipes' },
+      { text: 'Mini-Notation', link: 'learn/mini-notation' },
+      { text: 'Retour Visuel', link: 'learn/visual-feedback' },
+      { text: 'Hors-ligne', link: 'learn/pwa' },
+      { text: 'Patterns', link: 'technical-manual/patterns' },
+      { text: 'Notation Mondo', link: 'learn/mondo-notation' },
+      { text: 'Métadonnées Musicales', link: 'learn/metadata' },
+      { text: 'CSound', link: 'learn/csound' },
+      { text: 'Hydra', link: 'learn/hydra' },
+      { text: 'Périphériques d\'Entrée', link: 'learn/input-devices' },
+      { text: 'Mouvement de l\'Appareil', link: 'learn/devicemotion' },
+    ],
+    'Fonctions de Pattern': [
+      { text: 'Introduction', link: 'functions/intro' },
+      { text: 'Créer des Patterns', link: 'learn/factories' },
+      { text: 'Modificateurs Temporels', link: 'learn/time-modifiers' },
+      { text: 'Paramètres de Contrôle', link: 'functions/value-modifiers' },
+      { text: 'Signaux', link: 'learn/signals' },
+      { text: 'Modificateurs Aléatoires', link: 'learn/random-modifiers' },
+      { text: 'Modificateurs Conditionnels', link: 'learn/conditional-modifiers' },
+      { text: 'Accumulation', link: 'learn/accumulation' },
+      { text: 'Fonctions Tonales', link: 'learn/tonal' },
+      { text: 'Fonctions Graduelles', link: 'learn/stepwise' },
+    ],
+    Comprendre: [
+      { text: 'Syntaxe de Codage', link: 'learn/code' },
+      { text: 'Hauteur', link: 'understand/pitch' },
+      { text: 'Fonctions Harmoniques Xen', link: 'learn/xen' },
+      { text: 'Cycles', link: 'understand/cycles' },
+      { text: 'Voicings', link: 'understand/voicings' },
+      { text: 'Alignement des Patterns', link: 'technical-manual/alignment' },
+      { text: 'Strudel vs Tidal', link: 'learn/strudel-vs-tidal' },
+    ],
+    Développement: [
+      { text: 'Strudel dans votre Projet', link: 'technical-manual/project-start' },
+      { text: 'Packages', link: 'technical-manual/packages' },
+      { text: 'REPL', link: 'technical-manual/repl' },
+      { text: 'Sons', link: 'technical-manual/sounds' },
+      { text: 'Documentation', link: 'technical-manual/docs' },
+      { text: 'Tests', link: 'technical-manual/testing' },
+    ],
+  },
   de: {
     Workshop: [
       { text: 'Intro', link: 'de/workshop/getting-started' },
