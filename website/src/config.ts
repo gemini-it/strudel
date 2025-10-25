@@ -1,7 +1,7 @@
 export const SITE = {
   title: 'Strudel',
-  description: 'Strudel is a music live coding editor that brings TidalCycles to the browser.',
-  defaultLanguage: 'en',
+  description: 'Strudel est un éditeur de live coding musical qui apporte TidalCycles au navigateur.',
+  defaultLanguage: 'fr',
 };
 
 export const OPEN_GRAPH = {
