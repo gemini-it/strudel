@@ -1,5 +1,7 @@
 [build]
-  # Commande de build (exécutée depuis la racine pour générer doc.json)
+  # Forcer l'exécution depuis la racine du projet
+  base = "."
+  # Commande de build (génère doc.json puis build le site)
   command = "pnpm build"
   # Répertoire de sortie après le build
   publish = "website/dist"
