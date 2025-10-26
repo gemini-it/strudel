@@ -1409,10 +1409,10 @@ export const { delayfeedback, delayfb, dfb } = registerControl('delayfeedback', 
  */
 export const { delayspeed } = registerControl('delayspeed');
 /**
- * Sets the time of the delay effect.
+ * Définit le temps de l'effet de délai.
  *
  * @name delayspeed
- * @param {number | Pattern} delayspeed controls the pitch of the delay feedback
+ * @param {number | Pattern} delayspeed contrôle la hauteur de la réinjection du délai
  * @synonyms delayt, dt
  * @example
  * note("d d a# a".fast(2)).s("sawtooth").delay(.8).delaytime(1/2).delayspeed("<2 .5 -1 -2>")
@@ -1421,10 +1421,10 @@ export const { delayspeed } = registerControl('delayspeed');
 export const { delaytime, delayt, dt } = registerControl('delaytime', 'delayt', 'dt');
 
 /**
- * Sets the time of the delay effect in cycles.
+ * Définit le temps de l'effet de délai en cycles.
  *
  * @name delaysync
- * @param {number | Pattern} cycles delay length in cycles
+ * @param {number | Pattern} cycles longueur du délai en cycles
  * @synonyms delayt, dt
  * @example
  * s("bd bd").delay(.25).delaysync("<1 2 3 5>".div(8))
@@ -1433,10 +1433,10 @@ export const { delaytime, delayt, dt } = registerControl('delaytime', 'delayt', 
 export const { delaysync } = registerControl('delaysync');
 
 /**
- * Specifies whether delaytime is calculated relative to cps.
+ * Spécifie si delaytime est calculé relativement au cps.
  *
  * @name lock
- * @param {number | Pattern} enable When set to 1, delaytime is a direct multiple of a cycle.
+ * @param {number | Pattern} enable Lorsque défini à 1, delaytime est un multiple direct d'un cycle.
  * @superdirtOnly
  * @example
  * s("sd").delay().lock(1).osc()
@@ -1446,7 +1446,7 @@ export const { delaysync } = registerControl('delaysync');
 
 export const { lock } = registerControl('lock');
 /**
- * Set detune for stacked voices of supported oscillators
+ * Définit le désaccordage pour les voix empilées des oscillateurs supportés
  *
  * @name detune
  * @param {number | Pattern} amount
@@ -1457,7 +1457,7 @@ export const { lock } = registerControl('lock');
  */
 export const { detune, det } = registerControl('detune', 'det');
 /**
- * Set number of stacked voices for supported oscillators
+ * Définit le nombre de voix empilées pour les oscillateurs supportés
  *
  * @name unison
  * @param {number | Pattern} numvoices
@@ -1468,17 +1468,17 @@ export const { detune, det } = registerControl('detune', 'det');
 export const { unison } = registerControl('unison');
 
 /**
- * Set the stereo pan spread for supported oscillators
+ * Définit la répartition panoramique stéréo pour les oscillateurs supportés
  *
  * @name spread
- * @param {number | Pattern} spread between 0 and 1
+ * @param {number | Pattern} spread entre 0 et 1
  * @example
  * note("d f a a# a d3").fast(2).s("supersaw").spread("<0 .3 1>")
  *
  */
 export const { spread } = registerControl('spread');
 /**
- * Set dryness of reverb. See `room` and `size` for more information about reverb.
+ * Définit le niveau sec de la réverbération. Voir `room` et `size` pour plus d'informations sur la réverbération.
  *
  * @name dry
  * @param {number | Pattern} dry 0 = wet, 1 = dry
@@ -1503,10 +1503,10 @@ export const { fadeTime, fadeOutTime } = registerControl('fadeTime', 'fadeOutTim
 // TODO: see above
 export const { fadeInTime } = registerControl('fadeInTime');
 /**
- * Set frequency of sound.
+ * Définit la fréquence du son.
  *
  * @name freq
- * @param {number | Pattern} frequency in Hz. the audible range is between 20 and 20000 Hz
+ * @param {number | Pattern} frequency en Hz. la plage audible est entre 20 et 20000 Hz
  * @example
  * freq("220 110 440 110").s("superzow").osc()
  * @example
@@ -1516,22 +1516,22 @@ export const { fadeInTime } = registerControl('fadeInTime');
 export const { freq } = registerControl('freq');
 // pitch envelope
 /**
- * Attack time of pitch envelope.
+ * Temps d'attaque de l'enveloppe de hauteur.
  *
  * @name pattack
  * @synonyms patt
- * @param {number | Pattern} time time in seconds
+ * @param {number | Pattern} time temps en secondes
  * @example
  * note("c eb g bb").pattack("0 .1 .25 .5").slow(2)
  *
  */
 export const { pattack, patt } = registerControl('pattack', 'patt');
 /**
- * Decay time of pitch envelope.
+ * Temps de déclin de l'enveloppe de hauteur.
  *
  * @name pdecay
  * @synonyms pdec
- * @param {number | Pattern} time time in seconds
+ * @param {number | Pattern} time temps en secondes
  * @example
  * note("<c eb g bb>").pdecay("<0 .1 .25 .5>")
  *
@@ -1540,11 +1540,11 @@ export const { pdecay, pdec } = registerControl('pdecay', 'pdec');
 // TODO: how to use psustain?!
 export const { psustain, psus } = registerControl('psustain', 'psus');
 /**
- * Release time of pitch envelope
+ * Temps de relâchement de l'enveloppe de hauteur
  *
  * @name prelease
  * @synonyms prel
- * @param {number | Pattern} time time in seconds
+ * @param {number | Pattern} time temps en secondes
  * @example
  * note("<c eb g bb> ~")
  * .release(.5) // to hear the pitch release
@@ -1553,11 +1553,11 @@ export const { psustain, psus } = registerControl('psustain', 'psus');
  */
 export const { prelease, prel } = registerControl('prelease', 'prel');
 /**
- * Amount of pitch envelope. Negative values will flip the envelope.
- * If you don't set other pitch envelope controls, `pattack:.2` will be the default.
+ * Quantité de l'enveloppe de hauteur. Les valeurs négatives inverseront l'enveloppe.
+ * Si vous ne définissez pas d'autres contrôles d'enveloppe de hauteur, `pattack:.2` sera la valeur par défaut.
  *
  * @name penv
- * @param {number | Pattern} semitones change in semitones
+ * @param {number | Pattern} semitones changement en demi-tons
  * @example
  * note("c")
  * .penv("<12 7 1 .5 0 -1 -7 -12>")
@@ -1565,10 +1565,10 @@ export const { prelease, prel } = registerControl('prelease', 'prel');
  */
 export const { penv } = registerControl('penv');
 /**
- * Curve of envelope. Defaults to linear. exponential is good for kicks
+ * Courbe de l'enveloppe. Par défaut linéaire. exponentiel est bon pour les kicks
  *
  * @name pcurve
- * @param {number | Pattern} type 0 = linear, 1 = exponential
+ * @param {number | Pattern} type 0 = linéaire, 1 = exponentiel
  * @example
  * note("g1*4")
  * .s("sine").pdec(.5)
@@ -1578,13 +1578,13 @@ export const { penv } = registerControl('penv');
  */
 export const { pcurve } = registerControl('pcurve');
 /**
- * Sets the range anchor of the envelope:
- * - anchor 0: range = [note, note + penv]
- * - anchor 1: range = [note - penv, note]
- * If you don't set an anchor, the value will default to the psustain value.
+ * Définit l'ancrage de plage de l'enveloppe :
+ * - anchor 0 : plage = [note, note + penv]
+ * - anchor 1 : plage = [note - penv, note]
+ * Si vous ne définissez pas d'ancrage, la valeur sera par défaut la valeur de psustain.
  *
  * @name panchor
- * @param {number | Pattern} anchor anchor offset
+ * @param {number | Pattern} anchor décalage d'ancrage
  * @example
  * note("c c4").penv(12).panchor("<0 .5 1 .5>")
  *
