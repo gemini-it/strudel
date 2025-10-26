@@ -1507,12 +1507,12 @@ export function fastcat(...pats) {
   return result;
 }
 
-/** See `fastcat` */
+/** Voir `fastcat` */
 export function sequence(...pats) {
   return fastcat(...pats);
 }
 
-/** Like **cat**, but the items are crammed into one cycle.
+/** Comme **cat**, mais les éléments sont compressés dans un cycle.
  * @synonyms sequence, fastcat
  * @example
  * seq("e5", "b4", ["d5", "c5"]).note()
@@ -1582,10 +1582,10 @@ export const or = curry((a, b) => reify(b).or(a));
 export const func = curry((a, b) => reify(b).func(a));
 
 /**
- * Registers a new pattern method. The method is added to the Pattern class + the standalone function is returned from register.
+ * Enregistre une nouvelle méthode de pattern. La méthode est ajoutée à la classe Pattern + la fonction autonome est retournée par register.
  *
- * @param {string | string[]} name name of the function, or an array of names to be used as synonyms
- * @param {function} func function with 1 or more params, where last is the current pattern
+ * @param {string | string[]} name nom de la fonction, ou un tableau de noms à utiliser comme synonymes
+ * @param {function} func fonction avec 1 ou plusieurs paramètres, où le dernier est le pattern actuel
  * @noAutocomplete
  *
  */
@@ -1683,8 +1683,8 @@ function stepRegister(name, func, patternify = true, preserveSteps = false, join
 // Numerical transformations
 
 /**
- * Assumes a numerical pattern. Returns a new pattern with all values rounded
- * to the nearest integer.
+ * Suppose un pattern numérique. Retourne un nouveau pattern avec toutes les valeurs arrondies
+ * à l'entier le plus proche.
  * @name round
  * @memberof Pattern
  * @returns Pattern
@@ -1696,9 +1696,9 @@ export const round = register('round', function (pat) {
 });
 
 /**
- * Assumes a numerical pattern. Returns a new pattern with all values set to
- * their mathematical floor. E.g. `3.7` replaced with to `3`, and `-4.2`
- * replaced with `-5`.
+ * Suppose un pattern numérique. Retourne un nouveau pattern avec toutes les valeurs définies à
+ * leur plancher mathématique. Par ex. `3.7` remplacé par `3`, et `-4.2`
+ * remplacé par `-5`.
  * @name floor
  * @memberof Pattern
  * @returns Pattern
@@ -1710,9 +1710,9 @@ export const floor = register('floor', function (pat) {
 });
 
 /**
- * Assumes a numerical pattern. Returns a new pattern with all values set to
- * their mathematical ceiling. E.g. `3.2` replaced with `4`, and `-4.2`
- * replaced with `-4`.
+ * Suppose un pattern numérique. Retourne un nouveau pattern avec toutes les valeurs définies à
+ * leur plafond mathématique. Par ex. `3.2` remplacé par `4`, et `-4.2`
+ * remplacé par `-4`.
  * @name ceil
  * @memberof Pattern
  * @returns Pattern
@@ -1723,8 +1723,8 @@ export const ceil = register('ceil', function (pat) {
   return pat.asNumber().fmap((v) => Math.ceil(v));
 });
 /**
- * Assumes a numerical pattern, containing unipolar values in the range 0 ..
- * 1. Returns a new pattern with values scaled to the bipolar range -1 .. 1
+ * Suppose un pattern numérique, contenant des valeurs unipolaires dans la plage 0 ..
+ * 1. Retourne un nouveau pattern avec des valeurs mises à l'échelle dans la plage bipolaire -1 .. 1
  * @returns Pattern
  * @noAutocomplete
  */
@@ -1733,8 +1733,8 @@ export const toBipolar = register('toBipolar', function (pat) {
 });
 
 /**
- * Assumes a numerical pattern, containing bipolar values in the range -1 .. 1
- * Returns a new pattern with values scaled to the unipolar range 0 .. 1
+ * Suppose un pattern numérique, contenant des valeurs bipolaires dans la plage -1 .. 1
+ * Retourne un nouveau pattern avec des valeurs mises à l'échelle dans la plage unipolaire 0 .. 1
  * @returns Pattern
  * @noAutocomplete
  */
@@ -1743,9 +1743,9 @@ export const fromBipolar = register('fromBipolar', function (pat) {
 });
 
 /**
- * Assumes a numerical pattern, containing unipolar values in the range 0 .. 1.
- * Returns a new pattern with values scaled to the given min/max range.
- * Most useful in combination with continuous patterns.
+ * Suppose un pattern numérique, contenant des valeurs unipolaires dans la plage 0 .. 1.
+ * Retourne un nouveau pattern avec des valeurs mises à l'échelle dans la plage min/max donnée.
+ * Plus utile en combinaison avec des patterns continus.
  * @name range
  * @memberof Pattern
  * @returns Pattern
@@ -1758,9 +1758,9 @@ export const range = register('range', function (min, max, pat) {
 });
 
 /**
- * Assumes a numerical pattern, containing unipolar values in the range 0 .. 1
- * Returns a new pattern with values scaled to the given min/max range,
- * following an exponential curve.
+ * Suppose un pattern numérique, contenant des valeurs unipolaires dans la plage 0 .. 1
+ * Retourne un nouveau pattern avec des valeurs mises à l'échelle dans la plage min/max donnée,
+ * suivant une courbe exponentielle.
  * @name rangex
  * @memberof Pattern
  * @returns Pattern
@@ -1773,8 +1773,8 @@ export const rangex = register('rangex', function (min, max, pat) {
 });
 
 /**
- * Assumes a numerical pattern, containing bipolar values in the range -1 .. 1
- * Returns a new pattern with values scaled to the given min/max range.
+ * Suppose un pattern numérique, contenant des valeurs bipolaires dans la plage -1 .. 1
+ * Retourne un nouveau pattern avec des valeurs mises à l'échelle dans la plage min/max donnée.
  * @name range2
  * @memberof Pattern
  * @returns Pattern
@@ -1787,8 +1787,8 @@ export const range2 = register('range2', function (min, max, pat) {
 });
 
 /**
- * Allows dividing numbers via list notation using ":".
- * Returns a new pattern with just numbers.
+ * Permet de diviser des nombres via la notation de liste en utilisant ":".
+ * Retourne un nouveau pattern avec uniquement des nombres.
  * @name ratio
  * @memberof Pattern
  * @returns Pattern
@@ -1808,7 +1808,7 @@ export const ratio = register('ratio', (pat) =>
 //////////////////////////////////////////////////////////////////////
 // Structural and temporal transformations
 
-/** Compress each cycle into the given timespan, leaving a gap
+/** Compresse chaque cycle dans le timespan donné, laissant un vide
  * @example
  * cat(
  *   s("bd sd").compress(.25,.75),
@@ -1829,7 +1829,7 @@ export const { compressSpan, compressspan } = register(['compressSpan', 'compres
 });
 
 /**
- * speeds up a pattern like fast, but rather than it playing multiple times as fast would it instead leaves a gap in the remaining space of the cycle. For example, the following will play the sound pattern "bd sn" only once but compressed into the first half of the cycle, i.e. twice as fast.
+ * accélère un pattern comme fast, mais plutôt que de le jouer plusieurs fois comme fast le ferait, il laisse un vide dans l'espace restant du cycle. Par exemple, ce qui suit jouera le pattern sonore "bd sn" une seule fois mais compressé dans la première moitié du cycle, c'est-à-dire deux fois plus vite.
  * @name fastGap
  * @synonyms fastgap
  * @example
@@ -1866,7 +1866,7 @@ export const { fastGap, fastgap } = register(['fastGap', 'fastgap'], function (f
 });
 
 /**
- * Similar to `compress`, but doesn't leave gaps, and the 'focus' can be bigger than a cycle
+ * Similaire à `compress`, mais ne laisse pas de vides, et le 'focus' peut être plus grand qu'un cycle
  * @example
  * s("bd hh sd hh").focus(1/4, 3/4)
  */
@@ -1883,7 +1883,7 @@ export const { focusSpan, focusspan } = register(['focusSpan', 'focusspan'], fun
   return pat._focus(span.begin, span.end);
 });
 
-/** The ply function repeats each event the given number of times.
+/** La fonction ply répète chaque événement le nombre de fois donné.
  * @example
  * s("bd ~ sd cp").ply("<1 2 3>")
  */
@@ -1896,12 +1896,12 @@ export const ply = register('ply', function (factor, pat) {
 });
 
 /**
- * Speed up a pattern by the given factor. Used by "*" in mini notation.
+ * Accélère un pattern par le facteur donné. Utilisé par "*" dans la notation mini.
  *
  * @name fast
  * @synonyms density
  * @memberof Pattern
- * @param {number | Pattern} factor speed up factor
+ * @param {number | Pattern} factor facteur d'accélération
  * @returns Pattern
  * @example
  * s("bd hh sd hh").fast(2) // s("[bd hh sd hh]*2")
@@ -1921,7 +1921,7 @@ export const { fast, density } = register(
 );
 
 /**
- * Both speeds up the pattern (like 'fast') and the sample playback (like 'speed').
+ * Accélère à la fois le pattern (comme 'fast') et la lecture de l'échantillon (comme 'speed').
  * @example
  * s("bd sd:2").hurry("<1 2 4 3>").slow(1.5)
  */
@@ -1930,12 +1930,12 @@ export const hurry = register('hurry', function (r, pat) {
 });
 
 /**
- * Slow down a pattern over the given number of cycles. Like the "/" operator in mini notation.
+ * Ralentit un pattern sur le nombre de cycles donné. Comme l'opérateur "/" dans la notation mini.
  *
  * @name slow
  * @synonyms sparsity
  * @memberof Pattern
- * @param {number | Pattern} factor slow down factor
+ * @param {number | Pattern} factor facteur de ralentissement
  * @returns Pattern
  * @example
  * s("bd hh sd hh").slow(2) // s("[bd hh sd hh]/2")
@@ -1948,7 +1948,7 @@ export const { slow, sparsity } = register(['slow', 'sparsity'], function (facto
 });
 
 /**
- * Carries out an operation 'inside' a cycle.
+ * Effectue une opération 'à l'intérieur' d'un cycle.
  * @example
  * "0 1 2 3 4 3 2 1".inside(4, rev).scale('C major').note()
  * // "0 1 2 3 4 3 2 1".slow(4).rev().fast(4).scale('C major').note()
@@ -1958,7 +1958,7 @@ export const inside = register('inside', function (factor, f, pat) {
 });
 
 /**
- * Carries out an operation 'outside' a cycle.
+ * Effectue une opération 'à l'extérieur' d'un cycle.
  * @example
  * "<[0 1] 2 [3 4] 5>".outside(4, rev).scale('C major').note()
  * // "<[0 1] 2 [3 4] 5>".fast(4).rev().slow(4).scale('C major').note()
@@ -1968,11 +1968,11 @@ export const outside = register('outside', function (factor, f, pat) {
 });
 
 /**
- * Applies the given function every n cycles, starting from the last cycle.
+ * Applique la fonction donnée tous les n cycles, en commençant par le dernier cycle.
  * @name lastOf
  * @memberof Pattern
- * @param {number} n how many cycles
- * @param {function} func function to apply
+ * @param {number} n combien de cycles
+ * @param {function} func fonction à appliquer
  * @returns Pattern
  * @example
  * note("c3 d3 e3 g3").lastOf(4, x=>x.rev())
@@ -1984,18 +1984,18 @@ export const lastOf = register('lastOf', function (n, func, pat) {
 });
 
 /**
- * Applies the given function every n cycles, starting from the first cycle.
+ * Applique la fonction donnée tous les n cycles, en commençant par le premier cycle.
  * @name firstOf
  * @memberof Pattern
- * @param {number} n how many cycles
- * @param {function} func function to apply
+ * @param {number} n combien de cycles
+ * @param {function} func fonction à appliquer
  * @returns Pattern
  * @example
  * note("c3 d3 e3 g3").firstOf(4, x=>x.rev())
  */
 
 /**
- * An alias for `firstOf`
+ * Un alias pour `firstOf`
  * @name every
  * @memberof Pattern
  * @param {number} n how many cycles
