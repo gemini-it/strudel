@@ -1204,9 +1204,9 @@ export const { hpsustain, hps } = registerControl('hpsustain', 'hps');
  */
 export const { bpsustain, bps } = registerControl('bpsustain', 'bps');
 /**
- * Sets the release time for the lowpass filter envelope.
+ * Définit le temps de relâchement pour l'enveloppe du filtre passe-bas.
  * @name lprelease
- * @param {number | Pattern} release time of the filter envelope
+ * @param {number | Pattern} release temps de l'enveloppe du filtre
  * @synonyms lpr
  * @example
  * note("c2 e2 f2 g2")
@@ -1219,9 +1219,9 @@ export const { bpsustain, bps } = registerControl('bpsustain', 'bps');
  */
 export const { lprelease, lpr } = registerControl('lprelease', 'lpr');
 /**
- * Sets the release time for the highpass filter envelope.
+ * Définit le temps de relâchement pour l'enveloppe du filtre passe-haut.
  * @name hprelease
- * @param {number | Pattern} release time of the highpass filter envelope
+ * @param {number | Pattern} release temps de l'enveloppe du filtre passe-haut
  * @synonyms hpr
  * @example
  * note("c2 e2 f2 g2")
@@ -1234,9 +1234,9 @@ export const { lprelease, lpr } = registerControl('lprelease', 'lpr');
  */
 export const { hprelease, hpr } = registerControl('hprelease', 'hpr');
 /**
- * Sets the release time for the bandpass filter envelope.
+ * Définit le temps de relâchement pour l'enveloppe du filtre passe-bande.
  * @name bprelease
- * @param {number | Pattern} release time of the bandpass filter envelope
+ * @param {number | Pattern} release temps de l'enveloppe du filtre passe-bande
  * @synonyms bpr
  * @example
  * note("c2 e2 f2 g2")
@@ -1249,9 +1249,9 @@ export const { hprelease, hpr } = registerControl('hprelease', 'hpr');
  */
 export const { bprelease, bpr } = registerControl('bprelease', 'bpr');
 /**
- * Sets the filter type. The ladder filter is more aggressive. More types might be added in the future.
+ * Définit le type de filtre. Le filtre ladder est plus agressif. D'autres types pourraient être ajoutés à l'avenir.
  * @name ftype
- * @param {number | Pattern} type 12db (0), ladder (1), or 24db (2)
+ * @param {number | Pattern} type 12db (0), ladder (1), ou 24db (2)
  * @example
  * note("{f g g c d a a#}%8").s("sawtooth").lpenv(4).lpf(500).ftype("<0 1 2>").lpq(1)
  * @example
@@ -1264,21 +1264,21 @@ export const { bprelease, bpr } = registerControl('bprelease', 'bpr');
 export const { ftype } = registerControl('ftype');
 
 /**
- * controls the center of the filter envelope. 0 is unipolar positive, .5 is bipolar, 1 is unipolar negative
+ * contrôle le centre de l'enveloppe du filtre. 0 est unipolaire positif, .5 est bipolaire, 1 est unipolaire négatif
  * @name fanchor
- * @param {number | Pattern} center 0 to 1
+ * @param {number | Pattern} center 0 à 1
  * @example
  * note("{f g g c d a a#}%8").s("sawtooth").lpf("{1000}%2")
  * .lpenv(8).fanchor("<0 .5 1>")
  */
 export const { fanchor } = registerControl('fanchor');
 /**
- * Applies the cutoff frequency of the **h**igh-**p**ass **f**ilter.
+ * Applique la fréquence de coupure du filtre **p**asse-**h**aut.
  *
- * When using mininotation, you can also optionally add the 'hpq' parameter, separated by ':'.
+ * En utilisant la mininotation, vous pouvez également ajouter en option le paramètre 'hpq', séparé par ':'.
  *
  * @name hpf
- * @param {number | Pattern} frequency audible between 0 and 20000
+ * @param {number | Pattern} frequency audible entre 0 et 20000
  * @synonyms hp, hcutoff
  * @example
  * s("bd sd [~ bd] sd,hh*8").hpf("<4000 2000 1000 500 200 100>")
@@ -1289,11 +1289,11 @@ export const { fanchor } = registerControl('fanchor');
 // currently an alias of 'hcutoff' https://codeberg.org/uzu/strudel/issues/496
 // ['hpf'],
 /**
- * Applies a vibrato to the frequency of the oscillator.
+ * Applique un vibrato à la fréquence de l'oscillateur.
  *
  * @name vib
  * @synonyms vibrato, v
- * @param {number | Pattern} frequency of the vibrato in hertz
+ * @param {number | Pattern} frequency du vibrato en hertz
  * @example
  * note("a e")
  * .vib("<.5 1 2 4 8 16>")
@@ -1306,20 +1306,20 @@ export const { fanchor } = registerControl('fanchor');
  */
 export const { vib, vibrato, v } = registerControl(['vib', 'vibmod'], 'vibrato', 'v');
 /**
- * Adds pink noise to the mix
+ * Ajoute du bruit rose au mixage
  *
  * @name noise
- * @param {number | Pattern} wet wet amount
+ * @param {number | Pattern} wet quantité wet
  * @example
  * sound("<white pink brown>/2")
  */
 export const { noise } = registerControl('noise');
 /**
- * Sets the vibrato depth in semitones. Only has an effect if `vibrato` | `vib` | `v` is is also set
+ * Définit la profondeur du vibrato en demi-tons. N'a d'effet que si `vibrato` | `vib` | `v` est également défini
  *
  * @name vibmod
  * @synonyms vmod
- * @param {number | Pattern} depth of vibrato (in semitones)
+ * @param {number | Pattern} depth du vibrato (en demi-tons)
  * @example
  * note("a e").vib(4)
  * .vibmod("<.25 .5 1 2 12>")
@@ -1333,10 +1333,10 @@ export const { noise } = registerControl('noise');
 export const { vibmod, vmod } = registerControl(['vibmod', 'vib'], 'vmod');
 export const { hcutoff, hpf, hp } = registerControl(['hcutoff', 'hresonance', 'hpenv'], 'hpf', 'hp');
 /**
- * Controls the **h**igh-**p**ass **q**-value.
+ * Contrôle la valeur **q** du filtre **p**asse-**h**aut.
  *
  * @name hpq
- * @param {number | Pattern} q resonance factor between 0 and 50
+ * @param {number | Pattern} q facteur de résonance entre 0 et 50
  * @synonyms hresonance
  * @example
  * s("bd sd [~ bd] sd,hh*8").hpf(2000).hpq("<0 10 20 30>")
@@ -1344,10 +1344,10 @@ export const { hcutoff, hpf, hp } = registerControl(['hcutoff', 'hresonance', 'h
  */
 export const { hresonance, hpq } = registerControl('hresonance', 'hpq');
 /**
- * Controls the **l**ow-**p**ass **q**-value.
+ * Contrôle la valeur **q** du filtre **p**asse-**b**as.
  *
  * @name lpq
- * @param {number | Pattern} q resonance factor between 0 and 50
+ * @param {number | Pattern} q facteur de résonance entre 0 et 50
  * @synonyms resonance
  * @example
  * s("bd sd [~ bd] sd,hh*8").lpf(2000).lpq("<0 10 20 30>")
@@ -1356,10 +1356,10 @@ export const { hresonance, hpq } = registerControl('hresonance', 'hpq');
 // currently an alias of 'resonance' https://codeberg.org/uzu/strudel/issues/496
 export const { resonance, lpq } = registerControl('resonance', 'lpq');
 /**
- * DJ filter, below 0.5 is low pass filter, above is high pass filter.
+ * Filtre DJ, en dessous de 0.5 c'est un filtre passe-bas, au-dessus c'est un filtre passe-haut.
  *
  * @name djf
- * @param {number | Pattern} cutoff below 0.5 is low pass filter, above is high pass filter
+ * @param {number | Pattern} cutoff en dessous de 0.5 c'est un filtre passe-bas, au-dessus c'est un filtre passe-haut
  * @example
  * n(irand(16).seg(8)).scale("d:phrygian").s("supersaw").djf("<.5 .3 .2 .75>")
  *
@@ -1368,14 +1368,14 @@ export const { djf } = registerControl('djf');
 // ['cutoffegint'],
 // TODO: does not seem to work
 /**
- * Sets the level of the delay signal.
+ * Définit le niveau du signal de délai.
  *
- * When using mininotation, you can also optionally add the 'delaytime' and 'delayfeedback' parameter,
- * separated by ':'.
+ * En utilisant la mininotation, vous pouvez également ajouter en option les paramètres 'delaytime' et 'delayfeedback',
+ * séparés par ':'.
  *
  *
  * @name delay
- * @param {number | Pattern} level between 0 and 1
+ * @param {number | Pattern} level entre 0 et 1
  * @example
  * s("bd bd").delay("<0 .25 .5 1>")
  * @example
@@ -1384,11 +1384,11 @@ export const { djf } = registerControl('djf');
  */
 export const { delay } = registerControl(['delay', 'delaytime', 'delayfeedback']);
 /**
- * Sets the level of the signal that is fed back into the delay.
- * Caution: Values >= 1 will result in a signal that gets louder and louder! Don't do it
+ * Définit le niveau du signal qui est réinjecté dans le délai.
+ * Attention : Les valeurs >= 1 résulteront en un signal de plus en plus fort ! Ne le faites pas
  *
  * @name delayfeedback
- * @param {number | Pattern} feedback between 0 and 1
+ * @param {number | Pattern} feedback entre 0 et 1
  * @synonyms delayfb, dfb
  * @example
  * s("bd").delay(.25).delayfeedback("<.25 .5 .75 1>")
@@ -1397,7 +1397,7 @@ export const { delay } = registerControl(['delay', 'delaytime', 'delayfeedback']
 export const { delayfeedback, delayfb, dfb } = registerControl('delayfeedback', 'delayfb', 'dfb');
 
 /**
- * Sets the level of the signal that is fed back into the delay.
+ * Définit le niveau du signal qui est réinjecté dans le délai.
  * Caution: Values >= 1 will result in a signal that gets louder and louder! Don't do it
  *
  * @name delayfeedback
