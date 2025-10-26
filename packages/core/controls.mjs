@@ -1791,12 +1791,12 @@ export const { room } = registerControl(['room', 'size']);
  */
 export const { roomlp, rlp } = registerControl('roomlp', 'rlp');
 /**
- * Reverb lowpass frequency at -60dB (in hertz).
- * When this property is changed, the reverb will be recaculated, so only change this sparsely..
+ * Fréquence passe-bas de la réverbération à -60dB (en hertz).
+ * Lorsque cette propriété est changée, la réverbération sera recalculée, donc ne changez ceci que rarement..
  *
  * @name roomdim
  * @synonyms rdim
- * @param {number} frequency between 0 and 20000hz
+ * @param {number} frequency entre 0 et 20000hz
  * @example
  * s("bd sd [~ bd] sd").room(0.5).rlp(10000).rdim(8000)
  * @example
@@ -1805,12 +1805,12 @@ export const { roomlp, rlp } = registerControl('roomlp', 'rlp');
  */
 export const { roomdim, rdim } = registerControl('roomdim', 'rdim');
 /**
- * Reverb fade time (in seconds).
- * When this property is changed, the reverb will be recaculated, so only change this sparsely..
+ * Temps de fondu de la réverbération (en secondes).
+ * Lorsque cette propriété est changée, la réverbération sera recalculée, donc ne changez ceci que rarement..
  *
  * @name roomfade
  * @synonyms rfade
- * @param {number} seconds for the reverb to fade
+ * @param {number} seconds pour que la réverbération s'estompe
  * @example
  * s("bd sd [~ bd] sd").room(0.5).rlp(10000).rfade(0.5)
  * @example
@@ -1819,9 +1819,9 @@ export const { roomdim, rdim } = registerControl('roomdim', 'rdim');
  */
 export const { roomfade, rfade } = registerControl('roomfade', 'rfade');
 /**
- * Sets the sample to use as an impulse response for the reverb.
+ * Définit l'échantillon à utiliser comme réponse impulsionnelle pour la réverbération.
  * @name iresponse
- * @param {string | Pattern} sample to use as an impulse response
+ * @param {string | Pattern} sample à utiliser comme réponse impulsionnelle
  * @synonyms ir
  * @example
  * s("bd sd [~ bd] sd").room(.8).ir("<shaker_large:0 shaker_large:2>")
@@ -1830,7 +1830,7 @@ export const { roomfade, rfade } = registerControl('roomfade', 'rfade');
 export const { ir, iresponse } = registerControl(['ir', 'i'], 'iresponse');
 
 /**
- * Sets speed of the sample for the impulse response.
+ * Définit la vitesse de l'échantillon pour la réponse impulsionnelle.
  * @name irspeed
  * @param {string | Pattern} speed
  * @example
@@ -1841,9 +1841,9 @@ export const { ir, iresponse } = registerControl(['ir', 'i'], 'iresponse');
 export const { irspeed } = registerControl('irspeed');
 
 /**
- * Sets the beginning of the IR response sample
+ * Définit le début de l'échantillon de réponse impulsionnelle
  * @name irbegin
- * @param {string | Pattern} begin between 0 and 1
+ * @param {string | Pattern} begin entre 0 et 1
  * @synonyms ir
  * @example
  * samples('github:switchangel/pad')
@@ -1852,11 +1852,11 @@ export const { irspeed } = registerControl('irspeed');
  */
 export const { irbegin } = registerControl('irbegin');
 /**
- * Sets the room size of the reverb, see `room`.
- * When this property is changed, the reverb will be recaculated, so only change this sparsely..
+ * Définit la taille de la pièce de la réverbération, voir `room`.
+ * Lorsque cette propriété est changée, la réverbération sera recalculée, donc ne changez ceci que rarement..
  *
  * @name roomsize
- * @param {number | Pattern} size between 0 and 10
+ * @param {number | Pattern} size entre 0 et 10
  * @synonyms rsize, sz, size
  * @example
  * s("bd sd [~ bd] sd").room(.8).rsize(1)
@@ -1873,28 +1873,28 @@ export const { roomsize, size, sz, rsize } = registerControl('roomsize', 'size',
 // ['sclaves'],
 // ['scrash'],
 /**
- * (Deprecated) Wave shaping distortion. WARNING: can suddenly get unpredictably loud.
- * Please use distort instead, which has a more predictable response curve
- * second option in optional array syntax (ex: ".9:.5") applies a postgain to the output
+ * (Obsolète) Distorsion par mise en forme d'onde. ATTENTION : peut soudainement devenir imprévisiblement fort.
+ * Veuillez utiliser distort à la place, qui a une courbe de réponse plus prévisible
+ * la deuxième option dans la syntaxe de tableau optionnelle (ex : ".9:.5") applique un postgain à la sortie
  *
  *
  * @name shape
- * @param {number | Pattern} distortion between 0 and 1
+ * @param {number | Pattern} distortion entre 0 et 1
  * @example
  * s("bd sd [~ bd] sd,hh*8").shape("<0 .2 .4 .6 .8>")
  *
  */
 export const { shape } = registerControl(['shape', 'shapevol']);
 /**
- * Wave shaping distortion. CAUTION: it can get loud.
- * Second option in optional array syntax (ex: ".9:.5") applies a postgain to the output. Third option sets the waveshaping type.
- * Most useful values are usually between 0 and 10 (depending on source gain). If you are feeling adventurous, you can turn it up to 11 and beyond ;)
+ * Distorsion par mise en forme d'onde. ATTENTION : ça peut devenir fort.
+ * La deuxième option dans la syntaxe de tableau optionnelle (ex : ".9:.5") applique un postgain à la sortie. La troisième option définit le type de mise en forme d'onde.
+ * Les valeurs les plus utiles sont généralement entre 0 et 10 (selon le gain de la source). Si vous vous sentez aventureux, vous pouvez le monter à 11 et au-delà ;)
  *
  * @name distort
  * @synonyms dist
- * @param {number | Pattern} distortion amount of distortion to apply
- * @param {number | Pattern} volume linear postgain of the distortion
- * @param {number | string | Pattern} type type of distortion to apply
+ * @param {number | Pattern} distortion quantité de distorsion à appliquer
+ * @param {number | Pattern} volume postgain linéaire de la distorsion
+ * @param {number | string | Pattern} type type de distorsion à appliquer
  * @example
  * s("bd sd [~ bd] sd,hh*8").distort("<0 2 3 10:.5>")
  * @example
@@ -1906,22 +1906,22 @@ export const { shape } = registerControl(['shape', 'shapevol']);
 export const { distort, dist } = registerControl(['distort', 'distortvol', 'distorttype'], 'dist');
 
 /**
- * Postgain for waveshaping distortion.
+ * Postgain pour la distorsion par mise en forme d'onde.
  *
  * @name distortvol
  * @synonyms distvol
- * @param {number | Pattern} volume linear postgain of the distortion
+ * @param {number | Pattern} volume postgain linéaire de la distorsion
  * @example
  * s("bd*4").bank("tr909").distort(2).distortvol(0.8)
  */
 export const { distortvol } = registerControl('distortvol', 'distvol');
 
 /**
- * Type of waveshaping distortion to apply.
+ * Type de distorsion par mise en forme d'onde à appliquer.
  *
  * @name distorttype
  * @synonyms disttype
- * @param {number | string | Pattern} type type of distortion to apply
+ * @param {number | string | Pattern} type type de distorsion à appliquer
  * @example
  * s("bd*4").bank("tr909").distort(2).distorttype("<0 1 2>")
  *
@@ -1934,8 +1934,8 @@ export const { distortvol } = registerControl('distortvol', 'distvol');
 export const { distorttype } = registerControl('distorttype', 'disttype');
 
 /**
- * Dynamics Compressor. The params are `compressor("threshold:ratio:knee:attack:release")`
- * More info [here](https://developer.mozilla.org/en-US/docs/Web/API/DynamicsCompressorNode?retiredLocale=de#instance_properties)
+ * Compresseur de dynamique. Les paramètres sont `compressor("threshold:ratio:knee:attack:release")`
+ * Plus d'infos [ici](https://developer.mozilla.org/en-US/docs/Web/API/DynamicsCompressorNode?retiredLocale=de#instance_properties)
  *
  * @name compressor
  * @example
@@ -1955,10 +1955,10 @@ export const { compressorRatio } = registerControl('compressorRatio');
 export const { compressorAttack } = registerControl('compressorAttack');
 export const { compressorRelease } = registerControl('compressorRelease');
 /**
- * Changes the speed of sample playback, i.e. a cheap way of changing pitch.
+ * Change la vitesse de lecture de l'échantillon, c'est-à-dire une manière peu coûteuse de changer la hauteur.
  *
  * @name speed
- * @param {number | Pattern} speed -inf to inf, negative numbers play the sample backwards.
+ * @param {number | Pattern} speed -inf à inf, les nombres négatifs jouent l'échantillon à l'envers.
  * @example
  * s("bd*6").speed("1 2 4 1 -2 -4")
  * @example
@@ -1968,20 +1968,20 @@ export const { compressorRelease } = registerControl('compressorRelease');
 export const { speed } = registerControl('speed');
 
 /**
- * Changes the speed of sample playback, i.e. a cheap way of changing pitch.
+ * Change la vitesse de lecture de l'échantillon, c'est-à-dire une manière peu coûteuse de changer la hauteur.
  *
  * @name stretch
- * @param {number | Pattern} factor -inf to inf, negative numbers play the sample backwards.
+ * @param {number | Pattern} factor -inf à inf, les nombres négatifs jouent l'échantillon à l'envers.
  * @example
  * s("gm_flute").stretch("1 2 .5")
  *
  */
 export const { stretch } = registerControl('stretch');
 /**
- * Used in conjunction with `speed`, accepts values of "r" (rate, default behavior), "c" (cycles), or "s" (seconds). Using `unit "c"` means `speed` will be interpreted in units of cycles, e.g. `speed "1"` means samples will be stretched to fill a cycle. Using `unit "s"` means the playback speed will be adjusted so that the duration is the number of seconds specified by `speed`.
+ * Utilisé en conjonction avec `speed`, accepte les valeurs "r" (rate, comportement par défaut), "c" (cycles), ou "s" (secondes). Utiliser `unit "c"` signifie que `speed` sera interprété en unités de cycles, par ex. `speed "1"` signifie que les échantillons seront étirés pour remplir un cycle. Utiliser `unit "s"` signifie que la vitesse de lecture sera ajustée de sorte que la durée soit le nombre de secondes spécifié par `speed`.
  *
  * @name unit
- * @param {number | string | Pattern} unit see description above
+ * @param {number | string | Pattern} unit voir description ci-dessus
  * @example
  * speed("1 2 .5 3").s("bd").unit("c").osc()
  * @superdirtOnly
@@ -1990,12 +1990,12 @@ export const { stretch } = registerControl('stretch');
 
 export const { unit } = registerControl('unit');
 /**
- * Made by Calum Gunn. Reminiscent of some weird mixture of filter, ring-modulator and pitch-shifter. The SuperCollider manual defines Squiz as:
+ * Fait par Calum Gunn. Rappelle un mélange étrange de filtre, modulateur en anneau et changeur de hauteur. Le manuel SuperCollider définit Squiz comme :
  *
- * "A simplistic pitch-raising algorithm. It's not meant to sound natural; its sound is reminiscent of some weird mixture of filter, ring-modulator and pitch-shifter, depending on the input. The algorithm works by cutting the signal into fragments (delimited by upwards-going zero-crossings) and squeezing those fragments in the time domain (i.e. simply playing them back faster than they came in), leaving silences inbetween. All the parameters apart from memlen can be modulated."
+ * "Un algorithme simpliste d'augmentation de hauteur. Il n'est pas censé sonner naturel ; son son rappelle un mélange étrange de filtre, modulateur en anneau et changeur de hauteur, selon l'entrée. L'algorithme fonctionne en coupant le signal en fragments (délimités par des passages par zéro ascendants) et en compressant ces fragments dans le domaine temporel (c'est-à-dire en les rejouant simplement plus vite qu'ils ne sont entrés), laissant des silences entre eux. Tous les paramètres à part memlen peuvent être modulés."
  *
  * @name squiz
- * @param {number | Pattern} squiz Try passing multiples of 2 to it - 2, 4, 8 etc.
+ * @param {number | Pattern} squiz Essayez de lui passer des multiples de 2 - 2, 4, 8 etc.
  * @example
  * squiz("2 4/2 6 [8 16]").s("bd").osc()
  * @superdirtOnly
