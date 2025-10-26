@@ -2998,11 +2998,11 @@ export const extend = stepRegister('extend', function (factor, pat) {
 });
 
 /**
- * *Experimental*
+ * *Expérimental*
  *
- * `replicate` is similar to `fast` in that it increases its density, but it also increases the step count
- * accordingly. So `stepcat("a b".replicate(2), "c d")` would be the same as `"a b a b c d"`, whereas
- * `stepcat("a b".fast(2), "c d")` would be the same as `"[a b] [a b] c d"`.
+ * `replicate` est similaire à `fast` en ce qu'il augmente sa densité, mais il augmente aussi le nombre de pas
+ * en conséquence. Donc `stepcat("a b".replicate(2), "c d")` serait identique à `"a b a b c d"`, tandis que
+ * `stepcat("a b".fast(2), "c d")` serait identique à `"[a b] [a b] c d"`.
  *
  * TODO: find out how this function differs from extend
  * @example
@@ -3016,9 +3016,9 @@ export const replicate = stepRegister('replicate', function (factor, pat) {
 });
 
 /**
- * *Experimental*
+ * *Expérimental*
  *
- * Expands the step size of the pattern by the given factor.
+ * Augmente la taille de pas du pattern par le facteur donné.
  * @example
  * sound("tha dhi thom nam").bank("mridangam").expand("3 2 1 1 2 3").pace(8)
  */
@@ -3027,9 +3027,9 @@ export const expand = stepRegister('expand', function (factor, pat) {
 });
 
 /**
- * *Experimental*
+ * *Expérimental*
  *
- * Contracts the step size of the pattern by the given factor. See also `expand`.
+ * Réduit la taille de pas du pattern par le facteur donné. Voir aussi `expand`.
  * @example
  * sound("tha dhi thom nam").bank("mridangam").contract("3 2 1 1 2 3").pace(8)
  */
@@ -3079,11 +3079,11 @@ Pattern.prototype.shrinklist = function (amount) {
 export const shrinklist = (amount, pat) => pat.shrinklist(amount);
 
 /**
- * *Experimental*
+ * *Expérimental*
  *
- * Progressively shrinks the pattern by 'n' steps until there's nothing left, or if a second value is given (using mininotation list syntax with `:`),
- * that number of times.
- * A positive number will progressively drop steps from the start of a pattern, and a negative number from the end.
+ * Réduit progressivement le pattern de 'n' pas jusqu'à ce qu'il ne reste plus rien, ou si une seconde valeur est donnée (en utilisant la syntaxe de liste mininotation avec `:`),
+ * ce nombre de fois.
+ * Un nombre positif supprimera progressivement des pas depuis le début d'un pattern, et un nombre négatif depuis la fin.
  * @return {Pattern}
  * @example
  * "tha dhi thom nam".shrink("1").sound()
@@ -3118,11 +3118,11 @@ export const shrink = register(
 );
 
 /**
- * *Experimental*
+ * *Expérimental*
  *
- * Progressively grows the pattern by 'n' steps until the full pattern is played, or if a second value is given (using mininotation list syntax with `:`),
- * that number of times.
- * A positive number will progressively grow steps from the start of a pattern, and a negative number from the end.
+ * Augmente progressivement le pattern de 'n' pas jusqu'à ce que le pattern complet soit joué, ou si une seconde valeur est donnée (en utilisant la syntaxe de liste mininotation avec `:`),
+ * ce nombre de fois.
+ * Un nombre positif augmentera progressivement des pas depuis le début d'un pattern, et un nombre négatif depuis la fin.
  * @return {Pattern}
  * @example
  * "tha dhi thom nam".grow("1").sound()
@@ -3157,12 +3157,12 @@ export const grow = register(
 );
 
 /**
- * *Experimental*
- * 
- * Inserts a pattern into a list of patterns. On the first repetition it will be inserted at the end of the list, then moved backwards through the list 
- * on successive repetitions. The patterns are added together stepwise, with all repetitions taking place over a single cycle. Using `pace` to set the 
- * number of steps per cycle is therefore usually recommended.
- * 
+ * *Expérimental*
+ *
+ * Insère un pattern dans une liste de patterns. À la première répétition, il sera inséré à la fin de la liste, puis déplacé en arrière dans la liste
+ * lors des répétitions successives. Les patterns sont ajoutés ensemble pas à pas, avec toutes les répétitions ayant lieu sur un seul cycle. L'utilisation de `pace` pour définir le
+ * nombre de pas par cycle est donc généralement recommandée.
+ *
  * @return {Pattern}
  * @example
  * "[c g]".tour("e f", "e f g", "g f e c").note()
@@ -3184,11 +3184,11 @@ Pattern.prototype.tour = function (...many) {
 };
 
 /**
- * *Experimental*
- * 
- * 'zips' together the steps of the provided patterns. This can create a long repetition, taking place over a single, dense cycle. 
- * Using `pace` to set the number of steps per cycle is therefore usually recommended.
- * 
+ * *Expérimental*
+ *
+ * 'Zippe' ensemble les pas des patterns fournis. Cela peut créer une longue répétition, ayant lieu sur un seul cycle dense.
+ * L'utilisation de `pace` pour définir le nombre de pas par cycle est donc généralement recommandée.
+ *
  * @returns {Pattern}
  * @example
  * zip("e f", "e f g", "g [f e] a f4 c").note()
@@ -3202,7 +3202,7 @@ export const zip = function (...pats) {
   return zipped._fast(steps).setSteps(steps);
 };
 
-/** Aliases for `stepcat` */
+/** Alias pour `stepcat` */
 export const timecat = stepcat;
 export const timeCat = stepcat;
 
@@ -3237,8 +3237,8 @@ Pattern.prototype.steps = Pattern.prototype.pace;
 // objects
 
 /**
- * Cuts each sample into the given number of parts, allowing you to explore a technique known as 'granular synthesis'.
- * It turns a pattern of samples into a pattern of parts of samples.
+ * Découpe chaque échantillon en un nombre donné de parties, vous permettant d'explorer une technique connue sous le nom de 'synthèse granulaire'.
+ * Il transforme un pattern d'échantillons en un pattern de parties d'échantillons.
  * @name chop
  * @memberof Pattern
  * @returns Pattern
@@ -3268,7 +3268,7 @@ export const chop = register('chop', function (n, pat) {
 });
 
 /**
- * Cuts each sample into the given number of parts, triggering progressive portions of each sample at each loop.
+ * Découpe chaque échantillon en un nombre donné de parties, déclenchant des portions progressives de chaque échantillon à chaque boucle.
  * @name striate
  * @memberof Pattern
  * @returns Pattern
@@ -3286,7 +3286,7 @@ export const striate = register('striate', function (n, pat) {
 });
 
 /**
- * Makes the sample fit the given number of cycles by changing the speed.
+ * Fait que l'échantillon s'adapte au nombre de cycles donné en changeant la vitesse.
  * @name loopAt
  * @memberof Pattern
  * @returns Pattern
@@ -3303,8 +3303,8 @@ const _loopAt = function (factor, pat, cps = 0.5) {
 };
 
 /**
- * Chops samples into the given number of slices, triggering those slices with a given pattern of slice numbers.
- * Instead of a number, it also accepts a list of numbers from 0 to 1 to slice at specific points.
+ * Découpe les échantillons en un nombre donné de tranches, déclenchant ces tranches avec un pattern donné de numéros de tranche.
+ * Au lieu d'un nombre, il accepte également une liste de nombres de 0 à 1 pour découper à des points spécifiques.
  * @name slice
  * @memberof Pattern
  * @returns Pattern
@@ -3338,8 +3338,8 @@ export const slice = register(
 
 /**
  *
- * make something happen on event time
- * uses browser timeout which is innacurate for audio tasks
+ * fait que quelque chose se passe au moment de l'événement
+ * utilise le timeout du navigateur qui est imprécis pour les tâches audio
  * @name onTriggerTime
  * @memberof Pattern
  *  @returns Pattern
@@ -3356,7 +3356,7 @@ Pattern.prototype.onTriggerTime = function (func) {
 };
 
 /**
- * Works the same as slice, but changes the playback speed of each slice to match the duration of its step.
+ * Fonctionne de la même manière que slice, mais change la vitesse de lecture de chaque tranche pour correspondre à la durée de son pas.
  * @name splice
  * @example
  * samples('github:tidalcycles/dirt-samples')
@@ -3392,8 +3392,8 @@ export const { loopAt, loopat } = register(['loopAt', 'loopat'], function (facto
 });
 
 /**
- * Makes the sample fit its event duration. Good for rhythmical loops like drum breaks.
- * Similar to `loopAt`.
+ * Fait que l'échantillon s'adapte à la durée de son événement. Bon pour les boucles rythmiques comme les breaks de batterie.
+ * Similaire à `loopAt`.
  * @name fit
  * @example
  * samples({ rhodes: 'https://cdn.freesound.org/previews/132/132051_316502-lq.mp3' })
@@ -3415,10 +3415,10 @@ export const fit = register('fit', (pat) =>
 );
 
 /**
- * Makes the sample fit the given number of cycles and cps value, by
- * changing the speed. Please note that at some point cps will be
- * given by a global clock and this function will be
- * deprecated/removed.
+ * Fait que l'échantillon s'adapte au nombre de cycles et à la valeur cps donnés, en
+ * changeant la vitesse. Veuillez noter qu'à un moment donné cps sera
+ * fourni par une horloge globale et cette fonction sera
+ * obsolète/supprimée.
  * @name loopAtCps
  * @memberof Pattern
  * @returns Pattern
@@ -3431,7 +3431,7 @@ export const { loopAtCps, loopatcps } = register(['loopAtCps', 'loopatcps'], fun
   return _loopAt(factor, pat, cps);
 });
 
-/** exposes a custom value at query time. basically allows mutating state without evaluation */
+/** expose une valeur personnalisée au moment de la requête. permet essentiellement de muter l'état sans évaluation */
 export const ref = (accessor) =>
   pure(1)
     .withValue(() => reify(accessor()))
@@ -3440,10 +3440,10 @@ export const ref = (accessor) =>
 let fadeGain = (p) => (p < 0.5 ? 1 : 1 - (p - 0.5) / 0.5);
 
 /**
- * Cross-fades between left and right from 0 to 1:
- * - 0 = (full left, no right)
- * - .5 = (both equal)
- * - 1 = (no left, full right)
+ * Fondu enchaîné entre gauche et droite de 0 à 1 :
+ * - 0 = (tout à gauche, rien à droite)
+ * - .5 = (les deux égaux)
+ * - 1 = (rien à gauche, tout à droite)
  *
  * @name xfade
  * @example
@@ -3464,8 +3464,8 @@ Pattern.prototype.xfade = function (pos, b) {
 };
 
 /**
- * creates a structure pattern from divisions of a cycle
- * especially useful for creating rhythms
+ * crée un pattern de structure à partir de divisions d'un cycle
+ * particulièrement utile pour créer des rythmes
  * @name beat
  * @example
  * s("bd").beat("0,7,10", 16)
