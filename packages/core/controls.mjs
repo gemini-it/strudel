@@ -810,13 +810,13 @@ export const { drive } = registerControl('drive');
 export const { duck } = registerControl('duckorbit', 'duck');
 
 /**
- * The amount of ducking applied to target orbit
+ * La quantité de ducking appliquée à l'orbit cible
  *
- * Can vary across orbits with the ':' mininotation, e.g. `duckdepth("0.3:0.1")`.
- * Note: this requires first applying the effect to multiple orbits with e.g. `duckorbit("2:3")`.
+ * Peut varier selon les orbits avec la mininotation ':', par ex. `duckdepth("0.3:0.1")`.
+ * Note : cela nécessite d'abord d'appliquer l'effet à plusieurs orbits avec par ex. `duckorbit("2:3")`.
  *
  * @name duckdepth
- * @param {number | Pattern} depth depth of modulation from 0 to 1
+ * @param {number | Pattern} depth profondeur de modulation de 0 à 1
  * @example
  * stack( n(run(8)).scale("c:minor").s("sawtooth").delay(.7).orbit(2), s("bd:4!4").beat("0,4,8,11,14",16).duckorbit(2).duckattack(0.2).duckdepth("<1 .9 .6 0>"))
  * @example
@@ -828,16 +828,16 @@ export const { duck } = registerControl('duckorbit', 'duck');
 export const { duckdepth } = registerControl('duckdepth');
 
 /**
- * The time required for the ducked signal(s) to reach their lowest volume.
- * Can be used to prevent clicking or for creative rhythmic effects.
+ * Le temps nécessaire pour que le(s) signal(aux) ducké(s) atteigne(nt) leur volume le plus bas.
+ * Peut être utilisé pour éviter les clics ou pour des effets rythmiques créatifs.
  *
- * Can vary across orbits with the ':' mininotation, e.g. `duckonset("0:0.003")`.
- * Note: this requires first applying the effect to multiple orbits with e.g. `duckorbit("2:3")`.
+ * Peut varier selon les orbits avec la mininotation ':', par ex. `duckonset("0:0.003")`.
+ * Note : cela nécessite d'abord d'appliquer l'effet à plusieurs orbits avec par ex. `duckorbit("2:3")`.
  *
  * @name duckonset
  * @synonyms duckons
  *
- * @param {number | Pattern} time The onset time in seconds
+ * @param {number | Pattern} time Le temps de déclenchement en secondes
  * @example
  * // Clicks
  * sound: freq("63.2388").s("sine").orbit(2).gain(4)
@@ -856,15 +856,15 @@ export const { duckdepth } = registerControl('duckdepth');
 export const { duckonset } = registerControl('duckonset', 'duckons');
 
 /**
- * The time required for the ducked signal(s) to return to their normal volume.
+ * Le temps nécessaire pour que le(s) signal(aux) ducké(s) retourne(nt) à leur volume normal.
  *
- * Can vary across orbits with the ':' mininotation, e.g. `duckonset("0:0.003")`.
- * Note: this requires first applying the effect to multiple orbits with e.g. `duckorbit("2:3")`.
+ * Peut varier selon les orbits avec la mininotation ':', par ex. `duckonset("0:0.003")`.
+ * Note : cela nécessite d'abord d'appliquer l'effet à plusieurs orbits avec par ex. `duckorbit("2:3")`.
  *
  * @name duckattack
  * @synonyms duckatt
  *
- * @param {number | Pattern} time The attack time in seconds
+ * @param {number | Pattern} time Le temps d'attaque en secondes
  * @example
  * sound: n(run(8)).scale("c:minor").s("sawtooth").delay(.7).orbit(2)
  * ducker: s("bd:4!4").beat("0,4,8,11,14",16).duckorbit(2).duckattack("<0.2 0 0.4>").duckdepth(1)
@@ -877,12 +877,12 @@ export const { duckonset } = registerControl('duckonset', 'duckons');
 export const { duckattack } = registerControl('duckattack', 'duckatt');
 
 /**
- * Create byte beats with custom expressions
+ * Crée des byte beats avec des expressions personnalisées
  *
  * @name byteBeatExpression
  * @synonyms bbexpr
  *
- * @param {number | Pattern} byteBeatExpression bitwise expression for creating bytebeat
+ * @param {number | Pattern} byteBeatExpression expression bitwise pour créer du bytebeat
  * @example
  * s("bytebeat").bbexpr('t*(t>>15^t>>66)')
  *
@@ -890,12 +890,12 @@ export const { duckattack } = registerControl('duckattack', 'duckatt');
 export const { byteBeatExpression, bbexpr } = registerControl('byteBeatExpression', 'bbexpr');
 
 /**
- * Create byte beats with custom expressions
+ * Crée des byte beats avec des expressions personnalisées
  *
  * @name byteBeatStartTime
  * @synonyms bbst
  *
- * @param {number | Pattern} byteBeatStartTime in samples (t)
+ * @param {number | Pattern} byteBeatStartTime en échantillons (t)
  * @example
  * note("c3!8".add("{0 0 12 0 7 5 3}%8")).s("bytebeat:5").bbst("<3 1>".mul(10000))._scope()
  *
@@ -903,12 +903,12 @@ export const { byteBeatExpression, bbexpr } = registerControl('byteBeatExpressio
 export const { byteBeatStartTime, bbst } = registerControl('byteBeatStartTime', 'bbst');
 
 /**
- * Allows you to set the output channels on the interface
+ * Vous permet de définir les canaux de sortie sur l'interface
  *
  * @name channels
  * @synonyms ch
  *
- * @param {number | Pattern} channels pattern the output channels
+ * @param {number | Pattern} channels pattern les canaux de sortie
  * @example
  * note("e a d b g").channels("3:4")
  *
@@ -916,7 +916,7 @@ export const { byteBeatStartTime, bbst } = registerControl('byteBeatStartTime', 
 export const { channels, ch } = registerControl('channels', 'ch');
 
 /**
- * Controls the pulsewidth of the pulse oscillator
+ * Contrôle la largeur d'impulsion de l'oscillateur à impulsions
  *
  * @name pw
  * @param {number | Pattern} pulsewidth
@@ -928,7 +928,7 @@ export const { channels, ch } = registerControl('channels', 'ch');
 export const { pw } = registerControl(['pw', 'pwrate', 'pwsweep']);
 
 /**
- * Controls the lfo rate for the pulsewidth of the pulse oscillator
+ * Contrôle la fréquence du lfo pour la largeur d'impulsion de l'oscillateur à impulsions
  *
  * @name pwrate
  * @param {number | Pattern} rate
@@ -940,7 +940,7 @@ export const { pw } = registerControl(['pw', 'pwrate', 'pwsweep']);
 export const { pwrate } = registerControl('pwrate');
 
 /**
- * Controls the lfo sweep for the pulsewidth of the pulse oscillator
+ * Contrôle le balayage du lfo pour la largeur d'impulsion de l'oscillateur à impulsions
  *
  * @name pwsweep
  * @param {number | Pattern} sweep
@@ -951,11 +951,11 @@ export const { pwrate } = registerControl('pwrate');
 export const { pwsweep } = registerControl('pwsweep');
 
 /**
- * Phaser audio effect that approximates popular guitar pedals.
+ * Effet audio phaser qui approxime les pédales de guitare populaires.
  *
  * @name phaser
  * @synonyms ph
- * @param {number | Pattern} speed speed of modulation
+ * @param {number | Pattern} speed vitesse de modulation
  * @example
  * n(run(8)).scale("D:pentatonic").s("sawtooth").release(0.5)
  * .phaser("<1 2 4 8>")
@@ -968,11 +968,11 @@ export const { phaserrate, ph, phaser } = registerControl(
 );
 
 /**
- * The frequency sweep range of the lfo for the phaser effect. Defaults to 2000
+ * La plage de balayage de fréquence du lfo pour l'effet phaser. Par défaut 2000
  *
  * @name phasersweep
  * @synonyms phs
- * @param {number | Pattern} phasersweep most useful values are between 0 and 4000
+ * @param {number | Pattern} phasersweep les valeurs les plus utiles sont entre 0 et 4000
  * @example
  * n(run(8)).scale("D:pentatonic").s("sawtooth").release(0.5)
  * .phaser(2).phasersweep("<800 2000 4000>")
@@ -981,11 +981,11 @@ export const { phaserrate, ph, phaser } = registerControl(
 export const { phasersweep, phs } = registerControl('phasersweep', 'phs');
 
 /**
- * The center frequency of the phaser in HZ. Defaults to 1000
+ * La fréquence centrale du phaser en HZ. Par défaut 1000
  *
  * @name phasercenter
  * @synonyms phc
- * @param {number | Pattern} centerfrequency in HZ
+ * @param {number | Pattern} centerfrequency en HZ
  * @example
  * n(run(8)).scale("D:pentatonic").s("sawtooth").release(0.5)
  * .phaser(2).phasercenter("<800 2000 4000>")
@@ -995,7 +995,7 @@ export const { phasersweep, phs } = registerControl('phasersweep', 'phs');
 export const { phasercenter, phc } = registerControl('phasercenter', 'phc');
 
 /**
- * The amount the signal is affected by the phaser effect. Defaults to 0.75
+ * La quantité dont le signal est affecté par l'effet phaser. Par défaut 0.75
  *
  * @name phaserdepth
  * @synonyms phd, phasdp
