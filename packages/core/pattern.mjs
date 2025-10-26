@@ -2515,7 +2515,7 @@ export const { repeatCycles } = register(
 );
 
 /**
- * Divides a pattern into a given number of parts, then cycles through those parts in turn, applying the given function to each part in turn (one part per cycle).
+ * Divise un pattern en un nombre donné de parties, puis parcourt ces parties tour à tour, appliquant la fonction donnée à chaque partie à tour de rôle (une partie par cycle).
  * @name chunk
  * @synonyms slowChunk, slowchunk
  * @memberof Pattern
@@ -2546,7 +2546,7 @@ export const { chunk, slowchunk, slowChunk } = register(
 );
 
 /**
- * Like `chunk`, but cycles through the parts in reverse order. Known as chunk' in tidalcycles
+ * Comme `chunk`, mais parcourt les parties dans l'ordre inverse. Connu sous le nom de chunk' dans tidalcycles
  * @name chunkBack
  * @synonyms chunkback
  * @memberof Pattern
@@ -2565,8 +2565,8 @@ export const { chunkBack, chunkback } = register(
 );
 
 /**
- * Like `chunk`, but the cycles of the source pattern aren't repeated
- * for each set of chunks.
+ * Comme `chunk`, mais les cycles du pattern source ne sont pas répétés
+ * pour chaque ensemble de morceaux.
  * @name fastChunk
  * @synonyms fastchunk
  * @memberof Pattern
@@ -2586,7 +2586,7 @@ export const { fastchunk, fastChunk } = register(
 );
 
 /**
- * Like `chunk`, but the function is applied to a looped subcycle of the source pattern.
+ * Comme `chunk`, mais la fonction est appliquée à un sous-cycle bouclé du pattern source.
  * @name chunkInto
  * @synonyms chunkinto
  * @memberof Pattern
@@ -2599,7 +2599,7 @@ export const { chunkinto, chunkInto } = register(['chunkinto', 'chunkInto'], fun
 });
 
 /**
- * Like `chunkInto`, but moves backwards through the chunks.
+ * Comme `chunkInto`, mais se déplace en arrière à travers les morceaux.
  * @name chunkBackInto
  * @synonyms chunkbackinto
  * @memberof Pattern
@@ -2628,12 +2628,12 @@ export const bypass = register(
 );
 
 /**
- * Loops the pattern inside an `offset` for `cycles`.
- * If you think of the entire span of time in cycles as a ribbon, you can cut a single piece and loop it.
+ * Boucle le pattern à l'intérieur d'un `offset` pour `cycles`.
+ * Si vous pensez à toute la durée de temps en cycles comme un ruban, vous pouvez couper un seul morceau et le boucler.
  * @name ribbon
  * @synonyms rib
- * @param {number} offset start point of loop in cycles
- * @param {number} cycles loop length in cycles
+ * @param {number} offset point de départ de la boucle en cycles
+ * @param {number} cycles longueur de la boucle en cycles
  * @example
  * note("<c d e f>").ribbon(1, 2)
  * @example
@@ -2656,38 +2656,38 @@ export const hsl = register('hsl', (h, s, l, pat) => {
 });
 
 /**
- * Tags each Hap with an identifier. Good for filtering. The function populates Hap.context.tags (Array).
+ * Marque chaque Hap avec un identifiant. Bon pour le filtrage. La fonction remplit Hap.context.tags (Array).
  * @name tag
  * @noAutocomplete
- * @param {string} tag anything unique
+ * @param {string} tag n'importe quoi d'unique
  */
 Pattern.prototype.tag = function (tag) {
   return this.withContext((ctx) => ({ ...ctx, tags: (ctx.tags || []).concat([tag]) }));
 };
 
 /**
- * Filters haps using the given function
+ * Filtre les haps en utilisant la fonction donnée
  * @name filter
- * @param {Function} test function to test Hap
+ * @param {Function} test fonction pour tester Hap
  * @example
  * s("hh!7 oh").filter(hap => hap.value.s==='hh')
  */
 export const filter = register('filter', (test, pat) => pat.withHaps((haps) => haps.filter(test)));
 
 /**
- * Filters haps by their begin time
+ * Filtre les haps par leur temps de début
  * @name filterWhen
  * @noAutocomplete
- * @param {Function} test function to test Hap.whole.begin
+ * @param {Function} test fonction pour tester Hap.whole.begin
  */
 export const filterWhen = register('filterWhen', (test, pat) => pat.filter((h) => test(h.whole.begin)));
 
 /**
- * Use within to apply a function to only a part of a pattern.
+ * Utilise within pour appliquer une fonction à seulement une partie d'un pattern.
  * @name within
- * @param {number} start start within cycle (0 - 1)
- * @param {number} end end within cycle (0 - 1). Must be > start
- * @param {Function} func function to be applied to the sub-pattern
+ * @param {number} start début dans le cycle (0 - 1)
+ * @param {number} end fin dans le cycle (0 - 1). Doit être > start
+ * @param {Function} func fonction à appliquer au sous-pattern
  */
 export const within = register('within', (a, b, fn, pat) =>
   stack(
@@ -2756,9 +2756,9 @@ export function _match(span, hap_p) {
 }
 
 /**
- * *Experimental*
+ * *Expérimental*
  *
- * Speeds a pattern up or down, to fit to the given number of steps per cycle.
+ * Accélère ou ralentit un pattern, pour s'adapter au nombre donné de pas par cycle.
  * @example
  * sound("bd sd cp").pace(4)
  * // The same as sound("{bd sd cp}%4") or sound("<bd sd cp>*4")
@@ -2797,9 +2797,9 @@ export function _polymeterListSteps(steps, ...args) {
 }
 
 /**
- * *Experimental*
+ * *Expérimental*
  *
- * Aligns the steps of the patterns, creating polymeters. The patterns are repeated until they all fit the cycle. For example, in the below the first pattern is repeated twice, and the second is repeated three times, to fit the lowest common multiple of six steps.
+ * Aligne les pas des patterns, créant des polymètres. Les patterns sont répétés jusqu'à ce qu'ils s'adaptent tous au cycle. Par exemple, ci-dessous le premier pattern est répété deux fois, et le second est répété trois fois, pour s'adapter au plus petit commun multiple de six pas.
  * @synonyms pm
  * @example
  * // The same as note("{c eb g, c2 g2}%6")
@@ -2828,9 +2828,9 @@ export function polymeter(...args) {
   return result;
 }
 
-/** 'Concatenates' patterns like `fastcat`, but proportional to a number of steps per cycle.
- * The steps can either be inferred from the pattern, or provided as a [length, pattern] pair.
- * Has the alias `timecat`.
+/** 'Concatène' les patterns comme `fastcat`, mais proportionnellement à un nombre de pas par cycle.
+ * Les pas peuvent soit être déduits du pattern, soit fournis comme une paire [longueur, pattern].
+ * A l'alias `timecat`.
  * @name stepcat
  * @synonyms timeCat, timecat
  * @return {Pattern}
@@ -2884,10 +2884,10 @@ export function stepcat(...timepats) {
 }
 
 /**
- * *Experimental*
+ * *Expérimental*
  *
- * Concatenates patterns stepwise, according to an inferred 'steps per cycle'.
- * Similar to `stepcat`, but if an argument is a list, the whole pattern will alternate between the elements in the list.
+ * Concatène les patterns pas à pas, selon un 'pas par cycle' déduit.
+ * Similaire à `stepcat`, mais si un argument est une liste, le pattern entier alternera entre les éléments de la liste.
  *
  * @return {Pattern}
  * @example
@@ -2911,10 +2911,10 @@ export function stepalt(...groups) {
 }
 
 /**
- * *Experimental*
+ * *Expérimental*
  *
- * Takes the given number of steps from a pattern (dropping the rest).
- * A positive number will take steps from the start of a pattern, and a negative number from the end.
+ * Prend le nombre de pas donné d'un pattern (supprimant le reste).
+ * Un nombre positif prendra des pas depuis le début d'un pattern, et un nombre négatif depuis la fin.
  * @return {Pattern}
  * @example
  * "bd cp ht mt".take("2").sound()
@@ -2955,10 +2955,10 @@ export const take = stepRegister('take', function (i, pat) {
 });
 
 /**
- * *Experimental*
+ * *Expérimental*
  *
- * Drops the given number of steps from a pattern.
- * A positive number will drop steps from the start of a pattern, and a negative number from the end.
+ * Supprime le nombre de pas donné d'un pattern.
+ * Un nombre positif supprimera des pas depuis le début d'un pattern, et un nombre négatif depuis la fin.
  * @return {Pattern}
  * @example
  * "tha dhi thom nam".drop("1").sound().bank("mridangam")
@@ -2982,11 +2982,11 @@ export const drop = stepRegister('drop', function (i, pat) {
 });
 
 /**
- * *Experimental*
+ * *Expérimental*
  *
- * `extend` is similar to `fast` in that it increases its density, but it also increases the step count
- * accordingly. So `stepcat("a b".extend(2), "c d")` would be the same as `"a b a b c d"`, whereas
- * `stepcat("a b".fast(2), "c d")` would be the same as `"[a b] [a b] c d"`.
+ * `extend` est similaire à `fast` en ce qu'il augmente sa densité, mais il augmente aussi le nombre de pas
+ * en conséquence. Donc `stepcat("a b".extend(2), "c d")` serait identique à `"a b a b c d"`, tandis que
+ * `stepcat("a b".fast(2), "c d")` serait identique à `"[a b] [a b] c d"`.
  * @example
  * stepcat(
  *   sound("bd bd - cp").extend(2),
