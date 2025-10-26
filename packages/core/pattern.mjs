@@ -1998,8 +1998,8 @@ export const lastOf = register('lastOf', function (n, func, pat) {
  * Un alias pour `firstOf`
  * @name every
  * @memberof Pattern
- * @param {number} n how many cycles
- * @param {function} func function to apply
+ * @param {number} n combien de cycles
+ * @param {function} func fonction à appliquer
  * @returns Pattern
  * @example
  * note("c3 d3 e3 g3").every(4, x=>x.rev())
@@ -2011,7 +2011,7 @@ export const { firstOf, every } = register(['firstOf', 'every'], function (n, fu
 });
 
 /**
- * Like layer, but with a single function:
+ * Comme layer, mais avec une seule fonction :
  * @name apply
  * @memberof Pattern
  * @example
@@ -2023,7 +2023,7 @@ export const apply = register('apply', function (func, pat) {
 });
 
 /**
- * Plays the pattern at the given cycles per minute.
+ * Joue le pattern aux cycles par minute donnés.
  * @deprecated
  * @example
  * s("<bd sd>,hh*2").cpm(90) // = 90 bpm
@@ -2034,11 +2034,11 @@ export const cpm = register('cpm', function (cpm, pat) {
 });
 
 /**
- * Nudge a pattern to start earlier in time. Equivalent of Tidal's <~ operator
+ * Décale un pattern pour qu'il démarre plus tôt. Équivalent de l'opérateur <~ de Tidal
  *
  * @name early
  * @memberof Pattern
- * @param {number | Pattern} cycles number of cycles to nudge left
+ * @param {number | Pattern} cycles nombre de cycles à décaler vers la gauche
  * @returns Pattern
  * @example
  * "bd ~".stack("hh ~".early(.1)).s()
@@ -2054,11 +2054,11 @@ export const early = register(
 );
 
 /**
- * Nudge a pattern to start later in time. Equivalent of Tidal's ~> operator
+ * Décale un pattern pour qu'il démarre plus tard. Équivalent de l'opérateur ~> de Tidal
  *
  * @name late
  * @memberof Pattern
- * @param {number | Pattern} cycles number of cycles to nudge right
+ * @param {number | Pattern} cycles nombre de cycles à décaler vers la droite
  * @returns Pattern
  * @example
  * "bd ~".stack("hh ~".late(.1)).s()
@@ -2074,7 +2074,7 @@ export const late = register(
 );
 
 /**
- * Plays a portion of a pattern, specified by the beginning and end of a time span. The new resulting pattern is played over the time period of the original pattern:
+ * Joue une portion d'un pattern, spécifiée par le début et la fin d'un timespan. Le nouveau pattern résultant est joué sur la période de temps du pattern original :
  *
  * @example
  * s("bd*2 hh*3 [sd bd]*2 perc").zoom(0.25, 0.75)
@@ -2100,8 +2100,8 @@ export const { zoomArc, zoomarc } = register(['zoomArc', 'zoomarc'], function (a
 });
 
 /**
- * Splits a pattern into the given number of slices, and plays them according to a pattern of slice numbers.
- * Similar to `slice`, but slices up patterns rather than sound samples.
+ * Divise un pattern en un nombre donné de tranches, et les joue selon un pattern de numéros de tranche.
+ * Similaire à `slice`, mais découpe les patterns plutôt que les échantillons sonores.
  * @param {number} number of slices
  * @param {number} slices to play
  * @example
@@ -2128,8 +2128,8 @@ export const bite = register(
 );
 
 /**
- * Selects the given fraction of the pattern and repeats that part to fill the remainder of the cycle.
- * @param {number} fraction fraction to select
+ * Sélectionne la fraction donnée du pattern et répète cette partie pour remplir le reste du cycle.
+ * @param {number} fraction fraction à sélectionner
  * @example
  * s("lt ht mt cp, [hh oh]*2").linger("<1 .5 .25 .125>")
  */
@@ -2148,10 +2148,10 @@ export const linger = register(
 );
 
 /**
- * Samples the pattern at a rate of n events per cycle. Useful for turning a continuous pattern into a discrete one.
+ * Échantillonne le pattern à un taux de n événements par cycle. Utile pour transformer un pattern continu en un pattern discret.
  * @name segment
  * @synonyms seg
- * @param {number} segments number of segments per cycle
+ * @param {number} segments nombre de segments par cycle
  * @example
  * note(saw.range(40,52).segment(24))
  */
@@ -2160,7 +2160,7 @@ export const { segment, seg } = register(['segment', 'seg'], function (rate, pat
 });
 
 /**
- * The function `swingBy x n` breaks each cycle into `n` slices, and then delays events in the second half of each slice by the amount `x`, which is relative to the size of the (half) slice. So if `x` is 0 it does nothing, `0.5` delays for half the note duration, and 1 will wrap around to doing nothing again. The end result is a shuffle or swing-like rhythm
+ * La fonction `swingBy x n` divise chaque cycle en `n` tranches, puis retarde les événements de la seconde moitié de chaque tranche par la quantité `x`, qui est relative à la taille de la (demi-)tranche. Donc si `x` est 0 elle ne fait rien, `0.5` retarde d'une demi-durée de note, et 1 boucle pour ne rien faire à nouveau. Le résultat final est un rythme shuffle ou swing
  * @param {number} subdivision
  * @param {number} offset
  * @example
@@ -2169,7 +2169,7 @@ export const { segment, seg } = register(['segment', 'seg'], function (rate, pat
 export const swingBy = register('swingBy', (swing, n, pat) => pat.inside(n, late(seq(0, swing / 2))));
 
 /**
- * Shorthand for swingBy with 1/3:
+ * Raccourci pour swingBy avec 1/3 :
  * @param {number} subdivision
  * @example
  * s("hh*8").swing(4)
@@ -2178,7 +2178,7 @@ export const swingBy = register('swingBy', (swing, n, pat) => pat.inside(n, late
 export const swing = register('swing', (n, pat) => pat.swingBy(1 / 3, n));
 
 /**
- * Swaps 1s and 0s in a binary pattern.
+ * Inverse les 1 et les 0 dans un pattern binaire.
  * @name invert
  * @synonyms inv
  * @example
@@ -2195,7 +2195,7 @@ export const { invert, inv } = register(
 );
 
 /**
- * Applies the given function whenever the given pattern is in a true state.
+ * Applique la fonction donnée chaque fois que le pattern donné est dans un état vrai.
  * @name when
  * @memberof Pattern
  * @param {Pattern} binary_pat
@@ -2209,11 +2209,11 @@ export const when = register('when', function (on, func, pat) {
 });
 
 /**
- * Superimposes the function result on top of the original pattern, delayed by the given time.
+ * Superpose le résultat de la fonction par-dessus le pattern original, retardé du temps donné.
  * @name off
  * @memberof Pattern
- * @param {Pattern | number} time offset time
- * @param {function} func function to apply
+ * @param {Pattern | number} time temps de décalage
+ * @param {function} func fonction à appliquer
  * @returns Pattern
  * @example
  * "c3 eb3 g3".off(1/8, x=>x.add(7)).note()
@@ -2223,9 +2223,9 @@ export const off = register('off', function (time_pat, func, pat) {
 });
 
 /**
- * Returns a new pattern where every other cycle is played once, twice as
- * fast, and offset in time by one quarter of a cycle. Creates a kind of
- * breakbeat feel.
+ * Retourne un nouveau pattern où un cycle sur deux est joué une fois, deux fois plus
+ * vite, et décalé dans le temps d'un quart de cycle. Crée une sorte de
+ * sensation de breakbeat.
  * @returns Pattern
  */
 export const brak = register('brak', function (pat) {
@@ -2233,7 +2233,7 @@ export const brak = register('brak', function (pat) {
 });
 
 /**
- * Reverse all haps in a pattern
+ * Inverse tous les haps dans un pattern
  *
  * @name rev
  * @memberof Pattern
@@ -2265,9 +2265,9 @@ export const rev = register(
   true,
 );
 
-/** Like press, but allows you to specify the amount by which each
- * event is shifted. pressBy(0.5) is the same as press, while
- * pressBy(1/3) shifts each event by a third of its timespan.
+/** Comme press, mais vous permet de spécifier la quantité par laquelle chaque
+ * événement est décalé. pressBy(0.5) est identique à press, tandis que
+ * pressBy(1/3) décale chaque événement d'un tiers de son timespan.
  * @example
  * stack(s("hh*4"),
  *       s("bd mt sd ht").pressBy("<0 0.5 0.25>")
@@ -2278,7 +2278,7 @@ export const pressBy = register('pressBy', function (r, pat) {
 });
 
 /**
- * Syncopates a rhythm, by shifting each event halfway into its timespan.
+ * Syncope un rythme, en décalant chaque événement à mi-chemin dans son timespan.
  * @example
  * stack(s("hh*4"),
  *       s("bd mt sd ht").every(4, press)
@@ -2289,7 +2289,7 @@ export const press = register('press', function (pat) {
 });
 
 /**
- * Silences a pattern.
+ * Réduit au silence un pattern.
  * @example
  * stack(
  *   s("bd").hush(),
@@ -2301,7 +2301,7 @@ Pattern.prototype.hush = function () {
 };
 
 /**
- * Applies `rev` to a pattern every other cycle, so that the pattern alternates between forwards and backwards.
+ * Applique `rev` à un pattern un cycle sur deux, de sorte que le pattern alterne entre avant et arrière.
  * @example
  * note("c d e g").palindrome()
  */
@@ -2315,7 +2315,7 @@ export const palindrome = register(
 );
 
 /**
- * Jux with adjustable stereo width. 0 = mono, 1 = full stereo.
+ * Jux avec largeur stéréo ajustable. 0 = mono, 1 = stéréo complet.
  * @name juxBy
  * @synonyms juxby
  * @example
@@ -2336,7 +2336,7 @@ export const { juxBy, juxby } = register(['juxBy', 'juxby'], function (by, func,
 });
 
 /**
- * The jux function creates strange stereo effects, by applying a function to a pattern, but only in the right-hand channel.
+ * La fonction jux crée des effets stéréo étranges, en appliquant une fonction à un pattern, mais uniquement dans le canal droit.
  * @example
  * s("bd lt [~ ht] mt cp ~ bd hh").jux(rev)
  * @example
@@ -2349,12 +2349,12 @@ export const jux = register('jux', function (func, pat) {
 });
 
 /**
- * Superimpose and offset multiple times, applying the given function each time.
+ * Superpose et décale plusieurs fois, appliquant la fonction donnée à chaque fois.
  * @name echoWith
  * @synonyms echowith, stutWith, stutwith
- * @param {number} times how many times to repeat
- * @param {number} time cycle offset between iterations
- * @param {function} func function to apply, given the pattern and the iteration index
+ * @param {number} times combien de fois répéter
+ * @param {number} time décalage de cycle entre les itérations
+ * @param {function} func fonction à appliquer, donnant le pattern et l'index d'itération
  * @example
  * "<0 [2 4]>"
  * .echoWith(4, 1/8, (p,n) => p.add(n*2))
@@ -2368,13 +2368,13 @@ export const { echoWith, echowith, stutWith, stutwith } = register(
 );
 
 /**
- * Superimpose and offset multiple times, gradually decreasing the velocity
+ * Superpose et décale plusieurs fois, diminuant progressivement la vélocité
  * @name echo
  * @memberof Pattern
  * @returns Pattern
- * @param {number} times how many times to repeat
- * @param {number} time cycle offset between iterations
- * @param {number} feedback velocity multiplicator for each iteration
+ * @param {number} times combien de fois répéter
+ * @param {number} time décalage de cycle entre les itérations
+ * @param {number} feedback multiplicateur de vélocité pour chaque itération
  * @example
  * s("bd sd").echo(3, 1/6, .8)
  */
@@ -2383,11 +2383,11 @@ export const echo = register('echo', function (times, time, feedback, pat) {
 });
 
 /**
- * Deprecated. Like echo, but the last 2 parameters are flipped.
+ * Obsolète. Comme echo, mais les 2 derniers paramètres sont inversés.
  * @name stut
- * @param {number} times how many times to repeat
- * @param {number} feedback velocity multiplicator for each iteration
- * @param {number} time cycle offset between iterations
+ * @param {number} times combien de fois répéter
+ * @param {number} feedback multiplicateur de vélocité pour chaque itération
+ * @param {number} time décalage de cycle entre les itérations
  * @example
  * s("bd sd").stut(3, .8, 1/6)
  */
@@ -2404,11 +2404,11 @@ export const applyN = register('applyN', function (n, func, p) {
 });
 
 /**
- * The plyWith function repeats each event the given number of times, applying the given function to each event.\n
+ * La fonction plyWith répète chaque événement le nombre de fois donné, appliquant la fonction donnée à chaque événement.\n
  * @name plyWith
  * @synonyms plywith
- * @param {number} factor how many times to repeat
- * @param {function} func function to apply, given the pattern
+ * @param {number} factor combien de fois répéter
+ * @param {function} func fonction à appliquer, donnant le pattern
  * @example
  * "<0 [2 4]>"
  * .plyWith(4, (p) => p.add(2))
@@ -2425,12 +2425,12 @@ export const plyWith = register(['plyWith', 'plywith'], function (factor, func, 
 });
 
 /**
- * The plyForEach function repeats each event the given number of times, applying the given function to each event.
- * This version of ply uses the iteration index as an argument to the function, similar to echoWith.
+ * La fonction plyForEach répète chaque événement le nombre de fois donné, appliquant la fonction donnée à chaque événement.
+ * Cette version de ply utilise l'index d'itération comme argument de la fonction, similaire à echoWith.
  * @name plyForEach
  * @synonyms plyforeach
- * @param {number} factor how many times to repeat
- * @param {function} func function to apply, given the pattern and the iteration index
+ * @param {number} factor combien de fois répéter
+ * @param {function} func fonction à appliquer, donnant le pattern et l'index d'itération
  * @example
  * "<0 [2 4]>"
  * .plyForEach(4, (p,n) => p.add(n*2))
@@ -2447,7 +2447,7 @@ export const plyForEach = register(['plyForEach', 'plyforeach'], function (facto
 });
 
 /**
- * Divides a pattern into a given number of subdivisions, plays the subdivisions in order, but increments the starting subdivision each cycle. The pattern wraps to the first subdivision after the last subdivision is played.
+ * Divise un pattern en un nombre donné de subdivisions, joue les subdivisions dans l'ordre, mais incrémente la subdivision de départ à chaque cycle. Le pattern reboucle à la première subdivision après que la dernière subdivision soit jouée.
  * @name iter
  * @memberof Pattern
  * @returns Pattern
@@ -2474,7 +2474,7 @@ export const iter = register(
 );
 
 /**
- * Like `iter`, but plays the subdivisions in reverse order. Known as iter' in tidalcycles
+ * Comme `iter`, mais joue les subdivisions dans l'ordre inverse. Connu sous le nom de iter' dans tidalcycles
  * @name iterBack
  * @synonyms iterback
  * @memberof Pattern
@@ -2492,7 +2492,7 @@ export const { iterBack, iterback } = register(
 );
 
 /**
- * Repeats each cycle the given number of times.
+ * Répète chaque cycle le nombre de fois donné.
  * @name repeatCycles
  * @memberof Pattern
  * @returns Pattern
