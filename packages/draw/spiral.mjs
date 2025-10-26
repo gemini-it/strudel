@@ -126,25 +126,25 @@ function drawSpiral(options) {
 }
 
 /**
- * Displays a spiral visual.
+ * Affiche un visuel en spirale.
  *
  * @name spiral
- * @param {Object} options Object containing all the optional following parameters as key value pairs:
- * @param {number} stretch controls the rotations per cycle ratio, where 1 = 1 cycle / 360 degrees
- * @param {number} size the diameter of the spiral
- * @param {number} thickness line thickness
- * @param {string} cap style of line ends: butt (default), round, square
- * @param {string} inset number of rotations before spiral starts (default 3)
- * @param {string} playheadColor color of playhead, defaults to white
- * @param {number} playheadLength length of playhead in rotations, defaults to 0.02
- * @param {number} playheadThickness thickness of playheadrotations, defaults to thickness
- * @param {number} padding space around spiral
- * @param {number} steady steadyness of spiral vs playhead. 1 = spiral doesn't move, playhead does.
- * @param {number} activeColor color of active segment. defaults to foreground of theme
- * @param {number} inactiveColor color of inactive segments. defaults to gutterForeground of theme
- * @param {boolean} colorizeInactive wether or not to colorize inactive segments, defaults to 0
- * @param {boolean} fade wether or not past and future should fade out. defaults to 1
- * @param {boolean} logSpiral wether or not the spiral should be logarithmic. defaults to 0
+ * @param {Object} options Objet contenant tous les paramètres optionnels suivants comme paires clé-valeur :
+ * @param {number} stretch contrôle le ratio rotations par cycle, où 1 = 1 cycle / 360 degrés
+ * @param {number} size le diamètre de la spirale
+ * @param {number} thickness épaisseur de ligne
+ * @param {string} cap style des extrémités de ligne : butt (par défaut), round, square
+ * @param {string} inset nombre de rotations avant que la spirale ne démarre (par défaut 3)
+ * @param {string} playheadColor couleur de la tête de lecture, par défaut blanc
+ * @param {number} playheadLength longueur de la tête de lecture en rotations, par défaut 0.02
+ * @param {number} playheadThickness épaisseur de la tête de lecture, par défaut thickness
+ * @param {number} padding espace autour de la spirale
+ * @param {number} steady stabilité de la spirale vs tête de lecture. 1 = la spirale ne bouge pas, la tête de lecture oui.
+ * @param {number} activeColor couleur du segment actif. par défaut foreground du thème
+ * @param {number} inactiveColor couleur des segments inactifs. par défaut gutterForeground du thème
+ * @param {boolean} colorizeInactive si oui ou non coloriser les segments inactifs, par défaut 0
+ * @param {boolean} fade si oui ou non le passé et le futur doivent s'estomper. par défaut 1
+ * @param {boolean} logSpiral si oui ou non la spirale doit être logarithmique. par défaut 0
  * @example
  * note("c2 a2 eb2")
  * .euclid(5,8)
