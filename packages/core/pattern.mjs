@@ -40,12 +40,12 @@ export const calculateSteps = function (x) {
 // intended to use with mini to automatically interpret all strings as mini notation
 export const setStringParser = (parser) => (stringParser = parser);
 
-/** @class Class representing a pattern. */
+/** @class Classe représentant un pattern. */
 export class Pattern {
   /**
-   * Create a pattern. As an end user, you will most likely not create a Pattern directly.
+   * Crée un pattern. En tant qu'utilisateur final, vous ne créerez probablement pas un Pattern directement.
    *
-   * @param {function} query - The function that maps a `State` to an array of `Hap`.
+   * @param {function} query - La fonction qui mappe un `State` vers un tableau de `Hap`.
    * @noAutocomplete
    */
   constructor(query, steps = undefined) {
@@ -82,10 +82,10 @@ export class Pattern {
   // Haskell-style functor, applicative and monadic operations
 
   /**
-   * Returns a new pattern, with the function applied to the value of
-   * each hap. It has the alias `fmap`.
+   * Retourne un nouveau pattern, avec la fonction appliquée à la valeur de
+   * chaque hap. A l'alias `fmap`.
    * @synonyms fmap
-   * @param {Function} func to to apply to the value
+   * @param {Function} func à appliquer à la valeur
    * @returns Pattern
    * @example
    * "0 1 2".withValue(v => v + 10).log()
@@ -102,7 +102,7 @@ export class Pattern {
   }
 
   /**
-   * see `withValue`
+   * voir `withValue`
    * @noAutocomplete
    */
   fmap(func) {
@@ -110,9 +110,9 @@ export class Pattern {
   }
 
   /**
-   * Assumes 'this' is a pattern of functions, and given a function to
-   * resolve wholes, applies a given pattern of values to that
-   * pattern of functions.
+   * Suppose que 'this' est un pattern de fonctions, et étant donnée une fonction pour
+   * résoudre les wholes, applique un pattern de valeurs donné à ce
+   * pattern de fonctions.
    * @param {Function} whole_func
    * @param {Function} func
    * @noAutocomplete
@@ -143,13 +143,13 @@ export class Pattern {
   }
 
   /**
-   * When this method is called on a pattern of functions, it matches its haps
-   * with those in the given pattern of values.  A new pattern is returned, with
-   * each matching value applied to the corresponding function.
+   * Lorsque cette méthode est appelée sur un pattern de fonctions, elle fait correspondre ses haps
+   * avec ceux du pattern de valeurs donné. Un nouveau pattern est retourné, avec
+   * chaque valeur correspondante appliquée à la fonction correspondante.
    *
-   * In this `_appBoth` variant, where timespans of the function and value haps
-   * are not the same but do intersect, the resulting hap has a timespan of the
-   * intersection. This applies to both the part and the whole timespan.
+   * Dans cette variante `_appBoth`, où les timespans des haps de fonction et de valeur
+   * ne sont pas identiques mais se croisent, le hap résultant a un timespan de
+   * l'intersection. Ceci s'applique à la fois au part et au whole timespan.
    * @param {Pattern} pat_val
    * @noAutocomplete
    * @returns Pattern
@@ -172,11 +172,11 @@ export class Pattern {
   }
 
   /**
-   * As with `appBoth`, but the `whole` timespan is not the intersection,
-   * but the timespan from the function of patterns that this method is called
-   * on. In practice, this means that the pattern structure, including onsets,
-   * are preserved from the pattern of functions (often referred to as the left
-   * hand or inner pattern).
+   * Comme avec `appBoth`, mais le timespan `whole` n'est pas l'intersection,
+   * mais le timespan du pattern de fonctions sur lequel cette méthode est appelée.
+   * En pratique, cela signifie que la structure du pattern, y compris les déclenchements,
+   * est préservée du pattern de fonctions (souvent appelé le pattern de gauche
+   * ou pattern interne).
    * @param {Pattern} pat_val
    * @noAutocomplete
    * @returns Pattern
@@ -207,9 +207,8 @@ export class Pattern {
   }
 
   /**
-   * As with `appLeft`, but `whole` timespans are instead taken from the
-   * pattern of values, i.e. structure is preserved from the right hand/outer
-   * pattern.
+   * Comme avec `appLeft`, mais les timespans `whole` sont plutôt pris du
+   * pattern de valeurs, c'est-à-dire que la structure est préservée du pattern de droite/externe.
    * @param {Pattern} pat_val
    * @noAutocomplete
    * @returns Pattern
@@ -398,10 +397,10 @@ export class Pattern {
   // Utility methods mainly for internal use
 
   /**
-   * Query haps inside the given time span.
+   * Interroge les haps dans le timespan donné.
    *
-   * @param {Fraction | number} begin from time
-   * @param {Fraction | number} end to time
+   * @param {Fraction | number} begin temps de début
+   * @param {Fraction | number} end temps de fin
    * @returns Hap[]
    * @example
    * const pattern = sequence('a', ['b', 'c'])
@@ -420,9 +419,9 @@ export class Pattern {
   }
 
   /**
-   * Returns a new pattern, with queries split at cycle boundaries. This makes
-   * some calculations easier to express, as all haps are then constrained to
-   * happen within a cycle.
+   * Retourne un nouveau pattern, avec les requêtes divisées aux limites de cycle. Cela rend
+   * certains calculs plus faciles à exprimer, car tous les haps sont alors contraints à
+   * se produire dans un cycle.
    * @returns Pattern
    * @noAutocomplete
    */
@@ -435,9 +434,9 @@ export class Pattern {
   }
 
   /**
-   * Returns a new pattern, where the given function is applied to the query
-   * timespan before passing it to the original pattern.
-   * @param {Function} func the function to apply
+   * Retourne un nouveau pattern, où la fonction donnée est appliquée au timespan
+   * de requête avant de le passer au pattern original.
+   * @param {Function} func la fonction à appliquer
    * @returns Pattern
    * @noAutocomplete
    */
@@ -457,9 +456,9 @@ export class Pattern {
   }
 
   /**
-   * As with `withQuerySpan`, but the function is applied to both the
-   * begin and end time of the query timespan.
-   * @param {Function} func the function to apply
+   * Comme avec `withQuerySpan`, mais la fonction est appliquée à la fois au
+   * temps de début et de fin du timespan de requête.
+   * @param {Function} func la fonction à appliquer
    * @returns Pattern
    * @noAutocomplete
    */
@@ -468,9 +467,9 @@ export class Pattern {
   }
 
   /**
-   * Similar to `withQuerySpan`, but the function is applied to the timespans
-   * of all haps returned by pattern queries (both `part` timespans, and where
-   * present, `whole` timespans).
+   * Similaire à `withQuerySpan`, mais la fonction est appliquée aux timespans
+   * de tous les haps retournés par les requêtes de pattern (à la fois les timespans `part`, et lorsque
+   * présents, les timespans `whole`).
    * @param {Function} func
    * @returns Pattern
    * @noAutocomplete
@@ -480,9 +479,9 @@ export class Pattern {
   }
 
   /**
-   * As with `withHapSpan`, but the function is applied to both the
-   * begin and end time of the hap timespans.
-   * @param {Function} func the function to apply
+   * Comme avec `withHapSpan`, mais la fonction est appliquée à la fois au
+   * temps de début et de fin des timespans de hap.
+   * @param {Function} func la fonction à appliquer
    * @returns Pattern
    * @noAutocomplete
    */
@@ -491,7 +490,7 @@ export class Pattern {
   }
 
   /**
-   * Returns a new pattern with the given function applied to the list of haps returned by every query.
+   * Retourne un nouveau pattern avec la fonction donnée appliquée à la liste de haps retournés par chaque requête.
    * @param {Function} func
    * @returns Pattern
    * @noAutocomplete
@@ -503,7 +502,7 @@ export class Pattern {
   }
 
   /**
-   * As with `withHaps`, but applies the function to every hap, rather than every list of haps.
+   * Comme avec `withHaps`, mais applique la fonction à chaque hap, plutôt qu'à chaque liste de haps.
    * @param {Function} func
    * @returns Pattern
    * @noAutocomplete
@@ -513,7 +512,7 @@ export class Pattern {
   }
 
   /**
-   * Returns a new pattern with the context field set to every hap set to the given value.
+   * Retourne un nouveau pattern avec le champ context de chaque hap défini sur la valeur donnée.
    * @param {*} context
    * @returns Pattern
    * @noAutocomplete
@@ -523,7 +522,7 @@ export class Pattern {
   }
 
   /**
-   * Returns a new pattern with the given function applied to the context field of every hap.
+   * Retourne un nouveau pattern avec la fonction donnée appliquée au champ context de chaque hap.
    * @param {Function} func
    * @returns Pattern
    * @noAutocomplete
@@ -538,7 +537,7 @@ export class Pattern {
   }
 
   /**
-   * Returns a new pattern with the context field of every hap set to an empty object.
+   * Retourne un nouveau pattern avec le champ context de chaque hap défini sur un objet vide.
    * @returns Pattern
    * @noAutocomplete
    */
@@ -547,10 +546,10 @@ export class Pattern {
   }
 
   /**
-   * Returns a new pattern with the given location information added to the
-   * context of every hap.
-   * @param {Number} start start offset
-   * @param {Number} end end offset
+   * Retourne un nouveau pattern avec les informations de localisation données ajoutées au
+   * context de chaque hap.
+   * @param {Number} start décalage de début
+   * @param {Number} end décalage de fin
    * @returns Pattern
    * @noAutocomplete
    */
@@ -571,8 +570,8 @@ export class Pattern {
   }
 
   /**
-   * Returns a new Pattern, which only returns haps that meet the given test.
-   * @param {Function} hap_test - a function which returns false for haps to be removed from the pattern
+   * Retourne un nouveau Pattern, qui ne retourne que les haps qui satisfont le test donné.
+   * @param {Function} hap_test - une fonction qui retourne false pour les haps à supprimer du pattern
    * @returns Pattern
    * @noAutocomplete
    */
@@ -581,8 +580,8 @@ export class Pattern {
   }
 
   /**
-   * As with `filterHaps`, but the function is applied to values
-   * inside haps.
+   * Comme avec `filterHaps`, mais la fonction est appliquée aux valeurs
+   * à l'intérieur des haps.
    * @param {Function} value_test
    * @returns Pattern
    * @noAutocomplete
@@ -592,8 +591,8 @@ export class Pattern {
   }
 
   /**
-   * Returns a new pattern, with haps containing undefined values removed from
-   * query results.
+   * Retourne un nouveau pattern, avec les haps contenant des valeurs undefined supprimés des
+   * résultats de requête.
    * @returns Pattern
    * @noAutocomplete
    */
@@ -602,9 +601,9 @@ export class Pattern {
   }
 
   /**
-   * Returns a new pattern, with all haps without onsets filtered out. A hap
-   * with an onset is one with a `whole` timespan that begins at the same time
-   * as its `part` timespan.
+   * Retourne un nouveau pattern, avec tous les haps sans déclenchements filtrés. Un hap
+   * avec un déclenchement est un hap avec un timespan `whole` qui commence au même moment
+   * que son timespan `part`.
    * @returns Pattern
    * @noAutocomplete
    */
@@ -616,8 +615,8 @@ export class Pattern {
   }
 
   /**
-   * Returns a new pattern, with 'continuous' haps (those without 'whole'
-   * timespans) removed from query results.
+   * Retourne un nouveau pattern, avec les haps 'continus' (ceux sans timespans
+   * 'whole') supprimés des résultats de requête.
    * @returns Pattern
    * @noAutocomplete
    */
@@ -627,8 +626,8 @@ export class Pattern {
   }
 
   /**
-   * Combines adjacent haps with the same value and whole.  Only
-   * intended for use in tests.
+   * Combine les haps adjacents avec la même valeur et whole. Destiné
+   * uniquement à être utilisé dans les tests.
    * @noAutocomplete
    */
   defragmentHaps() {
@@ -679,10 +678,10 @@ export class Pattern {
   }
 
   /**
-   * Queries the pattern for the first cycle, returning Haps. Mainly of use when
-   * debugging a pattern.
-   * @param {Boolean} with_context - set to true, otherwise the context field
-   * will be stripped from the resulting haps.
+   * Interroge le pattern pour le premier cycle, retournant des Haps. Principalement utile lors du
+   * débogage d'un pattern.
+   * @param {Boolean} with_context - définir sur true, sinon le champ context
+   * sera supprimé des haps résultants.
    * @returns [Hap]
    * @noAutocomplete
    */
@@ -695,7 +694,7 @@ export class Pattern {
   }
 
   /**
-   * Accessor for a list of values returned by querying the first cycle.
+   * Accesseur pour une liste de valeurs retournées en interrogeant le premier cycle.
    * @noAutocomplete
    */
   get firstCycleValues() {
@@ -703,7 +702,7 @@ export class Pattern {
   }
 
   /**
-   * More human-readable version of the `firstCycleValues` accessor.
+   * Version plus lisible de l'accesseur `firstCycleValues`.
    * @noAutocomplete
    */
   get showFirstCycle() {
@@ -713,8 +712,8 @@ export class Pattern {
   }
 
   /**
-   * Returns a new pattern, which returns haps sorted in temporal order. Mainly
-   * of use when comparing two patterns for equality, in tests.
+   * Retourne un nouveau pattern, qui retourne les haps triés par ordre temporel. Principalement
+   * utile lors de la comparaison de deux patterns pour l'égalité, dans les tests.
    * @returns Pattern
    * @noAutocomplete
    */
@@ -777,7 +776,7 @@ export class Pattern {
   // Methods without corresponding toplevel functions
 
   /**
-   * Layers the result of the given function(s). Like `superimpose`, but without the original pattern:
+   * Superpose le résultat de la/des fonction(s) donnée(s). Comme `superimpose`, mais sans le pattern original :
    * @name layer
    * @memberof Pattern
    * @synonyms apply
@@ -792,7 +791,7 @@ export class Pattern {
   }
 
   /**
-   * Superimposes the result of the given function(s) on top of the original pattern:
+   * Superpose le résultat de la/des fonction(s) donnée(s) par-dessus le pattern original :
    * @name superimpose
    * @memberof Pattern
    * @returns Pattern
@@ -852,7 +851,7 @@ export class Pattern {
   }
 
   /**
-   * Writes the content of the current event to the console (visible in the side menu).
+   * Écrit le contenu de l'événement actuel dans la console (visible dans le menu latéral).
    * @name log
    * @memberof Pattern
    * @example
@@ -865,8 +864,8 @@ export class Pattern {
   }
 
   /**
-   * A simplified version of `log` which writes all "values" (various configurable parameters)
-   * within the event to the console (visible in the side menu).
+   * Une version simplifiée de `log` qui écrit toutes les "valeurs" (divers paramètres configurables)
+   * de l'événement dans la console (visible dans le menu latéral).
    * @name logValues
    * @memberof Pattern
    * @example
@@ -895,11 +894,11 @@ export class Pattern {
   }
 
   /**
-   * Breaks a pattern into pieces according to the structure of a given pattern.
-   * True values in the given pattern cause the corresponding subcycle of the
-   * source pattern to be looped, and for an (optional) given function to be
-   * applied. False values result in the corresponding part of the source pattern
-   * to be played unchanged.
+   * Divise un pattern en morceaux selon la structure d'un pattern donné.
+   * Les valeurs True dans le pattern donné font que le sous-cycle correspondant du
+   * pattern source est bouclé, et qu'une fonction donnée (optionnelle) soit
+   * appliquée. Les valeurs False font que la partie correspondante du pattern source
+   * est jouée sans modification.
    * @name into
    * @memberof Pattern
    * @example
@@ -938,7 +937,7 @@ Pattern.prototype.collect = function () {
 };
 
 /**
- * Selects indices in in stacked notes.
+ * Sélectionne des indices dans les notes empilées.
  * @example
  * note("<[c,eb,g]!2 [c,f,ab] [d,f,ab]>")
  * .arpWith(haps => haps[2])
@@ -952,7 +951,7 @@ export const arpWith = register('arpWith', (func, pat) => {
 });
 
 /**
- * Selects indices in in stacked notes.
+ * Sélectionne des indices dans les notes empilées.
  * @example
  * note("<[c,eb,g]!2 [c,f,ab] [d,f,ab]>")
  * .arp("0 [0,2] 1 [0,2]")
@@ -1022,7 +1021,7 @@ function _composeOp(a, b, func) {
     // numerical functions
     /**
      *
-     * Assumes a pattern of numbers. Adds the given number to each item in the pattern.
+     * Suppose un pattern de nombres. Ajoute le nombre donné à chaque élément du pattern.
      * @name add
      * @memberof Pattern
      * @example
@@ -1039,7 +1038,7 @@ function _composeOp(a, b, func) {
     add: [numeralArgs((a, b) => a + b)], // support string concatenation
     /**
      *
-     * Like add, but the given numbers are subtracted.
+     * Comme add, mais les nombres donnés sont soustraits.
      * @name sub
      * @memberof Pattern
      * @example
@@ -1049,7 +1048,7 @@ function _composeOp(a, b, func) {
     sub: [numeralArgs((a, b) => a - b)],
     /**
      *
-     * Multiplies each number by the given factor.
+     * Multiplie chaque nombre par le facteur donné.
      * @name mul
      * @memberof Pattern
      * @example
@@ -1058,7 +1057,7 @@ function _composeOp(a, b, func) {
     mul: [numeralArgs((a, b) => a * b)],
     /**
      *
-     * Divides each number by the given factor.
+     * Divise chaque nombre par le facteur donné.
      * @name div
      * @memberof Pattern
      */
@@ -1145,7 +1144,7 @@ function _composeOp(a, b, func) {
 
   // binary composers
   /**
-   * Applies the given structure to the pattern:
+   * Applique la structure donnée au pattern :
    *
    * @example
    * note("c,eb,g")
@@ -1159,7 +1158,7 @@ function _composeOp(a, b, func) {
     return this.keep.out(...args);
   };
   /**
-   * Returns silence when mask is 0 or "~"
+   * Retourne le silence lorsque mask est 0 ou "~"
    *
    * @example
    * note("c [eb,g] d [eb,g]").mask("<1 [0 1]>")
@@ -1171,7 +1170,7 @@ function _composeOp(a, b, func) {
     return this.keep.in(...args);
   };
   /**
-   * Resets the pattern to the start of the cycle for each onset of the reset pattern.
+   * Réinitialise le pattern au début du cycle pour chaque déclenchement du pattern de reset.
    *
    * @example
    * s("[<bd lt> sd]*2, hh*8").reset("<x@3 x(5,8)>")
@@ -1183,8 +1182,8 @@ function _composeOp(a, b, func) {
     return this.keep.reset(...args);
   };
   /**
-   * Restarts the pattern for each onset of the restart pattern.
-   * While reset will only reset the current cycle, restart will start from cycle 0.
+   * Redémarre le pattern pour chaque déclenchement du pattern de restart.
+   * Alors que reset ne réinitialise que le cycle actuel, restart démarre depuis le cycle 0.
    *
    * @example
    * s("[<bd lt> sd]*2, hh*8").restart("<x@3 x(5,8)>")
@@ -1224,7 +1223,7 @@ export const pm = polymeter;
 // Elemental patterns
 
 /**
- * Does absolutely nothing, but with a given metrical 'steps'
+ * Ne fait absolument rien, mais avec un nombre de 'steps' métrique donné
  * @name gap
  * @param  {number} steps
  * @example
@@ -1233,7 +1232,7 @@ export const pm = polymeter;
 export const gap = (steps) => new Pattern(() => [], steps);
 
 /**
- * Does absolutely nothing..
+ * Ne fait absolument rien..
  * @name silence
  * @example
  * silence // "~"
@@ -1244,7 +1243,7 @@ export const silence = gap(1);
 export const nothing = gap(0);
 
 /**
- * A discrete value that repeats once per cycle.
+ * Une valeur discrète qui se répète une fois par cycle.
  *
  * @returns {Pattern}
  * @example
@@ -1287,7 +1286,7 @@ export function reify(thing) {
   return pure(thing);
 }
 
-/** Takes a list of patterns, and returns a pattern of lists.
+/** Prend une liste de patterns, et retourne un pattern de listes.
  */
 export function sequenceP(pats) {
   let result = pure([]);
@@ -1298,7 +1297,7 @@ export function sequenceP(pats) {
 }
 
 /**
- * The given items are played at the same time at the same length.
+ * Les éléments donnés sont joués en même temps à la même longueur.
  *
  * @return {Pattern}
  * @synonyms polyrhythm, pr
@@ -1382,7 +1381,7 @@ export function stackBy(by, ...pats) {
 }
 
 /**
- * Concatenation: combines a list of patterns, switching between them successively, one per cycle.
+ * Concaténation : combine une liste de patterns, basculant entre eux successivement, un par cycle.
  *
  * @return {Pattern}
  * @synonyms cat
@@ -1416,8 +1415,8 @@ export function slowcat(...pats) {
   return new Pattern(query).splitQueries().setSteps(steps);
 }
 
-/** Concatenation: combines a list of patterns, switching between them successively, one per cycle. Unlike slowcat, this version will skip cycles.
- * @param {...any} items - The items to concatenate
+/** Concaténation : combine une liste de patterns, basculant entre eux successivement, un par cycle. Contrairement à slowcat, cette version sautera des cycles.
+ * @param {...any} items - Les éléments à concaténer
  * @return {Pattern}
  */
 export function slowcatPrime(...pats) {
@@ -1430,9 +1429,9 @@ export function slowcatPrime(...pats) {
   return new Pattern(query).splitQueries();
 }
 
-/** The given items are con**cat**enated, where each one takes one cycle.
+/** Les éléments donnés sont con**caténés**, où chacun prend un cycle.
  *
- * @param {...any} items - The items to concatenate
+ * @param {...any} items - Les éléments à concaténer
  * @synonyms slowcat
  * @return {Pattern}
  * @example
@@ -1450,8 +1449,8 @@ export function cat(...pats) {
 }
 
 /**
- * Allows to arrange multiple patterns together over multiple cycles.
- * Takes a variable number of arrays with two elements specifying the number of cycles and the pattern to use.
+ * Permet d'arranger plusieurs patterns ensemble sur plusieurs cycles.
+ * Prend un nombre variable de tableaux avec deux éléments spécifiant le nombre de cycles et le pattern à utiliser.
  *
  * @return {Pattern}
  * @example
@@ -1467,9 +1466,9 @@ export function arrange(...sections) {
 }
 
 /**
- * Similarly to `arrange`, allows you to arrange multiple patterns together over multiple cycles.
- * Unlike `arrange`, you specify a start and stop time for each pattern rather than duration, which
- * means that patterns can overlap.
+ * Similaire à `arrange`, vous permet d'arranger plusieurs patterns ensemble sur plusieurs cycles.
+ * Contrairement à `arrange`, vous spécifiez un temps de début et de fin pour chaque pattern plutôt qu'une durée, ce qui
+ * signifie que les patterns peuvent se chevaucher.
  * @return {Pattern}
  * @example
 seqPLoop([0, 2, "bd(3,8)"],
