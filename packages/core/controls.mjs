@@ -73,11 +73,11 @@ export function registerControl(names, ...aliases) {
 }
 
 /**
- * Select a sound / sample by name. When using mininotation, you can also optionally supply 'n' and 'gain' parameters
- * separated by ':'.
+ * Sélectionne un son / échantillon par nom. En utilisant la mininotation, vous pouvez également fournir en option les paramètres 'n' et 'gain'
+ * séparés par ':'.
  *
  * @name s
- * @param {string | Pattern} sound The sound / pattern of sounds to pick
+ * @param {string | Pattern} sound Le son / pattern de sons à choisir
  * @synonyms sound
  * @example
  * s("bd hh")
@@ -88,10 +88,10 @@ export function registerControl(names, ...aliases) {
 export const { s, sound } = registerControl(['s', 'n', 'gain'], 'sound');
 
 /**
- * Position in the wavetable of the wavetable oscillator
+ * Position dans la table d'onde de l'oscillateur à table d'onde
  *
  * @name wt
- * @param {number | Pattern} position Position in the wavetable from 0 to 1
+ * @param {number | Pattern} position Position dans la table d'onde de 0 à 1
  * @synonyms wavetablePosition
  * @example
  * s("squelch").bank("wt_digital").seg(8).note("F1").wt("0 0.25 0.5 0.75 1")
@@ -99,100 +99,100 @@ export const { s, sound } = registerControl(['s', 'n', 'gain'], 'sound');
 export const { wt, wavetablePosition } = registerControl('wt', 'wavetablePosition');
 
 /**
- * Amount of envelope applied wavetable oscillator's position envelope
+ * Quantité d'enveloppe appliquée à l'enveloppe de position de l'oscillateur à table d'onde
  *
  * @name wtenv
- * @param {number | Pattern} amount between 0 and 1
+ * @param {number | Pattern} amount entre 0 et 1
  */
 export const { wtenv } = registerControl('wtenv');
 /**
- * Attack time of the wavetable oscillator's position envelope
+ * Temps d'attaque de l'enveloppe de position de l'oscillateur à table d'onde
  *
  * @name wtattack
  * @synonyms wtatt
- * @param {number | Pattern} time attack time in seconds
+ * @param {number | Pattern} time temps d'attaque en secondes
  */
 export const { wtattack, wtatt } = registerControl('wtattack', 'wtatt');
 
 /**
- * Decay time of the wavetable oscillator's position envelope
+ * Temps de déclin de l'enveloppe de position de l'oscillateur à table d'onde
  *
  * @name wtdecay
  * @synonyms wtdec
- * @param {number | Pattern} time decay time in seconds
+ * @param {number | Pattern} time temps de déclin en secondes
  */
 export const { wtdecay, wtdec } = registerControl('wtdecay', 'wtdec');
 
 /**
- * Sustain time of the wavetable oscillator's position envelope
+ * Niveau de maintien de l'enveloppe de position de l'oscillateur à table d'onde
  *
  * @name wtsustain
  * @synonyms wtsus
- * @param {number | Pattern} gain sustain level (0 to 1)
+ * @param {number | Pattern} gain niveau de maintien (0 à 1)
  */
 export const { wtsustain, wtsus } = registerControl('wtsustain', 'wtsus');
 
 /**
- * Release time of the wavetable oscillator's position envelope
+ * Temps de relâchement de l'enveloppe de position de l'oscillateur à table d'onde
  *
  * @name wtrelease
  * @synonyms wtrel
- * @param {number | Pattern} time release time in seconds
+ * @param {number | Pattern} time temps de relâchement en secondes
  */
 export const { wtrelease, wtrel } = registerControl('wtrelease', 'wtrel');
 
 /**
- * Rate of the LFO for the wavetable oscillator's position
+ * Fréquence du LFO pour la position de l'oscillateur à table d'onde
  *
  * @name wtrate
- * @param {number | Pattern} rate rate in hertz
+ * @param {number | Pattern} rate fréquence en hertz
  */
 export const { wtrate } = registerControl('wtrate');
 /**
- * cycle synced rate of the LFO for the wavetable oscillator's position
+ * fréquence synchronisée au cycle du LFO pour la position de l'oscillateur à table d'onde
  *
  * @name wtsync
- * @param {number | Pattern} rate rate in cycles
+ * @param {number | Pattern} rate fréquence en cycles
  */
 export const { wtsync } = registerControl('wtsync');
 
 /**
- * Depth of the LFO for the wavetable oscillator's position
+ * Profondeur du LFO pour la position de l'oscillateur à table d'onde
  *
  * @name wtdepth
- * @param {number | Pattern} depth depth of modulation
+ * @param {number | Pattern} depth profondeur de modulation
  */
 export const { wtdepth } = registerControl('wtdepth');
 
 /**
- * Shape of the LFO for the wavetable oscillator's position
+ * Forme du LFO pour la position de l'oscillateur à table d'onde
  *
  * @name wtshape
- * @param {number | Pattern} shape Shape of the lfo (0, 1, 2, ..)
+ * @param {number | Pattern} shape Forme du lfo (0, 1, 2, ..)
  */
 export const { wtshape } = registerControl('wtshape');
 
 /**
- * DC offset of the LFO for the wavetable oscillator's position
+ * Offset DC du LFO pour la position de l'oscillateur à table d'onde
  *
  * @name wtdc
- * @param {number | Pattern} dcoffset dc offset. set to 0 for unipolar
+ * @param {number | Pattern} dcoffset offset dc. mettre à 0 pour unipolaire
  */
 export const { wtdc } = registerControl('wtdc');
 
 /**
- * Skew of the LFO for the wavetable oscillator's position
+ * Inclinaison du LFO pour la position de l'oscillateur à table d'onde
  *
  * @name wtskew
- * @param {number | Pattern} skew How much to bend the LFO shape
+ * @param {number | Pattern} skew À quel point déformer la forme du LFO
  */
 export const { wtskew } = registerControl('wtskew');
 
 /**
- * Amount of warp (alteration of the waveform) to apply to the wavetable oscillator
+ * Quantité de déformation (altération de la forme d'onde) à appliquer à l'oscillateur à table d'onde
  *
  * @name warp
- * @param {number | Pattern} amount Warp of the wavetable from 0 to 1
+ * @param {number | Pattern} amount Déformation de la table d'onde de 0 à 1
  * @synonyms wavetableWarp
  * @example
  * s("basique").bank("wt_digital").seg(8).note("F1").warp("0 0.25 0.5 0.75 1")
@@ -201,89 +201,89 @@ export const { wtskew } = registerControl('wtskew');
 export const { warp, wavetableWarp } = registerControl('warp', 'wavetableWarp');
 
 /**
- * Attack time of the wavetable oscillator's warp envelope
+ * Temps d'attaque de l'enveloppe de déformation de l'oscillateur à table d'onde
  *
  * @name warpattack
  * @synonyms warpatt
- * @param {number | Pattern} time attack time in seconds
+ * @param {number | Pattern} time temps d'attaque en secondes
  */
 export const { warpattack, warpatt } = registerControl('warpattack', 'warpatt');
 
 /**
- * Decay time of the wavetable oscillator's warp envelope
+ * Temps de déclin de l'enveloppe de déformation de l'oscillateur à table d'onde
  *
  * @name warpdecay
  * @synonyms warpdec
- * @param {number | Pattern} time decay time in seconds
+ * @param {number | Pattern} time temps de déclin en secondes
  */
 export const { warpdecay, warpdec } = registerControl('warpdecay', 'warpdec');
 
 /**
- * Sustain time of the wavetable oscillator's warp envelope
+ * Niveau de maintien de l'enveloppe de déformation de l'oscillateur à table d'onde
  *
  * @name warpsustain
  * @synonyms warpsus
- * @param {number | Pattern} gain sustain level (0 to 1)
+ * @param {number | Pattern} gain niveau de maintien (0 à 1)
  */
 export const { warpsustain, warpsus } = registerControl('warpsustain', 'warpsus');
 
 /**
- * Release time of the wavetable oscillator's warp envelope
+ * Temps de relâchement de l'enveloppe de déformation de l'oscillateur à table d'onde
  *
  * @name warprelease
  * @synonyms warprel
- * @param {number | Pattern} time release time in seconds
+ * @param {number | Pattern} time temps de relâchement en secondes
  */
 export const { warprelease, warprel } = registerControl('warprelease', 'warprel');
 
 /**
- * Rate of the LFO for the wavetable oscillator's warp
+ * Fréquence du LFO pour la déformation de l'oscillateur à table d'onde
  *
  * @name warprate
- * @param {number | Pattern} rate rate in hertz
+ * @param {number | Pattern} rate fréquence en hertz
  */
 export const { warprate } = registerControl('warprate');
 
 /**
- * Depth of the LFO for the wavetable oscillator's warp
+ * Profondeur du LFO pour la déformation de l'oscillateur à table d'onde
  *
  * @name warpdepth
- * @param {number | Pattern} depth depth of modulation
+ * @param {number | Pattern} depth profondeur de modulation
  */
 export const { warpdepth } = registerControl('warpdepth');
 
 /**
- * Shape of the LFO for the wavetable oscillator's warp
+ * Forme du LFO pour la déformation de l'oscillateur à table d'onde
  *
  * @name warpshape
- * @param {number | Pattern} shape Shape of the lfo (0, 1, 2, ..)
+ * @param {number | Pattern} shape Forme du lfo (0, 1, 2, ..)
  */
 export const { warpshape } = registerControl('warpshape');
 
 /**
- * DC offset of the LFO for the wavetable oscillator's warp
+ * Offset DC du LFO pour la déformation de l'oscillateur à table d'onde
  *
  * @name warpdc
- * @param {number | Pattern} dcoffset dc offset. set to 0 for unipolar
+ * @param {number | Pattern} dcoffset offset dc. mettre à 0 pour unipolaire
  */
 export const { warpdc } = registerControl('warpdc');
 
 /**
- * Skew of the LFO for the wavetable oscillator's warp
+ * Inclinaison du LFO pour la déformation de l'oscillateur à table d'onde
  *
  * @name warpskew
- * @param {number | Pattern} skew How much to bend the LFO shape
+ * @param {number | Pattern} skew À quel point déformer la forme du LFO
  */
 export const { warpskew } = registerControl('warpskew');
 
 /**
- * Type of warp (alteration of the waveform) to apply to the wavetable oscillator.
+ * Type de déformation (altération de la forme d'onde) à appliquer à l'oscillateur à table d'onde.
  *
- * The current options are: none, asym, bendp, bendm, bendmp, sync, quant, fold, pwm, orbit,
+ * Les options actuelles sont : none, asym, bendp, bendm, bendmp, sync, quant, fold, pwm, orbit,
  * spin, chaos, primes, binary, brownian, reciprocal, wormhole, logistic, sigmoid, fractal, flip
  *
  * @name warpmode
- * @param {number | string | Pattern} mode Warp mode
+ * @param {number | string | Pattern} mode Mode de déformation
  * @synonyms wavetableWarpMode
  * @example
  * s("morgana").bank("wt_digital").seg(8).note("F1").warp("0 0.25 0.5 0.75 1")
@@ -293,10 +293,10 @@ export const { warpskew } = registerControl('warpskew');
 export const { warpmode, wavetableWarpMode } = registerControl('warpmode', 'wavetableWarpMode');
 
 /**
- * Amount of randomness of the initial phase of the wavetable oscillator.
+ * Quantité d'aléatoire de la phase initiale de l'oscillateur à table d'onde.
  *
  * @name wtphaserand
- * @param {number | Pattern} amount Randomness of the initial phase. Between 0 (not random) and 1 (fully random)
+ * @param {number | Pattern} amount Aléatoire de la phase initiale. Entre 0 (pas aléatoire) et 1 (totalement aléatoire)
  * @synonyms wavetablePhaseRand
  * @example
  * s("basique").bank("wt_digital").seg(16).wtphaserand("<0 1>")
@@ -305,23 +305,23 @@ export const { warpmode, wavetableWarpMode } = registerControl('warpmode', 'wave
 export const { wtphaserand, wavetablePhaseRand } = registerControl('wtphaserand', 'wavetablePhaseRand');
 
 /**
- * Amount of envelope applied wavetable oscillator's position envelope
+ * Quantité d'enveloppe appliquée à l'enveloppe de position de l'oscillateur à table d'onde
  *
  * @name warpenv
- * @param {number | Pattern} amount between 0 and 1
+ * @param {number | Pattern} amount entre 0 et 1
  */
 export const { warpenv } = registerControl('warpenv');
 
 /**
- * cycle synced rate of the LFO for the wavetable warp position
+ * fréquence synchronisée au cycle du LFO pour la position de déformation de la table d'onde
  *
  * @name warpsync
- * @param {number | Pattern} rate rate in cycles
+ * @param {number | Pattern} rate fréquence en cycles
  */
 export const { warpsync } = registerControl('warpsync');
 
 /**
- * Define a custom webaudio node to use as a sound source.
+ * Définit un nœud webaudio personnalisé à utiliser comme source sonore.
  *
  * @name source
  * @synonyms src
@@ -331,27 +331,27 @@ export const { warpsync } = registerControl('warpsync');
  */
 export const { source, src } = registerControl('source', 'src');
 /**
- * Selects the given index from the sample map.
- * Numbers too high will wrap around.
- * `n` can also be used to play midi numbers, but it is recommended to use `note` instead.
+ * Sélectionne l'index donné depuis la carte d'échantillons.
+ * Les nombres trop élevés boucleront.
+ * `n` peut aussi être utilisé pour jouer des numéros midi, mais il est recommandé d'utiliser `note` à la place.
  *
  * @name n
- * @param {number | Pattern} value sample index starting from 0
+ * @param {number | Pattern} value index d'échantillon commençant à 0
  * @example
  * s("bd sd [~ bd] sd,hh*6").n("<0 1>")
  */
 // also see https://codeberg.org/uzu/strudel/pulls/63
 export const { n } = registerControl('n');
 /**
- * Plays the given note name or midi number. A note name consists of
+ * Joue le nom de note ou numéro midi donné. Un nom de note consiste en
  *
- * - a letter (a-g or A-G)
- * - optional accidentals (b or #)
- * - optional (possibly negative) octave number (0-9). Defaults to 3
+ * - une lettre (a-g ou A-G)
+ * - altérations optionnelles (b ou #)
+ * - numéro d'octave optionnel (possiblement négatif) (0-9). Par défaut 3
  *
- * Examples of valid note names: `c`, `bb`, `Bb`, `f#`, `c3`, `A4`, `Eb2`, `c#5`
+ * Exemples de noms de notes valides : `c`, `bb`, `Bb`, `f#`, `c3`, `A4`, `Eb2`, `c#5`
  *
- * You can also use midi numbers instead of note names, where 69 is mapped to A4 440Hz in 12EDO.
+ * Vous pouvez également utiliser des numéros midi au lieu de noms de notes, où 69 est mappé à A4 440Hz en 12EDO.
  *
  * @name note
  * @example
@@ -366,10 +366,10 @@ export const { n } = registerControl('n');
 export const { note } = registerControl(['note', 'n']);
 
 /**
- * A pattern of numbers that speed up (or slow down) samples while they play. Currently only supported by osc / superdirt.
+ * Un pattern de nombres qui accélèrent (ou ralentissent) les échantillons pendant qu'ils jouent. Actuellement supporté uniquement par osc / superdirt.
  *
  * @name accelerate
- * @param {number | Pattern} amount acceleration.
+ * @param {number | Pattern} amount accélération.
  * @superdirtOnly
  * @example
  * s("sax").accelerate("<0 1 2 4 8 16>").slow(2).osc()
@@ -377,7 +377,7 @@ export const { note } = registerControl(['note', 'n']);
  */
 export const { accelerate } = registerControl('accelerate');
 /**
- * Sets the velocity from 0 to 1. Is multiplied together with gain.
+ * Définit la vélocité de 0 à 1. Est multiplié avec gain.
  *
  * @name velocity
  * @example
@@ -387,7 +387,7 @@ export const { accelerate } = registerControl('accelerate');
  */
 export const { velocity } = registerControl('velocity');
 /**
- * Controls the gain by an exponential amount.
+ * Contrôle le gain par une quantité exponentielle.
  *
  * @name gain
  * @param {number | Pattern} amount gain.
@@ -397,7 +397,7 @@ export const { velocity } = registerControl('velocity');
  */
 export const { gain } = registerControl('gain');
 /**
- * Gain applied after all effects have been processed.
+ * Gain appliqué après que tous les effets aient été traités.
  *
  * @name postgain
  * @example
@@ -407,7 +407,7 @@ export const { gain } = registerControl('gain');
  */
 export const { postgain } = registerControl('postgain');
 /**
- * Like `gain`, but linear.
+ * Comme `gain`, mais linéaire.
  *
  * @name amp
  * @param {number | Pattern} amount gain.
@@ -418,10 +418,10 @@ export const { postgain } = registerControl('postgain');
  */
 export const { amp } = registerControl('amp');
 /**
- * Amplitude envelope attack time: Specifies how long it takes for the sound to reach its peak value, relative to the onset.
+ * Temps d'attaque de l'enveloppe d'amplitude : Spécifie combien de temps il faut pour que le son atteigne sa valeur maximale, relative au déclenchement.
  *
  * @name attack
- * @param {number | Pattern} attack time in seconds.
+ * @param {number | Pattern} attack temps en secondes.
  * @synonyms att
  * @example
  * note("c3 e3 f3 g3").attack("<0 .1 .5>")
@@ -430,10 +430,10 @@ export const { amp } = registerControl('amp');
 export const { attack, att } = registerControl('attack', 'att');
 
 /**
- * Sets the Frequency Modulation Harmonicity Ratio.
- * Controls the timbre of the sound.
- * Whole numbers and simple ratios sound more natural,
- * while decimal numbers and complex ratios sound metallic.
+ * Définit le ratio d'harmonicité de la modulation de fréquence.
+ * Contrôle le timbre du son.
+ * Les nombres entiers et ratios simples sonnent plus naturels,
+ * tandis que les nombres décimaux et ratios complexes sonnent métalliques.
  *
  * @name fmh
  * @param {number | Pattern} harmonicity
@@ -446,11 +446,11 @@ export const { attack, att } = registerControl('attack', 'att');
  */
 export const { fmh } = registerControl(['fmh', 'fmi'], 'fmh');
 /**
- * Sets the Frequency Modulation of the synth.
- * Controls the modulation index, which defines the brightness of the sound.
+ * Définit la modulation de fréquence du synthétiseur.
+ * Contrôle l'indice de modulation, qui définit la brillance du son.
  *
  * @name fm
- * @param {number | Pattern} brightness modulation index
+ * @param {number | Pattern} brightness indice de modulation
  * @synonyms fmi
  * @example
  * note("c e g b g e")
@@ -461,7 +461,7 @@ export const { fmh } = registerControl(['fmh', 'fmi'], 'fmh');
 export const { fmi, fm } = registerControl(['fmi', 'fmh'], 'fm');
 // fm envelope
 /**
- * Ramp type of fm envelope. Exp might be a bit broken..
+ * Type de rampe de l'enveloppe fm. Exp pourrait être un peu cassé..
  *
  * @name fmenv
  * @param {number | Pattern} type lin | exp
@@ -476,10 +476,10 @@ export const { fmi, fm } = registerControl(['fmi', 'fmh'], 'fm');
  */
 export const { fmenv } = registerControl('fmenv');
 /**
- * Attack time for the FM envelope: time it takes to reach maximum modulation
+ * Temps d'attaque pour l'enveloppe FM : temps nécessaire pour atteindre la modulation maximale
  *
  * @name fmattack
- * @param {number | Pattern} time attack time
+ * @param {number | Pattern} time temps d'attaque
  * @example
  * note("c e g b g e")
  * .fm(4)
@@ -490,10 +490,10 @@ export const { fmenv } = registerControl('fmenv');
 export const { fmattack } = registerControl('fmattack');
 
 /**
- * Waveform of the fm modulator
+ * Forme d'onde du modulateur fm
  *
  * @name fmwave
- * @param {number | Pattern} wave waveform
+ * @param {number | Pattern} wave forme d'onde
  * @example
  * n("0 1 2 3".fast(4)).scale("d:minor").s("sine").fmwave("<sine square sawtooth crackle>").fm(4).fmh(2.01)
  * @example
@@ -503,10 +503,10 @@ export const { fmattack } = registerControl('fmattack');
 export const { fmwave } = registerControl('fmwave');
 
 /**
- * Decay time for the FM envelope: seconds until the sustain level is reached after the attack phase.
+ * Temps de déclin pour l'enveloppe FM : secondes jusqu'à ce que le niveau de maintien soit atteint après la phase d'attaque.
  *
  * @name fmdecay
- * @param {number | Pattern} time decay time
+ * @param {number | Pattern} time temps de déclin
  * @example
  * note("c e g b g e")
  * .fm(4)
@@ -517,10 +517,10 @@ export const { fmwave } = registerControl('fmwave');
  */
 export const { fmdecay } = registerControl('fmdecay');
 /**
- * Sustain level for the FM envelope: how much modulation is applied after the decay phase
+ * Niveau de maintien pour l'enveloppe FM : quelle quantité de modulation est appliquée après la phase de déclin
  *
  * @name fmsustain
- * @param {number | Pattern} level sustain level
+ * @param {number | Pattern} level niveau de maintien
  * @example
  * note("c e g b g e")
  * .fm(4)
@@ -535,10 +535,10 @@ export const { fmrelease } = registerControl('fmrelease');
 export const { fmvelocity } = registerControl('fmvelocity');
 
 /**
- * Select the sound bank to use. To be used together with `s`. The bank name (+ "_") will be prepended to the value of `s`.
+ * Sélectionne la banque de sons à utiliser. À utiliser avec `s`. Le nom de la banque (+ "_") sera préfixé à la valeur de `s`.
  *
  * @name bank
- * @param {string | Pattern} bank the name of the bank
+ * @param {string | Pattern} bank le nom de la banque
  * @example
  * s("bd sd [~ bd] sd").bank('RolandTR909') // = s("RolandTR909_bd RolandTR909_sd")
  *
@@ -546,10 +546,10 @@ export const { fmvelocity } = registerControl('fmvelocity');
 export const { bank } = registerControl('bank');
 
 /**
- * mix control for the chorus effect
+ * contrôle de mixage pour l'effet chorus
  *
  * @name chorus
- * @param {string | Pattern} chorus mix amount between 0 and 1
+ * @param {string | Pattern} chorus quantité de mixage entre 0 et 1
  * @example
  * note("d d a# a").s("sawtooth").chorus(.5)
  *
@@ -562,11 +562,11 @@ export const { analyze } = registerControl('analyze');
 export const { fft } = registerControl('fft');
 
 /**
- * Amplitude envelope decay time: the time it takes after the attack time to reach the sustain level.
- * Note that the decay is only audible if the sustain value is lower than 1.
+ * Temps de déclin de l'enveloppe d'amplitude : le temps nécessaire après le temps d'attaque pour atteindre le niveau de maintien.
+ * Notez que le déclin n'est audible que si la valeur de maintien est inférieure à 1.
  *
  * @name decay
- * @param {number | Pattern} time decay time in seconds
+ * @param {number | Pattern} time temps de déclin en secondes
  * @synonyms dec
  * @example
  * note("c3 e3 f3 g3").decay("<.1 .2 .3 .4>").sustain(0)
@@ -574,10 +574,10 @@ export const { fft } = registerControl('fft');
  */
 export const { decay, dec } = registerControl('decay', 'dec');
 /**
- * Amplitude envelope sustain level: The level which is reached after attack / decay, being sustained until the offset.
+ * Niveau de maintien de l'enveloppe d'amplitude : Le niveau qui est atteint après l'attaque / déclin, étant maintenu jusqu'au décalage.
  *
  * @name sustain
- * @param {number | Pattern} gain sustain level between 0 and 1
+ * @param {number | Pattern} gain niveau de maintien entre 0 et 1
  * @synonyms sus
  * @example
  * note("c3 e3 f3 g3").decay(.2).sustain("<0 .1 .4 .6 1>")
@@ -585,10 +585,10 @@ export const { decay, dec } = registerControl('decay', 'dec');
  */
 export const { sustain, sus } = registerControl('sustain', 'sus');
 /**
- * Amplitude envelope release time: The time it takes after the offset to go from sustain level to zero.
+ * Temps de relâchement de l'enveloppe d'amplitude : Le temps nécessaire après le décalage pour passer du niveau de maintien à zéro.
  *
  * @name release
- * @param {number | Pattern} time release time in seconds
+ * @param {number | Pattern} time temps de relâchement en secondes
  * @synonyms rel
  * @example
  * note("c3 e3 g3 c4").release("<0 .1 .4 .6 1>/2")
@@ -598,11 +598,11 @@ export const { release, rel } = registerControl('release', 'rel');
 export const { hold } = registerControl('hold');
 // TODO: in tidal, it seems to be normalized
 /**
- * Sets the center frequency of the **b**and-**p**ass **f**ilter. When using mininotation, you
- * can also optionally supply the 'bpq' parameter separated by ':'.
+ * Définit la fréquence centrale du filtre **p**asse-**b**ande. En utilisant la mininotation, vous
+ * pouvez également fournir en option le paramètre 'bpq' séparé par ':'.
  *
  * @name bpf
- * @param {number | Pattern} frequency center frequency
+ * @param {number | Pattern} frequency fréquence centrale
  * @synonyms bandf, bp
  * @example
  * s("bd sd [~ bd] sd,hh*6").bpf("<1000 2000 4000 8000>")
@@ -611,10 +611,10 @@ export const { hold } = registerControl('hold');
 export const { bandf, bpf, bp } = registerControl(['bandf', 'bandq', 'bpenv'], 'bpf', 'bp');
 // TODO: in tidal, it seems to be normalized
 /**
- * Sets the **b**and-**p**ass **q**-factor (resonance).
+ * Définit le facteur **q** du filtre **p**asse-**b**ande (résonance).
  *
  * @name bpq
- * @param {number | Pattern} q q factor
+ * @param {number | Pattern} q facteur q
  * @synonyms bandq
  * @example
  * s("bd sd [~ bd] sd").bpf(500).bpq("<0 1 2 3>")
@@ -624,11 +624,11 @@ export const { bandf, bpf, bp } = registerControl(['bandf', 'bandq', 'bpenv'], '
 // ['bpq'],
 export const { bandq, bpq } = registerControl('bandq', 'bpq');
 /**
- * A pattern of numbers from 0 to 1. Skips the beginning of each sample, e.g. `0.25` to cut off the first quarter from each sample.
+ * Un pattern de nombres de 0 à 1. Saute le début de chaque échantillon, par ex. `0.25` pour couper le premier quart de chaque échantillon.
  *
  * @memberof Pattern
  * @name begin
- * @param {number | Pattern} amount between 0 and 1, where 1 is the length of the sample
+ * @param {number | Pattern} amount entre 0 et 1, où 1 est la longueur de l'échantillon
  * @example
  * samples({ rave: 'rave/AREUREADY.wav' }, 'github:tidalcycles/dirt-samples')
  * s("rave").begin("<0 .25 .5 .75>").fast(2)
@@ -636,35 +636,35 @@ export const { bandq, bpq } = registerControl('bandq', 'bpq');
  */
 export const { begin } = registerControl('begin');
 /**
- * The same as .begin, but cuts off the end off each sample.
+ * Identique à .begin, mais coupe la fin de chaque échantillon.
  *
  * @memberof Pattern
  * @name end
- * @param {number | Pattern} length 1 = whole sample, .5 = half sample, .25 = quarter sample etc..
+ * @param {number | Pattern} length 1 = échantillon entier, .5 = demi-échantillon, .25 = quart d'échantillon etc..
  * @example
  * s("bd*2,oh*4").end("<.1 .2 .5 1>").fast(2)
  *
  */
 export const { end } = registerControl('end');
 /**
- * Loops the sample.
- * Note that the tempo of the loop is not synced with the cycle tempo.
- * To change the loop region, use loopBegin / loopEnd.
+ * Boucle l'échantillon.
+ * Notez que le tempo de la boucle n'est pas synchronisé avec le tempo du cycle.
+ * Pour changer la région de boucle, utilisez loopBegin / loopEnd.
  *
  * @name loop
- * @param {number | Pattern} on If 1, the sample is looped
+ * @param {number | Pattern} on Si 1, l'échantillon est bouclé
  * @example
  * s("casio").loop(1)
  *
  */
 export const { loop } = registerControl('loop');
 /**
- * Begin to loop at a specific point in the sample (inbetween `begin` and `end`).
- * Note that the loop point must be inbetween `begin` and `end`, and before `loopEnd`!
- * Note: Samples starting with wt_ will automatically loop! (wt = wavetable)
+ * Commence à boucler à un point spécifique de l'échantillon (entre `begin` et `end`).
+ * Notez que le point de boucle doit être entre `begin` et `end`, et avant `loopEnd` !
+ * Note : Les échantillons commençant par wt_ boucleront automatiquement ! (wt = wavetable)
  *
  * @name loopBegin
- * @param {number | Pattern} time between 0 and 1, where 1 is the length of the sample
+ * @param {number | Pattern} time entre 0 et 1, où 1 est la longueur de l'échantillon
  * @synonyms loopb
  * @example
  * s("space").loop(1)
@@ -673,11 +673,11 @@ export const { loop } = registerControl('loop');
 export const { loopBegin, loopb } = registerControl('loopBegin', 'loopb');
 /**
  *
- * End the looping section at a specific point in the sample (inbetween `begin` and `end`).
- * Note that the loop point must be inbetween `begin` and `end`, and after `loopBegin`!
+ * Termine la section de boucle à un point spécifique de l'échantillon (entre `begin` et `end`).
+ * Notez que le point de boucle doit être entre `begin` et `end`, et après `loopBegin` !
  *
  * @name loopEnd
- * @param {number | Pattern} time between 0 and 1, where 1 is the length of the sample
+ * @param {number | Pattern} time entre 0 et 1, où 1 est la longueur de l'échantillon
  * @synonyms loope
  * @example
  * s("space").loop(1)
@@ -685,10 +685,10 @@ export const { loopBegin, loopb } = registerControl('loopBegin', 'loopb');
  */
 export const { loopEnd, loope } = registerControl('loopEnd', 'loope');
 /**
- * Bit crusher effect.
+ * Effet bit crusher.
  *
  * @name crush
- * @param {number | Pattern} depth between 1 (for drastic reduction in bit-depth) to 16 (for barely no reduction).
+ * @param {number | Pattern} depth entre 1 (pour une réduction drastique de la profondeur de bits) à 16 (pour presque aucune réduction).
  * @example
  * s("<bd sd>,hh*3").fast(2).crush("<16 8 7 6 5 4 3 2>")
  *
@@ -696,10 +696,10 @@ export const { loopEnd, loope } = registerControl('loopEnd', 'loope');
 // ['clhatdecay'],
 export const { crush } = registerControl('crush');
 /**
- * Fake-resampling for lowering the sample rate. Caution: This effect seems to only work in chromium based browsers
+ * Faux rééchantillonnage pour réduire le taux d'échantillonnage. Attention : Cet effet semble fonctionner uniquement dans les navigateurs basés sur chromium
  *
  * @name coarse
- * @param {number | Pattern} factor 1 for original 2 for half, 3 for a third and so on.
+ * @param {number | Pattern} factor 1 pour l'original, 2 pour la moitié, 3 pour un tiers et ainsi de suite.
  * @example
  * s("bd sd [~ bd] sd,hh*8").coarse("<1 4 8 16 32>")
  *
@@ -707,11 +707,11 @@ export const { crush } = registerControl('crush');
 export const { coarse } = registerControl('coarse');
 
 /**
- * Modulate the amplitude of a sound with a continuous waveform
+ * Module l'amplitude d'un son avec une forme d'onde continue
  *
  * @name tremolo
  * @synonyms trem
- * @param {number | Pattern} speed modulation speed in HZ
+ * @param {number | Pattern} speed vitesse de modulation en HZ
  * @example
  * note("d d d# d".fast(4)).s("supersaw").tremolo("<3 2 100> ").tremoloskew("<.5>")
  *
@@ -719,11 +719,11 @@ export const { coarse } = registerControl('coarse');
 export const { tremolo } = registerControl(['tremolo', 'tremolodepth', 'tremoloskew', 'tremolophase'], 'trem');
 
 /**
- * Modulate the amplitude of a sound with a continuous waveform
+ * Module l'amplitude d'un son avec une forme d'onde continue
  *
  * @name tremolosync
  * @synonyms tremsync
- * @param {number | Pattern} cycles modulation speed in cycles
+ * @param {number | Pattern} cycles vitesse de modulation en cycles
  * @example
  * note("d d d# d".fast(4)).s("supersaw").tremolosync("4").tremoloskew("<1 .5 0>")
  *
@@ -734,7 +734,7 @@ export const { tremolosync } = registerControl(
 );
 
 /**
- * Depth of amplitude modulation
+ * Profondeur de modulation d'amplitude
  *
  * @name tremolodepth
  * @synonyms tremdepth
@@ -745,11 +745,11 @@ export const { tremolosync } = registerControl(
  */
 export const { tremolodepth } = registerControl('tremolodepth', 'tremdepth');
 /**
- * Alter the shape of the modulation waveform
+ * Modifie la forme de la forme d'onde de modulation
  *
  * @name tremoloskew
  * @synonyms tremskew
- * @param {number | Pattern} amount between 0 & 1, the shape of the waveform
+ * @param {number | Pattern} amount entre 0 & 1, la forme de la forme d'onde
  * @example
  * note("{f a c e}%16").s("sawtooth").tremsync(4).tremoloskew("<.5 0 1>")
  *
@@ -757,11 +757,11 @@ export const { tremolodepth } = registerControl('tremolodepth', 'tremdepth');
 export const { tremoloskew } = registerControl('tremoloskew', 'tremskew');
 
 /**
- * Alter the phase of the modulation waveform
+ * Modifie la phase de la forme d'onde de modulation
  *
  * @name tremolophase
  * @synonyms tremphase
- * @param {number | Pattern} offset the offset in cycles of the modulation
+ * @param {number | Pattern} offset le décalage en cycles de la modulation
  * @example
  * note("{f a c e}%16").s("sawtooth").tremsync(4).tremolophase("<0 .25 .66>")
  *
@@ -769,7 +769,7 @@ export const { tremoloskew } = registerControl('tremoloskew', 'tremskew');
 export const { tremolophase } = registerControl('tremolophase', 'tremphase');
 
 /**
- * Shape of amplitude modulation
+ * Forme de modulation d'amplitude
  *
  * @name tremoloshape
  * @synonyms tremshape
@@ -780,7 +780,7 @@ export const { tremolophase } = registerControl('tremolophase', 'tremphase');
  */
 export const { tremoloshape } = registerControl('tremoloshape', 'tremshape');
 /**
- * Filter overdrive for supported filter types
+ * Surdrive de filtre pour les types de filtres supportés
  *
  * @name drive
  * @param {number | Pattern} amount
@@ -791,13 +791,13 @@ export const { tremoloshape } = registerControl('tremoloshape', 'tremshape');
 export const { drive } = registerControl('drive');
 
 /**
- * Modulate the amplitude of an orbit to create a "sidechain" like effect.
+ * Module l'amplitude d'un orbit pour créer un effet de type "sidechain".
  *
- * Can be applied to multiple orbits with the ':' mininotation, e.g. `duckorbit("2:3")`
+ * Peut être appliqué à plusieurs orbits avec la mininotation ':', par ex. `duckorbit("2:3")`
  *
  * @name duckorbit
  * @synonyms duck
- * @param {number | Pattern} orbit target orbit
+ * @param {number | Pattern} orbit orbit cible
  * @example
  * $: n(run(16)).scale("c:minor:pentatonic").s("sawtooth").delay(.7).orbit(2)
  * $: s("bd:4!4").beat("0,4,8,11,14",16).duckorbit(2).duckattack(0.2).duckdepth(1)
