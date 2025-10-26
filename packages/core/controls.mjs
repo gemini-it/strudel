@@ -999,7 +999,7 @@ export const { phasercenter, phc } = registerControl('phasercenter', 'phc');
  *
  * @name phaserdepth
  * @synonyms phd, phasdp
- * @param {number | Pattern} depth number between 0 and 1
+ * @param {number | Pattern} depth nombre entre 0 et 1
  * @example
  * n(run(8)).scale("D:pentatonic").s("sawtooth").release(0.5)
  * .phaser(2).phaserdepth("<0 .5 .75 1>")
@@ -1009,30 +1009,30 @@ export const { phasercenter, phc } = registerControl('phasercenter', 'phc');
 export const { phaserdepth, phd, phasdp } = registerControl('phaserdepth', 'phd', 'phasdp');
 
 /**
- * Choose the channel the pattern is sent to in superdirt
+ * Choisit le canal auquel le pattern est envoyé dans superdirt
  *
  * @name channel
- * @param {number | Pattern} channel channel number
+ * @param {number | Pattern} channel numéro de canal
  *
  */
 export const { channel } = registerControl('channel');
 /**
- * In the style of classic drum-machines, `cut` will stop a playing sample as soon as another samples with in same cutgroup is to be played. An example would be an open hi-hat followed by a closed one, essentially muting the open.
+ * Dans le style des boîtes à rythmes classiques, `cut` arrêtera un échantillon en cours de lecture dès qu'un autre échantillon du même groupe de coupe doit être joué. Un exemple serait un charleston ouvert suivi d'un fermé, muant essentiellement l'ouvert.
  *
  * @name cut
- * @param {number | Pattern} group cut group number
+ * @param {number | Pattern} group numéro de groupe de coupe
  * @example
  * s("[oh hh]*4").cut(1)
  *
  */
 export const { cut } = registerControl('cut');
 /**
- * Applies the cutoff frequency of the **l**ow-**p**ass **f**ilter.
+ * Applique la fréquence de coupure du filtre **p**asse-**b**as.
  *
- * When using mininotation, you can also optionally add the 'lpq' parameter, separated by ':'.
+ * En utilisant la mininotation, vous pouvez également ajouter en option le paramètre 'lpq', séparé par ':'.
  *
  * @name lpf
- * @param {number | Pattern} frequency audible between 0 and 20000
+ * @param {number | Pattern} frequency audible entre 0 et 20000
  * @synonyms cutoff, ctf, lp
  * @example
  * s("bd sd [~ bd] sd,hh*6").lpf("<4000 2000 1000 500 200 100>")
@@ -1043,9 +1043,9 @@ export const { cut } = registerControl('cut');
 export const { cutoff, ctf, lpf, lp } = registerControl(['cutoff', 'resonance', 'lpenv'], 'ctf', 'lpf', 'lp');
 
 /**
- * Sets the lowpass filter envelope modulation depth.
+ * Définit la profondeur de modulation de l'enveloppe du filtre passe-bas.
  * @name lpenv
- * @param {number | Pattern} modulation depth of the lowpass filter envelope between 0 and _n_
+ * @param {number | Pattern} modulation profondeur de l'enveloppe du filtre passe-bas entre 0 et _n_
  * @synonyms lpe
  * @example
  * note("c2 e2 f2 g2")
@@ -1056,9 +1056,9 @@ export const { cutoff, ctf, lpf, lp } = registerControl(['cutoff', 'resonance', 
  */
 export const { lpenv, lpe } = registerControl('lpenv', 'lpe');
 /**
- * Sets the highpass filter envelope modulation depth.
+ * Définit la profondeur de modulation de l'enveloppe du filtre passe-haut.
  * @name hpenv
- * @param {number | Pattern} modulation depth of the highpass filter envelope between 0 and _n_
+ * @param {number | Pattern} modulation profondeur de l'enveloppe du filtre passe-haut entre 0 et _n_
  * @synonyms hpe
  * @example
  * note("c2 e2 f2 g2")
@@ -1069,9 +1069,9 @@ export const { lpenv, lpe } = registerControl('lpenv', 'lpe');
  */
 export const { hpenv, hpe } = registerControl('hpenv', 'hpe');
 /**
- * Sets the bandpass filter envelope modulation depth.
+ * Définit la profondeur de modulation de l'enveloppe du filtre passe-bande.
  * @name bpenv
- * @param {number | Pattern} modulation depth of the bandpass filter envelope between 0 and _n_
+ * @param {number | Pattern} modulation profondeur de l'enveloppe du filtre passe-bande entre 0 et _n_
  * @synonyms bpe
  * @example
  * note("c2 e2 f2 g2")
@@ -1082,9 +1082,9 @@ export const { hpenv, hpe } = registerControl('hpenv', 'hpe');
  */
 export const { bpenv, bpe } = registerControl('bpenv', 'bpe');
 /**
- * Sets the attack duration for the lowpass filter envelope.
+ * Définit la durée d'attaque pour l'enveloppe du filtre passe-bas.
  * @name lpattack
- * @param {number | Pattern} attack time of the filter envelope
+ * @param {number | Pattern} attack temps de l'enveloppe du filtre
  * @synonyms lpa
  * @example
  * note("c2 e2 f2 g2")
@@ -1095,9 +1095,9 @@ export const { bpenv, bpe } = registerControl('bpenv', 'bpe');
  */
 export const { lpattack, lpa } = registerControl('lpattack', 'lpa');
 /**
- * Sets the attack duration for the highpass filter envelope.
+ * Définit la durée d'attaque pour l'enveloppe du filtre passe-haut.
  * @name hpattack
- * @param {number | Pattern} attack time of the highpass filter envelope
+ * @param {number | Pattern} attack temps de l'enveloppe du filtre passe-haut
  * @synonyms hpa
  * @example
  * note("c2 e2 f2 g2")
@@ -1108,9 +1108,9 @@ export const { lpattack, lpa } = registerControl('lpattack', 'lpa');
  */
 export const { hpattack, hpa } = registerControl('hpattack', 'hpa');
 /**
- * Sets the attack duration for the bandpass filter envelope.
+ * Définit la durée d'attaque pour l'enveloppe du filtre passe-bande.
  * @name bpattack
- * @param {number | Pattern} attack time of the bandpass filter envelope
+ * @param {number | Pattern} attack temps de l'enveloppe du filtre passe-bande
  * @synonyms bpa
  * @example
  * note("c2 e2 f2 g2")
@@ -1121,9 +1121,9 @@ export const { hpattack, hpa } = registerControl('hpattack', 'hpa');
  */
 export const { bpattack, bpa } = registerControl('bpattack', 'bpa');
 /**
- * Sets the decay duration for the lowpass filter envelope.
+ * Définit la durée de déclin pour l'enveloppe du filtre passe-bas.
  * @name lpdecay
- * @param {number | Pattern} decay time of the filter envelope
+ * @param {number | Pattern} decay temps de l'enveloppe du filtre
  * @synonyms lpd
  * @example
  * note("c2 e2 f2 g2")
@@ -1134,9 +1134,9 @@ export const { bpattack, bpa } = registerControl('bpattack', 'bpa');
  */
 export const { lpdecay, lpd } = registerControl('lpdecay', 'lpd');
 /**
- * Sets the decay duration for the highpass filter envelope.
+ * Définit la durée de déclin pour l'enveloppe du filtre passe-haut.
  * @name hpdecay
- * @param {number | Pattern} decay time of the highpass filter envelope
+ * @param {number | Pattern} decay temps de l'enveloppe du filtre passe-haut
  * @synonyms hpd
  * @example
  * note("c2 e2 f2 g2")
@@ -1148,9 +1148,9 @@ export const { lpdecay, lpd } = registerControl('lpdecay', 'lpd');
  */
 export const { hpdecay, hpd } = registerControl('hpdecay', 'hpd');
 /**
- * Sets the decay duration for the bandpass filter envelope.
+ * Définit la durée de déclin pour l'enveloppe du filtre passe-bande.
  * @name bpdecay
- * @param {number | Pattern} decay time of the bandpass filter envelope
+ * @param {number | Pattern} decay temps de l'enveloppe du filtre passe-bande
  * @synonyms bpd
  * @example
  * note("c2 e2 f2 g2")
@@ -1162,9 +1162,9 @@ export const { hpdecay, hpd } = registerControl('hpdecay', 'hpd');
  */
 export const { bpdecay, bpd } = registerControl('bpdecay', 'bpd');
 /**
- * Sets the sustain amplitude for the lowpass filter envelope.
+ * Définit l'amplitude de maintien pour l'enveloppe du filtre passe-bas.
  * @name lpsustain
- * @param {number | Pattern} sustain amplitude of the lowpass filter envelope
+ * @param {number | Pattern} sustain amplitude de l'enveloppe du filtre passe-bas
  * @synonyms lps
  * @example
  * note("c2 e2 f2 g2")
@@ -1176,9 +1176,9 @@ export const { bpdecay, bpd } = registerControl('bpdecay', 'bpd');
  */
 export const { lpsustain, lps } = registerControl('lpsustain', 'lps');
 /**
- * Sets the sustain amplitude for the highpass filter envelope.
+ * Définit l'amplitude de maintien pour l'enveloppe du filtre passe-haut.
  * @name hpsustain
- * @param {number | Pattern} sustain amplitude of the highpass filter envelope
+ * @param {number | Pattern} sustain amplitude de l'enveloppe du filtre passe-haut
  * @synonyms hps
  * @example
  * note("c2 e2 f2 g2")
@@ -1190,9 +1190,9 @@ export const { lpsustain, lps } = registerControl('lpsustain', 'lps');
  */
 export const { hpsustain, hps } = registerControl('hpsustain', 'hps');
 /**
- * Sets the sustain amplitude for the bandpass filter envelope.
+ * Définit l'amplitude de maintien pour l'enveloppe du filtre passe-bande.
  * @name bpsustain
- * @param {number | Pattern} sustain amplitude of the bandpass filter envelope
+ * @param {number | Pattern} sustain amplitude de l'enveloppe du filtre passe-bande
  * @synonyms bps
  * @example
  * note("c2 e2 f2 g2")
