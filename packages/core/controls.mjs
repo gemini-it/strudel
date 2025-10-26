@@ -2016,10 +2016,10 @@ export const { squiz } = registerControl('squiz');
 // TODO: Use a rest (~) to override the effect <- vowel
 /**
  *
- * Formant filter to make things sound like vowels.
+ * Filtre formantique pour faire sonner les choses comme des voyelles.
  *
  * @name vowel
- * @param {string | Pattern} vowel You can use a e i o u ae aa oe ue y uh un en an on, corresponding to [a] [e] [i] [o] [u] [æ] [ɑ] [ø] [y] [ɯ] [ʌ] [œ̃] [ɛ̃] [ɑ̃] [ɔ̃]. Aliases: aa = å = ɑ, oe = ø = ö, y = ı, ae = æ.
+ * @param {string | Pattern} vowel Vous pouvez utiliser a e i o u ae aa oe ue y uh un en an on, correspondant à [a] [e] [i] [o] [u] [æ] [ɑ] [ø] [y] [ɯ] [ʌ] [œ̃] [ɛ̃] [ɑ̃] [ɔ̃]. Alias : aa = å = ɑ, oe = ø = ö, y = ı, ae = æ.
  * @example
  * note("[c2 <eb2 <g2 g1>>]*2").s('sawtooth')
  * .vowel("<a e i <o u>>")
@@ -2040,10 +2040,10 @@ export const { vowel } = registerControl('vowel');
  */
 export const { waveloss } = registerControl('waveloss');
 /**
- * Noise crackle density
+ * Densité de crépitement du bruit
  *
  * @name density
- * @param {number | Pattern} density between 0 and x
+ * @param {number | Pattern} density entre 0 et x
  * @example
  * s("crackle*4").density("<0.01 0.04 0.2 0.5>".slow(4))
  *
@@ -2090,7 +2090,7 @@ export const { uid } = registerControl('uid');
 export const { val } = registerControl('val');
 export const { cps } = registerControl('cps');
 /**
- * Multiplies the duration with the given number. Also cuts samples off at the end if they exceed the duration.
+ * Multiplie la durée avec le nombre donné. Coupe également les échantillons à la fin s'ils dépassent la durée.
  *
  * @name clip
  * @synonyms legato
@@ -2102,7 +2102,7 @@ export const { cps } = registerControl('cps');
 export const { clip, legato } = registerControl('clip', 'legato');
 
 /**
- * Sets the duration of the event in cycles. Similar to clip / legato, it also cuts samples off at the end if they exceed the duration.
+ * Définit la durée de l'événement en cycles. Similaire à clip / legato, il coupe également les échantillons à la fin s'ils dépassent la durée.
  *
  * @name duration
  * @synonyms dur
@@ -2131,10 +2131,10 @@ export const { zdelay } = registerControl('zdelay');
 export const { zzfx } = registerControl('zzfx');
 
 /**
- * Sets the color of the hap in visualizations like pianoroll or highlighting.
+ * Définit la couleur du hap dans les visualisations comme le piano roll ou la surbrillance.
  * @name color
  * @synonyms colour
- * @param {string} color Hexadecimal or CSS color name
+ * @param {string} color Hexadécimal ou nom de couleur CSS
  */
 export const { color, colour } = registerControl(['color', 'colour']);
 
@@ -2144,13 +2144,13 @@ export let createParams = (...names) =>
   names.reduce((acc, name) => Object.assign(acc, { [name]: createParam(name) }), {});
 
 /**
- * ADSR envelope: Combination of Attack, Decay, Sustain, and Release.
+ * Enveloppe ADSR : Combinaison d'Attack, Decay, Sustain et Release.
  *
  * @name adsr
- * @param {number | Pattern} time attack time in seconds
- * @param {number | Pattern} time decay time in seconds
- * @param {number | Pattern} gain sustain level (0 to 1)
- * @param {number | Pattern} time release time in seconds
+ * @param {number | Pattern} time temps d'attaque en secondes
+ * @param {number | Pattern} time temps de déclin en secondes
+ * @param {number | Pattern} gain niveau de maintien (0 à 1)
+ * @param {number | Pattern} time temps de relâchement en secondes
  * @example
  * note("[c3 bb2 f3 eb3]*2").sound("sawtooth").lpf(600).adsr(".1:.1:.5:.2")
  */
@@ -2178,10 +2178,10 @@ export const ar = register('ar', (t, pat) => {
 //MIDI
 
 /**
- * MIDI channel: Sets the MIDI channel for the event.
+ * Canal MIDI : Définit le canal MIDI pour l'événement.
  *
  * @name midichan
- * @param {number | Pattern} channel MIDI channel number (0-15)
+ * @param {number | Pattern} channel numéro de canal MIDI (0-15)
  * @example
  * note("c4").midichan(1).midi()
  */
@@ -2190,10 +2190,10 @@ export const { midichan } = registerControl('midichan');
 export const { midimap } = registerControl('midimap');
 
 /**
- * MIDI port: Sets the MIDI port for the event.
+ * Port MIDI : Définit le port MIDI pour l'événement.
  *
  * @name midiport
- * @param {number | Pattern} port MIDI port
+ * @param {number | Pattern} port port MIDI
  * @example
  * note("c a f e").midiport("<0 1 2 3>").midi()
  */
