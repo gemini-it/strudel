@@ -1602,10 +1602,10 @@ export const { gate, gat } = registerControl('gate', 'gat');
 // https://tidalcycles.org/docs/reference/audio_effects/#leslie-1
 // https://tidalcycles.org/docs/reference/audio_effects/#leslie
 /**
- * Emulation of a Leslie speaker: speakers rotating in a wooden amplified cabinet.
+ * Émulation d'un haut-parleur Leslie : haut-parleurs tournant dans un cabinet amplifié en bois.
  *
  * @name leslie
- * @param {number | Pattern} wet between 0 and 1
+ * @param {number | Pattern} wet entre 0 et 1
  * @example
  * n("0,4,7").s("supersquare").leslie("<0 .4 .6 1>").osc()
  * @superdirtOnly
@@ -1613,10 +1613,10 @@ export const { gate, gat } = registerControl('gate', 'gat');
  */
 export const { leslie } = registerControl('leslie');
 /**
- * Rate of modulation / rotation for leslie effect
+ * Vitesse de modulation / rotation pour l'effet leslie
  *
  * @name lrate
- * @param {number | Pattern} rate 6.7 for fast, 0.7 for slow
+ * @param {number | Pattern} rate 6.7 pour rapide, 0.7 pour lent
  * @example
  * n("0,4,7").s("supersquare").leslie(1).lrate("<1 2 4 8>").osc()
  * @superdirtOnly
@@ -1625,10 +1625,10 @@ export const { leslie } = registerControl('leslie');
 // TODO: the rate seems to "lag" (in the example, 1 will be fast)
 export const { lrate } = registerControl('lrate');
 /**
- * Physical size of the cabinet in meters. Be careful, it might be slightly larger than your computer. Affects the Doppler amount (pitch warble)
+ * Taille physique du cabinet en mètres. Attention, il pourrait être légèrement plus grand que votre ordinateur. Affecte la quantité de Doppler (vibrato de hauteur)
  *
  * @name lsize
- * @param {number | Pattern} meters somewhere between 0 and 1
+ * @param {number | Pattern} meters quelque part entre 0 et 1
  * @example
  * n("0,4,7").s("supersquare").leslie(1).lrate(2).lsize("<.1 .5 1>").osc()
  * @superdirtOnly
@@ -1636,10 +1636,10 @@ export const { lrate } = registerControl('lrate');
  */
 export const { lsize } = registerControl('lsize');
 /**
- * Sets the displayed text for an event on the pianoroll
+ * Définit le texte affiché pour un événement sur le piano roll
  *
  * @name label
- * @param {string} label text to display
+ * @param {string} label texte à afficher
  */
 export const { activeLabel } = registerControl('activeLabel');
 export const { label } = registerControl(['label', 'activeLabel']);
@@ -1672,10 +1672,10 @@ export const { octaveR } = registerControl('octaveR');
 export const { nudge } = registerControl('nudge');
 // TODO: the following doc is just a guess, it's not documented in tidal doc.
 /**
- * Sets the default octave of a synth.
+ * Définit l'octave par défaut d'un synthé.
  *
  * @name octave
- * @param {number | Pattern} octave octave number
+ * @param {number | Pattern} octave numéro d'octave
  * @example
  * n("0,4,7").s('supersquare').octave("<3 4 5 6>").osc()
  * @superDirtOnly
@@ -1685,7 +1685,7 @@ export const { octave } = registerControl('octave');
 // ['ophatdecay'],
 // TODO: example
 /**
- * An `orbit` is a global parameter context for patterns. Patterns with the same orbit will share the same global effects.
+ * Un `orbit` est un contexte de paramètres global pour les patterns. Les patterns avec le même orbit partageront les mêmes effets globaux.
  *
  * @name orbit
  * @param {number | Pattern} number
@@ -1701,10 +1701,10 @@ export const { overgain } = registerControl('overgain');
 // TODO: what is this? not found in tidal doc. Similar to above, but limited to 1
 export const { overshape } = registerControl('overshape');
 /**
- * Sets position in stereo.
+ * Définit la position en stéréo.
  *
  * @name pan
- * @param {number | Pattern} pan between 0 and 1, from left to right (assuming stereo), once round a circle (assuming multichannel)
+ * @param {number | Pattern} pan entre 0 et 1, de gauche à droite (en supposant stéréo), un tour de cercle (en supposant multicanal)
  * @example
  * s("[bd hh]*2").pan("<.5 1 .5 0>")
  * @example
